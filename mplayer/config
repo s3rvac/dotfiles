@@ -1,0 +1,66 @@
+#-------------------------------------------------------------------------------
+# File:   $HOME/.mplayer/config
+# Author: Petr Zemek <s3rvac@gmail.com>
+#
+# A configuration file for mplayer.
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Video
+#-------------------------------------------------------------------------------
+
+# (a) Normal (X11) video output
+vo=x11
+vf=pp=ha:a/va:a/dr:a/al:a/tn:a,scale
+
+# (b) OpenGL video output
+# vo="gl:yuv=4:lscale=1"
+# vf="pp=hb/vb/dr/al"
+
+# (c) VDPAU video output
+# vo=vdpau
+# Video codecs (the ',' at the end allows mplayer to use autodetection
+# if the previous codecs fails)
+# vc=ffh264vdpau,ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,
+
+# Other settings
+vfm=ffmpeg
+fixed-vo=1
+dr=1
+
+#-------------------------------------------------------------------------------
+# Performance
+#-------------------------------------------------------------------------------
+double=yes
+framedrop=no
+autoq=100
+lavdopts="threads=8:skiploopfilter=all"
+# nocorrect-pts=yes # Fixes the "Too many buffered pts" bug in mplayer
+
+#-------------------------------------------------------------------------------
+# Monitor
+#-------------------------------------------------------------------------------
+geometry=50%:50%
+# Disable screensaver
+stop-xscreensaver=yes
+
+#-------------------------------------------------------------------------------
+# Subtitles and OSD (fonts etc.)
+#-------------------------------------------------------------------------------
+subcp=windows-1250
+font=/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf
+subfont-text-scale=2.5
+subfont-osd-scale=3
+subpos=100
+spuaa=4
+subfont-blur=0.0
+subfont-outline=1.5
+subfont-encoding=unicode
+sub-fuzziness=2
+alang=en,eng,cz,cr
+slang=cz,cr,en,eng
+fontconfig=1
+
+#-------------------------------------------------------------------------------
+# Misc
+#-------------------------------------------------------------------------------
