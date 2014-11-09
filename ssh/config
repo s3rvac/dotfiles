@@ -1,0 +1,14 @@
+#------------------------------------------------------------------------------
+# File:   $HOME/.ssh/config
+# Author: Petr Zemek <s3rvac@gmail.com>
+#
+# A configuration file for ssh.
+#------------------------------------------------------------------------------
+
+# General.
+Host *
+	SendEnv LANG LC_*
+	ServerAliveInterval 30
+
+# Configuration for specific hosts.
+# ...
