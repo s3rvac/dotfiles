@@ -1,0 +1,5 @@
+# Enable 256 colors support.
+term screen-256color
+
+# Disable the startup message.
+startup_message off
