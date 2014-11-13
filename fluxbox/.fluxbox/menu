@@ -1,0 +1,86 @@
+[begin] (FluxBox)
+	[submenu] (Development)
+		[exec] (DDD) {ddd} <~/.fluxbox/icons/ddd.xpm>
+		[exec] (GDB) {konsole -e gdb} <~/.fluxbox/icons/gdb.png>
+		[exec] (GVim) {gvim} <~/.fluxbox/icons/gvim.png>
+		[exec] (KCachegrind) {kcachegrind} <~/.fluxbox/icons/kcachegrind.png>
+		[exec] (KDiff3) {kdiff3} <~/.fluxbox/icons/kdiff3.png>
+		[exec] (Kompare) {kompare} <~/.fluxbox/icons/kompare.png>
+	[end]
+	[submenu] (Graphics)
+		[exec] (GIMP) {gimp} <~/.fluxbox/icons/gimp.png>
+		[exec] (Gwenview) {gwenview} <~/.fluxbox/icons/gwenview.png>
+		[exec] (Inkscape) {inkscape} <~/.fluxbox/icons/inkscape.png>
+		[exec] (KSnapshot) {ksnapshot} <~/.fluxbox/icons/ksnapshot.png>
+		[exec] (XSane} <~/.fluxbox/icons/xsane.xpm>
+	[end]
+	[submenu] (Multimedia)
+		[exec] (Audacity) {audacity} <~/.fluxbox/icons/audacity.xpm>
+		[exec] (Clementine) {clementine} <~/.fluxbox/icons/clementine.png>
+		[exec] (DeVeDe) {devede} <~/.fluxbox/icons/devede.png>
+		[exec] (EasyTag) {easytag} <~/.fluxbox/icons/easytag.png>
+		[exec] (K3b) {k3b} <~/.fluxbox/icons/k3b.png>
+		[exec] (KMix) {kmix} <~/.fluxbox/icons/kmix.png>
+		[exec] (mpv) {mpv} <~/.fluxbox/icons/mpv.png>
+		[exec] (VLC) {vlc} <~/.fluxbox/icons/vlc.png>
+	[end]
+	[submenu] (Network)
+		[exec] (Akregator) {akregator} <~/.fluxbox/icons/akregator.png>
+		[exec] (Firefox) {firefox} <~/.fluxbox/icons/firefox.png>
+		[exec] (Konqueror) {kfmclient openProfile webbrowsing} <~/.fluxbox/icons/konqueror.png>
+		[exec] (KTorrent) {ktorrent} <~/.fluxbox/icons/ktorrent.png>
+		[exec] (Midori Private Browsing) {midori} <~/.fluxbox/icons/midori.png>
+		[exec] (Psi) {psi} <~/.fluxbox/icons/psi.png>
+		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
+		[exec] (Thunderbird) {ksystraycmd thunderbird} <~/.fluxbox/icons/thunderbird.png>
+		[exec] (Wicd) {wicd-client} <~/.fluxbox/icons/wicd.png>
+	[end]
+	[submenu] (Office)
+		[exec] (Calibre) {calibre} <~/.fluxbox/icons/calibre.png>
+		[exec] (E-book Viewer) {ebook-viewer} <~/.fluxbox/icons/ebook-viewer.png>
+		[exec] (KchmViewer) {kchmviewer} <~/.fluxbox/icons/kchmviewer.png>
+		[exec] (LibreOffice Calc) {localc} <~/.fluxbox/icons/libreoffice-calc.png>
+		[exec] (LibreOffice Draw) {lodraw} <~/.fluxbox/icons/libreoffice-draw.png>
+		[exec] (LibreOffice Impress) {loimpress} <~/.fluxbox/icons/libreoffice-impress.png>
+		[exec] (LibreOffice Writer) {lowriter} <~/.fluxbox/icons/libreoffice-writer.png>
+		[exec] (Okular) {okular} <~/.fluxbox/icons/okular.png>
+		[exec] (PDF Editor) {pdfedit} <~/.fluxbox/icons/pdfedit.png>
+		[exec] (QStarDict) {qstardict} <~/.fluxbox/icons/qstardict.png>
+	[end]
+	[submenu] (System)
+		[submenu] (Settings)
+			[exec] (IcedTea-Web Control Panel) {itweb-settings}
+			[exec] (KDE System Settings) {systemsettings}
+			[exec] (CUPS) {firefox http://localhost:631/} <~/.fluxbox/icons/cups.png>
+			[exec] (NVIDIA X Server Settings) {nvidia-settings} <~/.fluxbox/icons/nvidia-settings.png>
+			[exec] (XFCE Panel) {xfce4-panel --preferences}
+			[exec] (XFCE Power Manager) {xfce4-power-manager-settings}
+			[exec] (XFCE Preferred Applications) {exo-preferred-applications}
+		[end]
+		[exec] (Htop) {konsole -e htop} <~/.fluxbox/icons/htop.png>
+		[exec] (VirtualBox) {VirtualBox} <~/.fluxbox/icons/virtualbox.png>
+		[exec] (Wireshark) {wireshark} <~/.fluxbox/icons/wireshark.png>
+	[end]
+	[submenu] (Utilities)
+		[exec] (KRename) {krename} <~/.fluxbox/icons/krename.png>
+		[exec] (Konsole) {konsole} <~/.fluxbox/icons/konsole.png>
+		[exec] (Krusader) {krusader} <~/.fluxbox/icons/krusader.png>
+		[exec] (QXKB) {qxkb} <~/.fluxbox/icons/qxkb.png>
+		[exec] (Yakuake) {yakuake} <~/.fluxbox/icons/yakuake.png>
+	[end]
+	[separator]
+	[submenu] (FluxBox)
+		[workspaces] (Workspaces)
+		[submenu] (Styles)
+			[stylesdir] (/usr/share/fluxbox/styles)
+			[stylesdir] (~/.fluxbox/styles)
+		[end]
+		[config] (Configure)
+		[reconfig] (Reconfig)
+		[restart] (Restart)
+	[end]
+	[separator]
+	[exit] (Logout) <~/.fluxbox/icons/system-log-out.png>
+	[exec] (Reboot) {sudo /usr/sbin/reboot} <~/.fluxbox/icons/system-reboot.png>
+	[exec] (Shutdown) {sudo /usr/sbin/halt} <~/.fluxbox/icons/system-shutdown.png>
+[end]

@@ -1,0 +1,50 @@
+[app] (name=fbrun)
+  [Position]	(CENTER)	{0 0}
+  [Layer]	{2}
+[end]
+[app] (name=gvim) (class=Gvim)
+  [Maximized]	{yes}
+[end]
+[app] (name=Mail) (class=Thunderbird) (role=3pane)
+  [Maximized]	{yes}
+[end]
+[app] (name=Mail) (class=Thunderbird) (role=messageWindow)
+  [Position]	(CENTER)	{0 0}
+  [Maximized]	{no}
+[end]
+[app] (name=Msgcompose) (class=Thunderbird) (role=Msgcompose)
+  [Position]	(CENTER)	{0 0}
+  [Maximized]	{no}
+[end]
+[app] (name=ktorrent) (class=Ktorrent) (role=MainWindow#1)
+  [Maximized]	{yes}
+[end]
+[app] (name=Navigator) (class=Firefox) (role=browser)
+  [Maximized]	{yes}
+[end]
+[app] (name=qstardict) (class=Qstardict)
+  [Position]	(CENTER)	{0 0}
+[end]
+[app] (name=ksnapshot) (class=Ksnapshot)
+  [Position]	(CENTER)	{0 0}
+[end]
+[app] (name=vlc) (class=Vlc) (role=vlc-main)
+  [Position]	(UPPERLEFT)	{35% 25%}
+[end]
+[app] (name=krusader) (class=Krusader) (role=MainWindow#1)
+  [Maximized]	{yes}
+[end]
+[app] (title=File Already Exists) (class=Krusader)
+  [Position]	(CENTER)	{0 -100}
+  [Layer]	{6}
+[end]
+[app] (title=Copying.*) (class=Krusader)
+  [Position]	(CENTER)	{0 0}
+  [FocusNewWindow]	{no}
+  [Minimized]	{yes}
+[end]
+[app] (title=Moving.*) (class=Krusader)
+  [Position]	(CENTER)	{0 0}
+  [FocusNewWindow]	{no}
+  [Minimized]	{yes}
+[end]

@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# Author: Petr Zemek <s3rvac@gmail.com>
+#
+# Fluxbox startup script.
+#
+
+# Set keyboard repeat delay and rate.
+xset r rate 200 30
+
+# Start fluxbox.
+
+fluxbox &
+fbpid=$!
+
+sleep 1
+{
+	# Set background.
+	~/.fluxbox/scripts/set-background.sh
+
+	# A list of applications to be started automatically.
+	wicd-client &
+	kmix &
+	yakuake
+	xfce4-power-manager
+	qxkb &
+	qstardict &
+	psi &
+	clementine &
+
+	# Disable tapping while writing (for 1 second).
+	syndaemon -i 1 -d -t
+} &
+
+wait $fbpid
