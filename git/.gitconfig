@@ -1,0 +1,99 @@
+[user]
+	name = Petr Zemek
+	email = s3rvac@gmail.com
+
+[color]
+	; Enable colored output.
+	ui = true
+
+[alias]
+	a = add
+	aa = add -u
+	ai = add -i
+	ap = add -p
+	amend = commit --verbose --amend
+	amendr = commit --verbose --amend --reset-author
+	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+	bl = blame
+	br = branch -vv
+	bra = branch -a -vv
+	c = commit --verbose
+	ca = commit --verbose --all
+	clear = reset --hard
+	co = checkout
+	cob = checkout -b
+	cot = checkout -t
+	cp = cherry-pick
+	d = diff
+	da = diff HEAD
+	ds = diff --staged
+	ignored = ls-files --exclude-standard --ignored --others
+	l = "!git log -20 --no-merges --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s' | less -F"
+	lf = log --no-merges --numstat --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
+	lg = log --graph --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
+	lga = log --graph --branches --remotes --tags --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
+	ll = log --no-merges --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
+	m = merge --no-ff
+	p = push
+	pb = "!git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`"
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase --interactive
+	rbs = rebase --skip
+	s = status --short --branch
+	sh = stash
+	sha = stash apply
+	shd = stash drop
+	shl = stash list
+	shp = stash pop
+	shs = stash show -p
+	sw = show --format=fuller
+	tags = tag -l -n1
+	u = up
+	undo = reset --soft HEAD^
+	wip = "!git add . && git commit -m 'WIP'"
+	unwip = "!if [ `git show --oneline --pretty='%s' | head -n1` == 'WIP' ]; then git undo && git reset; fi"
+
+[core]
+	; Whitespace problems that git should recognize.
+	whitespace = trailing-space,space-before-tab
+	; Used pager.
+	pager = less -FXRS
+	; Editor.
+	editor = gvim -f
+
+[diff]
+	; Allow `git diff` to do basic rename and copy detection.
+	renames = copies
+
+[push]
+	; `git push` without any refspec will push the current branch out to the
+	; same name at the remote repository only when it is set to track the
+	; branch with the same name over there.
+	default = simple
+
+[merge]
+	; The used merge tool.
+	tool = gvimdiff
+
+[sendemail]
+	; Review and edit each patch before sending.
+	annotate = true
+	; Always confirm before sending.
+	confirm = always
+	; Don't send every patch as a reply to the previous patch.
+	chainreplyto = false
+
+[credential]
+	# Enable password cache for http/https and make it timeout after 1 hour.
+	helper = cache --timeout=3600
+
+[include]
+	path = .gitconfig.local
+
+; Settings for the `git-up` script.
+; https://github.com/aanand/git-up
+[git-up "rebase"]
+	arguments = --preserve-merges
+	log-hook = "echo \"* changes on $1:\"; git log --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s' $1..$2"
