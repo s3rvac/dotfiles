@@ -1,0 +1,21 @@
+#------------------------------------------------------------------------------
+# File: $HOME/.inputrc
+# Author: Petr Zemek <s3rvac@gmail.com>
+#
+# Based on http://www.hermann-uwe.de/files/inputrc.
+#------------------------------------------------------------------------------
+
+# Be 8 bit clean.
+set meta-flag on
+set input-meta on
+set output-meta on
+
+# Always show all TAB completion possibilities.
+set show-all-if-ambiguous on
+
+# Shell history completion using the PageUp and PageDown keys.
+"\e[5~":history-search-backward
+"\e[6~":history-search-forward
+
+# Do not bell on TAB completion.
+set bell-style none
