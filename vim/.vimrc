@@ -720,6 +720,7 @@ let g:CommandTMatchWindowReverse=1 " Show the entries in reverse order.
 let g:CommandTAcceptSelectionTabMap='<C-CR>' " Open a new tab with Ctrl+Enter.
 hi CommandTHighlightColor guibg=darkblue guifg=white
 let g:CommandTHighlightColor='CommandTHighlightColor' " Custom highlight color.
+let g:CommandTTraverseSCM='pwd' " Use Vim's present working directory as the root.
 
 "-----------------------------------------------
 " vim-gitgutter: Shows a git diff in the gutter.
