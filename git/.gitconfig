@@ -45,6 +45,7 @@
 	sh = stash
 	sha = stash apply
 	shd = stash drop
+	shk = stash --keep-index
 	shl = stash list
 	shp = stash pop
 	shs = stash show -p
