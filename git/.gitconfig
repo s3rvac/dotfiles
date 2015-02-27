@@ -9,6 +9,7 @@
 [alias]
 	a = add
 	aa = add -u
+	aaa = add -A
 	ai = add -i
 	ap = add -p
 	amend = commit --verbose --amend
