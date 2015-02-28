@@ -20,5 +20,3 @@ SCREEN1_BG=~/.fluxbox/backgrounds/black.jpg
 
 # Set the background.
 feh --image-bg black --bg-max "$SCREEN0_BG" "$SCREEN1_BG"
-
-exit 0

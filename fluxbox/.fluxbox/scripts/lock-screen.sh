@@ -6,5 +6,3 @@
 #
 
 xlock -mode blank
-
-exit 0

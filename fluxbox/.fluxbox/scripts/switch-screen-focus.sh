@@ -16,5 +16,3 @@ if [ "$SCREEN" = "0" ]; then
 else
 	xdotool mousemove 1950 10 click 1
 fi
-
-exit 0
