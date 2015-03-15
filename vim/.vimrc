@@ -737,11 +737,11 @@ inoremap <silent> <F4> <C-O>:GitGutterToggle<CR>
 "---------------------------------------------------------
 " vim-python-test-runner.vim: Running python tests in VIM.
 "---------------------------------------------------------
-au FileType python nnoremap <Leader>rtf :w<CR>:NosetestFile<CR>
-au FileType python nnoremap <Leader>rtc :w<CR>:NosetestClass<CR>
-au FileType python nnoremap <Leader>rtm :w<CR>:NosetestMethod<CR>
-au FileType python nnoremap <Leader>rtl :w<CR>:RerunLastTests<CR>
-au FileType python nnoremap <F9> :w<CR>:!nosetests<CR>
+au FileType python nnoremap <Leader>rtf :wa<CR>:NosetestFile<CR>
+au FileType python nnoremap <Leader>rtc :wa<CR>:NosetestClass<CR>
+au FileType python nnoremap <Leader>rtm :wa<CR>:NosetestMethod<CR>
+au FileType python nnoremap <Leader>rtl :wa<CR>:RerunLastTests<CR>
+au FileType python nnoremap <F9> :wa<CR>:NosetestFile<CR>
 
 "---------
 " xmledit.
