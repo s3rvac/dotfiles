@@ -219,6 +219,7 @@ alias pi='ping google.com'
 alias g='git'
 alias ri='ri --format=ansi'
 alias smem='sync && echo mem > /sys/power/state'
+alias Time='/usr/bin/time -v'
 alias unzipa='for f in *.zip; do unzip "$f" && rm -f "$f"; done'
 alias unrara='for f in *.rar; do unrar x "$f" && rm -f "$f"; done'
 function zipf() { zip "$1".zip "$1" > /dev/null; echo "$1".zip; }
