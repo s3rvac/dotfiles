@@ -238,23 +238,23 @@ alias BIN="ruby -e 'printf(\"%bb\n\", ARGV[0])'"
 alias WORD="ruby -e 'printf(\"0x%04X\n\", ARGV[0])'"
 
 # Pacman aliases.
-# alias pacu="pacman -Syu" # Upgrade
-# alias paci="pacman -S"   # Install
-# alias pacr="pacman -R"   # Remove
-# alias pacp="pacman -Rns" # Purge
-# alias pacs="pacman -Ss"  # Search
-# alias pacn="pacman -Si"  # Info about the selected package
+alias pacu="pacman -Syu" # Upgrade
+alias paci="pacman -S"   # Install
+alias pacr="pacman -R"   # Remove
+alias pacp="pacman -Rns" # Purge
+alias pacs="pacman -Ss"  # Search
+alias pacn="pacman -Si"  # Info about the selected package
 # List all installed packages
 alias pacl='LIST=$(pacman -Sl); for ARG in $(pacman -Qq); do echo "$LIST" | grep " $ARG "; done'
 
 # Paktahn aliases.
-alias pacu="pacman -Syu" # Upgrade
-alias pacua="pak -Su --aur" # Upgrade AUR
-alias paci="pak -S"   # Install
-alias pacr="pak -R"   # Remove
-alias pacp="pacman -Rns" # Purge
-alias pacs="pak"  # Search
-alias pacn="pacman -Si"  # Info about the selected package
+# alias pacu="pacman -Syu" # Upgrade
+# alias pacua="pak -Su --aur" # Upgrade AUR
+# alias paci="pak -S"   # Install
+# alias pacr="pak -R"   # Remove
+# alias pacp="pacman -Rns" # Purge
+# alias pacs="pak"  # Search
+# alias pacn="pacman -Si"  # Info about the selected package
 
 # Aptitude aliases.
 alias apti="aptitude install"
