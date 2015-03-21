@@ -11,19 +11,19 @@
 
 export PATH
 
-# Adds $1 to $PATH, provided it is a directory and is not already in $PATH.
+# Prepends $1 to $PATH, provided it is a directory and is not already in $PATH.
 # Based on http://superuser.com/a/39995.
-add_to_path() {
+prepend_to_path() {
 	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-		PATH="${PATH:+"$PATH:"}$1"
+		PATH="$1:$PATH"
 	fi
 }
 
 # Include a path to ruby gems.
-add_to_path "$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
+prepend_to_path "$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
 
 # Include the user's private bin.
-add_to_path "$HOME/bin"
+prepend_to_path "$HOME/bin"
 
 #------------------------------------------------------------------------------
 # Prompt.
