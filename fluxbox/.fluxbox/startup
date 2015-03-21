@@ -6,7 +6,7 @@
 #
 
 # Set keyboard repeat delay and rate.
-xset r rate 200 30
+xset r rate 200 40
 
 # Start fluxbox.
 
