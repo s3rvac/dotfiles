@@ -19,6 +19,7 @@ I use the following Vim plugins, which you can install by using
 	* [cecutil](http://www.vim.org/scripts/script.php?script_id=1066) - Utilities used by other plugins.
 	* [closetag](http://www.vim.org/scripts/script.php?script_id=13) - Functions and mappings to close opened HTML/XML tags.
 	* [Command-T](https://github.com/wincent/command-t) - Fast, intuitive mechanism for opening files.
+	* [CSApprox](https://github.com/godlygeek/csapprox) - Makes GVim-only colorschemes work transparently in terminal Vim.
 	* [DoxygenToolkit](http://www.vim.org/scripts/script.php?script_id=987) - Simplify Doxygen documentation in C, C++, Python.
 	* [matchit](http://www.vim.org/scripts/script.php?script_id=39) - Extended `%` matching for HTML, LaTeX, and many other languages.
 	* [NERD_Commenter](http://www.vim.org/scripts/script.php?script_id=1218) - Allows easy commenting of code for many filetypes.

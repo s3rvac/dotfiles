@@ -174,10 +174,12 @@ au BufEnter * match SpacesTabsMixtureGroup /^ \+\t\+\|^\t\+ \+/
 " Use the same color in the signs column as it is used in the numbers column.
 au BufEnter * hi clear SignColumn
 
+" Color scheme. Thanks to the CSApprox plugin, we may use the same scheme in
+" both graphical and terminal Vims.
+colorscheme koehler
+
 " Graphical Vim.
 if has("gui_running")
-	" Colors.
-	colorscheme koehler
 	" Statusline.
 	au BufEnter * hi StatusLine guibg=black guifg=white
 	au BufEnter * hi StatusLineNC guibg=black guifg=gray70
