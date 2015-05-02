@@ -406,7 +406,7 @@ noremap  <S-Left>  gT
 inoremap <S-Left>  gT
 noremap  <S-Right> gt
 inoremap <S-Right> gt
-" (b)by <Shift>+h/l
+" (b) by <Shift>+h/l
 noremap <S-h> gT
 noremap <S-l> gt
 
