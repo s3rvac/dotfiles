@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# File: $HOME/.bash_logout
+# File:   $HOME/.bash_logout
 # Author: Petr Zemek <s3rvac@gmail.com>
 #
 # Based on http://www.hermann-uwe.de/files/bash_logout.
