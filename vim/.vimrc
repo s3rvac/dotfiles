@@ -177,6 +177,10 @@ au BufEnter * hi clear SignColumn
 " Color scheme. Thanks to the CSApprox plugin, we may use the same scheme in
 " both graphical and terminal Vims.
 colorscheme koehler
+" Force 256 color support, even if the terminal claims it does not support it.
+" This, together with the CSApprox plugin, ensures that Vim looks nice in the
+" terminal.
+set t_Co=256
 
 " Graphical Vim.
 if has("gui_running")

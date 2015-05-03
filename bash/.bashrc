@@ -156,7 +156,6 @@ umask 022
 # Environment variables.
 #------------------------------------------------------------------------------
 
-export TERM=xterm-256color
 export EDITOR=vim
 export VISUAL=vim
 export NNTPSERVER=localhost
