@@ -210,7 +210,6 @@ alias gvd='gvimdiff'
 alias m='make'
 alias svnst='svn st'
 alias svnlog='svn log -v | less'
-alias p='~/Scripts/passwords.sh'
 alias more='less'
 if [ "$(id -u)" -eq 0 ]; then
 	alias mntd='mount /dev/"`dmesg | grep -o "\\[[a-z1-9]*\\]" | tail -n 1 | tr -d []`"1 /mnt/disk && chown root:disk /mnt/disk && chmod 0770 /mnt/disk'
