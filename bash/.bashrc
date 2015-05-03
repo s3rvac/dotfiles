@@ -219,7 +219,6 @@ else
 fi
 alias umntd='sudo umount /mnt/disk'
 alias my='mysql -p'
-alias mplayer-dvd='mplayer dvd:// -dvd-device'
 alias pi='ping google.com'
 alias g='git'
 alias py='python'
