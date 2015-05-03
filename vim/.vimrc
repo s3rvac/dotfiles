@@ -344,13 +344,9 @@ noremap <silent> Q :q!<CR>
 " Disable K looking stuff up.
 noremap K <Nop>
 
-" Quicksave.
-noremap  <C-S> :w<CR>
-noremap! <C-S> <Esc>:w<CR>
-
 " Quicksave all buffers/tabs.
-noremap  <C-A> :wa<CR>
-noremap! <C-A> <Esc>:wa<CR>
+noremap  <C-S> :wa<CR>
+noremap! <C-S> <Esc>:wa<CR>
 
 " These mappings will reselect the block after shifting, so you'll just have
 " to select a block, press < or > as many times as you like, and press <Esc>
