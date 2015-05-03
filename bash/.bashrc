@@ -39,7 +39,7 @@ if [ "$BASH" ]; then
 		PROMPT_COLOR='1;34m'
 		PROMPT_SYMBOL='$'
 	fi
-	PS1="\[\033[$PROMPT_COLOR\][\A \u@\h \W]\[\033[0m\]"
+	PS1="\[\033[$PROMPT_COLOR\]\A \u@\h \W \[\033[0m\]"
 	# When we are in GNU screen, insert '(screen)' in between ']' and '$'.
 	if [ ! -z $STY ]; then
 		PS1+='\[\033[1;33m (screen)\033[0m\] '
