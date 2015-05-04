@@ -148,9 +148,14 @@ alias mkea=make
 #------------------------------------------------------------------------------
 
 ulimit -c 0                # Disable core files generation.
-eval $(lesspipe.sh)        # Allow less to view *.gz etc. files.
 set -o vi                  # Enable vi-like motion when typing commands.
 umask 022
+
+# Allow less to view *.gz etc. files, but only if the lesspipe.sh script is
+# available.
+if command -v lesspipe.sh &> /dev/null; then
+	eval $(lesspipe.sh)
+fi
 
 #------------------------------------------------------------------------------
 # Environment variables.
