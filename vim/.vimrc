@@ -345,8 +345,9 @@ noremap <silent> Q :q!<CR>
 noremap K <Nop>
 
 " Quicksave all buffers/tabs.
-noremap  <C-S> :wa<CR>
-noremap! <C-S> <Esc>:wa<CR>
+nnoremap <C-S> :wa<CR>
+inoremap <C-S> <Esc>:wa<CR>
+vnoremap <C-S> <Esc>:wa<CR>
 
 " These mappings will reselect the block after shifting, so you'll just have
 " to select a block, press < or > as many times as you like, and press <Esc>
@@ -697,7 +698,7 @@ noremap <silent> <C-S>
 	\ :if SyntasticStatuslineFlag() != '' <Bar>
 	\   exec 'SyntasticCheck' <Bar>
 	\ else <Bar>
-	\   write <Bar>
+	\   wa <Bar>
 	\ endif <CR>
 
 "----------------------------------------
