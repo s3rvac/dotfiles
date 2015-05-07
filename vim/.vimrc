@@ -316,9 +316,6 @@ nnoremap <silent> <F6> :call <SID>RelAbsNumberToggle()<CR>
 " Executes :make and opens the quickfix windows if there is an error.
 nnoremap <F11> mp :echo 'Making...' <Bar> silent make <Bar> botright cw<CR><C-W><Up>
 
-" F12: Syntastic (syntax checker).
-" The mapping is defined in the plugin section.
-
 "------------------------------------------------------------------------------
 " Abbreviations and other mappings.
 "------------------------------------------------------------------------------
@@ -606,47 +603,6 @@ endfunction
 au FileType html nnoremap <silent> <C-C> :call <SID>HtmlComment(0)<CR>
 au FileType html vnoremap <silent> <C-C> <Esc>:call <SID>HtmlComment(1)<CR>
 
-"------------------------------------------------------------------
-" DoxygenToolkit: Simplify Doxygen documentation in C, C++, Python.
-"------------------------------------------------------------------
-
-" General.
-let g:DoxygenToolkit_authorName="Petr Zemek"
-" License.
-let g:DoxygenToolkit_licenseTag="Copyright (C) " . strftime("%Y") . " " . g:DoxygenToolkit_authorName . "\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "This program is free software; you can redistribute it and/or modify it\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "under the terms of the GNU General Public License as published by the Free\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "Software Foundation; either version 2 of the License, or (at your option)\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "any later version.\<enter>\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "This program is distributed in the hope that it will be useful, but\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "for more details.\<enter>\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "You should have received a copy of the GNU General Public License along\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "with this program; if not, write to the Free Software Foundation, Inc.,\<enter>"
-let g:DoxygenToolkit_licenseTag=g:DoxygenToolkit_licenseTag . "59 Temple Place - Suite 330, Boston, MA  02111-1307, USA."
-" Special settings for C and C++.
-au FileType c,cpp let g:DoxygenToolkit_paramTag_pre="@param[in] "
-au FileType c,cpp nnoremap <Leader>dox :Dox<CR>
-
-"----------------------
-" Haskell mode for Vim.
-"----------------------
-
-" Use GHC functionality for Haskell files.
-au FileType haskell compiler ghc
-" GHC paths.
-let g:ghc="/usr/bin/ghc"
-" Configure browser for haskell_doc.vim.
-let g:haddock_browser="/usr/bin/firefox"
-let g:haddock_browser_callformat="%s %s > /dev/null 2>&1 &"
-" Haddock paths.
-let g:haddock_docdir="/usr/share/doc/ghc6-doc/"
-let g:haddock_indexdir=$HOME."/.vim/tmp/haddock-indexdir/"
-let g:haddock_indexfiledir=$HOME."/.vim/tmp/haddock-indexdir/"
-" This plugins sets 'cmdheight' to 3, but I want it to be 1.
-au FileType haskell set cmdheight=1
-
 "--------------------------------------------------------
 " netrw: Network oriented reading, writing, and browsing.
 "--------------------------------------------------------
@@ -668,37 +624,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:bib_autocomp_entry_mapping = {
 	\ 'misc': ['author', 'title', 'howpublished', 'url']
 	\ }
-
-"------------------------------------------
-" Syntastic: Syntax checking hacks for vim.
-"------------------------------------------
-" Active and passive file types
-let g:syntastic_mode_map = { 'mode': 'passive',
-	\ 'active_filetypes': [],
-	\ 'passive_filetypes': [] }
-" Used checkers.
-let g:syntastic_python_checkers = ['pyflakes', 'flake8']
-" Care only about errors.
-let g:syntastic_quiet_warnings=1
-" Auto jump to the first detected error.
-let g:syntastic_auto_jump=1
-" Auto open the errors list when there are errors.
-let g:syntastic_auto_loc_list=1
-" Display the number of errors and warnings in the statusline.
-let g:syntastic_stl_format = ' [%E{Errors: %fe #%e}%B{, }%W{Warnings: %fw #%w}]'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-" F12: Check syntax.
-noremap <silent> <F12> :SyntasticCheck<CR>:Errors<CR>
-noremap! <silent> <F12> <Esc>:SyntasticCheck<CR>:Errors<CR>
-" When saving and there was an error, re-check the syntax automatically.
-noremap <silent> <C-S>
-	\ :if SyntasticStatuslineFlag() != '' <Bar>
-	\   exec 'SyntasticCheck' <Bar>
-	\ else <Bar>
-	\   wa <Bar>
-	\ endif <CR>
 
 "----------------------------------------
 " python: Syntax highlighting for Python.
@@ -900,11 +825,6 @@ au FileType haskell set tabstop=4      " A tab counts for 4 spaces.
 au FileType haskell set softtabstop=4  " Causes backspace to delete 4 spaces.
 au FileType haskell set shiftwidth=4   " Shift by 4 spaces.
 au FileType haskell let mytextwidth=79 " Maximum line length.
-" Use K to display documentation for the function under cursor
-" in a browser using the Haskell-mode plugin (via Hoggle).
-au FileType haskell nnoremap <silent> K
-	\ :echo 'Displaying docs...' <Bar>
-	\ call HaskellSearchEngine('hoogle')<CR>
 augroup END
 
 " Git commits.

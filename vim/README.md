@@ -20,13 +20,11 @@ I use the following Vim plugins, which you can install by using
 	* [closetag](http://www.vim.org/scripts/script.php?script_id=13) - Functions and mappings to close opened HTML/XML tags.
 	* [Command-T](https://github.com/wincent/command-t) - Fast, intuitive mechanism for opening files.
 	* [CSApprox](https://github.com/godlygeek/csapprox) - Makes GVim-only colorschemes work transparently in terminal Vim.
-	* [DoxygenToolkit](http://www.vim.org/scripts/script.php?script_id=987) - Simplify Doxygen documentation in C, C++, Python.
 	* [matchit](http://www.vim.org/scripts/script.php?script_id=39) - Extended `%` matching for HTML, LaTeX, and many other languages.
 	* [NERD_Commenter](http://www.vim.org/scripts/script.php?script_id=1218) - Allows easy commenting of code for many filetypes.
 	* [netrw](http://www.vim.org/scripts/script.php?script_id=1075) - Network oriented reading, writing, and browsing.
 	* [Rename](http://www.vim.org/scripts/script.php?script_id=1928) - Rename a buffer within Vim and on disk.
 	* [sessionman](http://www.vim.org/scripts/script.php?script_id=2010) - Vim session manager.
-	* [syntastic](https://github.com/scrooloose/syntastic) - Syntax checking.
 	* [ultisnips](https://github.com/SirVer/ultisnips) - The ultimate snippet solution for Vim.
 	* [vim-gitgutter](https://github.com/airblade/vim-gitgutter) - Show a git diff in the gutter (sign column) and stages/reverts hunks.
 	* [vim-repeat](https://github.com/tpope/vim-repeat) - Enable repeating supported plugin maps with `"."`.
@@ -35,7 +33,6 @@ I use the following Vim plugins, which you can install by using
 	* [vmath](https://github.com/DavidGamba/vim-vmath) - Calculates the sum, average, min, and max for a visual region containing numbers.
 
   * Filetype:
-	* [haskellmode-vim](http://projects.haskell.org/haskellmode-vim/) - Advanced support for editing Haskell files.
 	* [LaTeX Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) - Lightweight Toolbox for LaTeX.
 	* [vim-python-test-runner](https://github.com/JarrodCTaylor/vim-python-test-runner) - A simple Django aware way of running python tests from within Vim.
 	* [xmledit](https://github.com/sukima/xmledit) - Help edit XML files.
