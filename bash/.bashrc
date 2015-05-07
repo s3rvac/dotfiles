@@ -74,7 +74,6 @@ shopt -s histreedit
 shopt -s histverify
 shopt -s cmdhist
 shopt -s lithist
-# shopt -s cdspell
 shopt -s no_empty_cmd_completion
 shopt -s checkhash
 shopt -s hostcomplete
