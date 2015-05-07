@@ -168,8 +168,23 @@ set spelllang=en_us,en_gb
 syntax on
 
 " Highlight mixture of spaces and tabs.
-au BufEnter * hi SpacesTabsMixtureGroup guibg=gray18 guifg=red ctermbg=gray ctermfg=red
+au BufEnter * hi SpacesTabsMixtureGroup guibg=gray18 guifg=#54ff52 ctermbg=gray ctermfg=white
 au BufEnter * match SpacesTabsMixtureGroup /^ \+\t\+\|^\t\+ \+/
+
+" Statusline.
+au BufEnter * hi StatusLine guibg=black guifg=white ctermbg=black ctermfg=white
+au BufEnter * hi StatusLineNC guibg=black guifg=gray70 ctermbg=black ctermfg=gray
+
+" Characters exceeding textwidth or 80 characters.
+au BufEnter * hi ExceedCharsGroup guibg=darkblue guifg=white ctermbg=darkblue ctermfg=white
+
+" Wild menu.
+au BufEnter * hi Pmenu guibg=gray30 guifg=white ctermbg=gray ctermfg=white
+au BufEnter * hi PmenuSel guibg=white guifg=black ctermbg=white ctermfg=black
+
+" Folds.
+au BufEnter * hi Folded guibg=gray30 guifg=white ctermbg=gray ctermfg=white
+au BufEnter * hi FoldColumn guibg=gray30 guifg=white ctermbg=gray ctermfg=white
 
 " Use the same color in the signs column as it is used in the numbers column.
 au BufEnter * hi clear SignColumn
@@ -177,26 +192,11 @@ au BufEnter * hi clear SignColumn
 " Color scheme. Thanks to the CSApprox plugin, we may use the same scheme in
 " both graphical and terminal Vims.
 colorscheme koehler
-" Force 256 color support, even if the terminal claims it does not support it.
-" This, together with the CSApprox plugin, ensures that Vim looks nice in the
-" terminal.
-set t_Co=256
 
 " Graphical Vim.
 if has("gui_running")
-	" Statusline.
-	au BufEnter * hi StatusLine guibg=black guifg=white
-	au BufEnter * hi StatusLineNC guibg=black guifg=gray70
-	" Characters exceeding textwidth or 80 characters.
-	au BufEnter * hi ExceedCharsGroup guibg=darkblue guifg=white
-	" Wild menu.
-	au BufEnter * hi Pmenu guibg=gray30 guifg=white
-	au BufEnter * hi PmenuSel guibg=white guifg=black
-	" Folds.
-	au BufEnter * hi Folded guibg=gray30 guifg=white
-	au BufEnter * hi FoldColumn guibg=gray30 guifg=white
 	" Cursor.
-	au BufEnter * hi Cursor guifg=bg guibg=#54ff52
+	au BufEnter * hi Cursor guibg=#54ff52 guifg=bg
 
 	" Font.
 	set guifont=Monospace\ 10.5
@@ -231,20 +231,21 @@ if has("gui_running")
 	set showtabline=2
 " Vim in terminal.
 else
-	" Statusline.
-	" I don't know why, but bg means fg and vice versa in terminal.
-	au BufEnter * hi StatusLine ctermbg=white ctermfg=black
-	" Characters exceeding textwidth or 80 characters.
-	au BufEnter * hi ExceedCharsGroup ctermbg=blue ctermfg=white
-	" Mixture between spaces and tabs.
-	au BufEnter * hi SpacesTabsMixtureGroup ctermbg=red ctermfg=red
-	" Wild menu.
-	au BufEnter * hi Pmenu ctermbg=brown ctermfg=white
-	au BufEnter * hi PmenuSel ctermbg=white ctermfg=black
+	" Force 256 color support, even if the terminal claims it does not support it.
+	" This, together with the CSApprox plugin, ensures that Vim looks nice in the
+	" terminal.
+	set t_Co=256
 
-	" Change cursor shape according to the mode.
+	" Change cursor shape according to the mode for terminals that support it.
+	if &term =~ "xterm\\|rxvt"
 	let &t_SI="\<Esc>]50;CursorShape=1\x7"
 	let &t_EI="\<Esc>]50;CursorShape=0\x7"
+	endif
+	" For tmux, we have to use different settings.
+	if exists('$TMUX')
+		let &t_EI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+		let &t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	endif
 endif
 
 "------------------------------------------------------------------------------
