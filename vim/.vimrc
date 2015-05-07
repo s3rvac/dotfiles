@@ -216,12 +216,10 @@ if has("gui_running")
 	" Leave no pixels around the GVim window.
 	set guiheadroom=0
 
-	" Enable mouse usage.
-	set mouse=a
+	" Disable mouse usage.
+	set mouse=
 	" Hide mouse cursor when editing.
 	set mousehide
-	" Right mouse button pops up a menu.
-	set mousemodel=popup_setpos
 
 	" Disable cursor blinking.
 	set guicursor=a:blinkon0
