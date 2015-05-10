@@ -28,12 +28,17 @@ sleep 1
 	# Disable tapping while writing (for 1 second).
 	syndaemon -i 1 -d -t
 
-	# Set keyboard repeat delay and rate.
+	# Keyboard repeat delay and rate.
 	xset r rate 200 40
 
+	# Keyboard layouts.
+	setxkbmap -model pc104 -layout us,cz -variant ,qwerty
+
+	# Use Alt+Shift to toggle between layouts.
+	setxkbmap -option grp:alt_shift_toggle
+
 	# Turn Caps Lock into a second Escape.
-	xmodmap -e "remove Lock = Caps_Lock"
-	xmodmap -e "keysym Caps_Lock = Escape"
+	setxkbmap -option caps:escape
 } &
 
 wait $fbpid
