@@ -19,3 +19,6 @@ set show-all-if-ambiguous on
 
 # Do not bell on TAB completion.
 set bell-style none
+
+# Enable vi-like motion.
+set editing-mode vi
