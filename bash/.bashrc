@@ -197,9 +197,7 @@ stty -ixon 2> /dev/null
 
 alias c='clear'
 alias l='ls -lA'
-alias md='mkdir'
 function mdc() { mkdir -p "$@" && eval cd "\"\$$#\""; }
-alias rd='rmdir'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -213,8 +211,6 @@ alias gvim='gvim -p'
 alias gv='gvim'
 alias gvd='gvimdiff'
 alias m='make'
-alias svnst='svn st'
-alias svnlog='svn log -v | less'
 alias more='less'
 if [ "$(id -u)" -eq 0 ]; then
 	alias mntd='mount /dev/"`dmesg | grep -o "\\[[a-z1-9]*\\]" | tail -n 1 | tr -d []`"1 /mnt/disk && chown root:disk /mnt/disk && chmod 0770 /mnt/disk'
@@ -254,7 +250,6 @@ alias paci="pacman -S"   # Install
 alias pacr="pacman -R"   # Remove
 alias pacp="pacman -Rns" # Purge
 alias pacs="pacman -Ss"  # Search
-alias pacn="pacman -Si"  # Info about the selected package
 # List all installed packages
 alias pacl='LIST=$(pacman -Sl); for ARG in $(pacman -Qq); do echo "$LIST" | grep " $ARG "; done'
 
@@ -265,7 +260,6 @@ alias pacl='LIST=$(pacman -Sl); for ARG in $(pacman -Qq); do echo "$LIST" | grep
 # alias pacr="pak -R"   # Remove
 # alias pacp="pacman -Rns" # Purge
 # alias pacs="pak"  # Search
-# alias pacn="pacman -Si"  # Info about the selected package
 
 # Aptitude aliases.
 alias apti="aptitude install"
