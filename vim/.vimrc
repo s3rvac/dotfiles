@@ -71,12 +71,12 @@ set autoindent          " Indent a new line according to the previous one.
 set copyindent          " Copy (exact) indention from the previous line.
 set nopreserveindent    " Do not try to preserve indention when indenting.
 set nosmartindent       " Turn off smartindent.
-set nocindent           " Turn off c-style indent.
+set nocindent           " Turn off C-style indent.
 set fo+=q               " Allow formatting of comments with "gq".
 set fo-=r fo-=o         " Turn off automatic insertion of comment characters.
 filetype indent off     " Turn off indention by filetype.
 " Override previous settings for all file types (I have to do this because
-" the previous commands just don't guarantee this...).
+" the previous commands don't guarantee this...).
 au FileType * set autoindent nosmartindent nocindent fo+=q fo-=r fo-=o
 
 " Whitespace.
@@ -91,8 +91,8 @@ set linebreak           " Break after words only.
 set display+=lastline   " Show as much as possible from the last shown line.
 
 " Statusline.
-set noruler             " Since I'm using statusline, disable ruler.
-set laststatus=2        " Always display statusline.
+set noruler             " Since I'm using a statusline, disable ruler.
+set laststatus=2        " Always display a statusline.
 set statusline=%<%f\ %h%w%m%r%k\ [%{(&fenc\ ==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")},%{&ff}]\ %y\ [\%03.3b,0x\%02.2B,U+%04B]\ %l/%L,%v
 
 " Vimdiff.
@@ -329,10 +329,6 @@ cnoreabbrev tn tabnew
 
 " Enable lookup by pressing '\' (it is more easily reachable than '/').
 nnoremap \ /
-
-" Word completion.
-" TODO Use it or not?
-" inoremap <C-Space> <C-n>
 
 " Quit with Q instead of :q!.
 noremap <silent> Q :q!<CR>
@@ -760,7 +756,7 @@ au FileType tex,plaintex let mytextwidth=80  " Maximum line length.
 " This errorformat presumes that you are using `pdflatex -file-line-error`
 " to compile .tex files.
 au FileType tex,plaintex set errorformat=%f:%l:\ %m
-" TODO: Add support for compiling files without a Makefile.
+" TODO: Add support for building files without a Makefile.
 augroup END
 
 " Shell code.
