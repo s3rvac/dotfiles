@@ -168,7 +168,7 @@ set spelllang=en_us,en_gb
 syntax on
 
 " Highlight mixture of spaces and tabs.
-au BufEnter * hi SpacesTabsMixtureGroup guibg=gray18 guifg=#54ff52 ctermbg=gray ctermfg=white
+au BufEnter * hi SpacesTabsMixtureGroup guibg=gray18 guifg=red ctermbg=gray ctermfg=red
 au BufEnter * match SpacesTabsMixtureGroup /^ \+\t\+\|^\t\+ \+/
 
 " Statusline.
