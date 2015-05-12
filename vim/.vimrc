@@ -788,7 +788,7 @@ au FileType python let mytextwidth=79 " Maximum line length.
 
 " Add a new import (+ store the current position to 'z').
 au FileType python nnoremap <Leader>im mz?^import <CR>:noh<CR>oimport  <Esc>i
-au FileType python nnoremap <Leader>fi mz?^from <CR>:noh<CR>ofrom  <Esc>i
+au FileType python nnoremap <Leader>fr mz?^from <CR>:noh<CR>ofrom  <Esc>i
 
 " Let F10 run the currently opened script.
 au FileType python nnoremap <F10> :w<CR>:!python %<CR>
