@@ -1,0 +1,190 @@
+"------------------------------------------------------------------------------
+" File:   $HOME/.vimperatorrc
+" Author: Petr Zemek <s3rvac@gmail.com>
+"------------------------------------------------------------------------------
+
+" Start always in the normal mode.
+normal <Esc>
+
+"------------------------------------------------------------------------------
+" Vimperator settings.
+"------------------------------------------------------------------------------
+
+" Use "Firefox" instead of the default "Vimperator" string in window titles.
+set titlestring=Firefox
+
+" Autocomplete with Firefox location bar entries (bookmarks and history sorted
+" in an intelligent way).
+set complete=l
+
+" When there is more than one match, list all matches and complete the first
+" match.
+set wildmode=list:full
+
+" Show only five suggestions.
+set maxitems=5
+
+" Use GVim as the external editor.
+set editor='gvim -f'
+
+" Try to stay in the normal mode (don't focus any input elements automatically
+" when opening pages).
+set focuscontent
+
+" Shown toolbars.
+set toolbars=tabs,navigation
+
+" Format of the status line.
+set status=input,location,bookmark
+
+" All type pages are opened in a new tab.
+" addons + downloads + help + javascript + prefs
+set newtab=all
+
+" Show numbers on each tab.
+set tabnumbers
+
+" Show link destinations in the status line.
+set showstatuslinks=1
+
+" Disable animations.
+set animations=false
+
+" Use Google as the default search/suggest engine.
+set defsearch=google
+set suggestengines=google
+
+" Perform incremental searching.
+set incsearch
+
+" Highlight search results.
+set hlsearch
+
+"" Typically (see below) ignore case.
+set ignorecase
+
+"" Only consider case if an upper case character is used.
+set smartcase
+
+"------------------------------------------------------------------------------
+" Styling.
+"------------------------------------------------------------------------------
+
+hi StatusLine color: black; background: transparent; font-eight: normal;
+
+"------------------------------------------------------------------------------
+" Commands.
+"------------------------------------------------------------------------------
+
+" Delete all user-defined commands to avoid troubles when loading .vimperatorrc
+" repeatedly.
+comclear
+
+"------------------------------------------------------------------------------
+" Key bindings.
+"------------------------------------------------------------------------------
+
+" Leader key to be used.
+let mapleader=','
+
+" Clear all key mappings to avoid troubles when loading .vimperatorrc
+" repeatedly.
+mapclear
+cmapclear
+imapclear
+
+" Previous/next tab.
+nnoremap <S-h> :tabprevious<CR>
+nnoremap <S-l> :tabnext<CR>
+" Alternative keys.
+nnoremap <S-j> :tabprevious<CR>
+nnoremap <S-k> :tabnext<CR>
+
+" Movement of tabs.
+noremap <C-p> :tabmove! -1<CR>
+noremap <C-n> :tabmove! +1<CR>
+
+" Backward/forward in history.
+nnoremap h :back<CR>
+nnoremap l :forward<CR>
+
+" Scroll three times faster.
+nnoremap j 3j
+nnoremap k 3k
+
+" Close the current tab.
+nnoremap x :tabclose<CR>
+" Alternative key.
+inoremap <C-w> <Esc>:tabclose<CR>
+
+" Pass Ctrl-e to the "It's All Text" addon that I use (it is better than
+" Vimperator's Ctrl-i functionality).
+inoremap <C-e> <Insert><C-e><Insert>
+
+" Allow Ctrl-a to select all the text.
+inoremap <C-a> <Insert><C-a><Insert>
+
+" Hitting Shift+Space will make the current search disappear.
+" (I wanted to map just Space to do it, but that does not work, see
+" https://github.com/vimperator/vimperator-labs/issues/10)
+nnoremap <S-Space> :nohlsearch<CR>
+
+" Reload this configuration file.
+noremap <Leader>r :source ~/.vimperatorrc<CR>
+
+" Duplicate the current tab.
+nnoremap <Leader>t. :tabduplicate<CR>
+
+" Open a URL in a background tab.
+nnoremap <Leader><S-t> :tabopen!
+
+"------------------------------------------------------------------------------
+" Firefox settings.
+"------------------------------------------------------------------------------
+
+" Shorten long URLs.
+set! browser.urlbar.trimURLs=true
+
+" Show an empty page in a new tab.
+set! browser.newtab.url=about:blank
+
+" Always show the tab bar.
+set! browser.tabs.autoHide=false
+
+" Do not animate the tab bar when switching to fullscreen.
+set! browser.fullscreen.animateUp=0
+
+" Do not close the window when the last tab is closed.
+set! browser.tabs.closeWindowWithLastTab=false
+
+" Do not check if Firefox is the default browser.
+set! browser.shell.checkDefaultBrowser=false
+
+" Disable warnings.
+set! browser.tabs.warnOnClose=false
+set! browser.tabs.warnOnCloseOtherTabs=false
+set! browser.tabs.warnOnOpen=false
+set! general.warnOnAboutConfig=false
+
+" Do not select trailing spaces when selecting words.
+set! layout.word_select.eat_space_to_next_word=false
+
+" Enable pipelining to speed things up.
+set! network.http.pipelining=true
+set! network.http.pipelining.maxrequests=16
+set! network.http.max-connections=16
+set! network.http.max-connections-per-server=16
+
+" What to clear after shutdown?
+set! privacy.clearOnShutdown.cache=false
+set! privacy.clearOnShutdown.cookies=false
+set! privacy.clearOnShutdown.downloads=true
+set! privacy.clearOnShutdown.formdata=false
+set! privacy.clearOnShutdown.history=false
+set! privacy.clearOnShutdown.offlineApps=true
+set! privacy.clearOnShutdown.passwords=false
+set! privacy.clearOnShutdown.sessions=false
+set! privacy.clearOnShutdown.siteSettings=false
+
+" Do not wait before installing extensions.
+set! security.dialog_enable_delay=0
