@@ -236,6 +236,11 @@ else
 	" terminal.
 	set t_Co=256
 
+	" Tab colors.
+	au BufEnter * hi TabLine ctermfg=gray ctermbg=black
+	au BufEnter * hi TabLineSel ctermfg=white ctermbg=black
+	au BufEnter * hi TabLineFill ctermfg=black ctermbg=black
+
 	" Change cursor shape according to the mode for terminals that support it.
 	if &term =~ "xterm\\|rxvt"
 	let &t_SI="\<Esc>]50;CursorShape=1\x7"
