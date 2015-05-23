@@ -246,11 +246,22 @@ else
 	let &t_SI="\<Esc>]50;CursorShape=1\x7"
 	let &t_EI="\<Esc>]50;CursorShape=0\x7"
 	endif
-	" For tmux, we have to use different settings.
+
+	" For tmux, we have to use special settings.
 	if exists('$TMUX')
+		" Change cursor shape according to the mode.
 		let &t_EI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 		let &t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+
+		" Make Ctrl+keys shortcuts working.
+		execute "set <xUp>=\e[1;*A"
+		execute "set <xDown>=\e[1;*B"
+		execute "set <xRight>=\e[1;*C"
+		execute "set <xLeft>=\e[1;*D"
 	endif
+
+	" Lower the timeout when entering normal mode from insert mode.
+	set ttimeoutlen=0
 endif
 
 "------------------------------------------------------------------------------
