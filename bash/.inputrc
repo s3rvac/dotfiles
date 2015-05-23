@@ -12,13 +12,27 @@ set output-meta on
 
 # Always show all TAB completion possibilities.
 set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# When there are multiple possibilities during TAB completion, show '...'
+# instead of the prefix. This makes the possibilities more readable.
+set completion-prefix-display-length 2
+
+# Do not bell on TAB completion.
+set bell-style none
+
+# Do not add already completed text during TAB completion.
+set skip-completed-text on
+
+# Enable vi-like motion.
+set editing-mode vi
 
 # Shell history completion using the PageUp and PageDown keys.
 "\e[5~":history-search-backward
 "\e[6~":history-search-forward
 
-# Do not bell on TAB completion.
-set bell-style none
-
-# Enable vi-like motion.
-set editing-mode vi
+# Make the Home and End keys work as expected.
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\eOH": beginning-of-line
+"\eOF": end-of-line

@@ -19,7 +19,7 @@ prepend_to_path() {
 	fi
 }
 
-# Include a path to ruby gems.
+# Include the path to ruby gems.
 prepend_to_path "$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
 
 # Include the user's private bin.
@@ -42,7 +42,7 @@ if [ "$BASH" ]; then
 	PS1="\[\033[$PROMPT_COLOR\]\A \u@\h \W \[\033[0m\]"
 	# When we are in GNU screen, insert '(screen)' in between ']' and '$'.
 	if [ ! -z $STY ]; then
-		PS1+='\[\033[1;33m (screen)\033[0m\] '
+		PS1+='\[\033[1;33m(screen)\033[0m\] '
 	fi
 	PS1+="\[\033[$PROMPT_COLOR\]$PROMPT_SYMBOL\[\033[0m\] "
 else
@@ -54,61 +54,76 @@ else
 fi
 export PS1
 
-# Whenever displaying the prompt, write the previous line to .bash_history.
-PROMPT_COMMAND='history -a'
+# Whenever the prompt is displayed, write the previous line to .bash_history.
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 #------------------------------------------------------------------------------
-# Bash options.
+# Shell options.
 #------------------------------------------------------------------------------
 
+# Allow typing just 'dir' instead of 'cd dir'.
+shopt -s autocd
+
+# Check that a command found in the hash table exists before trying to execute
+# it. If a hashed command no longer exists, a normal path search is performed.
+shopt -s checkhash
+
+# Check the window size after each command and, if necessary, update the values
+# of the LINES and COLUMNS variables.
+shopt -s checkwinsize
+
+# Attempt to save all lines of a multi-line command in the same history entry.
+# This allows easy re-editing of multi-line commands.
+shopt -s cmdhist
+
+# Enable extended pattern matching.
+shopt -s extglob
+
+# Enable recursive globbing with **.
+shopt -s globstar
+
+# Make the history list appended to the file named by the value of the HISTFILE
+# variable when the shell exits, rather than overwriting the file.
+shopt -s histappend
+
+# Allow re-editing of a failed history substitution.
+shopt -s histreedit
+
+# Allow reviewing of a history substitution result by loading the resulting
+# line into the editing buffer, rather than directly executing it.
+shopt -s histverify
+
+# Enable completion of host names.
+shopt -s hostcomplete
+
+# Save multi-line commands to the history with embedded newlines rather than
+# using semicolon separators where possible.
+shopt -s lithist
+
+# Do not attempt to search the PATH for possible completions when completion is
+# attempted on an empty line.
+shopt -s no_empty_cmd_completion
+
+# Enable programmable completion.
+shopt -s progcomp
+
+# Show a notification when a job finishes.
 set -o notify
 
-#------------------------------------------------------------------------------
-# Bash shopts.
-#------------------------------------------------------------------------------
-
-shopt -s extglob
-shopt -s progcomp
-shopt -s histappend
-shopt -s histreedit
-shopt -s histverify
-shopt -s cmdhist
-shopt -s lithist
-shopt -s no_empty_cmd_completion
-shopt -s checkhash
-shopt -s hostcomplete
-shopt -s globstar
+# Enable vi-like motion when typing commands.
+set -o vi
 
 #------------------------------------------------------------------------------
 # Completion.
 #------------------------------------------------------------------------------
 
-complete -A alias         alias unalias
-complete -A command       which
-complete -A export        export printenv
-complete -A hostname      ssh telnet ftp ncftp ping dig nmap
-complete -A helptopic     help
-complete -A job -P '%'    fg jobs
-complete -A setopt        set
-complete -A shopt         shopt
-complete -A signal        kill killall
-complete -A user          su userdel passwd
-complete -A group         groupdel groupmod newgrp
-complete -A directory     cd rmdir
+complete -f -X '!*.@(pdf|PDF)' okular
+complete -f -X '!*.@(gif|GIF|jpg|JPG|jpeg|JPEG|png|PNG|xcf|bmp|BMP|pcx|PCX)' gimp gwenview
+complete -f -X '!*.@(mp?(e)g|MP?(E)G|wma|avi|AVI|asf|vob|VOB|bin|dat|vcd|ps|pes|fli|viv|rm|ram|yuv|mov|MOV|qt|QT|wmv|WMV|mp3|MP3|ogg|OGG|ogm|OGM|ogv|OGV|mp4|MP4|wav|WAV|asx|ASX|mng|MNG|m4v|mkv)' mplayer mpv vlc
 
-# If available, source the global bash completion file.
-# See http://www.caliban.org/bash/index.shtml#completion for details.
-if [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
-fi
-
-complete -f -X '!*.@(gif|GIF|jpg|JPG|jpeg|JPEG|png|PNG|xcf|bmp|BMP|pcx|PCX)' gimp
-complete -f -X '!*.@(mp?(e)g|MP?(E)G|wma|avi|AVI|asf|vob|VOB|bin|dat|vcd|ps|pes|fli|viv|rm|ram|yuv|mov|MOV|qt|QT|wmv|WMV|mp3|MP3|ogg|OGG|ogm|OGM|ogv|OGV|mp4|MP4|wav|WAV|asx|ASX|mng|MNG|m4v|mkv)' mplayer
-complete -f -X '!*.@(mp?(e)g|MP?(E)G|wma|avi|AVI|asf|vob|VOB|bin|dat|vcd|ps|pes|fli|viv|rm|ram|yuv|mov|MOV|qt|QT|wmv|WMV|mp3|MP3|ogg|OGG|ogm|OGM|ogv|OGV|mp4|MP4|wav|WAV|asx|ASX|mng|MNG|m4v|mkv)' mpv
-
-# If available, source the Git completion file.
-if [ -f ~/.git-completion.bash ]; then
-	. ~/.git-completion.bash
+# git
+if [[ -f ~/.git-completion.bash ]]; then
+	source ~/.git-completion.bash
 fi
 # Autocomplete for 'g' (git) as well.
 complete -o default -o nospace -F _git g
@@ -146,12 +161,12 @@ alias mkea=make
 # Miscellaneous.
 #------------------------------------------------------------------------------
 
-ulimit -c 0                # Disable core files generation.
-set -o vi                  # Enable vi-like motion when typing commands.
 umask 022
 
-# Allow less to view *.gz etc. files, but only if the lesspipe.sh script is
-# available.
+# Disable generation of core files.
+ulimit -c 0
+
+# Allow less to view *.gz etc. files.
 if command -v lesspipe.sh &> /dev/null; then
 	eval $(lesspipe.sh)
 fi
@@ -160,43 +175,56 @@ fi
 # Environment variables.
 #------------------------------------------------------------------------------
 
-export TERM=xterm-256color
+# Editor.
 export EDITOR=vim
 export VISUAL=vim
-export NNTPSERVER=localhost
+
+# History.
 export HISTSIZE=10000
 export HISTFILESIZE=10000
-export HISTTIMEFORMAT="%m/%d/%y-%H:%M:%S "
-# Ignoring an item from the history means that it cannot be recalled by any
-# means; not even with the up and down arrows. Therefore, do not ignore
-# anything.
-export HISTIGNORE=
-export MESA_GLX_FX=fullscreen
-export VIMRUNTIME=/usr/share/vim/vim74
-export VIM=/usr/share/vim74
+export HISTTIMEFORMAT='%d/%m/%y-%H:%M:%S '
+export HISTIGNORE='l;cd *'
+export HISTCONTROL=ignoreboth
+
+# Pager.
 export PAGER=less
-export LESS=ir
+export LESS='-iFRX -x4'
+
+# Locale. I overall use en_US, but for some categories, I prefer en_GB. For
+# example, I prefer dd/mm/yyyy (GB) to mm/dd/yyyy (US).
 export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export CONCURRENCY_LEVEL=8
-export RTF2LATEX2E_DIR=/usr/share/rtf2latex2e
-export VIDEO_FORMAT=PAL # Fixes the annoying spumux error in DeVeDe.
-export KMIX_PULSEAUDIO_DISABLE=1 # Fixes the displayed channels in kmix.
+export LC_TIME=en_GB.UTF-8
+export LC_PAPER=en_GB.UTF-8
+export LC_MEASUREMENT=en_GB.UTF-8
+
+# Fix the annoying spumux error in DeVeDe.
+export VIDEO_FORMAT=PAL
+
+# Fix the displayed channels in kmix.
+export KMIX_PULSEAUDIO_DISABLE=1
+
+# Make ls, du, df and possibly other programs report sizes in a human-readable
+# way by default (e.g. `df` implicitly becomes `df -h`).
+export BLOCKSIZE=human-readable
+
+# Graphics.
+export MESA_GLX_FX=fullscreen
 
 #------------------------------------------------------------------------------
 # Terminal settings.
 #------------------------------------------------------------------------------
 
-# Disable flow control (Ctrl-S,Ctrl-Q) because I use the C-S shortcut in Vim.
+# Disable flow control (Ctrl-S and Ctrl-Q) because I use the Ctrl-S shortcut in
+# Vim.
 stty -ixon 2> /dev/null
 
 #------------------------------------------------------------------------------
 # Useful aliases to save some typing.
 #------------------------------------------------------------------------------
 
+alias ax="chmod a+x"
 alias c='clear'
-alias l='ls -lA'
+alias l='ls -lA --group-directories-first'
 function mdc() { mkdir -p "$@" && eval cd "\"\$$#\""; }
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -211,13 +239,14 @@ alias gvim='gvim -p'
 alias gv='gvim'
 alias gvd='gvimdiff'
 alias m='make'
-alias more='less'
+alias pw='~/Scripts/passwords.sh'
 if [ "$(id -u)" -eq 0 ]; then
 	alias mntd='mount /dev/"`dmesg | grep -o "\\[[a-z1-9]*\\]" | tail -n 1 | tr -d []`"1 /mnt/disk && chown root:disk /mnt/disk && chmod 0770 /mnt/disk'
 else
 	alias mntd='sudo mount -o gid=disk,dmask=007,fmask=117 /dev/"`dmesg | grep -o "\\[[a-z1-9]*\\]" | tail -n 1 | tr -d []`"1 /mnt/disk'
 fi
 alias umntd='sudo umount /mnt/disk'
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias my='mysql -p'
 alias pi='ping google.com'
 alias g='git'
@@ -225,15 +254,45 @@ alias py='python'
 alias py2='python2'
 alias py3='python3'
 alias ri='ri --format=ansi'
+alias sys='systemctl'
 alias smem='sync && echo mem > /sys/power/state'
+alias t='tmux -2'
 alias Time='/usr/bin/time -v'
 alias unzipa='for f in *.zip; do unzip "$f" && rm -f "$f"; done'
 alias unrara='for f in *.rar; do unrar x "$f" && rm -f "$f"; done'
-function zipf() { zip "$1".zip "$1" > /dev/null; echo "$1".zip; }
-function zipd() { zip -r "$1".zip "$1"; echo""; echo "$1".zip; }
-function bak() { cp "$1" "$1".bak; }
-function gdbc() { gdb -ex run --args $@; }
-function files() { cut -d: -f1 | sort -u; } # Usage: gvim `grep -r PATTERN | files`
+function zipf() { zip -q "$1".zip "$1"; echo "$1".zip; }
+function zipd() { zip -rq "$1".zip "$1"; echo "$1".zip; }
+function bak() { cp -a "$1" "$1".bak; }
+
+# Translation. It uses https://github.com/soimort/translate-shell, which has to
+# be available in $PATH under name 'trs'.
+alias toen='trs cs:en'
+alias tocs='trs en:cs'
+
+# Run the given command with arguments through gdb.
+function gdbc() { gdb -ex run --args "$@"; }
+
+# Run the given command with arguments through gdb and print a backtrace.
+function bt() {
+	gdb -batch \
+		-ex 'set confirm off' \
+		-ex 'handle SIG33 pass nostop noprint' \
+		-ex 'run' \
+		-ex 'echo \n==== BACKTRACE BEGIN ====\n' \
+		-ex 'backtrace full' \
+		-ex 'echo ==== BACKTRACE END ====\n' \
+		-ex 'quit' \
+		--args "$@";
+}
+
+# Filter files from the given output.
+# Usage: gvim `grep -r PATTERN | files`
+function files() { cut -d: -f1 | sort -u; }
+
+# Run the given command as a daemon while discarding all its output.
+# Usage: d kompare FILE1 FILE2
+function d { (exec "$@" &> /dev/null &) }
+
 function csyntax() {
 	gcc -std=c11 -fsyntax-only "$1" 2>&1 | grep "error:"
 }
@@ -245,28 +304,26 @@ alias BIN="ruby -e 'printf(\"%bb\n\", ARGV[0])'"
 alias WORD="ruby -e 'printf(\"0x%04X\n\", ARGV[0])'"
 
 # Pacman aliases.
-alias pacu="pacman -Syu" # Upgrade
-alias paci="pacman -S"   # Install
-alias pacr="pacman -R"   # Remove
-alias pacp="pacman -Rns" # Purge
-alias pacs="pacman -Ss"  # Search
-# List all installed packages
-alias pacl='LIST=$(pacman -Sl); for ARG in $(pacman -Qq); do echo "$LIST" | grep " $ARG "; done'
+alias pacu='pacman -Syu' # Upgrade
+alias paci='pacman -S'   # Install
+alias pacr='pacman -R'   # Remove
+alias pacp='pacman -Rns' # Purge
+alias pacs='pacman -Ss'  # Search
 
 # Paktahn aliases.
-# alias pacu="pacman -Syu" # Upgrade
-# alias pacua="pak -Su --aur" # Upgrade AUR
-# alias paci="pak -S"   # Install
-# alias pacr="pak -R"   # Remove
-# alias pacp="pacman -Rns" # Purge
-# alias pacs="pak"  # Search
+# alias pacu='pacman -Syu'    # Upgrade
+# alias pacua='pak -Su --aur' # Upgrade AUR
+# alias paci='pak -S'         # Install
+# alias pacr='pak -R'         # Remove
+# alias pacp='pacman -Rns'    # Purge
+# alias pacs='pak'            # Search
 
 # Aptitude aliases.
-alias apti="aptitude install"
-alias apts="aptitude search"
-alias aptr="aptitude remove"
-alias aptp="aptitude purge"
-alias aptu="aptitude update && aptitude upgrade"
+alias apti='aptitude install'
+alias apts='aptitude search'
+alias aptr='aptitude remove'
+alias aptp='aptitude purge'
+alias aptu='aptitude update && aptitude upgrade'
 
 # Deflates the given file/contents, like a Git object.
 alias deflate="perl -MCompress::Zlib -e 'undef $/; print uncompress(<>)'"
@@ -275,11 +332,11 @@ alias deflate="perl -MCompress::Zlib -e 'undef $/; print uncompress(<>)'"
 # RVM (Ruby Version Manager).
 #------------------------------------------------------------------------------
 
-if [[ -s /usr/local/rvm/scripts/rvm ]]; then
+if [[ -f /usr/local/rvm/scripts/rvm ]]; then
 	source /usr/local/rvm/scripts/rvm
 fi
 
-if [[ -r /usr/local/rvm/scripts/completion ]]; then
+if [[ -f /usr/local/rvm/scripts/completion ]]; then
 	source /usr/local/rvm/scripts/completion
 fi
 
@@ -287,6 +344,6 @@ fi
 # Import local settings.
 #------------------------------------------------------------------------------
 
-if [ -e ~/.bashrc.local ]; then
-	. ~/.bashrc.local
+if [[ -f ~/.bashrc.local ]]; then
+	source ~/.bashrc.local
 fi
