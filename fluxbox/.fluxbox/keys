@@ -30,7 +30,7 @@ Control Alt Down :MacroCmd {Moveto 2000 0} {Maximize}
 # Move focus between screens.
 Control Alt Left :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 0
 Control Alt Right :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 1
-# For Vim:
+# Alternative:
 Control Alt h :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 0
 Control Alt l :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 1
 
@@ -126,10 +126,10 @@ OnToolbar Mouse5 :NextWorkspace
 
 # Aplications.
 Control Alt c :Exec gsimplecal
-Control Alt g :Exec gvim
 Control Alt f :Exec firefox
+Control Alt g :Exec gvim
 Control Alt k :Exec krusader
-Control Alt t :Exec konsole
 Control Alt m :Exec ksystraycmd thunderbird
 Control Alt o :Exec konqueror
 Control Alt q :Exec qstardict
+Control Alt t :Exec konsole
