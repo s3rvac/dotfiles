@@ -10,10 +10,11 @@
 	a = add
 	aa = add -u
 	aaa = add -A
-	ai = add -i
 	ap = add -p
+	; https://github.com/s3rvac/git-edit-index
+	ai = edit-index
 	amend = commit --verbose --amend
-	amendr = commit --verbose --amend --reset-author
+	ar = commit --verbose --amend --reset-author
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	bl = blame
 	br = branch -vv
@@ -29,7 +30,7 @@
 	da = diff HEAD
 	ds = diff --staged
 	ignored = ls-files --exclude-standard --ignored --others
-	l = "!git log -20 --no-merges --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s' | less -FXR"
+	l = log -20 --no-merges --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
 	lf = log --no-merges --numstat --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
 	lg = log --graph --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
 	lga = log --graph --branches --remotes --tags --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
@@ -52,6 +53,7 @@
 	shs = stash show -p
 	sw = show --format=fuller
 	tags = tag -l -n1
+	; https://github.com/aanand/git-up
 	u = up
 	undo = reset --soft HEAD^
 	wip = "!git add . && git commit -m 'WIP'"
@@ -61,9 +63,7 @@
 	; Whitespace problems that git should recognize.
 	whitespace = trailing-space,space-before-tab
 	; Used pager.
-	pager = less -FXRS
-	; Editor.
-	editor = gvim -f
+	pager = less -iFRXS -x4
 
 [diff]
 	; Allow `git diff` to do basic rename and copy detection.
@@ -92,6 +92,7 @@
 	helper = cache --timeout=3600
 
 [include]
+	# Include a local config when it exists.
 	path = .gitconfig.local
 
 ; Settings for the `git-up` script.
