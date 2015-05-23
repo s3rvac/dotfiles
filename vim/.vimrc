@@ -10,17 +10,16 @@
 " Pathogen (http://www.vim.org/scripts/script.php?script_id=2332).
 "------------------------------------------------------------------------------
 
-filetype off " Pathogen needs to run before plugin indent on.
+filetype off " Pathogen needs to run before 'plugin on'.
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags() " Generate helptags for everything in 'runtimepath'.
-filetype plugin indent on
+filetype plugin on
 
 "------------------------------------------------------------------------------
 " General.
 "------------------------------------------------------------------------------
 
 set nocompatible        " Disable vi compatibility.
-filetype plugin on      " Turn on filetype plugin.
 set undolevels=200      " Number of undo levels.
 set textwidth=0         " Don't wrap words.
 set scrolloff=10        " Keep a context (rows) when scrolling vertically.
@@ -36,21 +35,17 @@ set nostartofline       " Keep the cursor in the current column with page cmds.
 set nojoinspaces        " Insert just one space joining lines with J.
 set number              " Show line numbers.
 set relativenumber      " Show relative numbers instead of absolute by default.
-set showcmd             " Show (partial) command in status line.
+set showcmd             " Show (partial) command in the status line.
 set noshowmatch         " Don't show matching brackets when typing them.
-set showmode            " Show current mode.
+set showmode            " Show the current mode.
 set shortmess+=aIoOtT   " Abbrevation of messages (avoids 'hit enter ...').
-set splitbelow          " Open new hsplit panes to bottom rather than top.
+set splitbelow          " Open new hsplit panes in the bottom rather than top.
 
 " Backup and swap files.
 " Store temporary files in a central spot.
 set backupdir=~/.vim/tmp
 set directory=~/.vim/tmp
-" a) Enable backup.
-" set swapfile            " Enable swap files.
-" set backup              " Enable backup files.
-" set writebackup         " Backup files before overwriting.
-" b) Disable backup.
+" Disable backup.
 set noswapfile          " Disable swap files.
 set nobackup            " Do not keep a backup file.
 set nowritebackup       " Prevents auto write backup before overwriting file.
@@ -124,7 +119,6 @@ set completeopt=longest,menuone
 " Searching.
 set hlsearch            " Highlight search matches.
 set incsearch           " Incremental search.
-" set noignorecase        " Case-sensitive search.
 " Case-smart searching (make /-style searches case-sensitive only if there is
 " a capital letter in the search expression).
 set ignorecase
@@ -139,7 +133,7 @@ set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize,winpos
 " Disable folds.
 set nofoldenable
 
-" No bell sound.
+" No bell sounds.
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
@@ -216,8 +210,8 @@ if has("gui_running")
 	" Leave no pixels around the GVim window.
 	set guiheadroom=0
 
-	" Disable mouse usage.
-	set mouse=
+	" Enable mouse usage.
+	set mouse=a
 	" Hide mouse cursor when editing.
 	set mousehide
 
@@ -330,7 +324,7 @@ nnoremap <silent> <F6> :call <SID>RelAbsNumberToggle()<CR>
 
 " F11: Quickfix.
 " Executes :make and opens the quickfix windows if there is an error.
-nnoremap <F11> mp :echo 'Making...' <Bar> silent make <Bar> botright cw<CR><C-W><Up>
+nnoremap <F11> mp :echo 'Making...' <Bar> silent make <Bar> botright cw<CR><C-w><Up>
 
 "------------------------------------------------------------------------------
 " Abbreviations and other mappings.
@@ -342,9 +336,10 @@ let maplocalleader=","
 
 " General command aliases.
 cnoreabbrev tn tabnew
-
-" Enable lookup by pressing '\' (it is more easily reachable than '/').
-nnoremap \ /
+" Translation. It uses https://github.com/soimort/translate-shell, which has to
+" be available in $PATH under name 'trs'.
+cnoreabbrev toen !trs cs:en
+cnoreabbrev tocs !trs en:cs
 
 " Quit with Q instead of :q!.
 noremap <silent> Q :q!<CR>
@@ -353,9 +348,9 @@ noremap <silent> Q :q!<CR>
 noremap K <Nop>
 
 " Quicksave all buffers/tabs.
-nnoremap <C-S> :wa<CR>
-inoremap <C-S> <Esc>:wa<CR>
-vnoremap <C-S> <Esc>:wa<CR>
+nnoremap <C-s> :wa<CR>
+inoremap <C-s> <Esc>:wa<CR>
+vnoremap <C-s> <Esc>:wa<CR>
 
 " These mappings will reselect the block after shifting, so you'll just have
 " to select a block, press < or > as many times as you like, and press <Esc>
@@ -364,13 +359,13 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Hitting space in normal mode will make the current search disappear.
-noremap <silent> <Space> :silent noh<Bar>echo<CR>
+noremap <silent> <Space> :silent nohlsearch<Bar>echo<CR>
 
 " Insert the contents of a clipboard.
 nnoremap <silent> <S-Insert> :set paste<CR>"+p:set nopaste<CR>
 " TODO: It depends whether I'm at the end of a line or not.
 inoremap <silent> <S-Insert> :set paste<CR>"+P:set nopaste<CR>
-cnoremap          <S-Insert> <C-R>+
+cnoremap          <S-Insert> <C-r>+
 vnoremap          <S-Insert> "+p
 
 " Copy the selected text into the clipboard.
@@ -379,7 +374,7 @@ noremap <C-Insert> "+y
 " Cut&copy the selected text into the clipboard.
 noremap <C-Del> "+d
 
-" Marks: Swap the '<letter> and `<letter> functionality, because
+" Marks: Swap the '<letter> and `<letter> functionality because
 " the ' character is more easily reachable than the ` character.
 nnoremap ' `
 nnoremap ` '
@@ -387,29 +382,19 @@ nnoremap ` '
 " Open help in a vertical window on the right side.
 noremap :help :vert bo help
 
-" Move by screen lines instead of virtual lines.
-" (a) by default
-" nnoremap j gj
-" nnoremap k gk
-" vnoremap j gj
-" vnoremap k gk
+" Move by displayed lines when using arrows.
 nnoremap <Down> gj
 nnoremap <Up> gk
 vnoremap <Down> gj
 vnoremap <Up> gk
-inoremap <Down> <C-O>gj
-inoremap <Up> <C-O>gk
-" (b) use <Alt>+jk/arrows to move by screen lines instead of virtual lines
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" Use <Alt>+jk to move by physical lines.
 nnoremap <A-j> gj
 nnoremap <A-k> gk
 vnoremap <A-j> gj
 vnoremap <A-k> gk
-" nnoremap <A-Down> gj
-" nnoremap <A-Up> gk
-" vnoremap <A-Down> gj
-" vnoremap <A-Up> gk
-" inoremap <A-Down> <C-O>gj
-" inoremap <A-Up> <C-O>gk
 
 " Jump between tabs.
 " (a) by <Shift>+arrows
@@ -420,6 +405,14 @@ inoremap <S-Right> gt
 " (b) by <Shift>+h/l
 noremap <S-h> gT
 noremap <S-l> gt
+" (c) by <Alt>+arrows
+" noremap  <A-Left>  gT
+" inoremap <A-Left>  gT
+" noremap  <A-Right> gt
+" inoremap <A-Right> gt
+" (d) by <Alt>+h/l
+" noremap <A-h> gT
+" noremap <A-l> gt
 
 " Jump between windows.
 " (a) by <Ctrl>+arrows
@@ -441,16 +434,13 @@ inoremap <C-h> <C-W><Left>
 noremap  <C-l> <C-W><Right>
 inoremap <C-l> <C-W><Right>
 
-" Emacs-like beginning and end of line.
-" inoremap <C-e> <C-O>$
-" inoremap <C-a> <C-O>^
-
 " Opens the selected link in a web browser.
 let s:web_browser_path='/usr/bin/firefox'
 function! <SID>OpenLink(link)
 	exec ':silent !' . s:web_browser_path . ' ' . '"' . a:link . '"'
 endfunction
 " Open a link under the cursor in a web browser.
+" TODO Use gx instead of using this custom solution.
 nnoremap <silent> gl
 	\ :let curr_line = getline('.') <Bar>
 	\ let link = matchstr(curr_line, '\(http\\|https\\|ftp\\|file\)://[^ )"]*') <Bar>
@@ -556,17 +546,17 @@ nnoremap <Leader>ac :call <SID>AlternateCOrHFile()<CR>
 " Useful leader commands.
 "
 " Run `git blame` over the selected lines.
-vnoremap <Leader>gbl :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vnoremap <Leader>gbl :<C-u>!git blame <C-r>=expand("%:p") <CR> \| sed -n <C-r>=line("'<") <CR>,<C-r>=line("'>") <CR>p <CR>
 " Man pages.
 " The nnoremap <Leader>man command is defined for every language separately.
 " Replace.
 nnoremap <Leader>ra :%s/
 " Replaces the current word (and all occurrences).
-nnoremap <Leader>rc :%s/\<<C-R><C-W>\>/
-vnoremap <Leader>rc y:%s/<C-R>"/
+nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>rc y:%s/<C-r>"/
 " Changes the current word (and all occurrences).
-nnoremap <Leader>cc :%s/\<<C-R><C-W>\>/<C-R><C-W>
-vnoremap <Leader>cc y:%s/<C-R>"/<C-R>"
+nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
 " Sort the current paragraph while merging duplicities.
 nnoremap <Leader>sap (V)k :sort u<CR>
 " Wrap the current paragraph.
@@ -603,17 +593,17 @@ let NERDRemoveAltComs=1
 " Do not create default mappings (I use my own ones - see below).
 let NERDCreateDefaultMappings=0
 " Use Ctrl+C to comment/uncoment the selected text according to the first line.
-nnoremap <silent> <C-C> :call NERDComment(0, 'toggle')<CR>
-vnoremap <silent> <C-C> <ESC>:call NERDComment(1, 'toggle')<CR>
-" I have to remap the <C-C> commands for HTML files (because I want
+nnoremap <silent> <C-c> :call NERDComment(0, 'toggle')<CR>
+vnoremap <silent> <C-c> <ESC>:call NERDComment(1, 'toggle')<CR>
+" I have to remap the <C-c> commands for HTML files (because I want
 " minimal comments for HTML files).
 function! <SID>HtmlComment(is_visual)
 	let first_line = getline(a:is_visual ? line("'<") : a:firstline)
 	let action = first_line =~ '^\s*<!--' ? 'uncomment' : 'minimal'
 	call NERDComment(a:is_visual, action)
 endfunction
-au FileType html nnoremap <silent> <C-C> :call <SID>HtmlComment(0)<CR>
-au FileType html vnoremap <silent> <C-C> <Esc>:call <SID>HtmlComment(1)<CR>
+au FileType html nnoremap <silent> <C-c> :call <SID>HtmlComment(0)<CR>
+au FileType html vnoremap <silent> <C-c> <Esc>:call <SID>HtmlComment(1)<CR>
 
 "--------------------------------------------------------
 " netrw: Network oriented reading, writing, and browsing.
@@ -671,7 +661,7 @@ let g:gitgutter_escape_grep = 1
 let g:gitgutter_highlight_lines = 1
 " F4: Toggle vim-gitgutter.
 nnoremap <silent> <F4> :GitGutterToggle<CR>
-inoremap <silent> <F4> <C-O>:GitGutterToggle<CR>
+inoremap <silent> <F4> <C-o>:GitGutterToggle<CR>
 
 "---------------------------------------------------------
 " vim-python-test-runner.vim: Running python tests in VIM.
@@ -750,8 +740,8 @@ au FileType c,cpp exec "set equalprg=astyle\\ --mode=c\\ --options=".expand("$HO
 " Allow "gq" on comments to work properly.
 au FileType c,cpp set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Add a new include (+ store the current position to 'z').
-au FileType c,cpp nnoremap <Leader>inc mz?#include <<CR>:noh<CR>o#include <><Esc>i
-au FileType c,cpp nnoremap <Leader>Inc mz?#include \"<CR>:noh<CR>o#include ""<Esc>i
+au FileType c,cpp nnoremap <Leader>inc mz?#include <<CR>:nohlsearch<CR>o#include <><Esc>i
+au FileType c,cpp nnoremap <Leader>Inc mz?#include \"<CR>:nohlsearch<CR>o#include ""<Esc>i
 augroup END
 
 " PHP code.
@@ -803,8 +793,8 @@ au FileType python set shiftwidth=4   " Shift by 4 spaces.
 au FileType python let mytextwidth=79 " Maximum line length.
 
 " Add a new import (+ store the current position to 'z').
-au FileType python nnoremap <Leader>im mz?^import <CR>:noh<CR>oimport  <Esc>i
-au FileType python nnoremap <Leader>fr mz?^from <CR>:noh<CR>ofrom  <Esc>i
+au FileType python nnoremap <Leader>im mz?^import <CR>:nohlsearch<CR>oimport  <Esc>i
+au FileType python nnoremap <Leader>fr mz?^from <CR>:nohlsearch<CR>ofrom  <Esc>i
 
 " Let F10 run the currently opened script.
 au FileType python nnoremap <F10> :w<CR>:!python %<CR>
