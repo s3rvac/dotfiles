@@ -77,6 +77,9 @@ Print :Exec ksnapshot
 # Change to previous/next workspace.
 Mod4 Left :PrevWorkspace
 Mod4 Right :NextWorkspace
+# Alternative:
+Mod4 h :PrevWorkspace
+Mod4 l :NextWorkspace
 
 # Change to a specific workspace.
 Mod4 F1 :Workspace 1
@@ -126,6 +129,7 @@ OnToolbar Mouse5 :NextWorkspace
 
 # Aplications.
 Control Alt c :Exec gsimplecal
+Control Alt d :Exec ~/.fluxbox/scripts/activate-window.sh firefox
 Control Alt f :Exec firefox
 Control Alt g :Exec gvim
 Control Alt k :Exec krusader
