@@ -149,7 +149,8 @@ export LS_OPTIONS='--color=auto'
 alias ls='ls $LS_OPTIONS'
 
 # grep
-export GREP_COLOR="1;33"
+export GREP_COLOR='1;33'
+# GREP_OPTIONS is deprecated, so we use aliases.
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
