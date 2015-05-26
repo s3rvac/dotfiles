@@ -70,7 +70,8 @@ set smartcase
 " Styling.
 "------------------------------------------------------------------------------
 
-hi StatusLine color: black; background: transparent; font-eight: normal;
+highlight InfoMsg color: darkgreen; background: white;
+highlight StatusLine color: black; background: transparent; font-eight: normal;
 
 "------------------------------------------------------------------------------
 " Commands.
