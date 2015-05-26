@@ -146,7 +146,7 @@ nnoremap <Leader><S-t> :tabopen!
 " Shorten long URLs.
 set! browser.urlbar.trimURLs=true
 
-" Show an empty page in a new tab.
+" When creating a new tab, show an empty page in it.
 set! browser.newtab.url=about:blank
 
 " Always show the tab bar.
