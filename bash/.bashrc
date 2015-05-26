@@ -125,8 +125,18 @@ complete -f -X '!*.@(mp?(e)g|MP?(E)G|wma|avi|AVI|asf|vob|VOB|bin|dat|vcd|ps|pes|
 if [[ -f ~/.git-completion.bash ]]; then
 	source ~/.git-completion.bash
 fi
-# Autocomplete for 'g' (git) as well.
 complete -o default -o nospace -F _git g
+
+# pacman
+pacman_completion() {
+	cur=`_get_cword`
+	COMPREPLY=($(pacman -Sl | cut -d " " -f 2 | grep ^$cur 2> /dev/null))
+	return 0
+}
+complete -F pacman_completion paci
+complete -F pacman_completion pacr
+complete -F pacman_completion pacp
+complete -F pacman_completion pacs
 
 #------------------------------------------------------------------------------
 # Colors.
