@@ -33,22 +33,19 @@ set magic               " Use 'magic' patterns (extended regular expressions).
 set hidden              " Allow switching edited buffers without saving.
 set nostartofline       " Keep the cursor in the current column with page cmds.
 set nojoinspaces        " Insert just one space joining lines with J.
-set number              " Show line numbers.
-set relativenumber      " Show relative numbers instead of absolute by default.
 set showcmd             " Show (partial) command in the status line.
 set noshowmatch         " Don't show matching brackets when typing them.
 set showmode            " Show the current mode.
-set shortmess+=aIoOtT   " Abbrevation of messages (avoids 'hit enter ...').
-set splitbelow          " Open new hsplit panes in the bottom rather than top.
+set shortmess+=aIoOtT   " Abbreviation of messages (avoids 'hit enter ...').
+set path=$PWD/**        " Include all directories/files under $PWD into the path.
 
 " Backup and swap files.
 " Store temporary files in a central spot.
 set backupdir=~/.vim/tmp
 set directory=~/.vim/tmp
-" Disable backup.
+set nobackup            " Disable backup.
 set noswapfile          " Disable swap files.
-set nobackup            " Do not keep a backup file.
-set nowritebackup       " Prevents auto write backup before overwriting file.
+set nowritebackup       " Disable auto backup before overwriting a file.
 
 " History
 set history=1000        " Number of lines of command line history.
@@ -56,6 +53,14 @@ set history=1000        " Number of lines of command line history.
 set viminfo='100,\"500,r/mnt,r~/mnt,r/media
 " Do not store searches.
 set viminfo+=h
+
+" Line numbers.
+set number              " Show line numbers.
+set relativenumber      " Show relative numbers instead of absolute by default.
+
+" Splitting.
+set splitright          " Open new vertical panes in the right rather than left.
+set splitbelow          " Open new horizontal panes in the bottom rather than top.
 
 " Modelines have historically been a source of security/resource
 " vulnerabilities, so disable them.
@@ -85,10 +90,66 @@ set wrap                " Enable text wrapping.
 set linebreak           " Break after words only.
 set display+=lastline   " Show as much as possible from the last shown line.
 
+" Tabline.
+set showtabline=1       " Display a tabline only if there are at least two tabs.
+" Use a custom function that displays tab numbers in the tabline. Based on
+" http://superuser.com/a/477221.
+function! MyTabLine()
+	let s = ''
+	let wn = ''
+	let t = tabpagenr()
+	let i = 1
+	while i <= tabpagenr('$')
+		let buflist = tabpagebuflist(i)
+		let winnr = tabpagewinnr(i)
+		let s .= '%' . i . 'T'
+		let s .= (i == t ? '%1*' : '%2*')
+		let s .= ' '
+		let wn = tabpagewinnr(i,'$')
+		let s .= '%#TabNum#'
+		let s .= i
+		let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+		let bufnr = buflist[winnr - 1]
+		let file = bufname(bufnr)
+		let buftype = getbufvar(bufnr, 'buftype')
+		if buftype == 'nofile'
+			if file =~ '\/.'
+				let file = substitute(file, '.*\/\ze.', '', '')
+			endif
+		else
+			" Shorten file name to include only first letters of each
+			" directory.
+			let file = pathshorten(file)
+		endif
+		if file == ''
+			let file = '[No Name]'
+		endif
+		let s .= ' ' . file . ' '
+		let i = i + 1
+		" Add '[+]' if one of the buffers in the tab page is modified.
+		for bufnr in buflist
+			if getbufvar(bufnr, "&modified")
+				let s .= '[+]'
+				break
+			endif
+		endfor
+	endwhile
+	let s .= '%T%#TabLineFill#%='
+	let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+	return s
+endfunction
+set tabline=%!MyTabLine()
+highlight link TabNum Special
+
 " Statusline.
 set noruler             " Since I'm using a statusline, disable ruler.
 set laststatus=2        " Always display a statusline.
-set statusline=%<%f\ %h%w%m%r%k\ [%{(&fenc\ ==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")},%{&ff}]\ %y\ [\%03.3b,0x\%02.2B,U+%04B]\ %l/%L,%v
+set statusline=%<%f                          " Path to the file in the buffer.
+set statusline+=\ %h%w%m%r%k                 " Flags (e.g. [+], [RO]).
+set statusline+=\ [%{(&fenc\ ==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")},%{&ff}] " Encoding and line endings.
+set statusline+=\ %y                         " File type.
+set statusline+=\ [\%03.3b,0x\%02.2B,U+%04B] " Codes of the character under cursor.
+set statusline+=\ [%l/%L\ (%p%%),%v]         " Line and column numbers.
 
 " Vimdiff.
 if &diff
@@ -128,14 +189,14 @@ set smartcase
 set backspace=indent,eol,start
 
 " Sessions.
-set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize,winpos
+set sessionoptions=blank,buffers,curdir,globals,help,localoptions,resize,tabpages,winpos,winsize
 
 " Disable folds.
 set nofoldenable
 
 " No bell sounds.
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
+au GUIEnter * set visualbell t_vb=
 
 " Encoding and end of line.
 " Default file encoding for new files.
@@ -158,11 +219,91 @@ set spelllang=en_us,en_gb
 " Spellfile (can add/delete custom words to/from the dictionary) is enabled
 " by default and stores into ~/.vim/spell/{spelllang}.{encoding}.add).
 
+" Graphical Vim.
+if has("gui_running")
+	" Font.
+	set guifont=Monospace\ 10.5
+
+	" GUI options:
+	"  - aA: Enable autoselection.
+	"  - c: Use console dialogs.
+	"  - i: Use a Vim icon.
+	" Menubar, toolbar, scrollbars etc. are disabled.
+	set guioptions=aAci
+
+	" Leave no pixels around the GVim window.
+	set guiheadroom=0
+
+	" Enable mouse usage.
+	set mouse=a
+
+	" Hide mouse cursor when editing.
+	set mousehide
+
+	" Disable cursor blinking.
+	set guicursor=a:blinkon0
+" Vim in terminal.
+else
+	" Force 256 color support, even if the terminal claims it does not support it.
+	" This, together with the CSApprox plugin, ensures that Vim looks nice in the
+	" terminal.
+	set t_Co=256
+
+	" Lower the timeout when entering normal mode from insert mode.
+	set ttimeoutlen=0
+
+	" Make some key combinations work when running Vim in tmux.
+	if exists('$TMUX')
+		execute "set <xUp>=\e[1;*A"
+		execute "set <xDown>=\e[1;*B"
+		execute "set <xRight>=\e[1;*C"
+		execute "set <xLeft>=\e[1;*D"
+		execute "set <xHome>=\e[1;*H"
+		execute "set <xEnd>=\e[1;*F"
+		execute "set <Insert>=\e[2;*~"
+		execute "set <Delete>=\e[3;*~"
+		execute "set <PageUp>=\e[5;*~"
+		execute "set <PageDown>=\e[6;*~"
+		if exists('$MC_TMPDIR')
+			" Running inside Midnight Commander.
+			execute "set <F1>=\e[1;*P"
+			execute "set <F2>=\e[1;*Q"
+			execute "set <F3>=\e[1;*R"
+			execute "set <F4>=\e[1;*S"
+		else
+			" Not running inside Midnight Commander.
+			execute "set <xF1>=\e[1;*P"
+			execute "set <xF2>=\e[1;*Q"
+			execute "set <xF3>=\e[1;*R"
+			execute "set <xF4>=\e[1;*S"
+		endif
+		execute "set <F5>=\e[15;*~"
+		execute "set <F6>=\e[17;*~"
+		execute "set <F7>=\e[18;*~"
+		execute "set <F8>=\e[19;*~"
+		execute "set <F9>=\e[20;*~"
+		execute "set <F10>=\e[21;*~"
+		execute "set <F11>=\e[23;*~"
+		execute "set <F12>=\e[24;*~"
+	endif
+endif
+
+"------------------------------------------------------------------------------
+" Colors.
+"------------------------------------------------------------------------------
+
 " Syntax highlighting.
 syntax on
 
+" Color scheme. Thanks to the CSApprox plugin, we may use the same scheme in
+" both graphical and terminal Vims.
+colorscheme koehler
+
+" Use a dark background.
+set background=dark
+
 " Highlight mixture of spaces and tabs.
-au BufEnter * hi SpacesTabsMixtureGroup guibg=gray18 guifg=red ctermbg=gray ctermfg=red
+au BufEnter * hi SpacesTabsMixtureGroup guibg=gray18 guifg=red ctermbg=darkgray ctermfg=red
 au BufEnter * match SpacesTabsMixtureGroup /^ \+\t\+\|^\t\+ \+/
 
 " Statusline.
@@ -173,90 +314,29 @@ au BufEnter * hi StatusLineNC guibg=black guifg=gray70 ctermbg=black ctermfg=gra
 au BufEnter * hi ExceedCharsGroup guibg=darkblue guifg=white ctermbg=darkblue ctermfg=white
 
 " Wild menu.
-au BufEnter * hi Pmenu guibg=gray30 guifg=white ctermbg=gray ctermfg=white
+au BufEnter * hi Pmenu guibg=gray30 guifg=white ctermbg=darkgray ctermfg=white
 au BufEnter * hi PmenuSel guibg=white guifg=black ctermbg=white ctermfg=black
 
 " Folds.
 au BufEnter * hi Folded guibg=gray30 guifg=white ctermbg=gray ctermfg=white
 au BufEnter * hi FoldColumn guibg=gray30 guifg=white ctermbg=gray ctermfg=white
 
+" Tab colors.
+au BufEnter * hi TabLine guibg=black guifg=gray ctermbg=black ctermfg=gray
+au BufEnter * hi TabLineSel guibg=black guifg=white ctermbg=black ctermfg=white
+au BufEnter * hi TabLineFill guibg=black guifg=black ctermbg=black ctermfg=black
+
+" Splits.
+au BufEnter * hi VertSplit guibg=white guifg=black ctermbg=white ctermfg=black
+
+" Cursor.
+au BufEnter * hi Cursor guibg=white guifg=bg
+
+" Visual selection.
+au BufEnter * hi Visual guibg=black guifg=gray ctermfg=gray
+
 " Use the same color in the signs column as it is used in the numbers column.
 au BufEnter * hi clear SignColumn
-
-" Color scheme. Thanks to the CSApprox plugin, we may use the same scheme in
-" both graphical and terminal Vims.
-colorscheme koehler
-
-" Graphical Vim.
-if has("gui_running")
-	" Cursor.
-	au BufEnter * hi Cursor guibg=#54ff52 guifg=bg
-
-	" Font.
-	set guifont=Monospace\ 10.5
-
-	" Use a Vim icon.
-	set guioptions+=i
-	" Disable menubar.
-	set guioptions-=m
-	" Disable toolbar.
-	set guioptions-=T
-	" Automatically put selected text into the clipboard
-	" (paste via the mouse middle button).
-	set guioptions+=aA
-	" Always display the right scrollbar.
-	set guioptions+=r
-
-	" Leave no pixels around the GVim window.
-	set guiheadroom=0
-
-	" Enable mouse usage.
-	set mouse=a
-	" Hide mouse cursor when editing.
-	set mousehide
-
-	" Disable cursor blinking.
-	set guicursor=a:blinkon0
-
-	" Always display the tab bar (even when there is only one tab).
-	" I need this because GVim can't properly maximize on its own, so I have
-	" to set specific options for GVim windows, however there is a view problem
-	" when I open a second tab...
-	set showtabline=2
-" Vim in terminal.
-else
-	" Force 256 color support, even if the terminal claims it does not support it.
-	" This, together with the CSApprox plugin, ensures that Vim looks nice in the
-	" terminal.
-	set t_Co=256
-
-	" Tab colors.
-	au BufEnter * hi TabLine ctermfg=gray ctermbg=black
-	au BufEnter * hi TabLineSel ctermfg=white ctermbg=black
-	au BufEnter * hi TabLineFill ctermfg=black ctermbg=black
-
-	" Change cursor shape according to the mode for terminals that support it.
-	if &term =~ "xterm\\|rxvt"
-	let &t_SI="\<Esc>]50;CursorShape=1\x7"
-	let &t_EI="\<Esc>]50;CursorShape=0\x7"
-	endif
-
-	" For tmux, we have to use special settings.
-	if exists('$TMUX')
-		" Change cursor shape according to the mode.
-		let &t_EI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-		let &t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-
-		" Make Ctrl+keys shortcuts working.
-		execute "set <xUp>=\e[1;*A"
-		execute "set <xDown>=\e[1;*B"
-		execute "set <xRight>=\e[1;*C"
-		execute "set <xLeft>=\e[1;*D"
-	endif
-
-	" Lower the timeout when entering normal mode from insert mode.
-	set ttimeoutlen=0
-endif
 
 "------------------------------------------------------------------------------
 " Function keys.
@@ -313,7 +393,7 @@ function! <SID>RelAbsNumberToggle()
 	else
 		set relativenumber
 	endif
-endfunc
+endfunction
 nnoremap <silent> <F6> :call <SID>RelAbsNumberToggle()<CR>
 
 " F9: Run tests.
@@ -344,9 +424,6 @@ cnoreabbrev tocs !trs en:cs
 " Quit with Q instead of :q!.
 noremap <silent> Q :q!<CR>
 
-" Disable K looking stuff up.
-noremap K <Nop>
-
 " Quicksave all buffers/tabs.
 nnoremap <C-s> :wa<CR>
 inoremap <C-s> <Esc>:wa<CR>
@@ -358,81 +435,70 @@ vnoremap <C-s> <Esc>:wa<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Hitting space in normal mode will make the current search disappear.
-noremap <silent> <Space> :silent nohlsearch<Bar>echo<CR>
+" Quickly select the text you just pasted.
+noremap gV `[v`]
 
-" Insert the contents of a clipboard.
-nnoremap <silent> <S-Insert> :set paste<CR>"+p:set nopaste<CR>
-" TODO: It depends whether I'm at the end of a line or not.
-inoremap <silent> <S-Insert> :set paste<CR>"+P:set nopaste<CR>
-cnoremap          <S-Insert> <C-r>+
-vnoremap          <S-Insert> "+p
+" Hitting space in normal mode will make the current search disappear.
+noremap <silent> <Space> :silent nohlsearch<CR>
+
+" Insert the contents of the clipboard.
+nnoremap <silent> <Leader>P :set paste<CR>"+]P:set nopaste<CR>
+nnoremap <silent> <Leader>p :set paste<CR>"+]p:set nopaste<CR>
+vnoremap          <Leader>p "+p
 
 " Copy the selected text into the clipboard.
-noremap <C-Insert> "+y
+noremap <Leader>y "+y
 
-" Cut&copy the selected text into the clipboard.
-noremap <C-Del> "+d
+" Cut the selected text into the clipboard.
+noremap <Leader>d "+d
 
-" Marks: Swap the '<letter> and `<letter> functionality because
-" the ' character is more easily reachable than the ` character.
+" Swap the '<letter> and `<letter> functionality because the ' character is
+" more easily reachable than the ` character.
 nnoremap ' `
 nnoremap ` '
 
 " Open help in a vertical window on the right side.
 noremap :help :vert bo help
 
-" Move by displayed lines when using arrows.
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
+" Disable arrows until I properly learn to use hjkl.
+noremap <Down> <nop>
+inoremap <Down> <nop>
+noremap <Left> <nop>
+inoremap <Left> <nop>
+noremap <Up> <nop>
+inoremap <Up> <nop>
+noremap <Right> <nop>
+inoremap <Right> <nop>
 
-" Use <Alt>+jk to move by physical lines.
-nnoremap <A-j> gj
-nnoremap <A-k> gk
-vnoremap <A-j> gj
-vnoremap <A-k> gk
+" Make j and k move by virtual lines instead of physical lines, but only when
+" not used in the count mode (e.g. 3j). This is great when 'wrap' and
+" 'relativenumber' are used.
+" Based on http://stackoverflow.com/a/21000307/2580955
+noremap <expr> k (v:count == 0 ? 'gk' : 'k')
+noremap <expr> j (v:count == 0 ? 'gj' : 'j')
 
-" Jump between tabs.
-" (a) by <Shift>+arrows
-noremap  <S-Left>  gT
-inoremap <S-Left>  gT
-noremap  <S-Right> gt
-inoremap <S-Right> gt
-" (b) by <Shift>+h/l
-noremap <S-h> gT
-noremap <S-l> gt
-" (c) by <Alt>+arrows
-" noremap  <A-Left>  gT
-" inoremap <A-Left>  gT
-" noremap  <A-Right> gt
-" inoremap <A-Right> gt
-" (d) by <Alt>+h/l
-" noremap <A-h> gT
-" noremap <A-l> gt
+" Jump between tabs by J/K.
+noremap <S-j> gT
+noremap <S-k> gt
 
-" Jump between windows.
-" (a) by <Ctrl>+arrows
-noremap  <C-Up>    <C-W><Up>
-inoremap <C-Up>    <C-W><Up>
-noremap  <C-Down>  <C-W><Down>
-inoremap <C-Down>  <C-W><Down>
-noremap  <C-Left>  <C-W><Left>
-inoremap <C-Left>  <C-W><Left>
-noremap  <C-Right> <C-W><Right>
-inoremap <C-Right> <C-W><Right>
-" (b) by <Ctrl>+h/j/k/l
-noremap  <C-k> <C-W><Up>
-inoremap <C-k> <C-W><Up>
-noremap  <C-j> <C-W><Down>
-inoremap <C-j> <C-W><Down>
-noremap  <C-h> <C-W><Left>
-inoremap <C-h> <C-W><Left>
-noremap  <C-l> <C-W><Right>
-inoremap <C-l> <C-W><Right>
+" Join lines by <Leader>+j because I use J to go to the previous tab.
+nnoremap <Leader>j <S-j>
+
+" Join lines without producing any spaces. It works like gJ, but does not keep
+" the indentation whitespace.
+" Based on http://vi.stackexchange.com/a/440.
+function! <SID>JoinWithoutSpaces()
+    execute 'normal gJ'
+    " Remove any whitespace.
+    if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
+        execute 'normal dw'
+    endif
+endfunction
+nnoremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
+
+" Jump between windows by <Ctrl>+hjkl.
+" I use the https://github.com/christoomey/vim-tmux-navigator plugin, which
+" properly defines the needed combinations on its own.
 
 " Opens the selected link in a web browser.
 let s:web_browser_path='/usr/bin/firefox'
@@ -447,6 +513,207 @@ nnoremap <silent> gl
 	\ if link != '' <Bar>
 	\     call <SID>OpenLink(link) <Bar>
 	\ endif <CR>
+
+" Run `git blame` over the selected lines.
+vnoremap <Leader>gbl :<C-u>!git blame <C-r>=expand("%:p") <CR> \| sed -n <C-r>=line("'<") <CR>,<C-r>=line("'>") <CR>p <CR>
+
+" Man pages.
+" The nnoremap <Leader>man command is defined for every language separately.
+
+" Replace.
+nnoremap <Leader>ra :%s/
+
+" Replaces the current word (and all occurrences).
+nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>rc y:%s/<C-r>"/
+
+" Changes the current word (and all occurrences).
+nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+
+" Sort the current paragraph while merging duplicities.
+nnoremap <Leader>sap (V)k :sort u<CR>
+
+" Wrap the current paragraph.
+nnoremap <Leader>gqp (V)k gqk<CR>
+
+" Replace tabs with spaces.
+nnoremap <Leader>rts :%s/	/    /g<CR>
+
+" Makes the current file executable.
+" Based on http://vim.wikia.com/wiki/Setting_file_attributes_without_reloading_a_buffer
+function! <SID>MakeFileExecutable()
+	let fname = expand("%:p")
+	checktime
+	execute "au FileChangedShell " . fname . " :echo"
+	silent !chmod a+x %
+	checktime
+	execute "au! FileChangedShell " . fname
+	" Fix display issues in terminal Vim.
+	redraw!
+endfunction
+nnoremap <Leader>mfx :call <SID>MakeFileExecutable()<CR>
+
+" Opening files in tabs.
+nnoremap <Leader>sni :exec 'tabe ~/.vim/snippets/' . &filetype . '.snippets'<CR>
+nnoremap <Leader>bash :tabe ~/.bashrc<CR>
+nnoremap <Leader>vim :tabe ~/.vimrc<CR>
+" Open the corresponding BibTeX file. It is assumed that there is only a single
+" .bib file.
+nnoremap <Leader>bib :tabe *.bib<CR>
+
+"------------------------------------------------------------------------------
+" Plugins.
+"------------------------------------------------------------------------------
+
+"------------------------------------------------------------
+" NERD_Commenter: Easy commenting of code for many filetypes.
+"------------------------------------------------------------
+
+" Note: I use alternate styles for several filetypes. Since I was not able to
+"       configure them in .vimrc, I had to modify the sources of the plugin.
+
+" Do not create menu.
+let NERDMenuMode=0
+" Delimit comments with a single space.
+let NERDSpaceDelims=1
+" Also remove alternative comments when uncommenting.
+let NERDRemoveAltComs=1
+" Do not create default mappings (I use my own ones - see below).
+let NERDCreateDefaultMappings=0
+" Use Ctrl+C to comment/uncoment the selected text according to the first line.
+nnoremap <silent> <C-c> :call NERDComment(0, 'toggle')<CR>
+vnoremap <silent> <C-c> <ESC>:call NERDComment(1, 'toggle')<CR>
+" I have to remap the <C-c> commands for HTML files (because I want
+" minimal comments for HTML files).
+function! <SID>HtmlComment(is_visual)
+	let first_line = getline(a:is_visual ? line("'<") : a:firstline)
+	let action = first_line =~ '^\s*<!--' ? 'uncomment' : 'minimal'
+	call NERDComment(a:is_visual, action)
+endfunction
+au FileType html nnoremap <silent> <C-c> :call <SID>HtmlComment(0)<CR>
+au FileType html vnoremap <silent> <C-c> <Esc>:call <SID>HtmlComment(1)<CR>
+
+"--------------------------------------------------------
+" netrw: Network oriented reading, writing, and browsing.
+"--------------------------------------------------------
+let g:netrw_silent=1
+
+"----------------------------
+" UltiSnip: Snippets for Vim.
+"----------------------------
+let g:snips_author='Petr Zemek <s3rvac@gmail.com>'
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories=['snippets']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"----------------------------------------
+" python: Syntax highlighting for Python.
+"----------------------------------------
+let python_highlight_builtins=0
+let python_highlight_exceptions=0
+let python_highlight_doctests=1
+let python_highlight_indent_errors=0 " I use my own indent errors highlighting.
+let python_highlight_space_errors=0
+let python_highlight_string_formatting=0
+let python_highlight_string_format=0
+let python_highlight_string_templates=0
+let python_slow_sync=1
+let python_print_as_function=1
+
+"-----------------------------------------
+" Command-T: Fast file navigation for VIM.
+"-----------------------------------------
+let g:CommandTMaxCachedDirectories=0 " Do not limit caching.
+let g:CommandTMatchWindowReverse=1 " Show the entries in reverse order.
+hi CommandTHighlightColor guibg=darkblue guifg=white
+let g:CommandTHighlightColor='CommandTHighlightColor' " Custom highlight color.
+let g:CommandTTraverseSCM='pwd' " Use Vim's present working directory as the root.
+
+"-----------------------------------------------
+" vim-gitgutter: Shows a git diff in the gutter.
+"-----------------------------------------------
+let g:gitgutter_enabled = 0 " Disable it by default. Use F4 to toggle it.
+let g:gitgutter_realtime = 0 " Stop it from running in realtime.
+let g:gitgutter_eager = 0 " Stop it from running too eagerly.
+let g:gitgutter_escape_grep = 1
+let g:gitgutter_highlight_lines = 1
+" F4: Toggle vim-gitgutter.
+nnoremap <silent> <F4> :GitGutterToggle<CR>
+inoremap <silent> <F4> <C-o>:GitGutterToggle<CR>
+
+"---------
+" xmledit.
+"---------
+let xml_tag_completion_map = "<C-l>"
+
+"-------
+" vmath.
+"-------
+vmap <expr> ++ VMATH_YankAndAnalyse()
+nmap        ++ vip++
+
+"------------------------------------------------------------------------------
+" File-type specific settings and other autocommands.
+"------------------------------------------------------------------------------
+
+" Remove trailing whitespace when a file is saved.
+" TODO: Do not remove whitespace in these situations:
+"       - before the space (or tab) there is a back slash (like '\ ').
+au BufWritePre * :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+
+" In insert mode, show absolute numbers.
+" au InsertEnter * :set norelativenumber
+" au InsertLeave * :set relativenumber
+
+" When Vim looses focus, show absolute numbers.
+" :au FocusLost   * :set norelativenumber
+" :au FocusGained * :set relativenumber
+
+" Consider all .tpl files as Smarty files.
+au BufNewFile,BufRead *.tpl set ft=smarty
+" Consider all .php* files (.phps, .phpt etc.) as PHP files.
+au BufNewFile,BufRead *.php[0-9a-zA-Z] set ft=php
+" Consider all .ll files as LLVM IR files.
+au BufNewFile,BufRead *.ll set ft=llvm
+" Consider all .wsgi files as Python files.
+au BufNewFile,BufRead *.wsgi set ft=python
+" Use tex filetype rather than plaintex.
+au BufNewFile,BufRead *.tex set ft=tex
+
+" Disable automatic wrapping for all files (some filetype plugins sets this to
+" a different value, which is really annoying).
+au FileType * set textwidth=0
+
+" Quickfix.
+" If there is a Makefile in the current directory,
+" use the `make` command instead of a concrete program.
+" TODO: Does it work correctly?
+" TODO: Rewrite it so I don't use a function.
+function <SID>SetMakeprg()
+	if filereadable('Makefile') || filereadable('makefile')
+		set makeprg='make'
+	endif
+endfunction
+au FileType * call <SID>SetMakeprg()
+
+" C and C++ code.
+augroup c_cpp
+" Enable spell checking.
+au FileType c,cpp set spell
+" Use the man ftplugin to display pages from manual.
+au FileType c,cpp runtime ftplugin/man.vim
+" Use <Leader>man to display manual pages for the function under cursor.
+au FileType c,cpp nmap <silent> <Leader>man :Man 3 <cword><CR>
+" Use astyle for = command indention.
+au FileType c,cpp exec "set equalprg=astyle\\ --mode=c\\ --options=".expand("$HOME")."/.vim/astyle/c-cpp.options"
+" Allow "gq" on comments to work properly.
+au FileType c,cpp set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
+" Add a new include (+ store the current position to 'z').
+au FileType c,cpp nnoremap <Leader>inc mz?#include <<CR>:nohlsearch<CR>o#include <><Esc>i
+au FileType c,cpp nnoremap <Leader>Inc mz?#include \"<CR>:nohlsearch<CR>o#include ""<Esc>i
 
 " Open both a .c|cpp|cc file and the corresponding .h file in a new tab.
 function! <SID>GetCFile(base_name)
@@ -492,7 +759,7 @@ function! <SID>OpenCAndHInNewTab(base_name)
 		echo "No file to open."
 	endif
 endfunction
-command -nargs=1 -complete=file TN :call <SID>OpenCAndHInNewTab(<q-args>)
+au FileType c,cpp command! -nargs=1 -complete=file TN :call <SID>OpenCAndHInNewTab(<q-args>)
 
 " Splits the current window by showing the .{c,cc,cpp} file on the left-hand
 " side and the corresponding .h file on the right-hand side.
@@ -519,7 +786,7 @@ function! <SID>SplitCOrHFile()
 		echo "There is no corresponding source file."
 	endif
 endfunction
-nnoremap <Leader>as :call <SID>SplitCOrHFile()<CR>
+au FileType c,cpp nnoremap <Leader>as :call <SID>SplitCOrHFile()<CR>
 
 " Alternates between a .{c,cc,cpp} file and a .h file.
 function! <SID>AlternateCOrHFile()
@@ -541,207 +808,12 @@ function! <SID>AlternateCOrHFile()
 		echo "There is no corresponding source file."
 	endif
 endfunction
-nnoremap <Leader>ac :call <SID>AlternateCOrHFile()<CR>
+au FileType c,cpp nnoremap <Leader>ac :call <SID>AlternateCOrHFile()<CR>
 
-" Useful leader commands.
-"
-" Run `git blame` over the selected lines.
-vnoremap <Leader>gbl :<C-u>!git blame <C-r>=expand("%:p") <CR> \| sed -n <C-r>=line("'<") <CR>,<C-r>=line("'>") <CR>p <CR>
-" Man pages.
-" The nnoremap <Leader>man command is defined for every language separately.
-" Replace.
-nnoremap <Leader>ra :%s/
-" Replaces the current word (and all occurrences).
-nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
-vnoremap <Leader>rc y:%s/<C-r>"/
-" Changes the current word (and all occurrences).
-nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
-vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
-" Sort the current paragraph while merging duplicities.
-nnoremap <Leader>sap (V)k :sort u<CR>
-" Wrap the current paragraph.
-nnoremap <Leader>gqp (V)k gqk<CR>
-" Replace tabs with spaces.
-nnoremap <Leader>rts :%s/	/    /g<CR>
-" Makes the current file executable.
-nnoremap <Leader>mfx :silent !chmod a+x %:p<CR>
-" Other.
-nnoremap <Leader>sni :exec 'tabe ~/.vim/snippets/' . &filetype . '.snippets'<CR>
-nnoremap <Leader>bsh :tabe ~/.bashrc<CR>
-nnoremap <Leader>vim :tabe ~/.vimrc<CR>
-" Open the corresponding BibTeX file. It is assumed that there is only a single
-" .bib file.
-nnoremap <Leader>bib :tabe *.bib<CR>
+" Let F10 compile and run the currently edited code.
+au FileType c nnoremap <F10> :w<CR>:gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType cpp nnoremap <F10> :w<CR>:g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
 
-"------------------------------------------------------------------------------
-" Plugins.
-"------------------------------------------------------------------------------
-
-"---------------------------------------------------------------
-" NERD_Commenter: Easy commenting of code for many filetypes.
-"---------------------------------------------------------------
-
-" Note: I use alternate styles for several filetypes. Since I was not able to
-"       configure them in .vimrc, I had to modify the sources of the plugin.
-
-" Do not create menu.
-let NERDMenuMode=0
-" Delimit comments with a single space.
-let NERDSpaceDelims=1
-" Also remove alternative comments when uncommenting.
-let NERDRemoveAltComs=1
-" Do not create default mappings (I use my own ones - see below).
-let NERDCreateDefaultMappings=0
-" Use Ctrl+C to comment/uncoment the selected text according to the first line.
-nnoremap <silent> <C-c> :call NERDComment(0, 'toggle')<CR>
-vnoremap <silent> <C-c> <ESC>:call NERDComment(1, 'toggle')<CR>
-" I have to remap the <C-c> commands for HTML files (because I want
-" minimal comments for HTML files).
-function! <SID>HtmlComment(is_visual)
-	let first_line = getline(a:is_visual ? line("'<") : a:firstline)
-	let action = first_line =~ '^\s*<!--' ? 'uncomment' : 'minimal'
-	call NERDComment(a:is_visual, action)
-endfunction
-au FileType html nnoremap <silent> <C-c> :call <SID>HtmlComment(0)<CR>
-au FileType html vnoremap <silent> <C-c> <Esc>:call <SID>HtmlComment(1)<CR>
-
-"--------------------------------------------------------
-" netrw: Network oriented reading, writing, and browsing.
-"--------------------------------------------------------
-let g:netrw_silent=1
-
-"----------------------------
-" UltiSnip: Snippets for Vim.
-"----------------------------
-let g:snips_author='Petr Zemek <s3rvac@gmail.com>'
-let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsSnippetDirectories=['snippets']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-"-------------------------------------------------
-" bib_autocomp: Autocompletion for BibTeX entries.
-"-------------------------------------------------
-let g:bib_autocomp_entry_mapping = {
-	\ 'misc': ['author', 'title', 'howpublished', 'url']
-	\ }
-
-"----------------------------------------
-" python: Syntax highlighting for Python.
-"----------------------------------------
-let python_highlight_builtins=1
-let python_highlight_exceptions=1
-let python_highlight_doctests=1
-let python_highlight_indent_errors=0 " I use my own indent errors highlighting.
-let python_highlight_string_formatting=0
-let python_highlight_string_format=0
-let python_highlight_string_templates=0
-let python_highlight_space_errors=0
-let python_slow_sync=1
-let python_print_as_function=1
-
-"-----------------------------------------
-" Command-T: Fast file navigation for VIM.
-"-----------------------------------------
-let g:CommandTMaxCachedDirectories=0 " Do not limit caching.
-let g:CommandTMatchWindowReverse=1 " Show the entries in reverse order.
-let g:CommandTAcceptSelectionTabMap='<C-CR>' " Open a new tab with Ctrl+Enter.
-hi CommandTHighlightColor guibg=darkblue guifg=white
-let g:CommandTHighlightColor='CommandTHighlightColor' " Custom highlight color.
-let g:CommandTTraverseSCM='pwd' " Use Vim's present working directory as the root.
-
-"-----------------------------------------------
-" vim-gitgutter: Shows a git diff in the gutter.
-"-----------------------------------------------
-let g:gitgutter_enabled = 0 " Disable it by default. Use F4 to toggle it.
-let g:gitgutter_realtime = 0 " Stop it from running in realtime.
-let g:gitgutter_eager = 0 " Stop it from running too eagerly.
-let g:gitgutter_escape_grep = 1
-let g:gitgutter_highlight_lines = 1
-" F4: Toggle vim-gitgutter.
-nnoremap <silent> <F4> :GitGutterToggle<CR>
-inoremap <silent> <F4> <C-o>:GitGutterToggle<CR>
-
-"---------------------------------------------------------
-" vim-python-test-runner.vim: Running python tests in VIM.
-"---------------------------------------------------------
-au FileType python nnoremap <Leader>rtf :wa<CR>:NosetestFile<CR>
-au FileType python nnoremap <Leader>rtc :wa<CR>:NosetestClass<CR>
-au FileType python nnoremap <Leader>rtm :wa<CR>:NosetestMethod<CR>
-au FileType python nnoremap <Leader>rtl :wa<CR>:RerunLastTests<CR>
-au FileType python nnoremap <F9> :wa<CR>:NosetestFile<CR>
-
-"---------
-" xmledit.
-"---------
-let xml_tag_completion_map = "<C-l>"
-
-"-------
-" vmath.
-"-------
-vmap <expr> ++ VMATH_YankAndAnalyse()
-nmap        ++ vip++
-
-"------------------------------------------------------------------------------
-" File-type specific settings and other autocommands.
-"------------------------------------------------------------------------------
-
-" Remove trailing whitespace when a file is saved.
-" TODO: Do not remove whitespace in these situations:
-"       - before the space (or tab) there is a back slash (like '\ ').
-au BufWritePre * :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-
-" In insert mode, show absolute numbers.
-" au InsertEnter * :set norelativenumber
-" au InsertLeave * :set relativenumber
-
-" When Vim looses focus, show absolute numbers.
-" :au FocusLost   * :set norelativenumber
-" :au FocusGained * :set relativenumber
-
-" Consider all .tpl files as Smarty files.
-au BufNewFile,BufRead *.tpl set ft=smarty
-" Consider all .php* files (.phps, .phpt etc.) as PHP files.
-au BufNewFile,BufRead *.php[0-9a-zA-Z] set ft=php
-" Consider all .ll files as LLVM IR files.
-au BufNewFile,BufRead *.ll set ft=llvm
-" Consider all .wsgi files as Python files.
-au BufNewFile,BufRead *.wsgi set ft=python
-" Use tex filetype rather than plaintex.
-au BufNewFile,BufRead *.tex set ft=tex
-
-" Disable automatical wrapping for all files (some filetype plugins sets this
-" to a different value and it is really annoying).
-au FileType * set textwidth=0
-
-" Quickfix.
-" If there is a Makefile in the current directory,
-" use the `make` command instead of a concrete program.
-" TODO: Does it work correctly?
-" TODO: Rewrite it so I don't use a function.
-function <SID>SetMakeprg()
-	if filereadable('Makefile') || filereadable('makefile')
-		set makeprg='make'
-	endif
-endfunction
-au FileType * call <SID>SetMakeprg()
-
-" C and C++ code.
-augroup c_cpp
-" Enable spell checking.
-au FileType c,cpp set spell
-" Use the man ftplugin to display pages from manual.
-au FileType c,cpp runtime ftplugin/man.vim
-" Use <Leader>man to display manual pages for the function under cursor.
-au FileType c,cpp nmap <silent> <Leader>man :Man 3 <cword><CR>
-" Use astyle for = command indention.
-au FileType c,cpp exec "set equalprg=astyle\\ --mode=c\\ --options=".expand("$HOME")."/.vim/astyle/c-cpp.options"
-" Allow "gq" on comments to work properly.
-au FileType c,cpp set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
-" Add a new include (+ store the current position to 'z').
-au FileType c,cpp nnoremap <Leader>inc mz?#include <<CR>:nohlsearch<CR>o#include <><Esc>i
-au FileType c,cpp nnoremap <Leader>Inc mz?#include \"<CR>:nohlsearch<CR>o#include ""<Esc>i
 augroup END
 
 " PHP code.
@@ -795,6 +867,9 @@ au FileType python let mytextwidth=79 " Maximum line length.
 " Add a new import (+ store the current position to 'z').
 au FileType python nnoremap <Leader>im mz?^import <CR>:nohlsearch<CR>oimport  <Esc>i
 au FileType python nnoremap <Leader>fr mz?^from <CR>:nohlsearch<CR>ofrom  <Esc>i
+
+" Let F9 run the currently opened tests.
+au FileType python nnoremap <F9> :wa<CR>:!nosetests %<CR>
 
 " Let F10 run the currently opened script.
 au FileType python nnoremap <F10> :w<CR>:!python %<CR>
@@ -855,7 +930,7 @@ if s:opened_file_path =~ '\.mozilla/firefox/'
 endif
 
 "------------------------------------------------------------------------------
-" Correct typos
+" Typos correction.
 "------------------------------------------------------------------------------
 
 " English.

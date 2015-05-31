@@ -29,18 +29,18 @@ I use the following Vim plugins, which you can install by using
 	* [vim-gitgutter](https://github.com/airblade/vim-gitgutter) - Show a git diff in the gutter (sign column) and stages/reverts hunks.
 	* [vim-repeat](https://github.com/tpope/vim-repeat) - Enable repeating supported plugin maps with `"."`.
 	* [vim-surround](https://github.com/tpope/vim-surround) - Quoting/parenthesizing made simple.
+	* [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) -  Seamless navigation between Tmux panes and Vim splits.
 	* [vim-visual-increment](https://github.com/triglav/vim-visual-increment) - Use CTRL+A/X to create increasing sequence of numbers or letters via visual mode.
 	* [vmath](https://github.com/DavidGamba/vim-vmath) - Calculates the sum, average, min, and max for a visual region containing numbers.
 
   * Filetype:
 	* [LaTeX Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) - Lightweight Toolbox for LaTeX.
-	* [vim-python-test-runner](https://github.com/JarrodCTaylor/vim-python-test-runner) - A simple Django aware way of running python tests from within Vim.
 	* [xmledit](https://github.com/sukima/xmledit) - Help edit XML files.
 
   * Syntax:
 	* [dokuwiki](https://github.com/nblock/vim-dokuwiki)
 	* [jinja2](https://github.com/Glench/Vim-Jinja2-Syntax)
-	* [python](http://www.vim.org/scripts/script.php?script_id=790)
+	* [python](https://github.com/hdima/python-syntax)
 	* [rdoc](https://github.com/depuracao/vim-rdoc)
 	* [redminewiki](my, https://github.com/s3rvac/vim-syntax-redminewiki)
 	* [tracwiki](http://www.vim.org/scripts/script.php?script_id=3337)
