@@ -41,9 +41,6 @@ set status=input,location,bookmark
 " addons + downloads + help + javascript + prefs
 set newtab=all
 
-" Show numbers on each tab.
-set tabnumbers
-
 " Show link destinations in the status line.
 set showstatuslinks=1
 
@@ -95,9 +92,6 @@ cmapclear
 imapclear
 
 " Previous/next tab.
-nnoremap <S-h> :tabprevious<CR>
-nnoremap <S-l> :tabnext<CR>
-" Alternative keys.
 nnoremap <S-j> :tabprevious<CR>
 nnoremap <S-k> :tabnext<CR>
 
@@ -115,7 +109,7 @@ nnoremap k 3k
 
 " Close the current tab.
 nnoremap x :tabclose<CR>
-" Alternative key.
+" Alternative key:
 inoremap <C-w> <Esc>:tabclose<CR>
 
 " Pass Ctrl-e to the "It's All Text" addon that I use (it is better than
