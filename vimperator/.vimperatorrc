@@ -148,8 +148,8 @@ nnoremap <Leader><S-t> :tabopen!
 " https://github.com/vimperator/vimperator-labs/issues/88
 set! browser.startup.homepage=liberator://help/intro
 
-" Shorten long URLs.
-set! browser.urlbar.trimURLs=true
+" Do not shorten URLs (protocol and trailing slash).
+set! browser.urlbar.trimURLs=false
 
 " When creating a new tab, show an empty page in it.
 set! browser.newtab.url=about:blank
