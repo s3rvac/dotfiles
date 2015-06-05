@@ -2,11 +2,17 @@
   [Position]	(CENTER)	{0 0}
   [Layer]	{2}
 [end]
+[app] (name=konsole) (class=konsole)
+  [Maximized] {yes}
+  [Deco] {BORDER}
+[end]
 [app] (name=gvim) (class=Gvim)
   [Maximized]	{yes}
+  [Deco] {BORDER}
 [end]
 [app] (name=Mail) (class=Thunderbird) (role=3pane)
   [Maximized]	{yes}
+  [Deco] {BORDER}
 [end]
 [app] (name=Mail) (class=Thunderbird) (role=messageWindow)
   [Position]	(CENTER)	{0 0}
@@ -21,6 +27,7 @@
 [end]
 [app] (name=Navigator) (class=Firefox) (role=browser)
   [Maximized]	{yes}
+  [Deco] {BORDER}
 [end]
 [app] (name=qstardict) (class=Qstardict)
   [Position]	(CENTER)	{0 0}
@@ -33,6 +40,7 @@
 [end]
 [app] (name=krusader) (class=Krusader) (role=MainWindow#1)
   [Maximized]	{yes}
+  [Deco] {BORDER}
 [end]
 [app] (title=File Already Exists) (class=Krusader)
   [Position]	(CENTER)	{0 -100}

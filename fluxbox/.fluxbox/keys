@@ -1,69 +1,13 @@
+#------------------------------------------------------------------------------
+# File:   $HOME/.fluxbox/keys
+# Author: Petr Zemek <s3rvac@gmail.com>
+#------------------------------------------------------------------------------
+
 # Menus.
 OnDesktop Mouse1 :HideMenus
 OnDesktop Mouse2 :WorkspaceMenu
 OnDesktop Mouse3 :RootMenu
-Mod4 space :RootMenu
-
-# Moving/resizing.
-OnTitlebar Move1 :StartMoving
-OnLeftGrip Move1 :StartResizing bottomleft
-OnRightGrip Move1 :StartResizing bottomright
-OnWindowBorder Move1 :StartMoving
-OnWindow Shift Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
-OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
-
-# Resize and move the window to the right half of the screen.
-Mod4 s :MacroCmd {ResizeTo 960 540} {Moveto 960 0} {MaximizeVertical}
-# Resize and move the window to the left half of the screen.
-Shift Mod4 s :MacroCmd {ResizeTo 960 540} {Moveto 0 0} {MaximizeVertical}
-
-# Double click on the titlebar to maximize.
-OnTitlebar Double Mouse1 :Maximize
-
-# Right click on the titlebar for a menu of options.
-OnTitlebar Mouse3 :WindowMenu
-
-# Movement of windows between screens.
-Control Alt Up :MacroCmd {Moveto -2000 0} {Maximize}
-Control Alt Down :MacroCmd {Moveto 2000 0} {Maximize}
-
-# Move focus between screens.
-Control Alt Left :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 0
-Control Alt Right :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 1
-# Alternative:
-Control Alt h :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 0
-Control Alt l :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 1
-
-# Alt-tab.
-Mod1 Tab :NextWindow {groups} (workspace=[current])
-Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
-
-# Close the current window.
-Alt F4 :Close
-
-# Open a dialog to run programs.
-Mod1 F2 :Exec fbrun
-
-# Toggle window decorations.
-Mod4 t :ToggleDecor
-
-# Maximize the current window.
-Mod4 m :Maximize
-Shift Mod4 m :MaximizeVertical
-
-# Minimize the current window.
-Mod4 n :Minimize
-
-# Switch to fullscreen.
-Mod4 f :Fullscreen
-
-# Reload the configuration.
-# (Disabled because it's annoying when this combination is hit by accident).
-# Control Mod4 c :Reconfigure
-
-# Restart fluxbox.
-# (Disabled because it's annoying when this combination is hit by accident).
-# Control Mod4 r :Restart
+Control Mod4 space :RootMenu
 
 # Set background.
 Control Mod4 w :Exec ~/.fluxbox/scripts/set-background.sh
@@ -71,15 +15,76 @@ Control Mod4 w :Exec ~/.fluxbox/scripts/set-background.sh
 # Lock the system.
 Control Mod4 l :Exec ~/.fluxbox/scripts/lock-screen.sh
 
-# Make a screenshot by pressing PrtSc.
+# Reload the configuration.
+Control Mod4 r :Reconfigure
+
+# Make a screenshot by pressing PrintScreen.
 Print :Exec ksnapshot
 
-# Change to previous/next workspace.
-Mod4 Left :PrevWorkspace
-Mod4 Right :NextWorkspace
+# Toggle Yakuake.
+# Alt+F1: The shortcut is set in Yakuake.
+
+# Open a dialog to run programs.
+Alt F2 :Exec fbrun
+
+# Open a dialog to run Fluxbox commands.
+Alt F3 :CommandDialog
+
+# Close the current window.
+Alt F4 :Close
+
+# Move the current window to the left monitor.
+Alt F5 :MacroCmd {SetHead 1}
+
+# Move the current window to the right monitor.
+Alt F6 :MacroCmd {SetHead 2}
+
+# Resize and move the window to the left half of the screen.
+Alt F7 :MacroCmd {ResizeTo 960 540} {Moveto 0 0} {MaximizeVertical}
+
+# Resize and move the window to the right half of the screen.
+Alt F8 :MacroCmd {ResizeTo 960 540} {Moveto 960 0} {MaximizeVertical}
+
+# Maximize the current window.
+Alt F9 :Maximize
+
+# Toggle decorations.
+Alt F10 :ToggleDecor
+
+# Switch to fullscreen.
+Alt F11 :Fullscreen
+
+# Toggles the visibility of the current window on all workspaces.
+Alt F12 :Stick
+
+# Moving/resizing.
+OnTitlebar Move1 :StartMoving
+OnLeftGrip Move1 :StartResizing bottomleft
+OnRightGrip Move1 :StartResizing bottomright
+OnWindowBorder Move1 :StartMoving
+OnWindow Shift Alt Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+OnWindow Alt Mouse1 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+
+# Double click on the titlebar to maximize.
+OnTitlebar Double Mouse1 :Maximize
+
+# Right click on the titlebar for a menu of options.
+OnTitlebar Mouse3 :WindowMenu
+
+# Move focus between screens.
+Control Alt h :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 0
+Control Alt l :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 1
 # Alternative:
-Mod4 h :PrevWorkspace
-Mod4 l :NextWorkspace
+Control Alt Left :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 0
+Control Alt Right :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 1
+
+# Cycle through windows.
+Alt Tab :NextWindow {groups} (workspace=[current])
+Alt Shift Tab :PrevWindow {groups} (workspace=[current])
+
+# Change to previous/next workspace.
+Mod4 j :PrevWorkspace
+Mod4 k :NextWorkspace
 
 # Change to a specific workspace.
 Mod4 F1 :Workspace 1
@@ -123,17 +128,16 @@ Alt Mod4 F10 :SendToWorkspace 10
 Alt Mod4 F11 :SendToWorkspace 11
 Alt Mod4 F12 :SendToWorkspace 12
 
-# Scroll on the titlebar to change workspaces.
+# Scroll on the toolbar (= taskbar) to change workspaces.
 OnToolbar Mouse4 :PrevWorkspace
 OnToolbar Mouse5 :NextWorkspace
 
-# Aplications.
+# Application shortcuts.
 Control Alt c :Exec gsimplecal
 Control Alt d :Exec ~/.fluxbox/scripts/activate-window.sh firefox
 Control Alt f :Exec firefox
+Control Alt n :Exec konsole
+Control Alt m :Exec ~/.fluxbox/scripts/start-konsole-with.sh mc
 Control Alt g :Exec gvim
-Control Alt k :Exec krusader
-Control Alt m :Exec ksystraycmd thunderbird
-Control Alt o :Exec konqueror
-Control Alt q :Exec qstardict
-Control Alt t :Exec konsole
+Control Alt u :Exec krusader
+Control Alt t :Exec ksystraycmd thunderbird
