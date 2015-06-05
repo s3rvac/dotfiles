@@ -27,10 +27,6 @@ set skip-completed-text on
 # Enable vi-like motion.
 set editing-mode vi
 
-# Shell history completion using the PageUp and PageDown keys.
-"\e[5~":history-search-backward
-"\e[6~":history-search-forward
-
 # Make the Home and End keys work as expected.
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line

@@ -13,7 +13,7 @@ export PATH
 
 # Prepends $1 to $PATH, provided it is a directory and is not already in $PATH.
 # Based on http://superuser.com/a/39995.
-prepend_to_path() {
+function prepend_to_path() {
 	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
 		PATH="$1:$PATH"
 	fi
@@ -89,10 +89,6 @@ shopt -s histappend
 # Allow re-editing of a failed history substitution.
 shopt -s histreedit
 
-# Allow reviewing of a history substitution result by loading the resulting
-# line into the editing buffer, rather than directly executing it.
-shopt -s histverify
-
 # Enable completion of host names.
 shopt -s hostcomplete
 
@@ -137,6 +133,12 @@ complete -F pacman_completion paci
 complete -F pacman_completion pacr
 complete -F pacman_completion pacp
 complete -F pacman_completion pacs
+
+# Other aliases.
+complete -o default v
+complete -o default vd
+complete -o default gv
+complete -o default gvd
 
 #------------------------------------------------------------------------------
 # Colors.
@@ -247,7 +249,9 @@ alias e='egrep'
 alias ei='egrep -i'
 alias er='egrep -rI'
 alias eri='egrep -rIi'
-alias mc='mc --color'
+# We have to force xterm-256color because mc does not work properly with
+# screen-256color ($TERM used in tmux).
+alias mc='TERM=xterm-256color mc --color'
 alias vim='vim -p'
 alias v='vim'
 alias vd='vimdiff'
@@ -263,7 +267,6 @@ fi
 alias umntd='sudo umount /mnt/disk'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias my='mysql -p'
-alias pi='ping google.com'
 alias g='git'
 alias py='python'
 alias py2='python2'
@@ -283,6 +286,16 @@ function bak() { cp -a "$1" "$1".bak; }
 # be available in $PATH under name 'trs'.
 alias toen='trs cs:en'
 alias tocs='trs en:cs'
+
+# When run without any arguments, ping google.com; otherwise, ping whatever the
+# user wants.
+function pi() {
+	if [ $# -eq 0 ]; then
+		ping google.com
+	else
+		ping "$@"
+	fi
+}
 
 # Run the given command with arguments through gdb.
 function gdbc() { gdb -ex run --args "$@"; }
