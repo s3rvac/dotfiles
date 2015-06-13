@@ -107,11 +107,6 @@ nnoremap l :forward<CR>
 nnoremap j 3j
 nnoremap k 3k
 
-" Close the current tab.
-nnoremap x :tabclose<CR>
-" Alternative key:
-inoremap <C-w> <Esc>:tabclose<CR>
-
 " Pass Ctrl-e to the "It's All Text" addon that I use (it is better than
 " Vimperator's Ctrl-i functionality).
 inoremap <C-e> <Insert><C-e><Insert>
