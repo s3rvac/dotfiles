@@ -21,8 +21,8 @@ set complete=l
 " match.
 set wildmode=list:full
 
-" Show only five suggestions.
-set maxitems=5
+" Maximum number of items to show in listings.
+set maxitems=6
 
 " Use GVim as the external editor.
 set editor='gvim -f'
@@ -116,7 +116,7 @@ inoremap <C-w> <Esc>:tabclose<CR>
 " Vimperator's Ctrl-i functionality).
 inoremap <C-e> <Insert><C-e><Insert>
 
-" Allow Ctrl-a to select all the text.
+" Allow Ctrl-a to select all text.
 inoremap <C-a> <Insert><C-a><Insert>
 
 " Hitting Shift+Space will make the current search disappear.
