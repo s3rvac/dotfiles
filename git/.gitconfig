@@ -64,6 +64,8 @@
 	whitespace = trailing-space,space-before-tab
 	; Used pager.
 	pager = less -iFRXS -x4
+	; Used editor.
+	editor = vim
 
 [diff]
 	; Allow `git diff` to do basic rename and copy detection.
@@ -76,8 +78,8 @@
 	default = simple
 
 [merge]
-	; The used merge tool.
-	tool = gvimdiff
+	; Used merge tool.
+	tool = vimdiff
 
 [sendemail]
 	; Review and edit each patch before sending.
