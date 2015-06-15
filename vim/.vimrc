@@ -62,9 +62,9 @@ set relativenumber      " Show relative numbers instead of absolute by default.
 set splitright          " Open new vertical panes in the right rather than left.
 set splitbelow          " Open new horizontal panes in the bottom rather than top.
 
-" Modelines have historically been a source of security/resource
-" vulnerabilities, so disable them.
-set nomodeline
+" Security.
+set secure              " Forbid loading of .vimrc under $PWD.
+set nomodeline          " Modelines have been a source of vulnerabilities.
 
 " Indention.
 set autoindent          " Indent a new line according to the previous one.
@@ -244,11 +244,6 @@ if has("gui_running")
 	set guicursor=a:blinkon0
 " Vim in terminal.
 else
-	" Force 256 color support, even if the terminal claims it does not support it.
-	" This, together with the CSApprox plugin, ensures that Vim looks nice in the
-	" terminal.
-	set t_Co=256
-
 	" Lower the timeout when entering normal mode from insert mode.
 	set ttimeoutlen=0
 
@@ -326,6 +321,9 @@ au BufEnter * hi TabLine guibg=black guifg=gray ctermbg=black ctermfg=gray
 au BufEnter * hi TabLineSel guibg=black guifg=white ctermbg=black ctermfg=white
 au BufEnter * hi TabLineFill guibg=black guifg=black ctermbg=black ctermfg=black
 
+" Messages.
+au BufEnter * hi MoreMsg guibg=black guifg=green1 ctermbg=black ctermfg=46
+
 " Splits.
 au BufEnter * hi VertSplit guibg=white guifg=black ctermbg=white ctermfg=black
 
@@ -377,7 +375,7 @@ nnoremap <silent> <S-F2>
 	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>80v.\+', -1) <Bar>
 	\ endif <CR>
 
-" F3: Toggle line wrapping in normal mode.
+" F3: Toggle line wrapping.
 nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
 
 " F4: Toggle vim-gitgutter.
@@ -396,7 +394,10 @@ function! <SID>RelAbsNumberToggle()
 endfunction
 nnoremap <silent> <F6> :call <SID>RelAbsNumberToggle()<CR>
 
-" F9: Run tests.
+" F9: Run tests for the given file.
+" The mapping is defined separately for each file type.
+
+" Shift+F9: Run all tests.
 " The mapping is defined separately for each file type.
 
 " F10: Run the current script.
@@ -407,12 +408,19 @@ nnoremap <silent> <F6> :call <SID>RelAbsNumberToggle()<CR>
 nnoremap <F11> mp :echo 'Making...' <Bar> silent make <Bar> botright cw<CR><C-w><Up>
 
 "------------------------------------------------------------------------------
+" General-purpose commands.
+"------------------------------------------------------------------------------
+
+" Runs silently the given shell command.
+command! -nargs=1 SilentExecute execute ':silent !' . <q-args> | execute ':redraw!'
+
+"------------------------------------------------------------------------------
 " Abbreviations and other mappings.
 "------------------------------------------------------------------------------
 
 " The <Leader> character.
-let mapleader=","
-let maplocalleader=","
+let mapleader = ","
+let maplocalleader = ","
 
 " General command aliases.
 cnoreabbrev tn tabnew
@@ -429,9 +437,7 @@ nnoremap <C-s> :wa<CR>
 inoremap <C-s> <Esc>:wa<CR>
 vnoremap <C-s> <Esc>:wa<CR>
 
-" These mappings will reselect the block after shifting, so you'll just have
-" to select a block, press < or > as many times as you like, and press <Esc>
-" when you're done to deselect the block.
+" Stay in visual mode when indenting in visual mode.
 vnoremap < <gv
 vnoremap > >gv
 
@@ -484,6 +490,10 @@ noremap <S-k> gt
 " Join lines by <Leader>+j because I use J to go to the previous tab.
 nnoremap <Leader>j <S-j>
 
+" Close the opened HTML tag with Ctrl+_ (I do not use vim-closetag because it
+" often fails with an error).
+inoremap <silent> <C-_> </<C-X><C-O><C-X>
+
 " Join lines without producing any spaces. It works like gJ, but does not keep
 " the indentation whitespace.
 " Based on http://vi.stackexchange.com/a/440.
@@ -505,8 +515,7 @@ let s:web_browser_path='/usr/bin/firefox'
 function! <SID>OpenLink(link)
 	exec ':silent !' . s:web_browser_path . ' ' . '"' . a:link . '"'
 endfunction
-" Open a link under the cursor in a web browser.
-" TODO Use gx instead of using this custom solution.
+" Open a link under the cursor in a web browser (similar to gx, but faster).
 nnoremap <silent> gl
 	\ :let curr_line = getline('.') <Bar>
 	\ let link = matchstr(curr_line, '\(http\\|https\\|ftp\\|file\)://[^ )"]*') <Bar>
@@ -574,13 +583,13 @@ nnoremap <Leader>bib :tabe *.bib<CR>
 "       configure them in .vimrc, I had to modify the sources of the plugin.
 
 " Do not create menu.
-let NERDMenuMode=0
+let NERDMenuMode = 0
 " Delimit comments with a single space.
-let NERDSpaceDelims=1
+let NERDSpaceDelims = 1
 " Also remove alternative comments when uncommenting.
-let NERDRemoveAltComs=1
+let NERDRemoveAltComs = 1
 " Do not create default mappings (I use my own ones - see below).
-let NERDCreateDefaultMappings=0
+let NERDCreateDefaultMappings = 0
 " Use Ctrl+C to comment/uncoment the selected text according to the first line.
 nnoremap <silent> <C-c> :call NERDComment(0, 'toggle')<CR>
 vnoremap <silent> <C-c> <ESC>:call NERDComment(1, 'toggle')<CR>
@@ -593,11 +602,6 @@ function! <SID>HtmlComment(is_visual)
 endfunction
 au FileType html nnoremap <silent> <C-c> :call <SID>HtmlComment(0)<CR>
 au FileType html vnoremap <silent> <C-c> <Esc>:call <SID>HtmlComment(1)<CR>
-
-"--------------------------------------------------------
-" netrw: Network oriented reading, writing, and browsing.
-"--------------------------------------------------------
-let g:netrw_silent=1
 
 "----------------------------
 " UltiSnip: Snippets for Vim.
@@ -644,6 +648,13 @@ let g:gitgutter_highlight_lines = 1
 nnoremap <silent> <F4> :GitGutterToggle<CR>
 inoremap <silent> <F4> <C-o>:GitGutterToggle<CR>
 
+"---------------------------------------------
+" Colorizer: Colors hex codes and color names.
+"---------------------------------------------
+let g:colorizer_auto_color = 0 " Do not start automatically.
+let g:colorizer_colornames = 1 " Highlight color names as well.
+let g:colorizer_x11_names = 1 " Support X11 colors as well.
+
 "---------
 " xmledit.
 "---------
@@ -662,7 +673,7 @@ nmap        ++ vip++
 " Remove trailing whitespace when a file is saved.
 " TODO: Do not remove whitespace in these situations:
 "       - before the space (or tab) there is a back slash (like '\ ').
-au BufWritePre * :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+au BufWritePre * :if ! &bin | call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " In insert mode, show absolute numbers.
 " au InsertEnter * :set norelativenumber
@@ -680,6 +691,8 @@ au BufNewFile,BufRead *.php[0-9a-zA-Z] set ft=php
 au BufNewFile,BufRead *.ll set ft=llvm
 " Consider all .wsgi files as Python files.
 au BufNewFile,BufRead *.wsgi set ft=python
+" Use Vim highlighting when editing Vimperator's configuration.
+au BufNewFile,BufRead .vimperatorrc set ft=vim
 " Use tex filetype rather than plaintex.
 au BufNewFile,BufRead *.tex set ft=tex
 
@@ -701,8 +714,6 @@ au FileType * call <SID>SetMakeprg()
 
 " C and C++ code.
 augroup c_cpp
-" Enable spell checking.
-au FileType c,cpp set spell
 " Use the man ftplugin to display pages from manual.
 au FileType c,cpp runtime ftplugin/man.vim
 " Use <Leader>man to display manual pages for the function under cursor.
@@ -818,8 +829,6 @@ augroup END
 
 " PHP code.
 augroup php
-" Enable spell checking.
-au FileType php set spell
 " Use <Leader>man to display manual pages for the function under cursor in a browser.
 au FileType php nmap <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
 " Make "gq" on comments work properly.
@@ -839,7 +848,6 @@ augroup END
 
 " Shell code.
 augroup sh
-au FileType sh set spell        " Enable spell checking.
 au FileType sh set noexpandtab  " Use tabs instead of spaces.
 augroup END
 
@@ -870,6 +878,9 @@ au FileType python nnoremap <Leader>fr mz?^from <CR>:nohlsearch<CR>ofrom  <Esc>i
 
 " Let F9 run the currently opened tests.
 au FileType python nnoremap <F9> :wa<CR>:!nosetests %<CR>
+
+" Let Shift+F9 run all tests.
+au FileType python nnoremap <S-F9> :wa<CR>:!nosetests tests<CR>
 
 " Let F10 run the currently opened script.
 au FileType python nnoremap <F10> :w<CR>:!python %<CR>
@@ -909,6 +920,15 @@ augroup gitcommit
 au FileType gitcommit set spell " Enable spellchecking.
 augroup END
 
+" Dokuwiki.
+augroup dokuwiki
+au FileType dokuwiki set spell         " Enable spell checking.
+au FileType dokuwiki set expandtab     " Use spaces instead of tabs.
+au FileType dokuwiki set tabstop=2     " Lists are indented with 2 spaces.
+au FileType dokuwiki set softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType dokuwiki set shiftwidth=2  " Shift by 2 spaces.
+augroup END
+
 " Mail.
 augroup mail
 au FileType mail set spell " Enable spellchecking.
@@ -919,7 +939,6 @@ augroup END
 " Firefox "It's all text plugin".
 "-------------------------------------------------------------------------------
 
-" Firefox "It's all text plugin".
 let s:opened_file_path = expand('%:p')
 if s:opened_file_path =~ '\.mozilla/firefox/'
 	" Enable Czech spell checking by default.

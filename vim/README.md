@@ -17,12 +17,11 @@ I use the following Vim plugins, which you can install by using
   * General:
 	* [AutoFenc](https://github.com/s3rvac/AutoFenc) - Automatically detect and set file encoding when opening a file.
 	* [cecutil](http://www.vim.org/scripts/script.php?script_id=1066) - Utilities used by other plugins.
-	* [closetag](http://www.vim.org/scripts/script.php?script_id=13) - Functions and mappings to close opened HTML/XML tags.
+	* [Colorizer](https://github.com/chrisbra/Colorizer) - Color hex codes and color names.
 	* [Command-T](https://github.com/wincent/command-t) - Fast, intuitive mechanism for opening files.
 	* [CSApprox](https://github.com/godlygeek/csapprox) - Makes GVim-only colorschemes work transparently in terminal Vim.
 	* [matchit](http://www.vim.org/scripts/script.php?script_id=39) - Extended `%` matching for HTML, LaTeX, and many other languages.
 	* [NERD_Commenter](http://www.vim.org/scripts/script.php?script_id=1218) - Allows easy commenting of code for many filetypes.
-	* [netrw](http://www.vim.org/scripts/script.php?script_id=1075) - Network oriented reading, writing, and browsing.
 	* [Rename](http://www.vim.org/scripts/script.php?script_id=1928) - Rename a buffer within Vim and on disk.
 	* [sessionman](http://www.vim.org/scripts/script.php?script_id=2010) - Vim session manager.
 	* [ultisnips](https://github.com/SirVer/ultisnips) - The ultimate snippet solution for Vim.
