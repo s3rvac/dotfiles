@@ -228,6 +228,7 @@ stty -ixon 2> /dev/null
 alias ax="chmod a+x"
 alias c='clear'
 alias l='ls -lA --group-directories-first'
+alias md='mkdir -p'
 function mdc() { mkdir -p "$@" && eval cd "\"\$$#\""; }
 alias cd..='cd ..'
 alias ..='cd ..'
