@@ -16,7 +16,7 @@
 # Choose a proper background image depending on the used resolution.
 # Note: I assume that the background file exists for the used resolution.
 SCREEN0_BG=~/.fluxbox/backgrounds/wallpaper.jpg
-SCREEN1_BG=~/.fluxbox/backgrounds/black.jpg
+SCREEN1_BG=~/.fluxbox/backgrounds/black.png
 
 # Set the background.
 feh --image-bg black --bg-max "$SCREEN0_BG" "$SCREEN1_BG"
