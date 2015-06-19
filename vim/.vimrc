@@ -928,6 +928,11 @@ au FileType dokuwiki set softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType dokuwiki set shiftwidth=2  " Shift by 2 spaces.
 augroup END
 
+" Markdown.
+augroup markdown
+au FileType markdown set spell " Enable spellchecking.
+augroup END
+
 " Mail.
 augroup mail
 au FileType mail set spell " Enable spellchecking.
