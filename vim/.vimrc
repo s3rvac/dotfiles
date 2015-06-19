@@ -866,9 +866,6 @@ augroup END
 
 " Python code.
 augroup python
-" Enable spell checking.
-au FileType python set spell
-
 " The following settings are based on these guidelines:
 "  - python.org/dev/peps/pep-0008
 au FileType python set expandtab      " Use spaces instead of tabs.
@@ -893,9 +890,6 @@ augroup END
 
 " Ruby code.
 augroup ruby
-" Enable spell checking.
-au FileType ruby set spell
-
 " The following settings are based on these guidelines:
 "  - https://raw.github.com/chneukirchen/styleguide/master/RUBY-STYLE
 au FileType ruby set expandtab      " Use spaces instead of tabs.
