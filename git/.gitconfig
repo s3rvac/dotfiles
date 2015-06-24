@@ -78,7 +78,7 @@
 	default = simple
 
 [merge]
-	; Used merge tool.
+	; The used merge tool.
 	tool = vimdiff
 
 [sendemail]
