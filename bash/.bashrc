@@ -123,6 +123,11 @@ if [[ -f ~/.git-completion.bash ]]; then
 fi
 complete -o default -o nospace -F _git g
 
+# tmuxinator
+if [[ -f ~/.tmuxinator-completion.bash ]]; then
+	source ~/.tmuxinator-completion.bash
+fi
+
 # pacman
 pacman_completion() {
 	cur=`_get_cword`
