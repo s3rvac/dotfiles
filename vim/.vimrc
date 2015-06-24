@@ -969,6 +969,7 @@ iab hte        the
 nmap :W :w
 nmap :Q :q
 nmap :Set :set
+nmap :Vsp :vsp
 
 "------------------------------------------------------------------------------
 " Local settings.
