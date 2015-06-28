@@ -709,7 +709,7 @@ function <SID>SetMakeprg()
 endfunction
 au FileType * call <SID>SetMakeprg()
 
-" C and C++ code.
+" C and C++.
 augroup c_cpp
 " Use the man ftplugin to display pages from manual.
 au FileType c,cpp runtime ftplugin/man.vim
@@ -824,7 +824,7 @@ au FileType cpp nnoremap <F10> :w<CR>:g++ -std=c++14 -pedantic -Wall -Wextra -o 
 
 augroup END
 
-" PHP code.
+" PHP.
 augroup php
 " Use <Leader>man to display manual pages for the function under cursor in a browser.
 au FileType php nmap <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
@@ -832,7 +832,7 @@ au FileType php nmap <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.
 au FileType php set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
 augroup END
 
-" LaTeX code.
+" LaTeX.
 augroup latex
 au FileType tex,plaintext set spell          " Enable spell checking.
 au FileType tex,plaintex let mytextwidth=80  " Maximum line length.
@@ -843,12 +843,12 @@ au FileType tex,plaintex set errorformat=%f:%l:\ %m
 " TODO: Add support for building files without a Makefile.
 augroup END
 
-" Shell code.
+" Shell.
 augroup sh
 au FileType sh set noexpandtab  " Use tabs instead of spaces.
 augroup END
 
-" MySQL code.
+" MySQL.
 augroup mysql
 " Consider .sql files as MySQL files.
 au BufNewFile,BufRead *.sql set ft=mysql
@@ -856,7 +856,7 @@ au BufNewFile,BufRead *.sql set ft=mysql
 au FileType mysql set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
 augroup END
 
-" Python code.
+" Python.
 augroup python
 " The following settings are based on these guidelines:
 "  - python.org/dev/peps/pep-0008
@@ -880,7 +880,7 @@ au FileType python nnoremap <S-F9> :wa<CR>:!nosetests tests<CR>
 au FileType python nnoremap <F10> :w<CR>:!python %<CR>
 augroup END
 
-" Ruby code.
+" Ruby.
 augroup ruby
 " The following settings are based on these guidelines:
 "  - https://raw.github.com/chneukirchen/styleguide/master/RUBY-STYLE
@@ -894,7 +894,7 @@ au FileType ruby let mytextwidth=80 " Maximum line length.
 au FileType ruby nnoremap <F10> :w<CR>:!ruby %<CR>
 augroup END
 
-" Haskell code.
+" Haskell.
 augroup haskell
 " The following settings are based on these guidelines:
 "  - urchin.earth.li/~ian/style/haskell.html
