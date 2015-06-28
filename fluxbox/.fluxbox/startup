@@ -19,10 +19,8 @@ sleep 1
 	wicd-client &
 	kmix &
 	yakuake
-	xfce4-power-manager
 	qxkb &
 	qstardict &
-	psi &
 	clementine &
 
 	# Disable tapping while writing (for 1 second).
