@@ -198,8 +198,8 @@ export HISTCONTROL=ignoreboth
 export PAGER=less
 export LESS='-iFRX -x4'
 
-# Locale. I overall use en_US, but for some categories, I prefer en_GB. For
-# example, I prefer dd/mm/yyyy (GB) to mm/dd/yyyy (US).
+# Locale. I use en_US, but for some categories, I prefer en_GB. For example, I
+# prefer dd/mm/yyyy (GB) to mm/dd/yyyy (US).
 export LANG=en_US.UTF-8
 export LC_TIME=en_GB.UTF-8
 export LC_PAPER=en_GB.UTF-8
