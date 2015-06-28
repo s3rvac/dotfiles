@@ -680,14 +680,6 @@ nmap        ++ vip++
 "       - before the space (or tab) there is a back slash (like '\ ').
 au BufWritePre * :if ! &bin | call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
-" In insert mode, show absolute numbers.
-" au InsertEnter * :set norelativenumber
-" au InsertLeave * :set relativenumber
-
-" When Vim looses focus, show absolute numbers.
-" :au FocusLost   * :set norelativenumber
-" :au FocusGained * :set relativenumber
-
 " Consider all .tpl files as Smarty files.
 au BufNewFile,BufRead *.tpl set ft=smarty
 " Consider all .php* files (.phps, .phpt etc.) as PHP files.
