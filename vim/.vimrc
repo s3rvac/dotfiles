@@ -764,8 +764,8 @@ function! <SID>OpenCAndHInNewTab(base_name)
 	endif
 	if filereadable(c_file)
 		if filereadable(h_file)
-			exec "tabnew " . h_file
-			exec "vsplit " . c_file
+			exec "tabnew " . c_file
+			exec "vsplit " . h_file
 		else
 			exec "tabnew " . c_file
 		endif
@@ -784,8 +784,8 @@ function! <SID>SplitCOrHFile()
 		let c_file = bufname("")
 		let h_file = substitute(bufname(""), "\\.\\(cpp\\|cc\\|c\\)$", ".h", "")
 		if filereadable(h_file)
-			exec "edit " . h_file
-			exec "vsplit " . c_file
+			exec "edit " . c_file
+			exec "vsplit " . h_file
 		else
 			echo "The corresponding .h file does not exist."
 		endif
@@ -793,8 +793,8 @@ function! <SID>SplitCOrHFile()
 		let h_file = bufname("")
 		let c_file = <SID>GetCFile(substitute(bufname(""), "\\.h$", ".", ""))
 		if filereadable(c_file)
-			exec "edit " . h_file
-			exec "vsplit " . c_file
+			exec "edit " . c_file
+			exec "vsplit " . h_file
 		else
 			echo "The corresponding .{c,cc,cpp} file does not exist."
 		endif
