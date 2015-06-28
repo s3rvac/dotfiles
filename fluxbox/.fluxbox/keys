@@ -18,6 +18,15 @@ Control Mod4 l :Exec ~/.fluxbox/scripts/lock-screen.sh
 # Reload the configuration.
 Control Mod4 r :Reconfigure
 
+# Volume control. The shortcuts are defined in Kmix.
+# Win+PgDown: Volume down.
+# Win+PgUp: Volume up.
+# Win+Home: Mute/Unmute.
+
+# Audio player control. The shortcuts are defined in Clementine.
+# Win+Pause: Play/Pause.
+# Win+End: Stop playing after current track.
+
 # Make a screenshot by pressing PrintScreen.
 Print :Exec ksnapshot
 
