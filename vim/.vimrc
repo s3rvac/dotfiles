@@ -878,6 +878,20 @@ au FileType python nnoremap <S-F9> :wa<CR>:!nosetests tests<CR>
 
 " Let F10 run the currently opened script.
 au FileType python nnoremap <F10> :w<CR>:!python %<CR>
+
+" Splits the current window by showing the corresponding test file on the
+" right-hand side.
+function! <SID>ShowPythonTestsInSplit()
+	" For e.g. main_package/subpackage/module.py, the tests are in
+	" tests/subpackage/module_tests.py (a convention that I use in my
+	" projects).
+	let module_rel_path = expand("%")
+	let tests_rel_path = substitute(module_rel_path, "\\.\\py$", "_tests.py", "")
+	let tests_rel_path = substitute(tests_rel_path, "^[^/]*/", "tests/", "")
+	exec "vsplit " . tests_rel_path
+endfunction
+" The mapping is mimicking <Leader>as for c,cpp.
+au FileType python nnoremap <Leader>as :call <SID>ShowPythonTestsInSplit()<CR>
 augroup END
 
 " Ruby.
