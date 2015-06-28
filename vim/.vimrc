@@ -906,6 +906,14 @@ au FileType haskell set shiftwidth=4   " Shift by 4 spaces.
 au FileType haskell let mytextwidth=79 " Maximum line length.
 augroup END
 
+" LLVM.
+augroup llvm
+au FileType llvm set expandtab      " Use spaces instead of tabs.
+au FileType llvm set tabstop=2      " A tab counts for 2 spaces.
+au FileType llvm set softtabstop=2  " Causes backspace to delete 2 spaces.
+au FileType llvm set shiftwidth=2   " Shift by 2 spaces.
+augroup END
+
 " Git commits.
 augroup gitcommit
 au FileType gitcommit set spell " Enable spellchecking.
