@@ -509,9 +509,35 @@ function! <SID>JoinWithoutSpaces()
 endfunction
 nnoremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
 
-" Jump between windows by <Ctrl>+hjkl.
-" I use the https://github.com/christoomey/vim-tmux-navigator plugin, which
-" properly defines the needed combinations on its own.
+" Smart window switching with awareness of Tmux panes. Now, I can use Ctrl+hjkl
+" in both Vim and Tmux (without using the prefix). Based on
+" http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits.
+" Note: I do not use https://github.com/christoomey/vim-tmux-navigator because
+"       it does not work when vim is run over ssh.
+if exists('$TMUX')
+	function! <SID>TmuxOrSplitSwitch(wincmd, tmuxdir)
+		let previous_winnr = winnr()
+		silent! execute 'wincmd ' . a:wincmd
+		if previous_winnr == winnr()
+			call system('tmux select-pane -' . a:tmuxdir)
+			redraw!
+		endif
+	endfunction
+
+	let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+	let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+	let &t_te = "\<Esc>]2;" . previous_title . "\<Esc>\\" . &t_te
+
+	nnoremap <silent> <C-h> :call <SID>TmuxOrSplitSwitch('h', 'L')<CR>
+	nnoremap <silent> <C-j> :call <SID>TmuxOrSplitSwitch('j', 'D')<CR>
+	nnoremap <silent> <C-k> :call <SID>TmuxOrSplitSwitch('k', 'U')<CR>
+	nnoremap <silent> <C-l> :call <SID>TmuxOrSplitSwitch('l', 'R')<CR>
+else
+	noremap <C-h> <C-w>h
+	noremap <C-j> <C-w>j
+	noremap <C-k> <C-w>k
+	noremap <C-l> <C-w>l
+endif
 
 " Opens the selected link in a web browser.
 let s:web_browser_path='/usr/bin/firefox'

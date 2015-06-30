@@ -28,7 +28,6 @@ I use the following Vim plugins, which you can install by using
 	* [vim-gitgutter](https://github.com/airblade/vim-gitgutter) - Show a git diff in the gutter (sign column) and stages/reverts hunks.
 	* [vim-repeat](https://github.com/tpope/vim-repeat) - Enable repeating supported plugin maps with `"."`.
 	* [vim-surround](https://github.com/tpope/vim-surround) - Quoting/parenthesizing made simple.
-	* [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) -  Seamless navigation between Tmux panes and Vim splits.
 	* [vim-visual-increment](https://github.com/triglav/vim-visual-increment) - Use CTRL+A/X to create increasing sequence of numbers or letters via visual mode.
 	* [vmath](https://github.com/DavidGamba/vim-vmath) - Calculates the sum, average, min, and max for a visual region containing numbers.
 
