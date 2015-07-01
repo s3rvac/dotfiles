@@ -213,8 +213,8 @@ set fencs=ucs-bom,utf-8,cp1250,latin2,latin1
 set enc=utf-8
 " Terminal encoding used for input and terminal display.
 set tenc=utf-8
-" End of line (unix EOL is preferred over the dos one).
-set ffs=unix,dos
+" End of line (unix EOL is preferred over the dos one and before the mac one).
+set ffs=unix,dos,mac
 
 " Spellchecker.
 " Disable spellchecking by default (F1 toggles it).
