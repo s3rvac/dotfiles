@@ -66,7 +66,7 @@ set splitbelow          " Open new horizontal panes in the bottom rather than to
 set secure              " Forbid loading of .vimrc under $PWD.
 set nomodeline          " Modelines have been a source of vulnerabilities.
 
-" Indention.
+" Indention and formatting.
 set autoindent          " Indent a new line according to the previous one.
 set copyindent          " Copy (exact) indention from the previous line.
 set nopreserveindent    " Do not try to preserve indention when indenting.
@@ -250,7 +250,7 @@ else
 	" Lower the timeout when entering normal mode from insert mode.
 	set ttimeoutlen=0
 
-	" Make some key combinations work when running Vim in tmux.
+	" Make some key combinations work when running Vim in Tmux.
 	if exists('$TMUX')
 		execute "set <xUp>=\e[1;*A"
 		execute "set <xDown>=\e[1;*B"
