@@ -75,6 +75,7 @@ set nosmartindent       " Turn off smartindent.
 set nocindent           " Turn off C-style indent.
 set fo+=q               " Allow formatting of comments with "gq".
 set fo-=r fo-=o         " Turn off automatic insertion of comment characters.
+set fo+=j               " Remove a comment leader when joining comment lines.
 filetype indent off     " Turn off indention by filetype.
 " Override previous settings for all file types (I have to do this because
 " the previous commands don't guarantee this...).
