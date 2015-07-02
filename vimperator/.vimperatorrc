@@ -41,6 +41,9 @@ set status=input,location,bookmark
 " addons + downloads + help + javascript + prefs
 set newtab=all
 
+" Show numbers on each tab.
+set tabnumbers
+
 " Show link destinations in the status line.
 set showstatuslinks=1
 
