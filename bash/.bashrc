@@ -247,7 +247,10 @@ alias er='egrep -rI'
 alias eri='egrep -rIi'
 # We have to force xterm-256color because mc does not work properly with
 # screen-256color ($TERM used in tmux).
-alias mc='TERM=xterm-256color mc --color'
+# The standard mc-wrapper.sh script makes an automatic cd into the last working
+# directory when mc exits (by default, mc exits to the directory from which it
+# was started).
+alias mc='TERM=xterm-256color . /usr/lib/mc/mc-wrapper.sh'
 alias vim='vim -p'
 alias v='vim'
 alias vd='vimdiff'
