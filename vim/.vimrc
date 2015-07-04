@@ -493,11 +493,7 @@ noremap <S-j> gT
 noremap <S-k> gt
 
 " Join lines by <Leader>+j because I use J to go to the previous tab.
-nnoremap <Leader>j <S-j>
-
-" Close the opened HTML tag with Ctrl+_ (I do not use vim-closetag because it
-" often fails with an error).
-inoremap <silent> <C-_> </<C-X><C-O><C-X>
+noremap <Leader>j <S-j>
 
 " Join lines without producing any spaces. It works like gJ, but does not keep
 " the indentation whitespace.
@@ -509,7 +505,11 @@ function! <SID>JoinWithoutSpaces()
         execute 'normal dw'
     endif
 endfunction
-nnoremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
+noremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
+
+" Close the opened HTML tag with Ctrl+_ (I do not use vim-closetag because it
+" often fails with an error).
+inoremap <silent> <C-_> </<C-X><C-O><C-X>
 
 " Smart window switching with awareness of Tmux panes. Now, I can use Ctrl+hjkl
 " in both Vim and Tmux (without using the prefix). Based on
