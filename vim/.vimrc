@@ -574,9 +574,6 @@ vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
 " Sort the current paragraph while merging duplicities.
 nnoremap <Leader>sap (V)k :sort u<CR>
 
-" Wrap the current paragraph.
-nnoremap <Leader>gqp (V)k gqk<CR>
-
 " Replace tabs with spaces.
 nnoremap <Leader>rts :%s/	/    /g<CR>
 
