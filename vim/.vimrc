@@ -79,7 +79,7 @@ set fo+=j               " Remove a comment leader when joining comment lines.
 filetype indent off     " Turn off indention by filetype.
 " Override previous settings for all file types (I have to do this because
 " the previous commands don't guarantee this...).
-au FileType * set autoindent nosmartindent nocindent fo+=q fo-=r fo-=o
+au FileType * set autoindent nosmartindent nocindent fo+=q fo-=r fo-=o fo+=j
 
 " Whitespace.
 set tabstop=4           " Number of spaces <tab> counts for.
