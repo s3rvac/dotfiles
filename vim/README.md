@@ -40,5 +40,5 @@ I use the following Vim plugins, which you can install by using
 	* [jinja2](https://github.com/Glench/Vim-Jinja2-Syntax)
 	* [python](https://github.com/hdima/python-syntax)
 	* [rdoc](https://github.com/depuracao/vim-rdoc)
-	* [redminewiki](my, https://github.com/s3rvac/vim-syntax-redminewiki)
+	* [redminewiki](https://github.com/s3rvac/vim-syntax-redminewiki)
 	* [tracwiki](http://www.vim.org/scripts/script.php?script_id=3337)
