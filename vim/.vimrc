@@ -153,11 +153,6 @@ set statusline+=\ %y                         " File type.
 set statusline+=\ [\%03.3b,0x\%02.2B,U+%04B] " Codes of the character under cursor.
 set statusline+=\ [%l/%L\ (%p%%),%v]         " Line and column numbers.
 
-" Vimdiff.
-if &diff
-	set diffopt+=iwhite " Ignore whitespace.
-endif
-
 " Tell Vim which characters to show for expanded TABs, trailing whitespace,
 " ends of lines, and non-breakable space.
 set listchars=tab:>-,trail:#,eol:$,nbsp:~,extends:>,precedes:<
