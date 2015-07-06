@@ -136,7 +136,7 @@ nnoremap <Leader><S-t> :tabopen!
 "------------------------------------------------------------------------------
 
 " Use liberator://help/intro as the startup page to prevent Firefox starting in
-" the insert mode. This workaround is based from
+" the insert mode. This workaround is based on
 " https://github.com/vimperator/vimperator-labs/issues/88
 set! browser.startup.homepage=liberator://help/intro
 
