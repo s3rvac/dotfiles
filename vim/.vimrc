@@ -480,12 +480,12 @@ inoremap <Right> <nop>
 " not used in the count mode (e.g. 3j). This is great when 'wrap' and
 " 'relativenumber' are used.
 " Based on http://stackoverflow.com/a/21000307/2580955
-noremap <expr> k (v:count == 0 ? 'gk' : 'k')
-noremap <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 
 " Jump between tabs by J/K.
-noremap <S-j> gT
-noremap <S-k> gt
+noremap <silent> <S-j> gT
+noremap <silent> <S-k> gt
 
 " Join lines by <Leader>+j because I use J to go to the previous tab.
 noremap <Leader>j <S-j>
