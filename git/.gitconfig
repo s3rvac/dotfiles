@@ -6,6 +6,12 @@
 	; Enable colored output.
 	ui = true
 
+[color "grep"]
+	; Match my colors used by the system grep.
+	filename = magenta
+	match = yellow bold
+	separator = cyan
+
 [alias]
 	a = add
 	aa = add -u
