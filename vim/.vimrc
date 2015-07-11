@@ -555,9 +555,6 @@ vnoremap <Leader>gbl :<C-u>!git blame <C-r>=expand("%:p") <CR> \| sed -n <C-r>=l
 " Man pages.
 " The nnoremap <Leader>man command is defined for every language separately.
 
-" Replace.
-nnoremap <Leader>ra :%s/
-
 " Replaces the current word (and all occurrences).
 nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
 vnoremap <Leader>rc y:%s/<C-r>"/
