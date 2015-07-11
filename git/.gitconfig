@@ -17,7 +17,6 @@
 	aa = add -u
 	aaa = add -A
 	ap = add -p
-	amend = commit --verbose --amend
 	ar = commit --verbose --amend --reset-author
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	bl = blame
