@@ -502,6 +502,11 @@ function! <SID>JoinWithoutSpaces()
 endfunction
 noremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
 
+" Make Y yank everything from the cursor to the end of the line.
+" This makes Y act more like C or D because by default, Y yanks the current
+" line (i.e. the same as yy).
+noremap Y y$
+
 " Close the opened HTML tag with Ctrl+_ (I do not use vim-closetag because it
 " often fails with an error).
 inoremap <silent> <C-_> </<C-X><C-O><C-X>
