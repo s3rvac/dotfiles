@@ -246,6 +246,10 @@ else
 	" Lower the timeout when entering normal mode from insert mode.
 	set ttimeoutlen=0
 
+	" Check for changes in files more often. This makes Vim in terminal behaves
+	" more like GVim, although sadly not the same.
+	au BufEnter * silent! checktime
+
 	" Make some key combinations work when running Vim in Tmux.
 	if exists('$TMUX')
 		execute "set <xUp>=\e[1;*A"
