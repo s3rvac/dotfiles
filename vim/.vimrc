@@ -599,11 +599,16 @@ nnoremap <silent> gl
 	\     call <SID>OpenLink(link) <Bar>
 	\ endif <CR>
 
-" Run `git blame` over the selected lines.
-vnoremap <Leader>gbl :<C-u>!git blame <C-r>=expand("%:p") <CR> \| sed -n <C-r>=line("'<") <CR>,<C-r>=line("'>") <CR>p <CR>
+" Git leader commands.
+" They require https://github.com/tpope/vim-fugitive.
+noremap <Leader>gbl :Gblame<CR>
 
 " Man pages.
 " The nnoremap <Leader>man command is defined for every language separately.
+
+" Wrap function arguments.
+" Requires the https://github.com/jakobwesthoff/argumentrewrap plugin.
+nnoremap <silent> <Leader>wa :call argumentrewrap#RewrapArguments()<CR>
 
 " Replaces the current word (and all occurrences).
 nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
@@ -612,9 +617,6 @@ vnoremap <Leader>rc y:%s/<C-r>"/
 " Changes the current word (and all occurrences).
 nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
 vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
-
-" Sort the current paragraph while merging duplicities.
-nnoremap <Leader>sap (V)k :sort u<CR>
 
 " Replace tabs with spaces.
 nnoremap <Leader>rts :%s/	/    /g<CR>
@@ -644,34 +646,6 @@ nnoremap <Leader>bib :tabe *.bib<CR>
 "------------------------------------------------------------------------------
 " Plugins.
 "------------------------------------------------------------------------------
-
-"------------------------------------------------------------
-" NERD_Commenter: Easy commenting of code for many filetypes.
-"------------------------------------------------------------
-
-" Note: I use alternate styles for several filetypes. Since I was not able to
-"       configure them in .vimrc, I had to modify the sources of the plugin.
-
-" Do not create menu.
-let NERDMenuMode = 0
-" Delimit comments with a single space.
-let NERDSpaceDelims = 1
-" Also remove alternative comments when uncommenting.
-let NERDRemoveAltComs = 1
-" Do not create default mappings (I use my own ones - see below).
-let NERDCreateDefaultMappings = 0
-" Use Ctrl+C to comment/uncoment the selected text according to the first line.
-nnoremap <silent> <C-c> :call NERDComment(0, 'toggle')<CR>
-vnoremap <silent> <C-c> <ESC>:call NERDComment(1, 'toggle')<CR>
-" I have to remap the <C-c> commands for HTML files (because I want
-" minimal comments for HTML files).
-function! <SID>HtmlComment(is_visual)
-	let first_line = getline(a:is_visual ? line("'<") : a:firstline)
-	let action = first_line =~ '^\s*<!--' ? 'uncomment' : 'minimal'
-	call NERDComment(a:is_visual, action)
-endfunction
-au FileType html nnoremap <silent> <C-c> :call <SID>HtmlComment(0)<CR>
-au FileType html vnoremap <silent> <C-c> <Esc>:call <SID>HtmlComment(1)<CR>
 
 "----------------------------
 " UltiSnip: Snippets for Vim.
@@ -715,16 +689,26 @@ let g:colorizer_auto_color = 0 " Do not start automatically.
 let g:colorizer_colornames = 1 " Highlight color names as well.
 let g:colorizer_x11_names = 1 " Support X11 colors as well.
 
+" ---------------------------------------------------------
+" vim-sort-motion: Vim mapping for sorting a range of text.
+" ---------------------------------------------------------
+let g:sort_motion_flags = "u" " Remove duplicates while sorting.
+
 "---------
 " xmledit.
 "---------
 let xml_tag_completion_map = "<C-l>"
 
-"-------
-" vmath.
-"-------
-vmap <expr> ++ VMATH_YankAndAnalyse()
-nmap        ++ vip++
+"------------------------------------------------------------
+" tcomment_vim: An extensible & universal comment vim-plugin.
+"------------------------------------------------------------
+" Disable leader commands (I don't use them).
+let g:tcommentMapLeader1 = ""
+let g:tcommentMapLeader2 = ""
+" Do not comment blank lines.
+let g:tcomment#blank_lines = 0
+" Custom comment types.
+call tcomment#DefineType('c', tcomment#GetLineC('// %s'))
 
 "------------------------------------------------------------------------------
 " File-type specific settings and other autocommands.
