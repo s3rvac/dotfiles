@@ -436,9 +436,13 @@ cnoreabbrev tocs !trs en:cs
 noremap <silent> Q :q!<CR>
 
 " Quicksave all buffers/tabs.
-nnoremap <C-s> :wa<CR>
-inoremap <C-s> <Esc>:wa<CR>
-vnoremap <C-s> <Esc>:wa<CR>
+" (Use both :w and :wa to force write of the currently edited buffer, even if
+" there are no changes. This forces removal of trailing whitespace from the
+" buffer and also overwrites of the file even if it has changed, which is
+" sometimes handy.)
+nnoremap <silent> <C-s> :w<CR>:wa<CR>
+inoremap <silent> <C-s> <Esc>:w<CR><Esc>:wa<CR>
+vnoremap <silent> <C-s> <Esc>:w<CR><Esc>:wa<CR>
 
 " Stay in visual mode when indenting in visual mode.
 vnoremap < <gv
