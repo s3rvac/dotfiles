@@ -2,6 +2,10 @@
   [Position] (CENTER) {0 0}
   [Layer] {2}
 [end]
+[app] (name=clementine) (class=Clementine)
+  [Maximized] {yes}
+  [Deco] {BORDER}
+[end]
 [app] (name=gvim) (class=Gvim)
   [Maximized] {yes}
   [Deco] {BORDER}
