@@ -137,7 +137,6 @@ function! MyTabLine()
 		endfor
 	endwhile
 	let s .= '%T%#TabLineFill#%='
-	let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
 	return s
 endfunction
 set tabline=%!MyTabLine()
