@@ -381,8 +381,46 @@ nnoremap <silent> <S-F2>
 " F3: Toggle line wrapping.
 nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
 
-" F4: Toggle vim-gitgutter.
-" The mapping is defined in the plugin section.
+" F4: Toggle hexdump view of binary files.
+function! <SID>ToggleHexdumpView()
+	if (&filetype == 'xxd')
+		" Turn off hexdump view.
+		silent! :%!xxd -r
+		set filetype=
+	else
+		" Turn on hexdump view.
+		silent! :%!xxd
+		set filetype=xxd
+	endif
+endfunction
+nnoremap <silent> <F4> :call <SID>ToggleHexdumpView()<CR>
+
+" Shift+F4: Toggle objdump view of binary files.
+function! <SID>ToggleObjdumpView()
+	if (&filetype == 'objdump')
+		" Turn off objdump view.
+		" Replace the buffer with the original content of the buffer, stored in
+		" the Z register.
+		normal ggVG"ZP
+		set filetype=
+		set noreadonly
+	else
+		" Turn on objdump view.
+		" Cut the original content of the buffer into the Z register so we can
+		" use it later to restore the original content.
+		normal ggVG"Zd
+		" Get the output from objdump and paste it into the buffer.
+		silent! :read !objdump -S %
+		" Go to the beginning of the file.
+		normal ggdd
+		" Set a proper file type to enable syntax highlighting through
+		" http://www.vim.org/scripts/script.php?script_id=530.
+		set filetype=objdump
+		" Prevent accidental overwrites.
+		set readonly
+	endif
+endfunction
+nnoremap <silent> <S-F4> :call <SID>ToggleObjdumpView()<CR>
 
 " F5: Refresh file.
 nnoremap <silent> <F5> :edit!<CR>
@@ -669,18 +707,6 @@ let g:CommandTFileScanner='git' " Use `git ls-files`, then fallback to `find`.
 hi CommandTHighlightColor guibg=darkblue guifg=white
 let g:CommandTHighlightColor='CommandTHighlightColor' " Custom highlight color.
 let g:CommandTTraverseSCM='pwd' " Use Vim's present working directory as the root.
-
-"-----------------------------------------------
-" vim-gitgutter: Shows a git diff in the gutter.
-"-----------------------------------------------
-let g:gitgutter_enabled = 0 " Disable it by default. Use F4 to toggle it.
-let g:gitgutter_realtime = 0 " Stop it from running in realtime.
-let g:gitgutter_eager = 0 " Stop it from running too eagerly.
-let g:gitgutter_escape_grep = 1
-let g:gitgutter_highlight_lines = 1
-" F4: Toggle vim-gitgutter.
-nnoremap <silent> <F4> :GitGutterToggle<CR>
-inoremap <silent> <F4> <C-o>:GitGutterToggle<CR>
 
 "---------------------------------------------
 " Colorizer: Colors hex codes and color names.

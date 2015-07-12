@@ -25,7 +25,6 @@ I use the following Vim plugins, which you can install by using
 	* [Rename](http://www.vim.org/scripts/script.php?script_id=1928) - Easier renaming of files.
 	* [sessionman](http://www.vim.org/scripts/script.php?script_id=2010) - Session manager.
 	* [ultisnips](https://github.com/SirVer/ultisnips) - The ultimate snippet solution for Vim.
-	* [vim-gitgutter](https://github.com/airblade/vim-gitgutter) - Show a git diff in the gutter (sign column) and stages/reverts hunks.
 	* [vim-repeat](https://github.com/tpope/vim-repeat) - Enables repeating-supported plugin maps with `"."`.
 	* [vim-surround](https://github.com/tpope/vim-surround) - Quoting/parenthesizing made simple.
 	* [vim-visual-increment](https://github.com/triglav/vim-visual-increment) - Use CTRL+A/X to create increasing sequence of numbers or letters via visual mode.
