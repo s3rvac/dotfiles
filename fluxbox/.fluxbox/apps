@@ -58,6 +58,10 @@
   [Position] (CENTER) {0 0}
   [Maximized] {no}
 [end]
+[app] (name=xfce4-notifyd) (class=Xfce4-notifyd)
+  [FocusNewWindow] {no}
+  [FocusHidden] {no}
+[end]
 [app] (name=Navigator) (class=Firefox) (role=browser)
   [Maximized] {yes}
   [Deco] {BORDER}
