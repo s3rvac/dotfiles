@@ -9,7 +9,7 @@ OnDesktop Mouse2 :WorkspaceMenu
 OnDesktop Mouse3 :RootMenu
 Control Mod4 space :RootMenu
 
-# Set background.
+# Set background (wallpaper).
 Control Mod4 w :Exec ~/.fluxbox/scripts/set-background.sh
 
 # Lock the system.
@@ -17,6 +17,9 @@ Control Mod4 l :Exec ~/.fluxbox/scripts/lock-screen.sh
 
 # Reload the configuration.
 Control Mod4 r :Reconfigure
+
+# Clear all notifications sent by notify-send.
+Mod4 space :Exec ~/.fluxbox/scripts/clear-notifications.sh
 
 # Volume control. The shortcuts are defined in Kmix.
 # Win+PgDown: Volume down.
@@ -109,33 +112,33 @@ Mod4 F10 :Workspace 10
 Mod4 F11 :Workspace 11
 Mod4 F12 :Workspace 12
 
-# Send the current window and change to a specific workspace.
-Control Mod4 F1 :TakeToWorkspace 1
-Control Mod4 F2 :TakeToWorkspace 2
-Control Mod4 F3 :TakeToWorkspace 3
-Control Mod4 F4 :TakeToWorkspace 4
-Control Mod4 F5 :TakeToWorkspace 5
-Control Mod4 F6 :TakeToWorkspace 6
-Control Mod4 F7 :TakeToWorkspace 7
-Control Mod4 F8 :TakeToWorkspace 8
-Control Mod4 F9 :TakeToWorkspace 9
-Control Mod4 F10 :TakeToWorkspace 10
-Control Mod4 F11 :TakeToWorkspace 11
-Control Mod4 F12 :TakeToWorkspace 12
-
 # Send the current window to a specific workspace.
-Alt Mod4 F1 :SendToWorkspace 1
-Alt Mod4 F2 :SendToWorkspace 2
-Alt Mod4 F3 :SendToWorkspace 3
-Alt Mod4 F4 :SendToWorkspace 4
-Alt Mod4 F5 :SendToWorkspace 5
-Alt Mod4 F6 :SendToWorkspace 6
-Alt Mod4 F7 :SendToWorkspace 7
-Alt Mod4 F8 :SendToWorkspace 8
-Alt Mod4 F9 :SendToWorkspace 9
-Alt Mod4 F10 :SendToWorkspace 10
-Alt Mod4 F11 :SendToWorkspace 11
-Alt Mod4 F12 :SendToWorkspace 12
+Control Mod4 F1 :SendToWorkspace 1
+Control Mod4 F2 :SendToWorkspace 2
+Control Mod4 F3 :SendToWorkspace 3
+Control Mod4 F4 :SendToWorkspace 4
+Control Mod4 F5 :SendToWorkspace 5
+Control Mod4 F6 :SendToWorkspace 6
+Control Mod4 F7 :SendToWorkspace 7
+Control Mod4 F8 :SendToWorkspace 8
+Control Mod4 F9 :SendToWorkspace 9
+Control Mod4 F10 :SendToWorkspace 10
+Control Mod4 F11 :SendToWorkspace 11
+Control Mod4 F12 :SendToWorkspace 12
+
+# Send the current window and change to a specific workspace.
+Control Shift Mod4 F1 :TakeToWorkspace 1
+Control Shift Mod4 F2 :TakeToWorkspace 2
+Control Shift Mod4 F3 :TakeToWorkspace 3
+Control Shift Mod4 F4 :TakeToWorkspace 4
+Control Shift Mod4 F5 :TakeToWorkspace 5
+Control Shift Mod4 F6 :TakeToWorkspace 6
+Control Shift Mod4 F7 :TakeToWorkspace 7
+Control Shift Mod4 F8 :TakeToWorkspace 8
+Control Shift Mod4 F9 :TakeToWorkspace 9
+Control Shift Mod4 F10 :TakeToWorkspace 10
+Control Shift Mod4 F11 :TakeToWorkspace 11
+Control Shift Mod4 F12 :TakeToWorkspace 12
 
 # Scroll on the toolbar (= taskbar) to change workspaces.
 OnToolbar Mouse4 :PrevWorkspace
