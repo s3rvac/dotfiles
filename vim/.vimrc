@@ -873,8 +873,8 @@ augroup END
 
 " LaTeX.
 augroup latex
-au FileType tex,plaintext set spell          " Enable spell checking.
-au FileType tex,plaintex let mytextwidth=80  " Maximum line length.
+au FileType tex,plaintex set spell          " Enable spell checking.
+au FileType tex,plaintex let mytextwidth=80 " Maximum line length.
 " Compilation.
 " This errorformat presumes that you are using `pdflatex -file-line-error`
 " to compile .tex files.
