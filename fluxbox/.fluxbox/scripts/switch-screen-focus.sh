@@ -25,14 +25,8 @@ else
 fi
 SCREEN_MOUSE_Y_POS="100"
 
-# Move the mouse cursor to the target position.
+# Move the mouse cursor to the target position, get the window under the
+# cursor, and activate the window.
 xdotool mousemove "$SCREEN_MOUSE_X_POS" "$SCREEN_MOUSE_Y_POS"
-
-# Get the window under the mouse cursor.
 WINDOW="$(xdotool getmouselocation --shell 2> /dev/null | grep 'WINDOW' | sed 's".*=\(.*\)"\1"')"
-
-# Focus the window under the mouse cursor. However, do not set window focus if
-# the window already has focus (the window would loose focus instead).
-if [ "$(xdotool getwindowfocus)" != "$WINDOW" ]; then
-	xdotool windowfocus "$WINDOW"
-fi
+xdotool windowactivate "$WINDOW"
