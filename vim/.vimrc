@@ -961,15 +961,16 @@ augroup END
 
 " LLVM.
 augroup llvm
-au FileType llvm set expandtab      " Use spaces instead of tabs.
-au FileType llvm set tabstop=2      " A tab counts for 2 spaces.
-au FileType llvm set softtabstop=2  " Causes backspace to delete 2 spaces.
-au FileType llvm set shiftwidth=2   " Shift by 2 spaces.
+au FileType llvm set expandtab     " Use spaces instead of tabs.
+au FileType llvm set tabstop=2     " A tab counts for 2 spaces.
+au FileType llvm set softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType llvm set shiftwidth=2  " Shift by 2 spaces.
 augroup END
 
 " Git commits.
 augroup gitcommit
-au FileType gitcommit set spell " Enable spellchecking.
+au FileType gitcommit set spell     " Enable spellchecking.
+au FileType gitcommit set expandtab " Use spaces instead of tabs.
 augroup END
 
 " Dokuwiki.
@@ -981,15 +982,26 @@ au FileType dokuwiki set softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType dokuwiki set shiftwidth=2  " Shift by 2 spaces.
 augroup END
 
+" reStructured Text
+augroup rst
+au FileType rst set spell              " Enable spellchecking.
+au FileType rst set expandtab          " Use spaces instead of tabs.
+augroup END
+
 " Markdown.
 augroup markdown
-au FileType markdown set spell " Enable spellchecking.
+au FileType markdown set spell         " Enable spellchecking.
+au FileType markdown set expandtab     " Use spaces instead of tabs.
+au FileType markdown set tabstop=2     " Lists are indented with 2 spaces.
+au FileType markdown set softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType markdown set shiftwidth=2  " Shift by 2 spaces.
 augroup END
 
 " Mail.
 augroup mail
-au FileType mail set spell " Enable spellchecking.
+au FileType mail set spell         " Enable spellchecking.
 au FileType mail set spelllang=cs
+au FileType mail set expandtab     " Use spaces instead of tabs.
 augroup END
 
 "-------------------------------------------------------------------------------
