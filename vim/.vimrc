@@ -173,7 +173,8 @@ set completeopt=longest,menuone
 " Do not search in included/imported files (this slows down completion, mostly
 " on network filesystems).
 set complete-=i
-" set omnifunc=syntaxcomplete#Complete
+" Enable omni completion.
+set omnifunc=syntaxcomplete#Complete
 " set tags=./tags,./TAGS,tags,TAGS
 
 " Searching.
