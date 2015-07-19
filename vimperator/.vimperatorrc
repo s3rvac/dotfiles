@@ -17,10 +17,6 @@ set titlestring=Firefox
 " in an intelligent way).
 set complete=l
 
-" When there is more than one match, list all matches and complete the first
-" match.
-set wildmode=list:full
-
 " Maximum number of items to show in listings.
 set maxitems=6
 
