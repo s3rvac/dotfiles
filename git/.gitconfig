@@ -14,14 +14,14 @@
 
 [alias]
 	a = add
-	aa = add -u
-	aaa = add -A
-	ap = add -p
+	aa = add --update
+	aaa = add --all
+	ap = add --patch
 	ar = commit --verbose --amend --reset-author
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	bl = blame
 	br = branch -vv
-	bra = branch -a -vv
+	bra = branch --all -vv
 	c = commit --verbose
 	ca = commit --verbose --all
 	clear = reset --hard
@@ -57,7 +57,7 @@
 	shp = stash pop
 	shs = stash show -p
 	sw = show --format=fuller
-	tags = tag -l -n1
+	tags = tag --list -n1
 	; https://github.com/aanand/git-up
 	u = up
 	undo = reset --soft HEAD^
