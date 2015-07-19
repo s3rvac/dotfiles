@@ -95,11 +95,11 @@
 	chainreplyto = false
 
 [credential]
-	# Enable password cache for http/https and make it timeout after 1 hour.
+	; Enable password cache for http/https and make it timeout after 1 hour.
 	helper = cache --timeout=3600
 
 [include]
-	# Include a local config when it exists.
+	; Include a local config when it exists.
 	path = .gitconfig.local
 
 ; Settings for the `git-up` script.
