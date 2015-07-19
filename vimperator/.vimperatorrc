@@ -119,8 +119,7 @@ inoremap <C-a> <Insert><C-a><Insert>
 nnoremap <S-Space> :nohlsearch<CR>
 
 " Reload this configuration file.
-noremap <Leader><S-r> :source ~/.vimperatorrc<CR>
-
+noremap <Leader><S-r> :source ~/.vimperatorrc<CR>:echo "Configuration reloaded."<CR>
 
 " Open a URL in a background tab.
 nnoremap <Leader><S-t> :tabopen!
