@@ -95,8 +95,8 @@ nnoremap <S-j> :tabprevious<CR>
 nnoremap <S-k> :tabnext<CR>
 
 " Movement of tabs.
-noremap <C-p> :tabmove! -1<CR>
-noremap <C-n> :tabmove! +1<CR>
+noremap \< :tabmove! -1<CR>
+noremap \> :tabmove! +1<CR>
 
 " Backward/forward in history.
 nnoremap h :back<CR>
