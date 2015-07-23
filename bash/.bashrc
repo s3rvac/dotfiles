@@ -250,7 +250,9 @@ alias eri='egrep -rIi'
 # The standard mc-wrapper.sh script makes an automatic cd into the last working
 # directory when mc exits (by default, mc exits to the directory from which it
 # was started).
-alias mc='TERM=xterm-256color . /usr/lib/mc/mc-wrapper.sh'
+# By disabling the mouse (--nomouse), it is possible to copy text through the
+# terminal emulator.
+alias mc='TERM=xterm-256color . /usr/lib/mc/mc-wrapper.sh --nomouse'
 alias vim='vim -p'
 alias v='vim'
 alias vd='vimdiff'
