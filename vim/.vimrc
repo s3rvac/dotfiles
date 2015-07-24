@@ -483,6 +483,9 @@ nnoremap <silent> <C-s> :w<CR>:wa<CR>
 inoremap <silent> <C-s> <Esc>:w<CR><Esc>:wa<CR>
 vnoremap <silent> <C-s> <Esc>:w<CR><Esc>:wa<CR>
 
+" Make Ctrl-e jump to the end of the line in the insert mode.
+inoremap <C-e> <C-o>$
+
 " Stay in visual mode when indenting in visual mode.
 vnoremap < <gv
 vnoremap > >gv
