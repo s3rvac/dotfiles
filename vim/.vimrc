@@ -685,6 +685,7 @@ let g:CommandTFileScanner='git' " Use `git ls-files`, then fallback to `find`.
 hi CommandTHighlightColor guibg=darkblue guifg=white
 let g:CommandTHighlightColor='CommandTHighlightColor' " Custom highlight color.
 let g:CommandTTraverseSCM='pwd' " Use Vim's present working directory as the root.
+let g:CommandTCancelMap=['<Esc>', '<C-c>'] " Keys to close the search window.
 
 "---------------------------------------------
 " Colorizer: Colors hex codes and color names.
