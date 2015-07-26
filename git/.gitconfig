@@ -61,8 +61,6 @@
 	; https://github.com/aanand/git-up
 	u = up
 	undo = reset --soft HEAD^
-	wip = "!git add . && git commit -m 'WIP'"
-	unwip = "!if [ `git show --oneline --pretty='%s' | head -n1` == 'WIP' ]; then git undo && git reset; fi"
 
 [core]
 	; Whitespace problems that git should recognize.
