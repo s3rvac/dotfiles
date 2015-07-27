@@ -25,6 +25,7 @@
 	c = commit --verbose
 	ca = commit --verbose --all
 	clear = reset --hard
+	conflicts = diff --name-only --diff-filter=U --relative
 	co = checkout
 	cob = checkout -b
 	cot = checkout -t
