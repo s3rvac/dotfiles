@@ -681,7 +681,6 @@ let python_print_as_function=1
 let g:CommandTMaxCachedDirectories=0 " Do not limit caching.
 let g:CommandTMatchWindowReverse=1 " Show the entries in reverse order.
 let g:CommandTMaxHeight=10 " Show at most 10 matches.
-let g:CommandTFileScanner='git' " Use `git ls-files`, then fallback to `find`.
 hi CommandTHighlightColor guibg=darkblue guifg=white
 let g:CommandTHighlightColor='CommandTHighlightColor' " Custom highlight color.
 let g:CommandTTraverseSCM='pwd' " Use Vim's present working directory as the root.
