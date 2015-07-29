@@ -122,7 +122,11 @@ nnoremap <S-Space> :nohlsearch<CR>
 noremap <Leader><S-r> :source ~/.vimperatorrc<CR>:echo "Configuration reloaded."<CR>
 
 " Open a URL in a background tab.
-nnoremap <Leader><S-t> :tabopen!
+" It behaves like the standard t/T, only adds ! after 'tabopen', thus making
+" the tab open in the background.
+" Can we implement these mappings in a simpler way?
+nnoremap <Leader>t :tabopen! <End>
+nnoremap <Leader><S-t> T<Home><Right><Right><Right><Right><Right><Right><Right>!<End>
 
 "------------------------------------------------------------------------------
 " Firefox settings.
