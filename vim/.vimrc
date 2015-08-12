@@ -423,9 +423,6 @@ function! <SID>ToggleObjdumpView()
 endfunction
 nnoremap <silent> <S-F4> :call <SID>ToggleObjdumpView()<CR>
 
-" F5: Refresh file.
-nnoremap <silent> <F5> :edit!<CR>
-
 " F6: Toggle relative/absolute numbers.
 function! <SID>RelAbsNumberToggle()
 	if (&relativenumber == 1)
