@@ -600,6 +600,10 @@ nnoremap <silent> gl
 	\     call <SID>OpenLink(link) <Bar>
 	\ endif <CR>
 
+" A text object for the entire file ("a file").
+" The current position is stored into the 'z' register.
+onoremap af :<C-u>normal! mzggVG<CR>
+
 " Git leader commands.
 " They require https://github.com/tpope/vim-fugitive.
 noremap <Leader>gbl :Gblame<CR>
