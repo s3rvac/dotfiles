@@ -629,6 +629,9 @@ vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
 " Replace tabs with spaces.
 nnoremap <Leader>rts :%s/	/    /g<CR>
 
+" Remove ANSI color escape codes.
+nnoremap <Leader>rac :%s/<C-v><Esc>\[\(\d\{1,2}\(;\d\{1,2}\)\{0,2\}\)\?[m\|K]//g<CR>
+
 " Makes the current file executable.
 " Based on http://vim.wikia.com/wiki/Setting_file_attributes_without_reloading_a_buffer
 function! <SID>MakeFileExecutable()
