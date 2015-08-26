@@ -868,9 +868,12 @@ function! <SID>AlternateCOrHFile()
 endfunction
 au FileType c,cpp nnoremap <Leader>ac :call <SID>AlternateCOrHFile()<CR>
 
-" Let F10 compile and run the currently edited code.
+" Let F10 compile and run the currently edited code
+" (F10 -> use GCC, S-F10 -> use Clang).
 au FileType c nnoremap <F10> :w<CR>:!gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType c nnoremap <S-F10> :w<CR>:!clang -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
 au FileType cpp nnoremap <F10> :w<CR>:!g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType cpp nnoremap <S-F10> :w<CR>:!clang++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
 
 augroup END
 
