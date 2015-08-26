@@ -869,8 +869,8 @@ endfunction
 au FileType c,cpp nnoremap <Leader>ac :call <SID>AlternateCOrHFile()<CR>
 
 " Let F10 compile and run the currently edited code.
-au FileType c nnoremap <F10> :w<CR>:gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType cpp nnoremap <F10> :w<CR>:g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType c nnoremap <F10> :w<CR>:!gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType cpp nnoremap <F10> :w<CR>:!g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
 
 augroup END
 
