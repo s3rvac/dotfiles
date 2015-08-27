@@ -171,8 +171,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 umask 022
 
-# Disable generation of core files.
-ulimit -c 0
+# Disable generation of core files (-S changes the SOFT limit, which enables us
+# to change the limit later if we change our mind).
+ulimit -Sc 0
 
 # Allow less to view *.gz etc. files.
 if command -v lesspipe.sh &> /dev/null; then
