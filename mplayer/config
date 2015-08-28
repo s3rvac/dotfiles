@@ -35,7 +35,6 @@ double=yes
 framedrop=no
 autoq=100
 lavdopts="threads=8:skiploopfilter=all"
-# nocorrect-pts=yes # Fixes the "Too many buffered pts" bug in mplayer
 
 #-------------------------------------------------------------------------------
 # Monitor
