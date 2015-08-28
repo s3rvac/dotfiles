@@ -40,7 +40,6 @@ lavdopts="threads=8:skiploopfilter=all"
 # Monitor
 #-------------------------------------------------------------------------------
 geometry=50%:50%
-# Disable screensaver
 stop-xscreensaver=yes
 
 #-------------------------------------------------------------------------------
