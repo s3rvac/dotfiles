@@ -316,6 +316,12 @@ function bt() {
 		--args "$@";
 }
 
+# Recursive sed.
+# Usage: rsed -i 's/what/with-what/g'
+function rsed() {
+	find . -type f -exec sed "$@" {} +
+}
+
 # Filter files from the given output.
 # Usage: gvim `grep -r PATTERN | files`
 function files() { cut -d: -f1 | sort -u; }
