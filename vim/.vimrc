@@ -615,8 +615,8 @@ noremap <Leader>gbl :Gblame<CR>
 " Requires the https://github.com/jakobwesthoff/argumentrewrap plugin.
 nnoremap <silent> <Leader>wa :call argumentrewrap#RewrapArguments()<CR>
 
-" Check for changes in all buffers, refresh the current buffer, and redraw.
-nnoremap <silent> <Leader>rr :checktime <Bar> edit! <Bar> redraw!<CR>
+" Check for changes in all buffers, automatically reload them, and redraw.
+nnoremap <silent> <Leader>rr :set autoread <Bar> checktime <Bar> redraw! <Bar> set noautoread<CR>
 
 " Replaces the current word (and all occurrences).
 nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
