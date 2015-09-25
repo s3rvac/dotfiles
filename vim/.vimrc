@@ -720,6 +720,7 @@ let g:tcommentMapLeader2 = ""
 let g:tcomment#blank_lines = 0
 " Custom comment types.
 call tcomment#DefineType('c', tcomment#GetLineC('// %s'))
+call tcomment#DefineType('llvm', '; %s')
 
 "------------------------------------------------------------------------------
 " File-type specific settings and other autocommands.
@@ -979,6 +980,8 @@ au FileType llvm set expandtab     " Use spaces instead of tabs.
 au FileType llvm set tabstop=2     " A tab counts for 2 spaces.
 au FileType llvm set softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType llvm set shiftwidth=2  " Shift by 2 spaces.
+" Make "gq" on comments working properly.
+au FileType llvm set comments=bO:;
 augroup END
 
 " Git commits.
