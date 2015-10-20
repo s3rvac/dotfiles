@@ -284,6 +284,7 @@ alias unrara='for f in *.rar; do unrar x "$f" && rm -f "$f"; done'
 function zipf() { zip -q "$1".zip "$1"; echo "$1".zip; }
 function zipd() { zip -rq "$1".zip "$1"; echo "$1".zip; }
 function bak() { cp -a "$1" "$1".bak; }
+alias yt='youtube-dl'
 
 # Translation. It uses https://github.com/soimort/translate-shell, which has to
 # be available in $PATH under name 'trs'.
