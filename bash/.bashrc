@@ -246,6 +246,7 @@ alias e='egrep'
 alias ei='egrep -i'
 alias er='egrep -rI'
 alias eri='egrep -rIi'
+alias gdb='gdb -quiet'
 # We have to force xterm-256color because mc does not work properly with
 # screen-256color ($TERM used in tmux).
 # The standard mc-wrapper.sh script makes an automatic cd into the last working
@@ -305,11 +306,11 @@ function pi() {
 }
 
 # Run the given command with arguments through gdb.
-function gdbc() { gdb -ex run --args "$@"; }
+function gdbc() { gdb -quiet -ex run --args "$@"; }
 
 # Run the given command with arguments through gdb and print a backtrace.
 function bt() {
-	gdb -batch \
+	gdb -quiet -batch \
 		-ex 'set confirm off' \
 		-ex 'handle SIG33 pass nostop noprint' \
 		-ex 'run' \
