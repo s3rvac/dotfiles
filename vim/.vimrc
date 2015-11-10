@@ -720,6 +720,7 @@ let g:tcommentMapLeader2 = ""
 let g:tcomment#blank_lines = 0
 " Custom comment types.
 call tcomment#DefineType('c', tcomment#GetLineC('// %s'))
+call tcomment#DefineType('gdb', '# %s')
 call tcomment#DefineType('llvm', '; %s')
 
 "------------------------------------------------------------------------------
