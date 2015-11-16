@@ -170,7 +170,7 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.o
 
 " Code completion.
 set completeopt=longest,menuone
-" Do not search in included/imported files (this slows down completion, mostly
+" Do not search in included/imported files (it slows down completion, mostly
 " on network filesystems).
 set complete-=i
 " Enable omni completion.
@@ -729,7 +729,7 @@ call tcomment#DefineType('llvm', '; %s')
 
 " Remove trailing whitespace when a file is saved.
 " TODO: Do not remove whitespace in these situations:
-"       - before the space (or tab) there is a back slash (like '\ ').
+"       - before a space (or tab) when there is a backslash (like '\ ').
 au BufWritePre * :if ! &bin | call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " Consider all .tpl files as Smarty files.
