@@ -30,7 +30,6 @@
 		[exec] (Konqueror) {kfmclient openProfile webbrowsing} <~/.fluxbox/icons/konqueror.png>
 		[exec] (KTorrent) {ktorrent} <~/.fluxbox/icons/ktorrent.png>
 		[exec] (Midori Private Browsing) {midori} <~/.fluxbox/icons/midori.png>
-		[exec] (Psi) {psi} <~/.fluxbox/icons/psi.png>
 		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
 		[exec] (Thunderbird) {ksystraycmd thunderbird} <~/.fluxbox/icons/thunderbird.png>
 		[exec] (Wicd) {wicd-client} <~/.fluxbox/icons/wicd.png>
