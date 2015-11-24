@@ -352,7 +352,7 @@ nnoremap <silent> <F1>
 	\ else <Bar>
 	\   set nospell <Bar>
 	\   echo 'spell checking: disabled' <Bar>
-	\ endif <CR>
+	\ endif<CR>
 
 " Shift+F1: Toggle English/Czech spell dictionary.
 nnoremap <silent> <S-F1>
@@ -361,7 +361,7 @@ nnoremap <silent> <S-F1>
 	\ else <Bar>
 	\   set spelllang=en_us,en_gb <Bar>
 	\ endif <Bar>
-	\ echo 'spelllang: '.&spelllang <CR>
+	\ echo 'spelllang: ' . &spelllang<CR>
 
 " F2: Toggle the display of unprintable characters.
 nnoremap <silent> <F2> :set list!<CR>
@@ -372,12 +372,12 @@ nnoremap <silent> <S-F2>
 	\   silent! call matchdelete(w:long_line_match) <Bar>
 	\   unlet w:long_line_match <Bar>
 	\ elseif &textwidth > 0 <Bar>
-	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>'.&tw.'v.\+', -1) <Bar>
+	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>' . &tw . 'v.\+', -1) <Bar>
 	\ elseif exists('mytextwidth') <Bar>
-	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>'.mytextwidth.'v.\+', -1) <Bar>
+	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>' . mytextwidth . 'v.\+', -1) <Bar>
 	\ else <Bar>
 	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>80v.\+', -1) <Bar>
-	\ endif <CR>
+	\ endif<CR>
 
 " F3: Toggle line wrapping.
 nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
@@ -598,7 +598,7 @@ nnoremap <silent> gl
 	\ let link = matchstr(curr_line, '\(http\\|https\\|ftp\\|file\)://[^ )"]*') <Bar>
 	\ if link != '' <Bar>
 	\     call <SID>OpenLink(link) <Bar>
-	\ endif <CR>
+	\ endif<CR>
 
 " A text object for the entire file ("a file").
 " The current position is stored into the 'z' register.
@@ -730,7 +730,7 @@ call tcomment#DefineType('llvm', '; %s')
 " Remove trailing whitespace when a file is saved.
 " TODO: Do not remove whitespace in these situations:
 "       - before a space (or tab) when there is a backslash (like '\ ').
-au BufWritePre * :if ! &bin | call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+au BufWritePre * :if ! &bin | call setline(1, map(getline(1, "$"), 'substitute(v:val, "\\s\\+$", "", "")'))
 
 " Consider all .tpl files as Smarty files.
 au BufNewFile,BufRead *.tpl set ft=smarty
