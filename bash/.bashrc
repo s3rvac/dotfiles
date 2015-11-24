@@ -333,6 +333,10 @@ function rsed() {
 # Usage: gvim `grep -r PATTERN | files`
 function files() { cut -d: -f1 | sort -u; }
 
+# Opens files found by recursive egrep in vim.
+# Usage: ver PATTERN
+function ver() { v $(er "$@" | files); }
+
 # Run the given command as a daemon while discarding all its output.
 # Usage: d kompare FILE1 FILE2
 function d { (exec "$@" &> /dev/null &) }
