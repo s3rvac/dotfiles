@@ -530,11 +530,11 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 
 " Jump between tabs by J/K.
-noremap <silent> <S-j> gT
-noremap <silent> <S-k> gt
+noremap <silent> J gT
+noremap <silent> K gt
 
 " Join lines by <Leader>+j because I use J to go to the previous tab.
-noremap <Leader>j <S-j>
+noremap <Leader>j J
 
 " Join lines without producing any spaces. It works like gJ, but does not keep
 " the indentation whitespace.
@@ -555,7 +555,7 @@ noremap Y y$
 
 " Close the opened HTML tag with Ctrl+_ (I do not use vim-closetag because it
 " often fails with an error).
-inoremap <silent> <C-_> </<C-X><C-O><C-X>
+inoremap <silent> <C-_> </<C-x><C-o><C-x>
 
 " Smart window switching with awareness of Tmux panes. Now, I can use Ctrl+hjkl
 " in both Vim and Tmux (without using the prefix). Based on
