@@ -658,6 +658,14 @@ nnoremap <Leader>bib :tabe *.bib<CR>
 " Plugins.
 "------------------------------------------------------------------------------
 
+"--------------------------------------------------------
+" netrw: Network oriented reading, writing, and browsing.
+"--------------------------------------------------------
+" Disable the top banner.
+let g:netrw_banner=0
+" Tree-like view.
+let g:netrw_liststyle=3
+
 "----------------------------
 " UltiSnip: Snippets for Vim.
 "----------------------------

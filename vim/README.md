@@ -22,6 +22,7 @@ I use the following Vim plugins, which you can install by using
   * [Command-T](https://github.com/wincent/command-t) - Fast, intuitive mechanism for opening files.
   * [CSApprox](https://github.com/godlygeek/csapprox) - Makes GVim-only colorschemes work transparently in terminal Vim.
   * [matchit](http://www.vim.org/scripts/script.php?script_id=39) - Extends `%` matching for HTML, LaTeX, and many other languages.
+  * [netrw](http://www.vim.org/scripts/script.php?script_id=1075) - Network oriented reading, writing, and browsing.
   * [Rename](http://www.vim.org/scripts/script.php?script_id=1928) - Easier renaming of files.
   * [ReplaceWithRegister](https://github.com/vim-scripts/ReplaceWithRegister) - Easy way of replacing text with the contents of a register.
   * [sessionman](http://www.vim.org/scripts/script.php?script_id=2010) - Session manager.
