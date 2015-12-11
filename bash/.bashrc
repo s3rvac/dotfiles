@@ -206,6 +206,9 @@ export LC_TIME=en_GB.UTF-8
 export LC_PAPER=en_GB.UTF-8
 export LC_MEASUREMENT=en_GB.UTF-8
 
+# Make.
+export MAKEFLAGS="-j $(nproc)"
+
 # Fix the annoying spumux error in DeVeDe.
 export VIDEO_FORMAT=PAL
 
