@@ -231,7 +231,6 @@ stty -ixon 2> /dev/null
 # Useful aliases to save some typing.
 #------------------------------------------------------------------------------
 
-alias ax="chmod a+x"
 alias c='clear'
 alias l='ls -lA --group-directories-first'
 alias md='mkdir -p'
