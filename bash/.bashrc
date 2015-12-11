@@ -283,6 +283,9 @@ alias py='python'
 alias py2='python2'
 alias py3='python3'
 alias ri='ri --format=ansi'
+# Automatically disable flow control (Ctrl-S/Q) after reset because I use the
+# Ctrl-S shortcut in Vim.
+alias reset='reset && stty -ixon'
 alias sys='systemctl'
 alias smem='sync && echo mem > /sys/power/state'
 alias t='tmux'
