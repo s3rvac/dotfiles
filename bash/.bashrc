@@ -343,7 +343,7 @@ function ver() { v $(er "$@" | files); }
 # Usage: d kompare FILE1 FILE2
 function d { (exec "$@" &> /dev/null &) }
 
-# Checks the syntax of the given C file and prints detected errors.
+# Checks the syntax of the given C file and prints errors.
 function csyntax() {
 	gcc -std=c11 -fsyntax-only "$1" 2>&1 | grep "error:"
 }
