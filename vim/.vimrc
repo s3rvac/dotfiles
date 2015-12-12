@@ -512,7 +512,7 @@ nnoremap ` '
 " Open help in a vertical window on the right side.
 noremap :help :vert bo help
 
-" Disable arrows until I properly learn to use hjkl.
+" Disable arrows keys (I use exclusively h/j/k/l).
 noremap <Down> <nop>
 inoremap <Down> <nop>
 noremap <Left> <nop>
@@ -529,7 +529,7 @@ inoremap <Right> <nop>
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 
-" Jump between tabs by J/K.
+" Jump to the previous/next tab.
 noremap <silent> J gT
 noremap <silent> K gt
 
