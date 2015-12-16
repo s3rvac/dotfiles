@@ -41,7 +41,7 @@ if [ "$BASH" ]; then
 	fi
 	PS1="\[\033[$PROMPT_COLOR\]\A \u@\h \W \[\033[0m\]"
 	# When we are in GNU screen, insert '(screen)' in between ']' and '$'.
-	if [ ! -z $STY ]; then
+	if [ ! -z "$STY" ]; then
 		PS1+='\[\033[1;33m(screen)\033[0m\] '
 	fi
 	PS1+="\[\033[$PROMPT_COLOR\]$PROMPT_SYMBOL\[\033[0m\] "
@@ -131,7 +131,7 @@ fi
 # pacman
 pacman_completion() {
 	cur=`_get_cword`
-	COMPREPLY=($(pacman -Sl | cut -d " " -f 2 | grep ^$cur 2> /dev/null))
+	COMPREPLY=($(pacman -Sl | cut -d " " -f 2 | grep "^$cur" 2> /dev/null))
 	return 0
 }
 complete -F pacman_completion paci
