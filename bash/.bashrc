@@ -130,7 +130,7 @@ fi
 
 # pacman
 pacman_completion() {
-	cur=`_get_cword`
+	cur=$(_get_cword)
 	COMPREPLY=($(pacman -Sl | cut -d " " -f 2 | grep "^$cur" 2> /dev/null))
 	return 0
 }
