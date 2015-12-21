@@ -192,7 +192,7 @@ export VISUAL=vim
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTTIMEFORMAT='%d/%m/%y-%H:%M:%S '
-export HISTIGNORE='l:cd *'
+export HISTIGNORE='c:l:cd *'
 export HISTCONTROL=ignoreboth
 
 # Pager.
