@@ -265,6 +265,7 @@ alias gv='gvim'
 alias gvd='gvimdiff'
 alias m='make'
 function M() { make "$@" && make install; }
+alias news='newsbeuter -q'
 if [ "$(id -u)" -eq 0 ]; then
 	alias mntd='mount /dev/"`dmesg | grep -o "\\[[a-z1-9]*\\]" | tail -n 1 | tr -d []`"1 /mnt/disk && chown root:disk /mnt/disk && chmod 0770 /mnt/disk'
 else
