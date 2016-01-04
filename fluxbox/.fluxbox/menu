@@ -25,7 +25,6 @@
 		[exec] (VLC) {vlc} <~/.fluxbox/icons/vlc.png>
 	[end]
 	[submenu] (Network)
-		[exec] (Akregator) {akregator} <~/.fluxbox/icons/akregator.png>
 		[exec] (Firefox) {firefox} <~/.fluxbox/icons/firefox.png>
 		[exec] (Konqueror) {kfmclient openProfile webbrowsing} <~/.fluxbox/icons/konqueror.png>
 		[exec] (KTorrent) {ktorrent} <~/.fluxbox/icons/ktorrent.png>
