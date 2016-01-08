@@ -665,6 +665,11 @@ nnoremap <Leader>bib :tabe *.bib<CR>
 let g:netrw_banner=0
 " Tree-like view.
 let g:netrw_liststyle=3
+" Use a smaller window.
+let g:netrw_winsize=25
+" Do not perform any magic during sorting (like putting .h files together),
+" except for listing directories first.
+let g:netrw_sort_sequence='[\/]$'
 
 "----------------------------
 " UltiSnip: Snippets for Vim.
