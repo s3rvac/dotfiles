@@ -154,4 +154,4 @@ Control Alt n :Exec konsole
 Control Alt m :Exec ~/.fluxbox/scripts/start-konsole-with.sh mc
 Control Alt g :Exec gvim
 Control Alt u :Exec krusader
-Control Alt t :Exec ksystraycmd thunderbird
+Control Alt t :Exec thunderbird
