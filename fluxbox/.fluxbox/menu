@@ -11,7 +11,7 @@
 		[exec] (GIMP) {gimp} <~/.fluxbox/icons/gimp.png>
 		[exec] (Gwenview) {gwenview} <~/.fluxbox/icons/gwenview.png>
 		[exec] (Inkscape) {inkscape} <~/.fluxbox/icons/inkscape.png>
-		[exec] (KSnapshot) {ksnapshot} <~/.fluxbox/icons/ksnapshot.png>
+		[exec] (Spectacle) {spectacle} <~/.fluxbox/icons/spectacle.png>
 		[exec] (XSane} <~/.fluxbox/icons/xsane.xpm>
 	[end]
 	[submenu] (Multimedia)

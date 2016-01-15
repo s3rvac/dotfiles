@@ -40,7 +40,7 @@
   [FocusNewWindow] {no}
   [Minimized] {yes}
 [end]
-[app] (name=ksnapshot) (class=Ksnapshot)
+[app] (name=spectacle) (class=spectacle)
   [Position] (CENTER) {0 0}
 [end]
 [app] (name=ktorrent) (class=Ktorrent) (role=MainWindow#1)

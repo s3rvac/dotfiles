@@ -31,7 +31,7 @@ Mod4 space :Exec ~/.fluxbox/scripts/clear-notifications.sh
 # Win+End: Stop after the current track.
 
 # Make a screenshot by pressing PrintScreen.
-Print :Exec ksnapshot
+Print :Exec spectacle
 
 # Toggle Yakuake.
 # Alt+F1: The shortcut is set in Yakuake.
