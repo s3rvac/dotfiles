@@ -1,0 +1,31 @@
+#------------------------------------------------------------------------------
+# File:   $HOME/.newsbeuter/config
+# Author: Petr Zemek <s3rvac@gmail.com>
+#------------------------------------------------------------------------------
+
+# Settings.
+article-sort-order date-desc
+refresh-on-startup yes
+reload-threads 10
+show-keymap-hint no
+text-width 100
+
+# External programs.
+browser firefox
+player mpv
+
+# Vim-like keybindings.
+bind-key k up
+bind-key j down
+bind-key ^B pageup
+bind-key ^F pagedown
+bind-key d delete-article
+
+# Colors.
+color listnormal        white black
+color listnormal_unread white black bold
+color listfocus         white color237
+color listfocus_unread  white color237 bold
+color info              color39 black
+color background        white black
+color article           white black
