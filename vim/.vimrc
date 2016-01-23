@@ -676,7 +676,8 @@ let g:netrw_sort_sequence='[\/]$'
 "----------------------------
 let g:snips_author='Petr Zemek <s3rvac@gmail.com>'
 let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsSnippetDirectories=['snippets']
+let g:UltiSnipsEnableSnipMate='no'
+let g:UltiSnipsSnippetDirectories=[$HOME . '/.vim/snippets']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
