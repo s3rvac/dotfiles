@@ -15,7 +15,6 @@ I use the following Vim plugins, which you can install by using
 [pathogen](https://github.com/tpope/vim-pathogen).
 
 * General:
-  * [argumentwrap](https://github.com/jakobwesthoff/argumentrewrap) - Adds a function to wrap function arguments.
   * [AutoFenc](https://github.com/s3rvac/AutoFenc) - Automatically detects and sets file encoding when opening files.
   * [cecutil](http://www.vim.org/scripts/script.php?script_id=1066) - Utilities used by other plugins.
   * [Colorizer](https://github.com/chrisbra/Colorizer) - Color hex codes and color names.
@@ -29,6 +28,7 @@ I use the following Vim plugins, which you can install by using
   * [targets.vim](https://github.com/wellle/targets.vim) - Additional text objects.
   * [tcomment_vim](https://github.com/tomtom/tcomment_vim) - Adds a motion to (un)comment lines.
   * [ultisnips](https://github.com/SirVer/ultisnips) - The ultimate snippet solution for Vim.
+  * [vim-argwrap](https://github.com/FooSoft/vim-argwrap) - Wrap and unwrap function arguments, lists, and dictionaries.
   * [vim-bracketed-paste](https://github.com/ConradIrwin/vim-bracketed-paste) - Handles bracketed-paste-mode (aka automatic `:set paste`).
   * [vim-indent-object](https://github.com/michaeljsmith/vim-indent-object) - Adds a text object representing lines with the same indent.
   * [vim-sort-motion](https://github.com/christoomey/vim-sort-motion) - Adds a motion to sort text objects.

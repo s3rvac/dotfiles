@@ -612,8 +612,8 @@ noremap <Leader>gbl :Gblame<CR>
 " The nnoremap <Leader>man command is defined for every language separately.
 
 " Wrap function arguments.
-" Requires the https://github.com/jakobwesthoff/argumentrewrap plugin.
-nnoremap <silent> <Leader>wa :call argumentrewrap#RewrapArguments()<CR>
+" Requires the vim-argwrap plugin (https://github.com/FooSoft/vim-argwrap).
+nnoremap <silent> <Leader>wa :ArgWrap<CR>
 
 " Check for changes in all buffers, automatically reload them, and redraw.
 nnoremap <silent> <Leader>rr :set autoread <Bar> checktime <Bar> redraw! <Bar> set noautoread<CR>
