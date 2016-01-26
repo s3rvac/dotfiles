@@ -21,7 +21,7 @@ filetype plugin on
 
 set nocompatible        " Disable vi compatibility.
 set undolevels=200      " Number of undo levels.
-set textwidth=0         " Don't wrap words.
+set textwidth=0         " Don't automatically wrap lines.
 set scrolloff=10        " Keep a context (rows) when scrolling vertically.
 set sidescroll=5        " Keep a context (columns) when scrolling horizontally.
 set tabpagemax=1000     " Maximum number of tabs to open by the -p argument.
