@@ -292,6 +292,7 @@ alias smem='sync && echo mem > /sys/power/state'
 alias t='tmux'
 alias Time='/usr/bin/time -v'
 alias unzipa='for f in *.zip; do unzip "$f" && rm -f "$f"; done'
+alias untara='for f in $(ls | grep "\.\(tar\|gz\|tgz\|bz2\)"); do tar xf "$f" && rm -f "$f"; done'
 alias unrara='for f in *.rar; do unrar x "$f" && rm -f "$f"; done'
 function zipf() { zip -q "$1".zip "$1"; echo "$1".zip; }
 function zipd() { zip -rq "$1".zip "$1"; echo "$1".zip; }
