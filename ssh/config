@@ -5,10 +5,10 @@
 # A configuration file for ssh.
 #------------------------------------------------------------------------------
 
-# General.
+# Configuration for specific hosts.
+# ...
+
+# General. Has to be at the bottom.
 Host *
 	SendEnv LANG LC_*
 	ServerAliveInterval 30
-
-# Configuration for specific hosts.
-# ...
