@@ -337,7 +337,7 @@ au BufEnter * hi Cursor guibg=white guifg=bg
 " Visual selection.
 au BufEnter * hi Visual guibg=black guifg=gray ctermfg=gray
 
-" Use the same color in the signs column as it is used in the numbers column.
+" Use the same color in the sign column as it is used in the numbers column.
 au BufEnter * hi clear SignColumn
 
 "------------------------------------------------------------------------------
@@ -490,7 +490,7 @@ vnoremap > >gv
 " Quickly select the text you just pasted.
 noremap gV `[v`]
 
-" Hitting space in normal mode will make the current search disappear.
+" Hitting space in normal/visual mode will make the current search disappear.
 noremap <silent> <Space> :silent nohlsearch<CR>
 
 " Insert the contents of the clipboard.
