@@ -5,6 +5,7 @@
 
 # Settings.
 article-sort-order date-desc
+download-path ~/Download
 refresh-on-startup yes
 reload-threads 10
 show-keymap-hint no
