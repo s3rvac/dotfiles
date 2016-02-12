@@ -206,6 +206,11 @@ export LC_TIME=en_GB.UTF-8
 export LC_PAPER=en_GB.UTF-8
 export LC_MEASUREMENT=en_GB.UTF-8
 
+# Prevent ls from putting quotes around files with spaces in their names. This
+# behavior was introduced in coreutils-8.25. I like the original behavior (no
+# quotes), which is what the following variable guarantees.
+export QUOTING_STYLE=literal
+
 # Make.
 export MAKEFLAGS="-j $(nproc)"
 
