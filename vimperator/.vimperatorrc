@@ -40,8 +40,8 @@ set newtab=all
 " Show numbers on each tab.
 set tabnumbers
 
-" Show link destinations in the status line.
-set showstatuslinks=1
+" Show the destination of the link under the cursor in the status bar.
+set showstatuslinks=3
 
 " Disable animations.
 set animations=false
