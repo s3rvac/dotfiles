@@ -16,7 +16,6 @@ I use the following Vim plugins, which you can install by using
 
 * General:
   * [AutoFenc](https://github.com/s3rvac/AutoFenc) - Automatically detects and sets file encoding when opening files.
-  * [cecutil](http://www.vim.org/scripts/script.php?script_id=1066) - Utilities used by other plugins.
   * [Colorizer](https://github.com/chrisbra/Colorizer) - Color hex codes and color names.
   * [Command-T](https://github.com/wincent/command-t) - Fast, intuitive mechanism for opening files.
   * [CSApprox](https://github.com/godlygeek/csapprox) - Makes GVim-only colorschemes work transparently in terminal Vim.
