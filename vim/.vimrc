@@ -471,7 +471,7 @@ cnoreabbrev tocs !trs en:cs
 " Quit with Q instead of :q!.
 noremap <silent> Q :q!<CR>
 
-" Quicksave all buffers/tabs.
+" Quicksave all buffers.
 " (Use both :w and :wa to force write of the currently edited buffer, even if
 " there are no changes. This forces removal of trailing whitespace from the
 " buffer and also overwrites of the file even if it has changed, which is
