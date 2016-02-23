@@ -214,9 +214,6 @@ export QUOTING_STYLE=literal
 # Make.
 export MAKEFLAGS="-j $(nproc)"
 
-# Fix the annoying spumux error in DeVeDe.
-export VIDEO_FORMAT=PAL
-
 # Fix the displayed channels in kmix.
 export KMIX_PULSEAUDIO_DISABLE=1
 
