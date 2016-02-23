@@ -320,19 +320,6 @@ function pi() {
 # Run the given command with arguments through gdb.
 function gdbc() { gdb -quiet -ex run --args "$@"; }
 
-# Run the given command with arguments through gdb and print a backtrace.
-function bt() {
-	gdb -quiet -batch \
-		-ex 'set confirm off' \
-		-ex 'handle SIG33 pass nostop noprint' \
-		-ex 'run' \
-		-ex 'echo \n==== BACKTRACE BEGIN ====\n' \
-		-ex 'backtrace full' \
-		-ex 'echo ==== BACKTRACE END ====\n' \
-		-ex 'quit' \
-		--args "$@";
-}
-
 # Recursive sed.
 # Usage: rsed -i 's/what/with-what/g'
 function rsed() {
