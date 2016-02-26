@@ -63,6 +63,14 @@
 	u = up
 	undo = reset --soft HEAD^
 
+[advice]
+	; Make git a little less verbose.
+	pushNonFastForward = false
+	statusHints = false
+	commitBeforeMerge = false
+	resolveConflict = false
+	detachedHead = false
+
 [core]
 	; Whitespace problems that git should recognize.
 	whitespace = trailing-space,space-before-tab
