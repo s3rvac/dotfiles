@@ -442,8 +442,8 @@ nnoremap <silent> <F6> :call <SID>RelAbsNumberToggle()<CR>
 " F10: Run the current script.
 " The mapping is defined separately for each file type.
 
-" F11: Quickfix.
-" Executes :make and opens the quickfix windows if there is an error.
+" F11: Make.
+" Executes :make and opens the quickfix window if there is an error.
 nnoremap <F11> mp :echo 'Making...' <Bar> silent make <Bar> botright cw<CR><C-w><Up>
 
 "------------------------------------------------------------------------------
