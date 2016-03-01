@@ -300,6 +300,7 @@ function zipf() { zip -q "$1".zip "$1"; echo "$1".zip; }
 function zipd() { zip -rq "$1".zip "$1"; echo "$1".zip; }
 function bak() { cp -a "$1" "$1".bak; }
 alias valgrind-leak='valgrind --leak-check=full --show-leak-kinds=all'
+alias valgrind-callgrind='valgrind --tool=callgrind'
 alias yt='youtube-dl'
 
 # Translation. It uses https://github.com/soimort/translate-shell, which has to
