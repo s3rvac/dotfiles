@@ -905,10 +905,10 @@ au FileType c,cpp nnoremap <Leader>ac :call <SID>AlternateCOrHFile()<CR>
 
 " Let F10 compile and run the currently edited code
 " (F10 -> use GCC, S-F10 -> use Clang).
-au FileType c nnoremap <F10> :w<CR>:!gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType c nnoremap <S-F10> :w<CR>:!clang -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType cpp nnoremap <F10> :w<CR>:!g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType cpp nnoremap <S-F10> :w<CR>:!clang++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType c nnoremap <F10> :w<CR>:!clear; gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType c nnoremap <S-F10> :w<CR>:!clear; clang -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType cpp nnoremap <F10> :w<CR>:!clear; g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType cpp nnoremap <S-F10> :w<CR>:!clear; clang++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
 
 augroup END
 
@@ -959,13 +959,13 @@ au FileType python nnoremap <Leader>im mz?^import <CR>:nohlsearch<CR>oimport  <E
 au FileType python nnoremap <Leader>fr mz?^from <CR>:nohlsearch<CR>ofrom  <Esc>i
 
 " Let F9 run the currently opened tests.
-au FileType python nnoremap <F9> :wa<CR>:!nosetests %<CR>
+au FileType python nnoremap <F9> :wa<CR>:!clear; nosetests %<CR>
 
 " Let Shift+F9 run all tests.
-au FileType python nnoremap <S-F9> :wa<CR>:!nosetests tests<CR>
+au FileType python nnoremap <S-F9> :wa<CR>:!clear; nosetests tests<CR>
 
 " Let F10 run the currently opened script.
-au FileType python nnoremap <F10> :w<CR>:!python %<CR>
+au FileType python nnoremap <F10> :w<CR>:!clear; python %<CR>
 
 " Splits the current window by showing the corresponding test file on the
 " right-hand side.
@@ -993,7 +993,7 @@ au FileType ruby set shiftwidth=2   " Shift by 2 spaces.
 au FileType ruby let mytextwidth=80 " Maximum line length.
 
 " Let F10 run the currently opened script.
-au FileType ruby nnoremap <F10> :w<CR>:!ruby %<CR>
+au FileType ruby nnoremap <F10> :w<CR>:!clear; ruby %<CR>
 augroup END
 
 " Haskell.
