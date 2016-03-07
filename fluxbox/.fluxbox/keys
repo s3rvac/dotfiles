@@ -150,6 +150,7 @@ Control Alt c :Exec gsimplecal
 Control Alt d :Exec ~/.fluxbox/scripts/activate-window.sh firefox
 Control Alt f :Exec firefox
 Control Alt p :Exec firefox -private-window
+Control Alt o :Exec chromium
 Control Alt n :Exec konsole
 Control Alt m :Exec ~/.fluxbox/scripts/start-konsole-with.sh mc
 Control Alt g :Exec gvim
