@@ -323,9 +323,7 @@ function gdbc() { gdb -quiet -ex run --args "$@"; }
 
 # Recursive sed.
 # Usage: rsed -i 's/what/with-what/g'
-function rsed() {
-	find . -type f -exec sed "$@" {} +
-}
+function rsed() { find . -type f -exec sed "$@" {} \+; }
 
 # Filter files from the given output.
 # Usage: gvim `grep -r PATTERN | files`
