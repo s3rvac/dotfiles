@@ -18,6 +18,7 @@
 	aaa = add --all
 	ap = add --patch
 	ar = commit --verbose --amend --reset-author
+	aar = "!git aa && git ar"
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	bl = blame
 	br = branch -vv
