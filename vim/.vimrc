@@ -726,13 +726,6 @@ let g:CommandTHighlightColor='CommandTHighlightColor' " Custom highlight color.
 let g:CommandTTraverseSCM='pwd' " Use Vim's present working directory as the root.
 let g:CommandTCancelMap=['<Esc>', '<C-c>'] " Keys to close the search window.
 
-"---------------------------------------------
-" Colorizer: Colors hex codes and color names.
-"---------------------------------------------
-let g:colorizer_auto_color = 0 " Do not start automatically.
-let g:colorizer_colornames = 1 " Highlight color names as well.
-let g:colorizer_x11_names = 1 " Support X11 colors as well.
-
 " ---------------------------------------------------------
 " vim-sort-motion: Vim mapping for sorting a range of text.
 " ---------------------------------------------------------
