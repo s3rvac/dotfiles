@@ -758,17 +758,17 @@ call tcomment#DefineType('llvm', '; %s')
 au BufWritePre * :if ! &bin | call setline(1, map(getline(1, "$"), 'substitute(v:val, "\\s\\+$", "", "")'))
 
 " Consider all .tpl files as Smarty files.
-au BufNewFile,BufRead *.tpl set ft=smarty
+au BufNewFile,BufRead *.tpl setl ft=smarty
 " Consider all .php* files (.phps, .phpt etc.) as PHP files.
-au BufNewFile,BufRead *.php[0-9a-zA-Z] set ft=php
+au BufNewFile,BufRead *.php[0-9a-zA-Z] setl ft=php
 " Consider all .ll files as LLVM IR files.
-au BufNewFile,BufRead *.ll set ft=llvm
+au BufNewFile,BufRead *.ll setl ft=llvm
 " Consider all .wsgi files as Python files.
-au BufNewFile,BufRead *.wsgi set ft=python
+au BufNewFile,BufRead *.wsgi setl ft=python
 " Use Vim highlighting when editing Vimperator's configuration.
-au BufNewFile,BufRead .vimperatorrc set ft=vim
+au BufNewFile,BufRead .vimperatorrc setl ft=vim
 " Use tex filetype rather than plaintex.
-au BufNewFile,BufRead *.tex set ft=tex
+au BufNewFile,BufRead *.tex setl ft=tex
 
 " Disable automatic wrapping for all files (some filetype plugins set this to
 " a different value, which is really annoying).
@@ -793,9 +793,9 @@ au FileType c,cpp runtime ftplugin/man.vim
 " Use <Leader>man to display manual pages for the function under cursor.
 au FileType c,cpp nmap <silent> <Leader>man :Man 3 <cword><CR>
 " Use astyle for = command indention.
-au FileType c,cpp exec "set equalprg=astyle\\ --mode=c\\ --options=".expand("$HOME")."/.vim/astyle/c-cpp.options"
+au FileType c,cpp exec "setl equalprg=astyle\\ --mode=c\\ --options=".expand("$HOME")."/.vim/astyle/c-cpp.options"
 " Allow "gq" on comments to work properly.
-au FileType c,cpp set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
+au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Add a new include (+ store the current position to 'z').
 au FileType c,cpp nnoremap <Leader>inc mz?#include <<CR>:nohlsearch<CR>o#include <><Esc>i
 au FileType c,cpp nnoremap <Leader>Inc mz?#include \"<CR>:nohlsearch<CR>o#include ""<Esc>i
@@ -909,40 +909,40 @@ augroup php
 " Use <Leader>man to display manual pages for the function under cursor in a browser.
 au FileType php nmap <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
 " Make "gq" on comments work properly.
-au FileType php set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
+au FileType php setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
 augroup END
 
 " LaTeX.
 augroup latex
-au FileType tex,plaintex set spell          " Enable spell checking.
+au FileType tex,plaintex setl spell    " Enable spell checking.
 " Compilation.
 " This errorformat presumes that you are using `pdflatex -file-line-error`
 " to compile .tex files.
-au FileType tex,plaintex set errorformat=%f:%l:\ %m
+au FileType tex,plaintex setl errorformat=%f:%l:\ %m
 " TODO: Add support for building files without a Makefile.
 augroup END
 
 " Shell.
 augroup sh
-au FileType sh set noexpandtab  " Use tabs instead of spaces.
+au FileType sh setl noexpandtab  " Use tabs instead of spaces.
 augroup END
 
 " MySQL.
 augroup mysql
 " Consider .sql files as MySQL files.
-au BufNewFile,BufRead *.sql set ft=mysql
+au BufNewFile,BufRead *.sql setl ft=mysql
 " Allow "gq" on comments to work properly.
-au FileType mysql set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
+au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
 augroup END
 
 " Python.
 augroup python
 " The following settings are based on these guidelines:
 "  - python.org/dev/peps/pep-0008
-au FileType python set expandtab      " Use spaces instead of tabs.
-au FileType python set tabstop=4      " A tab counts for 4 spaces.
-au FileType python set softtabstop=4  " Causes backspace to delete 4 spaces.
-au FileType python set shiftwidth=4   " Shift by 4 spaces.
+au FileType python setl expandtab     " Use spaces instead of tabs.
+au FileType python setl tabstop=4     " A tab counts for 4 spaces.
+au FileType python setl softtabstop=4 " Causes backspace to delete 4 spaces.
+au FileType python setl shiftwidth=4  " Shift by 4 spaces.
 
 " Add a new import (+ store the current position to 'z').
 au FileType python nnoremap <Leader>im mz?^import <CR>:nohlsearch<CR>oimport  <Esc>i
@@ -976,10 +976,10 @@ augroup END
 augroup ruby
 " The following settings are based on these guidelines:
 "  - https://raw.github.com/chneukirchen/styleguide/master/RUBY-STYLE
-au FileType ruby set expandtab      " Use spaces instead of tabs.
-au FileType ruby set tabstop=2      " A tab counts for 2 spaces.
-au FileType ruby set softtabstop=2  " Causes backspace to delete 2 spaces.
-au FileType ruby set shiftwidth=2   " Shift by 2 spaces.
+au FileType ruby setl expandtab     " Use spaces instead of tabs.
+au FileType ruby setl tabstop=2     " A tab counts for 2 spaces.
+au FileType ruby setl softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType ruby setl shiftwidth=2  " Shift by 2 spaces.
 
 " Let F10 run the currently opened script.
 au FileType ruby nnoremap <F10> :w<CR>:!clear; ruby %<CR>
@@ -990,57 +990,57 @@ augroup haskell
 " The following settings are based on these guidelines:
 "  - urchin.earth.li/~ian/style/haskell.html
 "  - cs.caltech.edu/courses/cs11/material/haskell/misc/haskell_style_guide.html
-au FileType haskell set expandtab      " Use spaces instead of tabs.
-au FileType haskell set tabstop=4      " A tab counts for 4 spaces.
-au FileType haskell set softtabstop=4  " Causes backspace to delete 4 spaces.
-au FileType haskell set shiftwidth=4   " Shift by 4 spaces.
+au FileType haskell setl expandtab     " Use spaces instead of tabs.
+au FileType haskell setl tabstop=4     " A tab counts for 4 spaces.
+au FileType haskell setl softtabstop=4 " Causes backspace to delete 4 spaces.
+au FileType haskell setl shiftwidth=4  " Shift by 4 spaces.
 augroup END
 
 " LLVM.
 augroup llvm
-au FileType llvm set expandtab     " Use spaces instead of tabs.
-au FileType llvm set tabstop=2     " A tab counts for 2 spaces.
-au FileType llvm set softtabstop=2 " Causes backspace to delete 2 spaces.
-au FileType llvm set shiftwidth=2  " Shift by 2 spaces.
+au FileType llvm setl expandtab     " Use spaces instead of tabs.
+au FileType llvm setl tabstop=2     " A tab counts for 2 spaces.
+au FileType llvm setl softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType llvm setl shiftwidth=2  " Shift by 2 spaces.
 " Make "gq" on comments working properly.
-au FileType llvm set comments=bO:;
+au FileType llvm setl comments=bO:;
 augroup END
 
 " Git commits.
 augroup gitcommit
-au FileType gitcommit set spell     " Enable spellchecking.
-au FileType gitcommit set expandtab " Use spaces instead of tabs.
+au FileType gitcommit setl spell     " Enable spellchecking.
+au FileType gitcommit setl expandtab " Use spaces instead of tabs.
 augroup END
 
 " Dokuwiki.
 augroup dokuwiki
-au FileType dokuwiki set spell         " Enable spell checking.
-au FileType dokuwiki set expandtab     " Use spaces instead of tabs.
-au FileType dokuwiki set tabstop=2     " Lists are indented with 2 spaces.
-au FileType dokuwiki set softtabstop=2 " Causes backspace to delete 2 spaces.
-au FileType dokuwiki set shiftwidth=2  " Shift by 2 spaces.
+au FileType dokuwiki setl spell         " Enable spell checking.
+au FileType dokuwiki setl expandtab     " Use spaces instead of tabs.
+au FileType dokuwiki setl tabstop=2     " Lists are indented with 2 spaces.
+au FileType dokuwiki setl softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType dokuwiki setl shiftwidth=2  " Shift by 2 spaces.
 augroup END
 
 " reStructured Text
 augroup rst
-au FileType rst set spell              " Enable spellchecking.
-au FileType rst set expandtab          " Use spaces instead of tabs.
+au FileType rst setl spell              " Enable spellchecking.
+au FileType rst setl expandtab          " Use spaces instead of tabs.
 augroup END
 
 " Markdown.
 augroup markdown
-au FileType markdown set spell         " Enable spellchecking.
-au FileType markdown set expandtab     " Use spaces instead of tabs.
-au FileType markdown set tabstop=2     " Lists are indented with 2 spaces.
-au FileType markdown set softtabstop=2 " Causes backspace to delete 2 spaces.
-au FileType markdown set shiftwidth=2  " Shift by 2 spaces.
+au FileType markdown setl spell         " Enable spellchecking.
+au FileType markdown setl expandtab     " Use spaces instead of tabs.
+au FileType markdown setl tabstop=2     " Lists are indented with 2 spaces.
+au FileType markdown setl softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType markdown setl shiftwidth=2  " Shift by 2 spaces.
 augroup END
 
 " Mail.
 augroup mail
-au FileType mail set spell         " Enable spellchecking.
-au FileType mail set spelllang=cs
-au FileType mail set expandtab     " Use spaces instead of tabs.
+au FileType mail setl spell         " Enable spellchecking.
+au FileType mail setl spelllang=cs
+au FileType mail setl expandtab     " Use spaces instead of tabs.
 augroup END
 
 "-------------------------------------------------------------------------------
@@ -1050,10 +1050,10 @@ augroup END
 let s:opened_file_path = expand('%:p')
 if s:opened_file_path =~ '\.mozilla/firefox/'
 	" Enable Czech spell checking by default.
-	au BufRead,BufNewFile *.txt set spell
-	au BufRead,BufNewFile *.txt set spelllang=cs
+	au BufRead,BufNewFile *.txt setl spell
+	au BufRead,BufNewFile *.txt setl spelllang=cs
 
-	au BufRead,BufNewFile *.txt set ft=html
+	au BufRead,BufNewFile *.txt setl ft=html
 endif
 
 "------------------------------------------------------------------------------
