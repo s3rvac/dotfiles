@@ -791,14 +791,14 @@ augroup c_cpp
 " Use the man ftplugin to display pages from manual.
 au FileType c,cpp runtime ftplugin/man.vim
 " Use <Leader>man to display manual pages for the function under cursor.
-au FileType c,cpp nmap <silent> <Leader>man :Man 3 <cword><CR>
+au FileType c,cpp nmap <buffer> <silent> <Leader>man :Man 3 <cword><CR>
 " Use astyle for = command indention.
 au FileType c,cpp exec "setl equalprg=astyle\\ --mode=c\\ --options=".expand("$HOME")."/.vim/astyle/c-cpp.options"
 " Allow "gq" on comments to work properly.
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Add a new include (+ store the current position to 'z').
-au FileType c,cpp nnoremap <Leader>inc mz?#include <<CR>:nohlsearch<CR>o#include <><Esc>i
-au FileType c,cpp nnoremap <Leader>Inc mz?#include \"<CR>:nohlsearch<CR>o#include ""<Esc>i
+au FileType c,cpp nnoremap <buffer> <Leader>inc mz?#include <<CR>:nohlsearch<CR>o#include <><Esc>i
+au FileType c,cpp nnoremap <buffer> <Leader>Inc mz?#include \"<CR>:nohlsearch<CR>o#include ""<Esc>i
 
 " Open both a .c|cpp|cc file and the corresponding .h file in a new tab.
 function! <SID>GetCFile(base_name)
@@ -871,7 +871,7 @@ function! <SID>SplitCOrHFile()
 		echo "There is no corresponding source file."
 	endif
 endfunction
-au FileType c,cpp nnoremap <Leader>as :call <SID>SplitCOrHFile()<CR>
+au FileType c,cpp nnoremap <buffer> <Leader>as :call <SID>SplitCOrHFile()<CR>
 
 " Alternates between a .{c,cc,cpp} file and a .h file.
 function! <SID>AlternateCOrHFile()
@@ -893,21 +893,21 @@ function! <SID>AlternateCOrHFile()
 		echo "There is no corresponding source file."
 	endif
 endfunction
-au FileType c,cpp nnoremap <Leader>ac :call <SID>AlternateCOrHFile()<CR>
+au FileType c,cpp nnoremap <buffer> <Leader>ac :call <SID>AlternateCOrHFile()<CR>
 
 " Let F10 compile and run the currently edited code
 " (F10 -> use GCC, S-F10 -> use Clang).
-au FileType c nnoremap <F10> :w<CR>:!clear; gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType c nnoremap <S-F10> :w<CR>:!clear; clang -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType cpp nnoremap <F10> :w<CR>:!clear; g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType cpp nnoremap <S-F10> :w<CR>:!clear; clang++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType c nnoremap <buffer> <F10> :w<CR>:!clear; gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType c nnoremap <buffer> <S-F10> :w<CR>:!clear; clang -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType cpp nnoremap <buffer> <F10> :w<CR>:!clear; g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType cpp nnoremap <buffer> <S-F10> :w<CR>:!clear; clang++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
 
 augroup END
 
 " PHP.
 augroup php
 " Use <Leader>man to display manual pages for the function under cursor in a browser.
-au FileType php nmap <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
+au FileType php nmap <buffer> <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
 " Make "gq" on comments work properly.
 au FileType php setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
 augroup END
@@ -945,17 +945,17 @@ au FileType python setl softtabstop=4 " Causes backspace to delete 4 spaces.
 au FileType python setl shiftwidth=4  " Shift by 4 spaces.
 
 " Add a new import (+ store the current position to 'z').
-au FileType python nnoremap <Leader>im mz?^import <CR>:nohlsearch<CR>oimport  <Esc>i
-au FileType python nnoremap <Leader>fr mz?^from <CR>:nohlsearch<CR>ofrom  <Esc>i
+au FileType python nnoremap <buffer> <Leader>im mz?^import <CR>:nohlsearch<CR>oimport  <Esc>i
+au FileType python nnoremap <buffer> <Leader>fr mz?^from <CR>:nohlsearch<CR>ofrom  <Esc>i
 
 " Let F9 run the currently opened tests.
-au FileType python nnoremap <F9> :wa<CR>:!clear; nosetests %<CR>
+au FileType python nnoremap <buffer> <F9> :wa<CR>:!clear; nosetests %<CR>
 
 " Let Shift+F9 run all tests.
-au FileType python nnoremap <S-F9> :wa<CR>:!clear; nosetests tests<CR>
+au FileType python nnoremap <buffer> <S-F9> :wa<CR>:!clear; nosetests tests<CR>
 
 " Let F10 run the currently opened script.
-au FileType python nnoremap <F10> :w<CR>:!clear; python %<CR>
+au FileType python nnoremap <buffer> <F10> :w<CR>:!clear; python %<CR>
 
 " Splits the current window by showing the corresponding test file on the
 " right-hand side.
@@ -969,7 +969,7 @@ function! <SID>ShowPythonTestsInSplit()
 	exec "vsplit " . tests_rel_path
 endfunction
 " The mapping is mimicking <Leader>as for c,cpp.
-au FileType python nnoremap <Leader>as :call <SID>ShowPythonTestsInSplit()<CR>
+au FileType python nnoremap <buffer> <Leader>as :call <SID>ShowPythonTestsInSplit()<CR>
 augroup END
 
 " Ruby.
@@ -982,7 +982,7 @@ au FileType ruby setl softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType ruby setl shiftwidth=2  " Shift by 2 spaces.
 
 " Let F10 run the currently opened script.
-au FileType ruby nnoremap <F10> :w<CR>:!clear; ruby %<CR>
+au FileType ruby nnoremap <buffer> <F10> :w<CR>:!clear; ruby %<CR>
 augroup END
 
 " Haskell.
