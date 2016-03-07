@@ -374,8 +374,6 @@ nnoremap <silent> <S-F2>
 	\   unlet w:long_line_match <Bar>
 	\ elseif &textwidth > 0 <Bar>
 	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>' . &tw . 'v.\+', -1) <Bar>
-	\ elseif exists('mytextwidth') <Bar>
-	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>' . mytextwidth . 'v.\+', -1) <Bar>
 	\ else <Bar>
 	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>80v.\+', -1) <Bar>
 	\ endif<CR>
@@ -917,7 +915,6 @@ augroup END
 " LaTeX.
 augroup latex
 au FileType tex,plaintex set spell          " Enable spell checking.
-au FileType tex,plaintex let mytextwidth=80 " Maximum line length.
 " Compilation.
 " This errorformat presumes that you are using `pdflatex -file-line-error`
 " to compile .tex files.
@@ -946,7 +943,6 @@ au FileType python set expandtab      " Use spaces instead of tabs.
 au FileType python set tabstop=4      " A tab counts for 4 spaces.
 au FileType python set softtabstop=4  " Causes backspace to delete 4 spaces.
 au FileType python set shiftwidth=4   " Shift by 4 spaces.
-au FileType python let mytextwidth=79 " Maximum line length.
 
 " Add a new import (+ store the current position to 'z').
 au FileType python nnoremap <Leader>im mz?^import <CR>:nohlsearch<CR>oimport  <Esc>i
@@ -984,7 +980,6 @@ au FileType ruby set expandtab      " Use spaces instead of tabs.
 au FileType ruby set tabstop=2      " A tab counts for 2 spaces.
 au FileType ruby set softtabstop=2  " Causes backspace to delete 2 spaces.
 au FileType ruby set shiftwidth=2   " Shift by 2 spaces.
-au FileType ruby let mytextwidth=80 " Maximum line length.
 
 " Let F10 run the currently opened script.
 au FileType ruby nnoremap <F10> :w<CR>:!clear; ruby %<CR>
@@ -999,7 +994,6 @@ au FileType haskell set expandtab      " Use spaces instead of tabs.
 au FileType haskell set tabstop=4      " A tab counts for 4 spaces.
 au FileType haskell set softtabstop=4  " Causes backspace to delete 4 spaces.
 au FileType haskell set shiftwidth=4   " Shift by 4 spaces.
-au FileType haskell let mytextwidth=79 " Maximum line length.
 augroup END
 
 " LLVM.
