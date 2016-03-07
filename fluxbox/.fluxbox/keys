@@ -152,7 +152,8 @@ Control Alt f :Exec firefox
 Control Alt p :Exec firefox -private-window
 Control Alt o :Exec chromium
 Control Alt n :Exec konsole
-Control Alt m :Exec ~/.fluxbox/scripts/start-konsole-with.sh mc
+# The '&& bash' part below prevents tmux from quitting when mc ends.
+Control Alt m :Exec ~/.fluxbox/scripts/start-konsole-with.sh "tmux new 'mc && bash'"
 Control Alt g :Exec gvim
 Control Alt u :Exec krusader
 Control Alt t :Exec thunderbird
