@@ -27,6 +27,7 @@ set sidescroll=5        " Keep a context (columns) when scrolling horizontally.
 set tabpagemax=1000     " Maximum number of tabs to open by the -p argument.
 set esckeys             " Cursor keys in insert mode.
 set ttyfast             " Improves redrawing for newer computers.
+set lazyredraw          " Don't redraw during complex operations (e.g. macros).
 set autowrite           " Automatically save before :next, :make etc.
 set confirm             " Ask to save a file when operations like :q or :e fail.
 set magic               " Use 'magic' patterns (extended regular expressions).
