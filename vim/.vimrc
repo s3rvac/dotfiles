@@ -770,7 +770,7 @@ au BufNewFile,BufRead .vimperatorrc set ft=vim
 " Use tex filetype rather than plaintex.
 au BufNewFile,BufRead *.tex set ft=tex
 
-" Disable automatic wrapping for all files (some filetype plugins sets this to
+" Disable automatic wrapping for all files (some filetype plugins set this to
 " a different value, which is really annoying).
 au FileType * set textwidth=0
 
