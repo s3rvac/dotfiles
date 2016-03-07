@@ -512,13 +512,13 @@ nnoremap ` '
 noremap :help :vert bo help
 
 " Disable arrows keys (I use exclusively h/j/k/l).
-noremap <Down> <nop>
-inoremap <Down> <nop>
-noremap <Left> <nop>
-inoremap <Left> <nop>
 noremap <Up> <nop>
-inoremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
 noremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
 inoremap <Right> <nop>
 
 " Make j and k move by virtual lines instead of physical lines, but only when
