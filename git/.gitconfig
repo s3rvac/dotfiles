@@ -26,7 +26,7 @@
 	c = commit --verbose
 	ca = commit --verbose --all
 	clear = reset --hard
-	cl = clone --recursive
+	cl = clone
 	conflicts = diff --name-only --diff-filter=U --relative
 	co = checkout
 	cob = checkout -b
