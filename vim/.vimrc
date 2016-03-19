@@ -303,7 +303,7 @@ colorscheme koehler
 set background=dark
 
 " Highlight mixture of spaces and tabs.
-au BufEnter * hi SpacesTabsMixtureGroup guibg=gray18 guifg=red ctermbg=darkgray ctermfg=red
+au BufEnter * hi SpacesTabsMixtureGroup guibg=gray19 guifg=red ctermbg=236 ctermfg=red
 au BufEnter * match SpacesTabsMixtureGroup /^ \+\t\+\|^\t\+ \+/
 
 " Statusline.
