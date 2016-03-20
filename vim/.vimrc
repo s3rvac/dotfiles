@@ -988,8 +988,9 @@ augroup END
 " Haskell.
 augroup haskell
 " The following settings are based on these guidelines:
-"  - urchin.earth.li/~ian/style/haskell.html
-"  - cs.caltech.edu/courses/cs11/material/haskell/misc/haskell_style_guide.html
+"  - https://github.com/tibbe/haskell-style-guide/blob/master/haskell-style.md
+"  - http://urchin.earth.li/~ian/style/haskell.html
+"  - http://cs.caltech.edu/courses/cs11/material/haskell/misc/haskell_style_guide.html
 au FileType haskell setl expandtab     " Use spaces instead of tabs.
 au FileType haskell setl tabstop=4     " A tab counts for 4 spaces.
 au FileType haskell setl softtabstop=4 " Causes backspace to delete 4 spaces.
