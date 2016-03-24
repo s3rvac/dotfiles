@@ -401,18 +401,18 @@ function! <SID>ToggleObjdumpView()
 		" Turn off objdump view.
 		" Replace the buffer with the original content of the buffer, stored in
 		" the Z register.
-		normal ggVG"ZP
+		normal! ggVG"ZP
 		set filetype=
 		set noreadonly
 	else
 		" Turn on objdump view.
 		" Cut the original content of the buffer into the Z register so we can
 		" use it later to restore the original content.
-		normal ggVG"Zd
+		normal! ggVG"Zd
 		" Get the output from objdump and paste it into the buffer.
 		silent! :read !objdump -S %
 		" Go to the beginning of the file.
-		normal ggdd
+		normal! ggdd
 		" Set a proper file type to enable syntax highlighting through
 		" http://www.vim.org/scripts/script.php?script_id=530.
 		set filetype=objdump
@@ -539,10 +539,10 @@ noremap <Leader>j J
 " the indentation whitespace.
 " Based on http://vi.stackexchange.com/a/440.
 function! <SID>JoinWithoutSpaces()
-    execute 'normal gJ'
+    execute 'normal! gJ'
     " Remove any whitespace.
     if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
-        execute 'normal dw'
+        execute 'normal! dw'
     endif
 endfunction
 noremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
