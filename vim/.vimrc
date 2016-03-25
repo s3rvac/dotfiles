@@ -791,7 +791,7 @@ augroup c_cpp
 " Use the man ftplugin to display pages from manual.
 au FileType c,cpp runtime ftplugin/man.vim
 " Use <Leader>man to display manual pages for the function under cursor.
-au FileType c,cpp nmap <buffer> <silent> <Leader>man :Man 3 <cword><CR>
+au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :Man 3 <cword><CR>
 " Use astyle for = command indention.
 au FileType c,cpp exec "setl equalprg=astyle\\ --mode=c\\ --options=".expand("$HOME")."/.vim/astyle/c-cpp.options"
 " Allow "gq" on comments to work properly.
@@ -907,7 +907,7 @@ augroup END
 " PHP.
 augroup php
 " Use <Leader>man to display manual pages for the function under cursor in a browser.
-au FileType php nmap <buffer> <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
+au FileType php nnoremap <buffer> <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
 " Make "gq" on comments work properly.
 au FileType php setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
 augroup END
@@ -1071,10 +1071,10 @@ iab teh        the
 iab hte        the
 
 " Command mistypes.
-nmap :W :w
-nmap :Q :q
-nmap :Set :set
-nmap :Vsp :vsp
+nnoremap :E :e
+nnoremap :Q :q
+nnoremap :Set :set
+nnoremap :Vsp :vsp
 
 "------------------------------------------------------------------------------
 " Local settings.
