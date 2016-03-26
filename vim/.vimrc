@@ -58,7 +58,7 @@ set viminfo+=h
 
 " Line numbers.
 set number              " Show line numbers.
-set relativenumber      " Show relative numbers instead of absolute by default.
+set relativenumber      " Show relative numbers instead of absolute ones.
 
 " Splitting.
 set splitright          " Open new vertical panes in the right rather than left.
@@ -83,7 +83,7 @@ filetype indent off     " Turn off indention by filetype.
 au FileType * set autoindent nosmartindent nocindent fo+=q fo-=r fo-=o fo+=j
 
 " Whitespace.
-set tabstop=4           " Number of spaces <tab> counts for.
+set tabstop=4           " Number of spaces a tab counts for.
 set shiftwidth=4        " Number of spaces to use for each step of indent.
 set shiftround          " Round indent to multiple of shiftwidth.
 set noexpandtab         " Do not expand tab with spaces.
@@ -153,7 +153,7 @@ set statusline+=\ %y                         " File type.
 set statusline+=\ [\%03.3b,0x\%02.2B,U+%04B] " Codes of the character under cursor.
 set statusline+=\ [%l/%L\ (%p%%),%v]         " Line and column numbers.
 
-" Tell Vim which characters to show for expanded TABs, trailing whitespace,
+" Tell Vim which characters to show for expanded tabs, trailing whitespace,
 " ends of lines, and non-breakable space.
 set listchars=tab:>-,trail:#,eol:$,nbsp:~,extends:>,precedes:<
 
@@ -456,7 +456,7 @@ command! -nargs=1 SilentExecute execute ':silent !' . <q-args> | execute ':redra
 " Abbreviations and other mappings.
 "------------------------------------------------------------------------------
 
-" The <Leader> character.
+" The leader and local-leader characters.
 let mapleader = ","
 let maplocalleader = ","
 
