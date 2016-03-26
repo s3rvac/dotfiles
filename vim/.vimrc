@@ -162,7 +162,7 @@ set whichwrap+=<,>,[,]
 
 " Path/file/command completion.
 set wildmenu
-set wildchar=<tab>
+set wildchar=<Tab>
 set wildmode=list:longest
 set wildignore+=*.o,*.obj,*.pyc,*.aux,*.bbl,*.blg,.git,.svn,.hg
 " Suffixes that get lower priority when doing tab completion for filenames.
@@ -512,14 +512,14 @@ nnoremap ` '
 noremap :help :vert bo help
 
 " Disable arrows keys (I use exclusively h/j/k/l).
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 " Make j and k move by virtual lines instead of physical lines, but only when
 " not used in the count mode (e.g. 3j). This is great when 'wrap' and
@@ -696,8 +696,8 @@ let g:snips_author='Petr Zemek <s3rvac@gmail.com>'
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsEnableSnipMate='no'
 let g:UltiSnipsSnippetDirectories=[$HOME . '/.vim/snippets']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "----------------------------------------
