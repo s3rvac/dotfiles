@@ -1,7 +1,6 @@
 "------------------------------------------------------------------------------
 " File:     $HOME/.vimrc
 " Author:   Petr Zemek <s3rvac@gmail.com>
-" Encoding: utf-8
 "
 " Based on http://www.hermann-uwe.de/files/vimrc.
 "------------------------------------------------------------------------------
