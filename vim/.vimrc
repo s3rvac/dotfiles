@@ -770,10 +770,16 @@ call tcomment#DefineType('llvm', '; %s')
 
 augroup trailing_whitespace
 au!
-" Remove trailing whitespace when a file is saved.
-" TODO: Do not remove whitespace in these situations:
-"       - before a space (or tab) when there is a backslash (like '\ ').
-au BufWritePre * :if ! &bin | call setline(1, map(getline(1, "$"), 'substitute(v:val, "\\s\\+$", "", "")'))
+" Automatically remove trailing whitespace when saving a file.
+function! <SID>RemoveTrailingWhitespace()
+	let pattern = '\\s\\+$'
+	if &ft == 'mail'
+		" Do not remove the space from the email signature marker ("-- \n").
+		let pattern = '\\(^--\\)\\@<!'.pattern
+	endif
+	call setline(1, map(getline(1, '$'), 'substitute(v:val, "'.pattern.'", "", "")'))
+endfunction
+au BufWritePre * :if ! &bin | call <SID>RemoveTrailingWhitespace()
 augroup end
 
 augroup file_types
