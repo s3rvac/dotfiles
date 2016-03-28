@@ -249,7 +249,10 @@ else
 
 	" Check for changes in files more often. This makes Vim in terminal behaves
 	" more like GVim, although sadly not the same.
+	augroup file_change_check
+	au!
 	au BufEnter * silent! checktime
+	augroup end
 
 	" Make some key combinations work when running Vim in Tmux.
 	if exists('$TMUX')
@@ -301,6 +304,8 @@ colorscheme koehler
 " Use a dark background.
 set background=dark
 
+augroup colors_and_highlighting
+au!
 " Highlight mixture of spaces and tabs.
 au BufEnter * hi SpacesTabsMixtureGroup guibg=gray19 guifg=red ctermbg=236 ctermfg=red
 au BufEnter * match SpacesTabsMixtureGroup /^ \+\t\+\|^\t\+ \+/
@@ -339,6 +344,7 @@ au BufEnter * hi Visual guibg=black guifg=gray ctermfg=gray
 
 " Use the same color in the sign column as it is used in the numbers column.
 au BufEnter * hi clear SignColumn
+augroup end
 
 "------------------------------------------------------------------------------
 " Function keys.
@@ -744,11 +750,16 @@ call tcomment#DefineType('llvm', '; %s')
 " File-type specific settings and other autocommands.
 "------------------------------------------------------------------------------
 
+augroup trailing_whitespace
+au!
 " Remove trailing whitespace when a file is saved.
 " TODO: Do not remove whitespace in these situations:
 "       - before a space (or tab) when there is a backslash (like '\ ').
 au BufWritePre * :if ! &bin | call setline(1, map(getline(1, "$"), 'substitute(v:val, "\\s\\+$", "", "")'))
+augroup end
 
+augroup file_types
+au!
 " Consider all .tpl files as Smarty files.
 au BufNewFile,BufRead *.tpl setl ft=smarty
 " Consider all .php* files (.phps, .phpt etc.) as PHP files.
@@ -763,7 +774,10 @@ au BufNewFile,BufRead .vimperatorrc setl ft=vim
 au BufNewFile,BufRead *.tex setl ft=tex
 " Use mysql filetype rather than sql.
 au BufNewFile,BufRead *.sql setl ft=mysql
+augroup end
 
+augroup makeprg
+au!
 " If there is a Makefile in the current working directory,
 " use the `make` command instead of a concrete program.
 function <SID>SetMakeprg()
@@ -772,9 +786,11 @@ function <SID>SetMakeprg()
 	endif
 endfunction
 au FileType * call <SID>SetMakeprg()
+augroup end
 
 " C and C++
 augroup c_cpp
+au!
 " Use the man ftplugin to display pages from manual.
 au FileType c,cpp runtime ftplugin/man.vim
 " Use <Leader>man to display manual pages for the function under cursor.
@@ -892,6 +908,7 @@ augroup end
 
 " PHP
 augroup php
+au!
 " Use <Leader>man to display manual pages for the function under cursor in a browser.
 au FileType php nnoremap <buffer> <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
 " Make "gq" on comments work properly.
@@ -900,6 +917,7 @@ augroup end
 
 " LaTeX
 augroup latex
+au!
 au FileType tex,plaintex setl spell    " Enable spell checking.
 " Compilation.
 " This errorformat presumes that you are using `pdflatex -file-line-error`
@@ -909,17 +927,20 @@ augroup end
 
 " Shell
 augroup sh
+au!
 au FileType sh setl noexpandtab  " Use tabs instead of spaces.
 augroup end
 
 " MySQL
 augroup mysql
+au!
 " Allow "gq" on comments to work properly.
 au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
 augroup end
 
 " Python
 augroup python
+au!
 " The following settings are based on these guidelines:
 "  - python.org/dev/peps/pep-0008
 au FileType python setl expandtab     " Use spaces instead of tabs.
@@ -957,6 +978,7 @@ augroup end
 
 " Ruby
 augroup ruby
+au!
 " The following settings are based on these guidelines:
 "  - https://raw.github.com/chneukirchen/styleguide/master/RUBY-STYLE
 au FileType ruby setl expandtab     " Use spaces instead of tabs.
@@ -970,6 +992,7 @@ augroup end
 
 " Haskell
 augroup haskell
+au!
 " The following settings are based on these guidelines:
 "  - https://github.com/tibbe/haskell-style-guide/blob/master/haskell-style.md
 "  - http://urchin.earth.li/~ian/style/haskell.html
@@ -982,6 +1005,7 @@ augroup end
 
 " LLVM
 augroup llvm
+au!
 au FileType llvm setl expandtab     " Use spaces instead of tabs.
 au FileType llvm setl tabstop=2     " A tab counts for 2 spaces.
 au FileType llvm setl softtabstop=2 " Causes backspace to delete 2 spaces.
@@ -992,12 +1016,14 @@ augroup end
 
 " Git commits
 augroup gitcommit
+au!
 au FileType gitcommit setl spell     " Enable spellchecking.
 au FileType gitcommit setl expandtab " Use spaces instead of tabs.
 augroup end
 
 " Dokuwiki
 augroup dokuwiki
+au!
 au FileType dokuwiki setl spell         " Enable spell checking.
 au FileType dokuwiki setl expandtab     " Use spaces instead of tabs.
 au FileType dokuwiki setl tabstop=2     " Lists are indented with 2 spaces.
@@ -1007,12 +1033,14 @@ augroup end
 
 " reStructured Text
 augroup rst
+au!
 au FileType rst setl spell              " Enable spellchecking.
 au FileType rst setl expandtab          " Use spaces instead of tabs.
 augroup end
 
 " Markdown
 augroup markdown
+au!
 au FileType markdown setl spell         " Enable spellchecking.
 au FileType markdown setl expandtab     " Use spaces instead of tabs.
 au FileType markdown setl tabstop=2     " Lists are indented with 2 spaces.
@@ -1022,6 +1050,7 @@ augroup end
 
 " Mail
 augroup mail
+au!
 au FileType mail setl spell         " Enable spellchecking.
 au FileType mail setl spelllang=cs
 au FileType mail setl expandtab     " Use spaces instead of tabs.
@@ -1031,6 +1060,8 @@ augroup end
 " Firefox "It's all text plugin".
 "-------------------------------------------------------------------------------
 
+augroup firefox_its_all_text
+au!
 let s:opened_file_path = expand('%:p')
 if s:opened_file_path =~ '\.mozilla/firefox/'
 	" Enable Czech spell checking by default.
@@ -1039,6 +1070,7 @@ if s:opened_file_path =~ '\.mozilla/firefox/'
 
 	au BufRead,BufNewFile *.txt setl ft=html
 endif
+augroup end
 
 "------------------------------------------------------------------------------
 " Typos correction.
