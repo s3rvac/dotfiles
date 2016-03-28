@@ -40,10 +40,7 @@ set path=$PWD/**        " Include everything under $PWD into the path.
 set nrformats-=octal    " Make incrementing 007 result into 008 rather than 010.
 
 " Backup and swap files.
-" Store temporary files in a central spot.
-set backupdir=~/.vim/tmp
-set directory=~/.vim/tmp
-set nobackup            " Disable backup.
+set nobackup            " Disable backup files.
 set noswapfile          " Disable swap files.
 set nowritebackup       " Disable auto backup before overwriting a file.
 
