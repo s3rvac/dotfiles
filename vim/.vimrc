@@ -312,7 +312,7 @@ au BufEnter * match SpacesTabsMixtureGroup /^ \+\t\+\|^\t\+ \+/
 
 " Statusline.
 au BufEnter * hi StatusLine guibg=black guifg=white ctermbg=black ctermfg=white
-au BufEnter * hi StatusLineNC guibg=black guifg=gray70 ctermbg=black ctermfg=gray
+au BufEnter * hi StatusLineNC guibg=black guifg=gray70 ctermbg=black ctermfg=darkgray
 
 " Characters exceeding textwidth or 80 characters.
 au BufEnter * hi ExceedCharsGroup guibg=darkblue guifg=white ctermbg=darkblue ctermfg=white
@@ -322,8 +322,8 @@ au BufEnter * hi Pmenu guibg=gray30 guifg=white ctermbg=darkgray ctermfg=white
 au BufEnter * hi PmenuSel guibg=white guifg=black ctermbg=white ctermfg=black
 
 " Folds.
-au BufEnter * hi Folded guibg=gray30 guifg=white ctermbg=gray ctermfg=white
-au BufEnter * hi FoldColumn guibg=gray30 guifg=white ctermbg=gray ctermfg=white
+au BufEnter * hi Folded guibg=gray30 guifg=white ctermbg=darkgray ctermfg=white
+au BufEnter * hi FoldColumn guibg=gray30 guifg=white ctermbg=darkgray ctermfg=white
 
 " Tab colors.
 au BufEnter * hi TabLine guibg=black guifg=gray ctermbg=black ctermfg=gray
