@@ -817,9 +817,9 @@ au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :Man 3 <cword><CR>
 au FileType c,cpp exec "setl equalprg=astyle\\ --mode=c\\ --options=" . $HOME . "/.vim/astyle/c-cpp.options"
 " Allow "gq" on comments to work properly.
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
-" Add a new include (+ store the current position to 'z').
-au FileType c,cpp nnoremap <buffer> <Leader>inc mz?#include <<CR>:nohlsearch<CR>o#include <><Esc>i
-au FileType c,cpp nnoremap <buffer> <Leader>Inc mz?#include \"<CR>:nohlsearch<CR>o#include ""<Esc>i
+" Go to includes.
+au FileType c,cpp nnoremap <buffer> <Leader>inc /^#include <<CR>:nohlsearch<CR>:echo<CR>
+au FileType c,cpp nnoremap <buffer> <Leader>Inc /^#include "<CR>:nohlsearch<CR>:echo<CR>
 
 " Open both a .c|cpp|cc file and the corresponding .h file in a new tab.
 function! <SID>GetCFile(base_name)
@@ -966,9 +966,8 @@ au FileType python setl tabstop=4     " A tab counts for 4 spaces.
 au FileType python setl softtabstop=4 " Causes backspace to delete 4 spaces.
 au FileType python setl shiftwidth=4  " Shift by 4 spaces.
 
-" Add a new import (+ store the current position to 'z').
-au FileType python nnoremap <buffer> <Leader>im mz?^import <CR>:nohlsearch<CR>oimport  <Esc>i
-au FileType python nnoremap <buffer> <Leader>fr mz?^from <CR>:nohlsearch<CR>ofrom  <Esc>i
+" Go to imports.
+au FileType python nnoremap <buffer> <Leader>im /^\(from\\|import\) <CR>:nohlsearch<CR>:echo<CR>
 
 " Let F9 run the currently opened tests.
 au FileType python nnoremap <buffer> <F9> :wa<CR>:!clear; nosetests %<CR>
