@@ -601,17 +601,13 @@ else
 	noremap <C-l> <C-w>l
 endif
 
-" Opens the selected link in a web browser.
-let s:web_browser_path='/usr/bin/firefox'
-function! <SID>OpenLink(link)
-	exec ':silent !' . s:web_browser_path . ' ' . '"' . a:link . '"'
-endfunction
 " Open a link under the cursor in a web browser (similar to gx, but faster).
+let s:web_browser_path='/usr/bin/firefox'
 function! <SID>OpenLinkUnderCursor()
 	let curr_line = getline('.')
-	let link = matchstr(curr_line, '\(http\\|https\\|ftp\\|file\)://[^ )"]*')
+	let link = matchstr(curr_line, '\(http\|https\|ftp\|file\)://[^ )"]*')
 	if link != ''
-		call <SID>OpenLink(link)
+		exec ':silent !' . s:web_browser_path . ' ' . '"' . link . '"'
 	endif
 endfunction
 nnoremap <silent> gl :call <SID>OpenLinkUnderCursor()<CR>
