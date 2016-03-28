@@ -780,6 +780,9 @@ function! <SID>RemoveTrailingWhitespace()
 	call setline(1, map(getline(1, '$'), 'substitute(v:val, "'.pattern.'", "", "")'))
 endfunction
 au BufWritePre * :if ! &bin | call <SID>RemoveTrailingWhitespace()
+" Add a new command :W that can be used to write a file without removing
+" trailing whitespace (sometimes, this is handy).
+command! W :set eventignore=BufWritePre | w | set eventignore=""
 augroup end
 
 augroup file_types
