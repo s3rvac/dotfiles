@@ -797,7 +797,7 @@ augroup makeprg
 au!
 " If there is a Makefile in the current working directory,
 " use the `make` command instead of a concrete program.
-function <SID>SetMakeprg()
+function! <SID>SetMakeprg()
 	if filereadable('Makefile') || filereadable('makefile')
 		set makeprg='make'
 	endif
