@@ -888,8 +888,7 @@ au FileType c nnoremap <buffer> <F10> :w<CR>:!clear; gcc -std=c11 -pedantic -Wal
 au FileType c nnoremap <buffer> <S-F10> :w<CR>:!clear; clang -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
 au FileType cpp nnoremap <buffer> <F10> :w<CR>:!clear; g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
 au FileType cpp nnoremap <buffer> <S-F10> :w<CR>:!clear; clang++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-
-augroup END
+augroup end
 
 " PHP
 augroup php
@@ -897,7 +896,7 @@ augroup php
 au FileType php nnoremap <buffer> <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
 " Make "gq" on comments work properly.
 au FileType php setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
-augroup END
+augroup end
 
 " LaTeX
 augroup latex
@@ -906,18 +905,18 @@ au FileType tex,plaintex setl spell    " Enable spell checking.
 " This errorformat presumes that you are using `pdflatex -file-line-error`
 " to compile .tex files.
 au FileType tex,plaintex setl errorformat=%f:%l:\ %m
-augroup END
+augroup end
 
 " Shell
 augroup sh
 au FileType sh setl noexpandtab  " Use tabs instead of spaces.
-augroup END
+augroup end
 
 " MySQL
 augroup mysql
 " Allow "gq" on comments to work properly.
 au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
-augroup END
+augroup end
 
 " Python
 augroup python
@@ -954,7 +953,7 @@ function! <SID>ShowPythonTestsInSplit()
 endfunction
 " The mapping is mimicking <Leader>as for c,cpp.
 au FileType python nnoremap <buffer> <Leader>as :call <SID>ShowPythonTestsInSplit()<CR>
-augroup END
+augroup end
 
 " Ruby
 augroup ruby
@@ -967,7 +966,7 @@ au FileType ruby setl shiftwidth=2  " Shift by 2 spaces.
 
 " Let F10 run the currently opened script.
 au FileType ruby nnoremap <buffer> <F10> :w<CR>:!clear; ruby %<CR>
-augroup END
+augroup end
 
 " Haskell
 augroup haskell
@@ -979,7 +978,7 @@ au FileType haskell setl expandtab     " Use spaces instead of tabs.
 au FileType haskell setl tabstop=4     " A tab counts for 4 spaces.
 au FileType haskell setl softtabstop=4 " Causes backspace to delete 4 spaces.
 au FileType haskell setl shiftwidth=4  " Shift by 4 spaces.
-augroup END
+augroup end
 
 " LLVM
 augroup llvm
@@ -989,13 +988,13 @@ au FileType llvm setl softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType llvm setl shiftwidth=2  " Shift by 2 spaces.
 " Make "gq" on comments working properly.
 au FileType llvm setl comments=bO:;
-augroup END
+augroup end
 
 " Git commits
 augroup gitcommit
 au FileType gitcommit setl spell     " Enable spellchecking.
 au FileType gitcommit setl expandtab " Use spaces instead of tabs.
-augroup END
+augroup end
 
 " Dokuwiki
 augroup dokuwiki
@@ -1004,13 +1003,13 @@ au FileType dokuwiki setl expandtab     " Use spaces instead of tabs.
 au FileType dokuwiki setl tabstop=2     " Lists are indented with 2 spaces.
 au FileType dokuwiki setl softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType dokuwiki setl shiftwidth=2  " Shift by 2 spaces.
-augroup END
+augroup end
 
 " reStructured Text
 augroup rst
 au FileType rst setl spell              " Enable spellchecking.
 au FileType rst setl expandtab          " Use spaces instead of tabs.
-augroup END
+augroup end
 
 " Markdown
 augroup markdown
@@ -1019,14 +1018,14 @@ au FileType markdown setl expandtab     " Use spaces instead of tabs.
 au FileType markdown setl tabstop=2     " Lists are indented with 2 spaces.
 au FileType markdown setl softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType markdown setl shiftwidth=2  " Shift by 2 spaces.
-augroup END
+augroup end
 
 " Mail
 augroup mail
 au FileType mail setl spell         " Enable spellchecking.
 au FileType mail setl spelllang=cs
 au FileType mail setl expandtab     " Use spaces instead of tabs.
-augroup END
+augroup end
 
 "-------------------------------------------------------------------------------
 " Firefox "It's all text plugin".
