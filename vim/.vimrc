@@ -46,10 +46,8 @@ set nowritebackup       " Disable auto backup before overwriting a file.
 
 " History
 set history=1000        " Number of lines of command line history.
-" Read/write a .viminfo file.
-set viminfo='100,\"500,r/mnt,r~/mnt,r/media
-" Do not store searches.
-set viminfo+=h
+set viminfo='100,\"500,r/mnt,r~/mnt,r/media " Read/write a .viminfo file.
+set viminfo+=h          " Do not store searches.
 
 " Line numbers.
 set number              " Show line numbers.
@@ -143,8 +141,8 @@ set tabline=%!MyTabLine()
 highlight link TabNum Special
 
 " Statusline.
-set noruler             " Since I'm using a statusline, disable ruler.
 set laststatus=2        " Always display a statusline.
+set noruler             " Since I'm using a statusline, disable ruler.
 set statusline=%<%f                          " Path to the file in the buffer.
 set statusline+=\ %h%w%m%r%k                 " Flags (e.g. [+], [RO]).
 set statusline+=\ [%{(&fenc\ ==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")},%{&ff}] " Encoding and line endings.
@@ -768,6 +766,8 @@ au BufNewFile,BufRead *.wsgi setl ft=python
 au BufNewFile,BufRead .vimperatorrc setl ft=vim
 " Use tex filetype rather than plaintex.
 au BufNewFile,BufRead *.tex setl ft=tex
+" Use mysql filetype rather than sql.
+au BufNewFile,BufRead *.sql setl ft=mysql
 
 " If there is a Makefile in the current working directory,
 " use the `make` command instead of a concrete program.
@@ -920,8 +920,6 @@ augroup END
 
 " MySQL
 augroup mysql
-" Consider .sql files as MySQL files.
-au BufNewFile,BufRead *.sql setl ft=mysql
 " Allow "gq" on comments to work properly.
 au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
 augroup END
