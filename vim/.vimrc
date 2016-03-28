@@ -330,6 +330,9 @@ au BufEnter * hi TabLine guibg=black guifg=gray ctermbg=black ctermfg=gray
 au BufEnter * hi TabLineSel guibg=black guifg=white ctermbg=black ctermfg=white
 au BufEnter * hi TabLineFill guibg=black guifg=black ctermbg=black ctermfg=black
 
+" Colorcolumn.
+au BufEnter * hi ColorColumn guibg=gray19 guifg=white ctermbg=236 ctermfg=white
+
 " Messages.
 au BufEnter * hi MoreMsg guibg=black guifg=green1 ctermbg=black ctermfg=46
 
@@ -385,6 +388,18 @@ nnoremap <silent> <S-F2> :call <SID>ToggleExceedingCharsHighlight()<CR>
 
 " F3: Toggle line wrapping.
 nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
+
+" Shift+F3: Toggle the display of colorcolumn.
+function! <SID>ToggleColorColumn()
+	if &colorcolumn > 0
+		set colorcolumn=""
+	elseif &textwidth > 0
+		let &colorcolumn = &textwidth
+	else
+		set colorcolumn=80
+	endif
+endfunction
+nnoremap <silent> <S-F3> :call <SID>ToggleColorColumn()<CR>
 
 " F4: Toggle hexdump view of binary files.
 function! <SID>ToggleHexdumpView()
