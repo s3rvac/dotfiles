@@ -194,7 +194,9 @@ set nofoldenable
 
 " No bell sounds.
 set noerrorbells visualbell t_vb=
-au GUIEnter * set visualbell t_vb=
+if has("gui_running")
+	au GUIEnter * set visualbell t_vb=
+endif
 
 " Encoding and end of line.
 " Default file encoding for new files.
