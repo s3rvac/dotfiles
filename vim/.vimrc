@@ -345,37 +345,37 @@ au BufEnter * hi clear SignColumn
 "------------------------------------------------------------------------------
 
 " F1: Toggle spell checker.
-nnoremap <silent> <F1>
-	\ :if &spell == 0 <Bar>
-	\   set spell <Bar>
-	\   echo 'spell checking: enabled' <Bar>
-	\ else <Bar>
-	\   set nospell <Bar>
-	\   echo 'spell checking: disabled' <Bar>
-	\ endif<CR>
+nnoremap <silent> <F1> :set spell!<CR>:set spell?<CR>
 
-" Shift+F1: Toggle English/Czech spell dictionary.
-nnoremap <silent> <S-F1>
-	\ :if &spelllang =~ 'en' <Bar>
-	\   set spelllang=cs <Bar>
-	\ else <Bar>
-	\   set spelllang=en_us,en_gb <Bar>
-	\ endif <Bar>
-	\ echo 'spelllang: ' . &spelllang<CR>
+" Shift+F1: Toggle spell dictionary between English and Czech.
+function! <SID>ToggleSpelllang()
+	if &spelllang =~ 'en'
+		set spelllang=cs
+	else
+		set spelllang=en_us,en_gb
+	endif
+	set spelllang?
+endfunction
+nnoremap <silent> <S-F1> :call <SID>ToggleSpelllang()<CR>
 
 " F2: Toggle the display of unprintable characters.
-nnoremap <silent> <F2> :set list!<CR>
+nnoremap <silent> <F2> :set list!<CR>:set list?<CR>
 
 " Shift+F2: Toggle highlighting of characters exceeding textwidth.
-nnoremap <silent> <S-F2>
-	\ :if exists('w:long_line_match') <Bar>
-	\   silent! call matchdelete(w:long_line_match) <Bar>
-	\   unlet w:long_line_match <Bar>
-	\ elseif &textwidth > 0 <Bar>
-	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>' . &tw . 'v.\+', -1) <Bar>
-	\ else <Bar>
-	\   let w:long_line_match=matchadd('ExceedCharsGroup', '\%>80v.\+', -1) <Bar>
-	\ endif<CR>
+function! <SID>ToggleExceedingCharsHighlight()
+	if exists('w:long_line_match')
+		silent! call matchdelete(w:long_line_match)
+		unlet w:long_line_match
+		echo "Disable highlighting."
+	elseif &textwidth > 0
+		let w:long_line_match=matchadd('ExceedCharsGroup', '\%>' . &textwidth . 'v.\+', -1)
+		echo "Enable highlighting after " . &textwidth . " characters."
+	else
+		let w:long_line_match=matchadd('ExceedCharsGroup', '\%>80v.\+', -1)
+		echo "Enable highlighting after 80 characters."
+	endif
+endfunction
+nnoremap <silent> <S-F2> :call <SID>ToggleExceedingCharsHighlight()<CR>
 
 " F3: Toggle line wrapping.
 nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
@@ -422,14 +422,7 @@ endfunction
 nnoremap <silent> <S-F4> :call <SID>ToggleObjdumpView()<CR>
 
 " F6: Toggle relative/absolute numbers.
-function! <SID>RelAbsNumberToggle()
-	if (&relativenumber == 1)
-		set norelativenumber
-	else
-		set relativenumber
-	endif
-endfunction
-nnoremap <silent> <F6> :call <SID>RelAbsNumberToggle()<CR>
+nnoremap <silent> <F6> :set relativenumber!<CR>:set relativenumber?<CR>
 
 " F9: Run tests for the given file.
 " The mapping is defined separately for each file type.
