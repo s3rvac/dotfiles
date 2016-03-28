@@ -1073,6 +1073,7 @@ nnoremap :E :e
 nnoremap :Q :q
 nnoremap :Set :set
 nnoremap :Vsp :vsp
+nnoremap :Tn :tabnew
 
 "------------------------------------------------------------------------------
 " Local settings.
