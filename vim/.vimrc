@@ -617,8 +617,7 @@ endfunction
 nnoremap <silent> gl :call <SID>OpenLinkUnderCursor()<CR>
 
 " A text object for the entire file ("a file").
-" The current position is stored into the 'z' register.
-onoremap af :<C-u>normal! mzggVG<CR>
+onoremap af :<C-u>normal! ggVG<CR>
 
 " Git leader commands.
 " They require https://github.com/tpope/vim-fugitive.
