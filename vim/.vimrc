@@ -20,7 +20,6 @@ filetype plugin on
 
 set nocompatible        " Disable vi compatibility.
 set undolevels=200      " Number of undo levels.
-set textwidth=0         " Don't automatically wrap lines.
 set scrolloff=10        " Keep a context (rows) when scrolling vertically.
 set sidescroll=5        " Keep a context (columns) when scrolling horizontally.
 set tabpagemax=1000     " Maximum number of tabs to open by the -p argument.
@@ -91,6 +90,10 @@ set noexpandtab         " Do not expand tab with spaces.
 set wrap                " Enable text wrapping.
 set linebreak           " Break after words only.
 set display+=lastline   " Show as much as possible from the last shown line.
+set textwidth=0         " Don't automatically wrap lines.
+" Disable automatic wrapping for all files (some filetype plugins set this to
+" a different value, which is really annoying).
+au FileType * set textwidth=0
 
 " Tabline.
 set showtabline=1       " Display a tabline only if there are at least two tabs.
@@ -768,10 +771,6 @@ au BufNewFile,BufRead *.wsgi setl ft=python
 au BufNewFile,BufRead .vimperatorrc setl ft=vim
 " Use tex filetype rather than plaintex.
 au BufNewFile,BufRead *.tex setl ft=tex
-
-" Disable automatic wrapping for all files (some filetype plugins set this to
-" a different value, which is really annoying).
-au FileType * set textwidth=0
 
 " Quickfix.
 " If there is a Makefile in the current directory,
