@@ -27,7 +27,7 @@ set esckeys             " Cursor keys in insert mode.
 set ttyfast             " Improves redrawing for newer computers.
 set lazyredraw          " Don't redraw during complex operations (e.g. macros).
 set autowrite           " Automatically save before :next, :make etc.
-set confirm             " Ask to save a file when operations like :q or :e fail.
+set confirm             " Ask to save file before operations like :q or :e fail.
 set magic               " Use 'magic' patterns (extended regular expressions).
 set hidden              " Allow switching edited buffers without saving.
 set nostartofline       " Keep the cursor in the current column with page cmds.
@@ -36,7 +36,7 @@ set showcmd             " Show (partial) command in the status line.
 set noshowmatch         " Don't show matching brackets when typing them.
 set showmode            " Show the current mode.
 set shortmess+=aIoOtT   " Abbreviation of messages (avoids 'hit enter ...').
-set path=$PWD/**        " Include all directories/files under $PWD into the path.
+set path=$PWD/**        " Include everything under $PWD into the path.
 set nrformats-=octal    " Make incrementing 007 result into 008 rather than 010.
 
 " Backup and swap files.
@@ -76,8 +76,8 @@ set fo+=q               " Allow formatting of comments with "gq".
 set fo-=r fo-=o         " Turn off automatic insertion of comment characters.
 set fo+=j               " Remove a comment leader when joining comment lines.
 filetype indent off     " Turn off indention by filetype.
-" Override previous settings for all file types (I have to do this because
-" the previous commands don't guarantee this...).
+" Override the previous settings for all file types (some filetype plugins set
+" these options to different values, which is really annoying).
 au FileType * set autoindent nosmartindent nocindent fo+=q fo-=r fo-=o fo+=j
 
 " Whitespace.
@@ -168,7 +168,7 @@ set wildchar=<Tab>
 set wildmode=list:longest
 set wildignore+=*.o,*.obj,*.pyc,*.aux,*.bbl,*.blg,.git,.svn,.hg
 " Suffixes that get lower priority when doing tab completion for filenames.
-" These are files we are not likely to want to edit or read.
+" These files are less likely to be edited.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
 " Code completion.
@@ -194,7 +194,7 @@ set backspace=indent,eol,start
 " Sessions.
 set sessionoptions=blank,buffers,curdir,globals,help,localoptions,resize,tabpages,winpos,winsize
 
-" Disable folds.
+" Disable folds by default (i.e. automatically open all folds).
 set nofoldenable
 
 " No bell sounds.
@@ -297,7 +297,7 @@ endif
 " Syntax highlighting.
 syntax on
 
-" Color scheme. Thanks to the CSApprox plugin, we may use the same scheme in
+" Color scheme. Thanks to the CSApprox plugin, I may use the same scheme in
 " both graphical and terminal Vims.
 colorscheme koehler
 
@@ -369,7 +369,7 @@ nnoremap <silent> <S-F1>
 " F2: Toggle the display of unprintable characters.
 nnoremap <silent> <F2> :set list!<CR>
 
-" Shift+F2: Toggle highlighting characters exceeding textwidth or 80 characters.
+" Shift+F2: Toggle highlighting of characters exceeding textwidth.
 nnoremap <silent> <S-F2>
 	\ :if exists('w:long_line_match') <Bar>
 	\   silent! call matchdelete(w:long_line_match) <Bar>
@@ -408,7 +408,7 @@ function! <SID>ToggleObjdumpView()
 		set noreadonly
 	else
 		" Turn on objdump view.
-		" Cut the original content of the buffer into the Z register so we can
+		" Cut the original content of the buffer into the Z register so I can
 		" use it later to restore the original content.
 		normal! ggVG"Zd
 		" Get the output from objdump and paste it into the buffer.
@@ -484,11 +484,11 @@ vnoremap <silent> <C-s> <Esc>:w<CR><Esc>:wa<CR>
 " Make Ctrl-e jump to the end of the line in the insert mode.
 inoremap <C-e> <C-o>$
 
-" Stay in visual mode when indenting in visual mode.
+" Stay in visual mode when indenting.
 vnoremap < <gv
 vnoremap > >gv
 
-" Quickly select the text you just pasted.
+" Quickly select the text I just pasted.
 noremap gV `[v`]
 
 " Hitting space in normal/visual mode will make the current search disappear.
@@ -691,9 +691,9 @@ let g:netrw_winsize=25
 " except for listing directories first.
 let g:netrw_sort_sequence='[\/]$'
 
-"----------------------------
-" UltiSnip: Snippets for Vim.
-"----------------------------
+"-----------------------------
+" UltiSnips: Snippets for Vim.
+"-----------------------------
 let g:snips_author='Petr Zemek <s3rvac@gmail.com>'
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsEnableSnipMate='no'
@@ -772,11 +772,8 @@ au BufNewFile,BufRead .vimperatorrc setl ft=vim
 " Use tex filetype rather than plaintex.
 au BufNewFile,BufRead *.tex setl ft=tex
 
-" Quickfix.
-" If there is a Makefile in the current directory,
+" If there is a Makefile in the current working directory,
 " use the `make` command instead of a concrete program.
-" TODO: Does it work correctly?
-" TODO: Rewrite it so I don't use a function.
 function <SID>SetMakeprg()
 	if filereadable('Makefile') || filereadable('makefile')
 		set makeprg='make'
@@ -784,7 +781,7 @@ function <SID>SetMakeprg()
 endfunction
 au FileType * call <SID>SetMakeprg()
 
-" C and C++.
+" C and C++
 augroup c_cpp
 " Use the man ftplugin to display pages from manual.
 au FileType c,cpp runtime ftplugin/man.vim
@@ -902,7 +899,7 @@ au FileType cpp nnoremap <buffer> <S-F10> :w<CR>:!clear; clang++ -std=c++14 -ped
 
 augroup END
 
-" PHP.
+" PHP
 augroup php
 " Use <Leader>man to display manual pages for the function under cursor in a browser.
 au FileType php nnoremap <buffer> <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
@@ -910,22 +907,21 @@ au FileType php nnoremap <buffer> <silent> <Leader>man :call <SID>OpenLink('http
 au FileType php setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
 augroup END
 
-" LaTeX.
+" LaTeX
 augroup latex
 au FileType tex,plaintex setl spell    " Enable spell checking.
 " Compilation.
 " This errorformat presumes that you are using `pdflatex -file-line-error`
 " to compile .tex files.
 au FileType tex,plaintex setl errorformat=%f:%l:\ %m
-" TODO: Add support for building files without a Makefile.
 augroup END
 
-" Shell.
+" Shell
 augroup sh
 au FileType sh setl noexpandtab  " Use tabs instead of spaces.
 augroup END
 
-" MySQL.
+" MySQL
 augroup mysql
 " Consider .sql files as MySQL files.
 au BufNewFile,BufRead *.sql setl ft=mysql
@@ -933,7 +929,7 @@ au BufNewFile,BufRead *.sql setl ft=mysql
 au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
 augroup END
 
-" Python.
+" Python
 augroup python
 " The following settings are based on these guidelines:
 "  - python.org/dev/peps/pep-0008
@@ -970,7 +966,7 @@ endfunction
 au FileType python nnoremap <buffer> <Leader>as :call <SID>ShowPythonTestsInSplit()<CR>
 augroup END
 
-" Ruby.
+" Ruby
 augroup ruby
 " The following settings are based on these guidelines:
 "  - https://raw.github.com/chneukirchen/styleguide/master/RUBY-STYLE
@@ -983,7 +979,7 @@ au FileType ruby setl shiftwidth=2  " Shift by 2 spaces.
 au FileType ruby nnoremap <buffer> <F10> :w<CR>:!clear; ruby %<CR>
 augroup END
 
-" Haskell.
+" Haskell
 augroup haskell
 " The following settings are based on these guidelines:
 "  - https://github.com/tibbe/haskell-style-guide/blob/master/haskell-style.md
@@ -995,7 +991,7 @@ au FileType haskell setl softtabstop=4 " Causes backspace to delete 4 spaces.
 au FileType haskell setl shiftwidth=4  " Shift by 4 spaces.
 augroup END
 
-" LLVM.
+" LLVM
 augroup llvm
 au FileType llvm setl expandtab     " Use spaces instead of tabs.
 au FileType llvm setl tabstop=2     " A tab counts for 2 spaces.
@@ -1005,13 +1001,13 @@ au FileType llvm setl shiftwidth=2  " Shift by 2 spaces.
 au FileType llvm setl comments=bO:;
 augroup END
 
-" Git commits.
+" Git commits
 augroup gitcommit
 au FileType gitcommit setl spell     " Enable spellchecking.
 au FileType gitcommit setl expandtab " Use spaces instead of tabs.
 augroup END
 
-" Dokuwiki.
+" Dokuwiki
 augroup dokuwiki
 au FileType dokuwiki setl spell         " Enable spell checking.
 au FileType dokuwiki setl expandtab     " Use spaces instead of tabs.
@@ -1026,7 +1022,7 @@ au FileType rst setl spell              " Enable spellchecking.
 au FileType rst setl expandtab          " Use spaces instead of tabs.
 augroup END
 
-" Markdown.
+" Markdown
 augroup markdown
 au FileType markdown setl spell         " Enable spellchecking.
 au FileType markdown setl expandtab     " Use spaces instead of tabs.
@@ -1035,7 +1031,7 @@ au FileType markdown setl softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType markdown setl shiftwidth=2  " Shift by 2 spaces.
 augroup END
 
-" Mail.
+" Mail
 augroup mail
 au FileType mail setl spell         " Enable spellchecking.
 au FileType mail setl spelllang=cs
