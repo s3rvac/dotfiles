@@ -478,6 +478,8 @@ let maplocalleader = ","
 
 " General command aliases.
 cnoreabbrev tn tabnew
+" Open help in a vertical window instead of in a horizontal window.
+cnoreabbrev help vert help
 " Translation. It uses https://github.com/soimort/translate-shell, which has to
 " be available in $PATH under name 'trs'.
 cnoreabbrev toen !trs cs:en
@@ -523,9 +525,6 @@ noremap <Leader>d "+d
 " more easily reachable than the ` character.
 nnoremap ' `
 nnoremap ` '
-
-" Open help in a vertical window on the right side.
-noremap :help :vert bo help
 
 " Disable arrows keys (I use exclusively h/j/k/l).
 noremap <Up> <Nop>
