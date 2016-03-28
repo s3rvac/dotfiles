@@ -308,7 +308,10 @@ augroup colors_and_highlighting
 au!
 " Highlight mixture of spaces and tabs.
 au BufEnter * hi SpacesTabsMixtureGroup guibg=gray19 guifg=red ctermbg=236 ctermfg=red
-au BufEnter * match SpacesTabsMixtureGroup /^ \+\t\+\|^\t\+ \+/
+" Highlight mixtures only when there are at least two successive spaces to
+" prevent highlighting of false positives (e.g. in git diffs, which may begin
+" with a space).
+au BufEnter * match SpacesTabsMixtureGroup /^  \+\t\+[\t ]*\|^\t\+  \+[\t ]*/
 
 " Statusline.
 au BufEnter * hi StatusLine guibg=black guifg=white ctermbg=black ctermfg=white
