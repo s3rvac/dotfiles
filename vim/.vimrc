@@ -1094,13 +1094,13 @@ augroup end
 "------------------------------------------------------------------------------
 
 " English.
-iab centre     center
-iab fro        for
-iab fucntion   function
-iab recieve    receive
-iab recieved   received
-iab teh        the
-iab hte        the
+iabbrev centre center
+iabbrev fro for
+iabbrev fucntion function
+iabbrev recieve receive
+iabbrev recieved received
+iabbrev teh the
+iabbrev hte the
 
 " Command mistypes.
 nnoremap :E :e
