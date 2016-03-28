@@ -403,7 +403,7 @@ nnoremap <silent> <S-F3> :call <SID>ToggleColorColumn()<CR>
 
 " F4: Toggle hexdump view of binary files.
 function! <SID>ToggleHexdumpView()
-	if (&filetype == 'xxd')
+	if &filetype == 'xxd'
 		" Turn off hexdump view.
 		silent! :%!xxd -r
 		set filetype=
@@ -417,7 +417,7 @@ nnoremap <silent> <F4> :call <SID>ToggleHexdumpView()<CR>
 
 " Shift+F4: Toggle objdump view of binary files.
 function! <SID>ToggleObjdumpView()
-	if (&filetype == 'objdump')
+	if &filetype == 'objdump'
 		" Turn off objdump view.
 		" Replace the buffer with the original content of the buffer, stored in
 		" the Z register.
@@ -552,11 +552,11 @@ noremap <Leader>j J
 " the indentation whitespace.
 " Based on http://vi.stackexchange.com/a/440.
 function! <SID>JoinWithoutSpaces()
-    execute 'normal! gJ'
-    " Remove any whitespace.
-    if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
-        execute 'normal! dw'
-    endif
+	normal! gJ
+	" Remove any whitespace.
+	if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
+		normal! dw
+	endif
 endfunction
 noremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
 
@@ -605,12 +605,14 @@ function! <SID>OpenLink(link)
 	exec ':silent !' . s:web_browser_path . ' ' . '"' . a:link . '"'
 endfunction
 " Open a link under the cursor in a web browser (similar to gx, but faster).
-nnoremap <silent> gl
-	\ :let curr_line = getline('.') <Bar>
-	\ let link = matchstr(curr_line, '\(http\\|https\\|ftp\\|file\)://[^ )"]*') <Bar>
-	\ if link != '' <Bar>
-	\     call <SID>OpenLink(link) <Bar>
-	\ endif<CR>
+function! <SID>OpenLinkUnderCursor()
+	let curr_line = getline('.')
+	let link = matchstr(curr_line, '\(http\\|https\\|ftp\\|file\)://[^ )"]*')
+	if link != ''
+		call <SID>OpenLink(link)
+	endif
+endfunction
+nnoremap <silent> gl :call <SID>OpenLinkUnderCursor()<CR>
 
 " A text object for the entire file ("a file").
 " The current position is stored into the 'z' register.
@@ -811,7 +813,7 @@ au FileType c,cpp runtime ftplugin/man.vim
 " Use <Leader>man to display manual pages for the function under cursor.
 au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :Man 3 <cword><CR>
 " Use astyle for = command indention.
-au FileType c,cpp exec "setl equalprg=astyle\\ --mode=c\\ --options=".expand("$HOME")."/.vim/astyle/c-cpp.options"
+au FileType c,cpp exec "setl equalprg=astyle\\ --mode=c\\ --options=" . $HOME . "/.vim/astyle/c-cpp.options"
 " Allow "gq" on comments to work properly.
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Add a new include (+ store the current position to 'z').
