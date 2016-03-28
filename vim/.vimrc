@@ -719,16 +719,16 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "----------------------------------------
 " python: Syntax highlighting for Python.
 "----------------------------------------
-let python_highlight_builtins=0
-let python_highlight_exceptions=0
-let python_highlight_doctests=1
-let python_highlight_indent_errors=0 " I use my own highlighting of these.
-let python_highlight_space_errors=0
-let python_highlight_string_formatting=0
-let python_highlight_string_format=0
-let python_highlight_string_templates=0
-let python_slow_sync=1
-let python_print_as_function=1
+let g:python_highlight_builtins=0
+let g:python_highlight_exceptions=0
+let g:python_highlight_doctests=1
+let g:python_highlight_indent_errors=0 " I use my own highlighting of these.
+let g:python_highlight_space_errors=0
+let g:python_highlight_string_formatting=0
+let g:python_highlight_string_format=0
+let g:python_highlight_string_templates=0
+let g:python_slow_sync=1
+let g:python_print_as_function=1
 
 "-----------------------------------------
 " Command-T: Fast file navigation for VIM.
@@ -749,7 +749,7 @@ let g:sort_motion_flags = "u" " Remove duplicates while sorting.
 "---------
 " xmledit.
 "---------
-let xml_tag_completion_map = "<C-l>"
+let g:xml_tag_completion_map = "<C-l>"
 
 "------------------------------------------------------------
 " tcomment_vim: An extensible & universal comment vim-plugin.
