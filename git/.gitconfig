@@ -60,6 +60,7 @@
 	shp = stash pop
 	shs = stash show -p
 	sw = show --format=fuller
+	sf = show --pretty="format:" --name-status
 	tags = tag --list -n1
 	; https://github.com/aanand/git-up
 	u = up
