@@ -315,7 +315,7 @@ au BufEnter * match SpacesTabsMixtureGroup /^  \+\t\+[\t ]*\|^\t\+  \+[\t ]*/
 
 " Statusline.
 au BufEnter * hi StatusLine guibg=black guifg=white ctermbg=black ctermfg=white
-au BufEnter * hi StatusLineNC guibg=black guifg=gray70 ctermbg=black ctermfg=darkgray
+au BufEnter * hi StatusLineNC guibg=black guifg=gray70 ctermbg=black ctermfg=gray
 
 " Characters exceeding textwidth or 80 characters.
 au BufEnter * hi ExceedCharsGroup guibg=darkblue guifg=white ctermbg=darkblue ctermfg=white
