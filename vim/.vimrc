@@ -128,7 +128,7 @@ function! MyTabLine()
 		let i = i + 1
 		" Add '[+]' if one of the buffers in the tab page is modified.
 		for bufnr in buflist
-			if getbufvar(bufnr, "&modified")
+			if getbufvar(bufnr, '&modified')
 				let s .= '[+]'
 				break
 			endif
@@ -194,7 +194,7 @@ set nofoldenable
 
 " No bell sounds.
 set noerrorbells visualbell t_vb=
-if has("gui_running")
+if has('gui_running')
 	au GUIEnter * set visualbell t_vb=
 endif
 
@@ -220,7 +220,7 @@ set spelllang=en_us,en_gb
 " by default and stores into ~/.vim/spell/{spelllang}.{encoding}.add).
 
 " Graphical Vim.
-if has("gui_running")
+if has('gui_running')
 	" Font.
 	set guifont=Monospace\ 10.5
 
@@ -378,13 +378,13 @@ function! <SID>ToggleExceedingCharsHighlight()
 	if exists('w:long_line_match')
 		silent! call matchdelete(w:long_line_match)
 		unlet w:long_line_match
-		echo "Disable highlighting."
+		echo 'Disable highlighting.'
 	elseif &textwidth > 0
 		let w:long_line_match=matchadd('ExceedCharsGroup', '\%>' . &textwidth . 'v.\+', -1)
-		echo "Enable highlighting after " . &textwidth . " characters."
+		echo 'Enable highlighting after ' . &textwidth . ' characters.'
 	else
 		let w:long_line_match=matchadd('ExceedCharsGroup', '\%>80v.\+', -1)
-		echo "Enable highlighting after 80 characters."
+		echo 'Enable highlighting after 80 characters.'
 	endif
 endfunction
 nnoremap <silent> <S-F2> :call <SID>ToggleExceedingCharsHighlight()<CR>
@@ -473,8 +473,8 @@ command! -nargs=1 SilentExecute execute ':silent !' . <q-args> | execute ':redra
 "------------------------------------------------------------------------------
 
 " The leader and local-leader characters.
-let mapleader = ","
-let maplocalleader = ","
+let mapleader = ','
+let maplocalleader = ','
 
 " General command aliases.
 cnoreabbrev tn tabnew
@@ -646,12 +646,12 @@ nnoremap <Leader>rac :%s/<C-v><Esc>\[\(\d\{1,2}\(;\d\{1,2}\)\{0,2\}\)\?[m\|K]//g
 " Makes the current file executable.
 " Based on http://vim.wikia.com/wiki/Setting_file_attributes_without_reloading_a_buffer
 function! <SID>MakeFileExecutable()
-	let fname = expand("%:p")
+	let fname = expand('%:p')
 	checktime
-	execute "au FileChangedShell " . fname . " :echo"
+	execute 'au FileChangedShell ' . fname . ' :echo'
 	silent !chmod a+x %
 	checktime
-	execute "au! FileChangedShell " . fname
+	execute 'au! FileChangedShell ' . fname
 	" Fix display issues in terminal Vim.
 	redraw!
 endfunction
@@ -708,9 +708,9 @@ let g:snips_author='Petr Zemek <s3rvac@gmail.com>'
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsEnableSnipMate='no'
 let g:UltiSnipsSnippetDirectories=[$HOME . '/.vim/snippets']
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger='<Tab>'
+let g:UltiSnipsJumpForwardTrigger='<Tab>'
+let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
 
 "----------------------------------------
 " python: Syntax highlighting for Python.
@@ -740,19 +740,19 @@ let g:CommandTCancelMap=['<Esc>', '<C-c>'] " Keys to close the search window.
 " ---------------------------------------------------------
 " vim-sort-motion: Vim mapping for sorting a range of text.
 " ---------------------------------------------------------
-let g:sort_motion_flags = "u" " Remove duplicates while sorting.
+let g:sort_motion_flags = 'u' " Remove duplicates while sorting.
 
 "---------
 " xmledit.
 "---------
-let g:xml_tag_completion_map = "<C-l>"
+let g:xml_tag_completion_map = '<C-l>'
 
 "------------------------------------------------------------
 " tcomment_vim: An extensible & universal comment vim-plugin.
 "------------------------------------------------------------
 " Disable leader commands (I don't use them).
-let g:tcommentMapLeader1 = ""
-let g:tcommentMapLeader2 = ""
+let g:tcommentMapLeader1 = ''
+let g:tcommentMapLeader2 = ''
 " Do not comment blank lines.
 let g:tcomment#blank_lines = 0
 " Custom comment types.
@@ -819,7 +819,7 @@ au FileType c,cpp runtime ftplugin/man.vim
 " Use <Leader>man to display manual pages for the function under cursor.
 au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :Man 3 <cword><CR>
 " Use astyle for = command indention.
-au FileType c,cpp exec "setl equalprg=astyle\\ --mode=c\\ --options=" . $HOME . "/.vim/astyle/c-cpp.options"
+au FileType c,cpp exec 'setl equalprg=astyle\ --mode=c\ --options=' . $HOME . '/.vim/astyle/c-cpp.options'
 " Allow "gq" on comments to work properly.
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Go to includes.
@@ -829,45 +829,45 @@ au FileType c,cpp nnoremap <buffer> <Leader>Inc /^#include "<CR>:nohlsearch<CR>:
 " Open both a .c|cpp|cc file and the corresponding .h file in a new tab.
 function! <SID>GetCFile(base_name)
 	" a:base_name should end with a dot (".")
-	if filereadable(a:base_name . "cc")
-		return a:base_name . "cc"
-	elseif filereadable(a:base_name . "cpp")
-		return a:base_name . "cpp"
+	if filereadable(a:base_name . 'cc')
+		return a:base_name . 'cc'
+	elseif filereadable(a:base_name . 'cpp')
+		return a:base_name . 'cpp'
 	else
-		return a:base_name . "c"
+		return a:base_name . 'c'
 	endif
 endfunction
 function! <SID>OpenCAndHInNewTab(base_name)
-	if a:base_name =~ "\\.h$"
+	if a:base_name =~ '\.h$'
 		let h_file = a:base_name
-		let c_file = <SID>GetCFile(substitute(a:base_name, "\\.h$", ".", ""))
-	elseif a:base_name =~ "\.cc$"
-		let h_file = substitute(a:base_name, "\\.cc$", ".h", "")
+		let c_file = s:GetCFile(substitute(a:base_name, '\\.h$', '.', ''))
+	elseif a:base_name =~ '\.cc$'
+		let h_file = substitute(a:base_name, '\.cc$', '.h', '')
 		let c_file = a:base_name
-	elseif a:base_name =~ "\\.cpp$"
-		let h_file = substitute(a:base_name, "\\.cpp$", ".h", "")
+	elseif a:base_name =~ '\.cpp$'
+		let h_file = substitute(a:base_name, '\.cpp$', '.h', '')
 		let c_file = a:base_name
-	elseif a:base_name =~ "\\.c$"
-		let h_file = substitute(a:base_name, "\\.c$", ".h", "")
+	elseif a:base_name =~ '\.c$'
+		let h_file = substitute(a:base_name, '\.c$', '.h', '')
 		let c_file = a:base_name
-	elseif a:base_name =~ "\\.$"
-		let h_file = a:base_name . "h"
+	elseif a:base_name =~ '\.$'
+		let h_file = a:base_name . 'h'
 		let c_file = <SID>GetCFile(a:base_name)
 	else
-		let h_file = a:base_name . ".h"
-		let c_file = <SID>GetCFile(a:base_name . ".")
+		let h_file = a:base_name . '.h'
+		let c_file = <SID>GetCFile(a:base_name . '.')
 	endif
 	if filereadable(c_file)
 		if filereadable(h_file)
-			exec "tabnew " . c_file
-			exec "vsplit " . h_file
+			exec 'tabnew ' . c_file
+			exec 'vsplit ' . h_file
 		else
-			exec "tabnew " . c_file
+			exec 'tabnew ' . c_file
 		endif
 	elseif filereadable(h_file)
-		exec "tabnew " . h_file
+		exec 'tabnew ' . h_file
 	else
-		echo "No file to open."
+		echo 'No file to open.'
 	endif
 endfunction
 au FileType c,cpp command! -nargs=1 -complete=file TN :call <SID>OpenCAndHInNewTab(<q-args>)
@@ -875,48 +875,48 @@ au FileType c,cpp command! -nargs=1 -complete=file TN :call <SID>OpenCAndHInNewT
 " Splits the current window by showing the .{c,cc,cpp} file on the left-hand
 " side and the corresponding .h file on the right-hand side.
 function! <SID>SplitCOrHFile()
-	if bufname("") =~ "\\.\\(cpp\\|cc\\|c\\)$"
-		let c_file = bufname("")
-		let h_file = substitute(bufname(""), "\\.\\(cpp\\|cc\\|c\\)$", ".h", "")
+	if bufname('') =~ '\.\(cpp\|cc\|c\)$'
+		let c_file = bufname('')
+		let h_file = substitute(bufname(''), '\.\(cpp\|cc\|c\)$', '.h', '')
 		if filereadable(h_file)
-			exec "edit " . c_file
-			exec "vsplit " . h_file
+			exec 'edit ' . c_file
+			exec 'vsplit ' . h_file
 		else
-			echo "The corresponding .h file does not exist."
+			echo 'The corresponding .h file does not exist.'
 		endif
-	elseif bufname("") =~ "\\.h$"
-		let h_file = bufname("")
-		let c_file = <SID>GetCFile(substitute(bufname(""), "\\.h$", ".", ""))
+	elseif bufname('') =~ '\.h$'
+		let h_file = bufname('')
+		let c_file = <SID>GetCFile(substitute(bufname(''), '\.h$', '.', ''))
 		if filereadable(c_file)
-			exec "edit " . c_file
-			exec "vsplit " . h_file
+			exec 'edit ' . c_file
+			exec 'vsplit ' . h_file
 		else
-			echo "The corresponding .{c,cc,cpp} file does not exist."
+			echo 'The corresponding .{c,cc,cpp} file does not exist.'
 		endif
 	else
-		echo "There is no corresponding source file."
+		echo 'There is no corresponding source file.'
 	endif
 endfunction
 au FileType c,cpp nnoremap <buffer> <Leader>as :call <SID>SplitCOrHFile()<CR>
 
 " Alternates between a .{c,cc,cpp} file and a .h file.
 function! <SID>AlternateCOrHFile()
-	if bufname("") =~ "\\.\\(cpp\\|cc\\|c\\)$"
-		let h_file = substitute(bufname(""), "\\.\\(cpp\\|cc\\|c\\)$", ".h", "")
+	if bufname('') =~ '\.\(cpp\|cc\|c\)$'
+		let h_file = substitute(bufname(''), '\.\(cpp\|cc\|c\)$', '.h', '')
 		if filereadable(h_file)
-			exec "edit " . h_file
+			exec 'edit ' . h_file
 		else
-			echo "The corresponding .h file does not exist."
+			echo 'The corresponding .h file does not exist.'
 		endif
-	elseif bufname("") =~ "\\.h$"
-		let c_file = <SID>GetCFile(substitute(bufname(""), "\\.h$", ".", ""))
+	elseif bufname('') =~ '\.h$'
+		let c_file = <SID>GetCFile(substitute(bufname(''), '\.h$', '.', ''))
 		if filereadable(c_file)
-			exec "edit " . c_file
+			exec 'edit ' . c_file
 		else
-			echo "The corresponding .{c,cc,cpp} file does not exist."
+			echo 'The corresponding .{c,cc,cpp} file does not exist.'
 		endif
 	else
-		echo "There is no corresponding source file."
+		echo 'There is no corresponding source file.'
 	endif
 endfunction
 au FileType c,cpp nnoremap <buffer> <Leader>ac :call <SID>AlternateCOrHFile()<CR>
@@ -989,10 +989,10 @@ function! <SID>ShowPythonTestsInSplit()
 	" For e.g. main_package/subpackage/module.py, the tests are in
 	" tests/subpackage/module_tests.py (a convention that I use in my
 	" projects).
-	let module_rel_path = expand("%")
-	let tests_rel_path = substitute(module_rel_path, "\\.\\py$", "_tests.py", "")
-	let tests_rel_path = substitute(tests_rel_path, "^[^/]*/", "tests/", "")
-	exec "vsplit " . tests_rel_path
+	let module_rel_path = expand('%')
+	let tests_rel_path = substitute(module_rel_path, '\.\py$', '_tests.py', '')
+	let tests_rel_path = substitute(tests_rel_path, '^[^/]*/', 'tests/', '')
+	exec 'vsplit ' . tests_rel_path
 endfunction
 " The mapping is mimicking <Leader>as for c,cpp.
 au FileType python nnoremap <buffer> <Leader>as :call <SID>ShowPythonTestsInSplit()<CR>
@@ -1119,6 +1119,6 @@ nnoremap :Tn :tabnew
 "------------------------------------------------------------------------------
 
 " Source a local configuration file if available.
-if filereadable(expand("~/.vimrc.local"))
+if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
