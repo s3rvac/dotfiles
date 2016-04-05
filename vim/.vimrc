@@ -406,7 +406,7 @@ nnoremap <silent> <S-F3> :call <SID>ToggleColorColumn()<CR>
 
 " F4: Toggle hexdump view of binary files.
 function! <SID>ToggleHexdumpView()
-	if &filetype == 'xxd'
+	if &filetype ==# 'xxd'
 		" Turn off hexdump view.
 		silent! :%!xxd -r
 		set filetype=
@@ -420,7 +420,7 @@ nnoremap <silent> <F4> :call <SID>ToggleHexdumpView()<CR>
 
 " Shift+F4: Toggle objdump view of binary files.
 function! <SID>ToggleObjdumpView()
-	if &filetype == 'objdump'
+	if &filetype ==# 'objdump'
 		" Turn off objdump view.
 		" Replace the buffer with the original content of the buffer, stored in
 		" the Z register.
@@ -769,7 +769,7 @@ au!
 " Automatically remove trailing whitespace when saving a file.
 function! <SID>RemoveTrailingWhitespace()
 	let pattern = '\\s\\+$'
-	if &ft == 'mail'
+	if &ft ==# 'mail'
 		" Do not remove the space from the email signature marker ("-- \n").
 		let pattern = '\\(^--\\)\\@<!'.pattern
 	endif
