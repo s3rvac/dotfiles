@@ -540,8 +540,8 @@ inoremap <Right> <Nop>
 " not used in the count mode (e.g. 3j). This is great when 'wrap' and
 " 'relativenumber' are used.
 " Based on http://stackoverflow.com/a/21000307/2580955
-noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Jump to the previous/next tab.
 noremap <silent> J gT
