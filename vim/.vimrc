@@ -771,11 +771,11 @@ function! <SID>RemoveTrailingWhitespace()
 	let pattern = '\\s\\+$'
 	if &ft ==# 'mail'
 		" Do not remove the space from the email signature marker ("-- \n").
-		let pattern = '\\(^--\\)\\@<!'.pattern
+		let pattern = '\\(^--\\)\\@<!' . pattern
 	endif
-	call setline(1, map(getline(1, '$'), 'substitute(v:val, "'.pattern.'", "", "")'))
+	call setline(1, map(getline(1, '$'), 'substitute(v:val, "' . pattern . '", "", "")'))
 endfunction
-au BufWritePre * :if ! &bin | call <SID>RemoveTrailingWhitespace()
+au BufWritePre * :if !&bin | call <SID>RemoveTrailingWhitespace()
 " Add a new command :W that can be used to write a file without removing
 " trailing whitespace (sometimes, this is handy).
 command! W :set eventignore=BufWritePre | w | set eventignore=""
