@@ -360,7 +360,7 @@ augroup end
 nnoremap <silent> <F1> :set spell!<CR>:set spell?<CR>
 
 " Shift+F1: Toggle spell dictionary between English and Czech.
-function! <SID>ToggleSpelllang()
+function! s:ToggleSpelllang()
 	if &spelllang =~ 'en'
 		set spelllang=cs
 	else
@@ -374,7 +374,7 @@ nnoremap <silent> <S-F1> :call <SID>ToggleSpelllang()<CR>
 nnoremap <silent> <F2> :set list!<CR>:set list?<CR>
 
 " Shift+F2: Toggle highlighting of characters exceeding textwidth.
-function! <SID>ToggleExceedingCharsHighlight()
+function! s:ToggleExceedingCharsHighlight()
 	if exists('w:long_line_match')
 		silent! call matchdelete(w:long_line_match)
 		unlet w:long_line_match
@@ -393,7 +393,7 @@ nnoremap <silent> <S-F2> :call <SID>ToggleExceedingCharsHighlight()<CR>
 nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
 
 " Shift+F3: Toggle the display of colorcolumn.
-function! <SID>ToggleColorColumn()
+function! s:ToggleColorColumn()
 	if &colorcolumn > 0
 		set colorcolumn=""
 	elseif &textwidth > 0
@@ -405,7 +405,7 @@ endfunction
 nnoremap <silent> <S-F3> :call <SID>ToggleColorColumn()<CR>
 
 " F4: Toggle hexdump view of binary files.
-function! <SID>ToggleHexdumpView()
+function! s:ToggleHexdumpView()
 	if &filetype ==# 'xxd'
 		" Turn off hexdump view.
 		silent! :%!xxd -r
@@ -419,7 +419,7 @@ endfunction
 nnoremap <silent> <F4> :call <SID>ToggleHexdumpView()<CR>
 
 " Shift+F4: Toggle objdump view of binary files.
-function! <SID>ToggleObjdumpView()
+function! s:ToggleObjdumpView()
 	if &filetype ==# 'objdump'
 		" Turn off objdump view.
 		" Replace the buffer with the original content of the buffer, stored in
@@ -553,7 +553,7 @@ noremap <Leader>j J
 " Join lines without producing any spaces. It works like gJ, but does not keep
 " the indentation whitespace.
 " Based on http://vi.stackexchange.com/a/440.
-function! <SID>JoinWithoutSpaces()
+function! s:JoinWithoutSpaces()
 	normal! gJ
 	" Remove any whitespace.
 	if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
@@ -577,7 +577,7 @@ inoremap <silent> <C-_> </<C-x><C-o><C-x>
 " Note: I do not use https://github.com/christoomey/vim-tmux-navigator because
 "       it does not work when vim is run over ssh.
 if exists('$TMUX')
-	function! <SID>TmuxOrSplitSwitch(wincmd, tmuxdir)
+	function! s:TmuxOrSplitSwitch(wincmd, tmuxdir)
 		let previous_winnr = winnr()
 		silent! execute 'wincmd ' . a:wincmd
 		if previous_winnr == winnr()
@@ -603,7 +603,7 @@ endif
 
 " Open a link under the cursor in a web browser (similar to gx, but faster).
 let s:web_browser_path='/usr/bin/firefox'
-function! <SID>OpenLinkUnderCursor()
+function! s:OpenLinkUnderCursor()
 	let curr_line = getline('.')
 	let link = matchstr(curr_line, '\(http\|https\|ftp\|file\)://[^ )"]*')
 	if link != ''
@@ -645,7 +645,7 @@ nnoremap <Leader>rac :%s/<C-v><Esc>\[\(\d\{1,2}\(;\d\{1,2}\)\{0,2\}\)\?[m\|K]//g
 
 " Makes the current file executable.
 " Based on http://vim.wikia.com/wiki/Setting_file_attributes_without_reloading_a_buffer
-function! <SID>MakeFileExecutable()
+function! s:MakeFileExecutable()
 	let fname = expand('%:p')
 	checktime
 	execute 'au FileChangedShell ' . fname . ' :echo'
@@ -767,7 +767,7 @@ call tcomment#DefineType('llvm', '; %s')
 augroup trailing_whitespace
 au!
 " Automatically remove trailing whitespace when saving a file.
-function! <SID>RemoveTrailingWhitespace()
+function! s:RemoveTrailingWhitespace()
 	let pattern = '\\s\\+$'
 	if &ft ==# 'mail'
 		" Do not remove the space from the email signature marker ("-- \n").
@@ -775,7 +775,7 @@ function! <SID>RemoveTrailingWhitespace()
 	endif
 	call setline(1, map(getline(1, '$'), 'substitute(v:val, "' . pattern . '", "", "")'))
 endfunction
-au BufWritePre * :if !&bin | call <SID>RemoveTrailingWhitespace()
+au BufWritePre * :if !&bin | call s:RemoveTrailingWhitespace()
 " Add a new command :W that can be used to write a file without removing
 " trailing whitespace (sometimes, this is handy).
 command! W :set eventignore=BufWritePre | w | set eventignore=""
@@ -803,12 +803,12 @@ augroup makeprg
 au!
 " If there is a Makefile in the current working directory,
 " use the `make` command instead of a concrete program.
-function! <SID>SetMakeprg()
+function! s:SetMakeprg()
 	if filereadable('Makefile') || filereadable('makefile')
 		set makeprg='make'
 	endif
 endfunction
-au FileType * call <SID>SetMakeprg()
+au FileType * call s:SetMakeprg()
 augroup end
 
 " C and C++
@@ -827,7 +827,7 @@ au FileType c,cpp nnoremap <buffer> <Leader>inc /^#include <<CR>:nohlsearch<CR>:
 au FileType c,cpp nnoremap <buffer> <Leader>Inc /^#include "<CR>:nohlsearch<CR>:echo<CR>
 
 " Open both a .c|cpp|cc file and the corresponding .h file in a new tab.
-function! <SID>GetCFile(base_name)
+function! s:GetCFile(base_name)
 	" a:base_name should end with a dot (".")
 	if filereadable(a:base_name . 'cc')
 		return a:base_name . 'cc'
@@ -837,7 +837,7 @@ function! <SID>GetCFile(base_name)
 		return a:base_name . 'c'
 	endif
 endfunction
-function! <SID>OpenCAndHInNewTab(base_name)
+function! s:OpenCAndHInNewTab(base_name)
 	if a:base_name =~ '\.h$'
 		let h_file = a:base_name
 		let c_file = s:GetCFile(substitute(a:base_name, '\\.h$', '.', ''))
@@ -852,10 +852,10 @@ function! <SID>OpenCAndHInNewTab(base_name)
 		let c_file = a:base_name
 	elseif a:base_name =~ '\.$'
 		let h_file = a:base_name . 'h'
-		let c_file = <SID>GetCFile(a:base_name)
+		let c_file = s:GetCFile(a:base_name)
 	else
 		let h_file = a:base_name . '.h'
-		let c_file = <SID>GetCFile(a:base_name . '.')
+		let c_file = s:GetCFile(a:base_name . '.')
 	endif
 	if filereadable(c_file)
 		if filereadable(h_file)
@@ -870,11 +870,11 @@ function! <SID>OpenCAndHInNewTab(base_name)
 		echo 'No file to open.'
 	endif
 endfunction
-au FileType c,cpp command! -nargs=1 -complete=file TN :call <SID>OpenCAndHInNewTab(<q-args>)
+au FileType c,cpp command! -nargs=1 -complete=file TN :call s:OpenCAndHInNewTab(<q-args>)
 
 " Splits the current window by showing the .{c,cc,cpp} file on the left-hand
 " side and the corresponding .h file on the right-hand side.
-function! <SID>SplitCOrHFile()
+function! s:SplitCOrHFile()
 	if bufname('') =~ '\.\(cpp\|cc\|c\)$'
 		let c_file = bufname('')
 		let h_file = substitute(bufname(''), '\.\(cpp\|cc\|c\)$', '.h', '')
@@ -886,7 +886,7 @@ function! <SID>SplitCOrHFile()
 		endif
 	elseif bufname('') =~ '\.h$'
 		let h_file = bufname('')
-		let c_file = <SID>GetCFile(substitute(bufname(''), '\.h$', '.', ''))
+		let c_file = s:GetCFile(substitute(bufname(''), '\.h$', '.', ''))
 		if filereadable(c_file)
 			exec 'edit ' . c_file
 			exec 'vsplit ' . h_file
@@ -900,7 +900,7 @@ endfunction
 au FileType c,cpp nnoremap <buffer> <Leader>as :call <SID>SplitCOrHFile()<CR>
 
 " Alternates between a .{c,cc,cpp} file and a .h file.
-function! <SID>AlternateCOrHFile()
+function! s:AlternateCOrHFile()
 	if bufname('') =~ '\.\(cpp\|cc\|c\)$'
 		let h_file = substitute(bufname(''), '\.\(cpp\|cc\|c\)$', '.h', '')
 		if filereadable(h_file)
@@ -909,7 +909,7 @@ function! <SID>AlternateCOrHFile()
 			echo 'The corresponding .h file does not exist.'
 		endif
 	elseif bufname('') =~ '\.h$'
-		let c_file = <SID>GetCFile(substitute(bufname(''), '\.h$', '.', ''))
+		let c_file = s:GetCFile(substitute(bufname(''), '\.h$', '.', ''))
 		if filereadable(c_file)
 			exec 'edit ' . c_file
 		else
@@ -985,7 +985,7 @@ au FileType python nnoremap <buffer> <F10> :w<CR>:!clear; python %<CR>
 
 " Splits the current window by showing the corresponding test file on the
 " right-hand side.
-function! <SID>ShowPythonTestsInSplit()
+function! s:ShowPythonTestsInSplit()
 	" For e.g. main_package/subpackage/module.py, the tests are in
 	" tests/subpackage/module_tests.py (a convention that I use in my
 	" projects).
