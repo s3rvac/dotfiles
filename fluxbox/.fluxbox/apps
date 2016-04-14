@@ -10,9 +10,6 @@
   [Maximized] {yes}
   [Deco] {BORDER}
 [end]
-[app] (name=gwenview)
-  [Maximized] {yes}
-[end]
 [app] (name=konsole) (class=konsole)
   [Maximized] {yes}
   [Deco] {BORDER}
