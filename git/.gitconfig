@@ -30,6 +30,7 @@
 	conflicts = diff --name-only --diff-filter=U --relative
 	co = checkout
 	cob = checkout -b
+	cop = checkout -p
 	cot = checkout -t
 	cp = cherry-pick
 	d = diff
