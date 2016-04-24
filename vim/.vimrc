@@ -789,6 +789,9 @@ au BufNewFile,BufRead *.tpl setl ft=smarty
 au BufNewFile,BufRead *.php[0-9a-zA-Z] setl ft=php
 " Consider all .ll files as LLVM IR files.
 au BufNewFile,BufRead *.ll setl ft=llvm
+" Consider all .dsm files as files containing disassembly from the retdec.com
+" decompilation service.
+au BufNewFile,BufRead *.dsm setl ft=retdecdsm
 " Consider all .wsgi files as Python files.
 au BufNewFile,BufRead *.wsgi setl ft=python
 " Use Vim highlighting when editing Vimperator's configuration.

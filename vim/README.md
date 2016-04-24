@@ -44,5 +44,6 @@ I use the following Vim plugins, which you can install by using
   * [python](https://github.com/hdima/python-syntax)
   * [rdoc](https://github.com/depuracao/vim-rdoc)
   * [redminewiki](https://github.com/s3rvac/vim-syntax-redminewiki)
+  * [retdecdsm](https://github.com/s3rvac/vim-syntax-retdecdsm)
   * [tracwiki](http://www.vim.org/scripts/script.php?script_id=3337)
   * [llvm](https://llvm.org/svn/llvm-project/llvm/trunk/utils/vim/syntax/llvm.vim)
