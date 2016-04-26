@@ -742,6 +742,16 @@ let g:CommandTCancelMap=['<Esc>', '<C-c>'] " Keys to close the search window.
 " ---------------------------------------------------------
 let g:sort_motion_flags = 'u' " Remove duplicates while sorting.
 
+" -----------------------------------------------------
+" vim-mail-refs: Adding references when writing emails.
+" -----------------------------------------------------
+augroup vim_mail_refs
+au!
+au FileType mail nnoremap <buffer> <Leader>ar :AddMailRef<CR>
+au FileType mail nnoremap <buffer> <Leader>aR :AddMailRefFromMenu<CR>
+au FileType mail nnoremap <buffer> <Leader>fr :FixMailRefs<CR>
+augroup end
+
 "---------
 " xmledit.
 "---------
