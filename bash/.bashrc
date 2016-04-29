@@ -345,20 +345,20 @@ alias DEC="ruby -e 'printf(\"%d\n\", ARGV[0])'"
 alias BIN="ruby -e 'printf(\"%bb\n\", ARGV[0])'"
 alias WORD="ruby -e 'printf(\"0x%04X\n\", ARGV[0])'"
 
-# Pacman aliases.
-alias pacu='pacman -Syu' # Upgrade
-alias paci='pacman -S'   # Install
-alias pacr='pacman -R'   # Remove
-alias pacp='pacman -Rns' # Purge
-alias pacs='pacman -Ss'  # Search
-
-# Paktahn aliases.
-# alias pacu='pacman -Syu'    # Upgrade
-# alias pacua='pak -Su --aur' # Upgrade AUR
-# alias paci='pak -S'         # Install
-# alias pacr='pak -R'         # Remove
-# alias pacp='pacman -Rns'    # Purge
-# alias pacs='pak'            # Search
+# Pacman/yaourt aliases.
+if command -v yaourt &> /dev/null; then
+	alias paci='yaourt -S'   # Install
+	alias pacr='yaourt -R'   # Remove
+	alias pacp='yaourt -Rns' # Purge
+	alias pacs='yaourt -Ss'  # Search
+	alias pacu='yaourt -Syu' # Upgrade
+else
+	alias paci='pacman -S'   # Install
+	alias pacr='pacman -R'   # Remove
+	alias pacp='pacman -Rns' # Purge
+	alias pacs='pacman -Ss'  # Search
+	alias pacu='pacman -Syu' # Upgrade
+fi
 
 # Aptitude aliases.
 alias apti='aptitude install'
