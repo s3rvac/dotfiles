@@ -40,9 +40,6 @@
 [app] (name=spectacle) (class=spectacle)
   [Position] (CENTER) {0 0}
 [end]
-[app] (name=ktorrent) (class=Ktorrent) (role=MainWindow#1)
-  [Maximized] {yes}
-[end]
 [app] (name=Mail) (class=Thunderbird) (role=3pane)
   [Maximized] {yes}
   [Deco] {BORDER}
