@@ -22,6 +22,7 @@ sleep 1
 	qxkb &
 	qstardict &
 	clementine &
+	parcellite &
 
 	# Disable tapping while writing (for 1 second).
 	syndaemon -i 1 -d -t
