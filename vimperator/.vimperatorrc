@@ -50,6 +50,11 @@ set animations=false
 set defsearch=google
 set suggestengines=google
 
+" Do not use any URL separator (a comma and space by default). This makes e.g.
+" `:tabnew xxx, yyy` search for "xxx, yyy" in a single tab instead of opening
+" two tabs with "xxx" and "yyy".
+set urlseparator=
+
 " Perform incremental searching.
 set incsearch
 
