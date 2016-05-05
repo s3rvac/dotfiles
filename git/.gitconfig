@@ -94,6 +94,10 @@
 	; branch with the same name over there.
 	default = simple
 
+[status]
+	; Use a submodule-aware status.
+	submoduleSummary = true
+
 [merge]
 	; The used merge tool.
 	tool = vimdiff
