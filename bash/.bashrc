@@ -19,7 +19,7 @@ function prepend_to_path() {
 	fi
 }
 
-# Include the path to ruby gems.
+# Include the path to Ruby gems.
 prepend_to_path "$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
 
 # Include the user's private bin.
