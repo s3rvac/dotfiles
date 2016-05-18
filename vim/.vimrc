@@ -669,6 +669,18 @@ nnoremap <Leader>bib :tabe *.bib<CR>
 " Plugins.
 "------------------------------------------------------------------------------
 
+"---------------------------------------------------------------------------
+" AutoFenc: Automatically detects and sets file encoding when opening files.
+"---------------------------------------------------------------------------
+let g:autofenc_ext_prog_path='enca'
+" I am from the Czech Republic, so assume that input files are in a
+" Czech-specific encoding when running enca. This improves detection.
+let g:autofenc_ext_prog_args='-i -L czech'
+" This is what enca prints when the encoding cannot be detected.
+let g:autofenc_ext_prog_unknown_fenc='???'
+" Sometimes, enca detects UTF-7, which is almost always invalid detection.
+let g:autofenc_enc_blacklist='utf-7'
+
 "------------------------------------
 " vim-grepper: Helps you win at grep.
 "------------------------------------
