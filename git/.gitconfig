@@ -88,6 +88,10 @@
 	; Allow `git diff` to do basic rename and copy detection.
 	renames = copies
 
+[fetch]
+	; Automatically prune during `git fetch`.
+	prune = true
+
 [push]
 	; `git push` without any refspec will push the current branch out to the
 	; same name at the remote repository only when it is set to track the
