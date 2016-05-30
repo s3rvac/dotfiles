@@ -1081,8 +1081,11 @@ augroup end
 " reStructured Text
 augroup rst
 au!
-au FileType rst setl spell              " Enable spellchecking.
-au FileType rst setl expandtab          " Use spaces instead of tabs.
+au FileType rst setl spell         " Enable spellchecking.
+au FileType rst setl expandtab     " Use spaces instead of tabs.
+au FileType rst setl tabstop=4     " A tab counts for 4 spaces.
+au FileType rst setl softtabstop=4 " Causes backspace to delete 4 spaces.
+au FileType rst setl shiftwidth=4  " Shift by 4 spaces.
 augroup end
 
 " Markdown
