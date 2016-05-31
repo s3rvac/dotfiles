@@ -1,7 +1,7 @@
 Vim
 ===
 
-My configuration file for the [Vim](http://git-scm.com/) editor.
+My configuration file for the [Vim](http://www.vim.org/) editor.
 
 Installation
 ------------
