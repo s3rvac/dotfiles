@@ -38,6 +38,7 @@
 	ds = diff --staged
 	; https://github.com/s3rvac/git-edit-index
 	ei = edit-index
+	f = fetch
 	ignored = ls-files --exclude-standard --ignored --others
 	l = "!git --no-pager log -20 --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'; echo"
 	ll = log --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
