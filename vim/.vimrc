@@ -607,7 +607,7 @@ function! s:OpenLinkUnderCursor()
 	let curr_line = getline('.')
 	let link = matchstr(curr_line, '\(http\|https\|ftp\|file\)://[^ )"]*')
 	if link != ''
-		exec ':silent !' . s:web_browser_path . ' ' . '"' . link . '"'
+		execute ':silent !' . s:web_browser_path . ' ' . '"' . link . '"'
 	endif
 endfunction
 nnoremap <silent> gl :call <SID>OpenLinkUnderCursor()<CR>
@@ -658,7 +658,7 @@ endfunction
 nnoremap <Leader>mfx :call <SID>MakeFileExecutable()<CR>
 
 " Opening files in tabs.
-nnoremap <Leader>sni :exec 'tabe ~/.vim/snippets/' . &filetype . '.snippets'<CR>
+nnoremap <Leader>sni :execute 'tabe ~/.vim/snippets/' . &filetype . '.snippets'<CR>
 nnoremap <Leader>bash :tabe ~/.bashrc<CR>
 nnoremap <Leader>vim :tabe ~/.vimrc<CR>
 " Open the corresponding BibTeX file. It is assumed that there is only a single
@@ -844,7 +844,7 @@ au FileType c,cpp runtime ftplugin/man.vim
 " Use <Leader>man to display manual pages for the function under cursor.
 au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :Man 3 <cword><CR>
 " Use astyle for = command indention.
-au FileType c,cpp exec 'setl equalprg=astyle\ --mode=c\ --options=' . $HOME . '/.vim/astyle/c-cpp.options'
+au FileType c,cpp execute 'setl equalprg=astyle\ --mode=c\ --options=' . $HOME . '/.vim/astyle/c-cpp.options'
 " Allow "gq" on comments to work properly.
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Go to includes.
@@ -884,13 +884,13 @@ function! s:OpenCAndHInNewTab(base_name)
 	endif
 	if filereadable(c_file)
 		if filereadable(h_file)
-			exec 'tabnew ' . c_file
-			exec 'vsplit ' . h_file
+			execute 'tabnew ' . c_file
+			execute 'vsplit ' . h_file
 		else
-			exec 'tabnew ' . c_file
+			execute 'tabnew ' . c_file
 		endif
 	elseif filereadable(h_file)
-		exec 'tabnew ' . h_file
+		execute 'tabnew ' . h_file
 	else
 		echo 'No file to open.'
 	endif
@@ -904,8 +904,8 @@ function! s:SplitCOrHFile()
 		let c_file = bufname('')
 		let h_file = substitute(bufname(''), '\.\(cpp\|cc\|c\)$', '.h', '')
 		if filereadable(h_file)
-			exec 'edit ' . c_file
-			exec 'vsplit ' . h_file
+			execute 'edit ' . c_file
+			execute 'vsplit ' . h_file
 		else
 			echo 'The corresponding .h file does not exist.'
 		endif
@@ -913,8 +913,8 @@ function! s:SplitCOrHFile()
 		let h_file = bufname('')
 		let c_file = s:GetCFile(substitute(bufname(''), '\.h$', '.', ''))
 		if filereadable(c_file)
-			exec 'edit ' . c_file
-			exec 'vsplit ' . h_file
+			execute 'edit ' . c_file
+			execute 'vsplit ' . h_file
 		else
 			echo 'The corresponding .{c,cc,cpp} file does not exist.'
 		endif
@@ -929,14 +929,14 @@ function! s:AlternateCOrHFile()
 	if bufname('') =~ '\.\(cpp\|cc\|c\)$'
 		let h_file = substitute(bufname(''), '\.\(cpp\|cc\|c\)$', '.h', '')
 		if filereadable(h_file)
-			exec 'edit ' . h_file
+			execute 'edit ' . h_file
 		else
 			echo 'The corresponding .h file does not exist.'
 		endif
 	elseif bufname('') =~ '\.h$'
 		let c_file = s:GetCFile(substitute(bufname(''), '\.h$', '.', ''))
 		if filereadable(c_file)
-			exec 'edit ' . c_file
+			execute 'edit ' . c_file
 		else
 			echo 'The corresponding .{c,cc,cpp} file does not exist.'
 		endif
@@ -1017,7 +1017,7 @@ function! s:ShowPythonTestsInSplit()
 	let module_rel_path = expand('%')
 	let tests_rel_path = substitute(module_rel_path, '\.\py$', '_tests.py', '')
 	let tests_rel_path = substitute(tests_rel_path, '^[^/]*/', 'tests/', '')
-	exec 'vsplit ' . tests_rel_path
+	execute 'vsplit ' . tests_rel_path
 endfunction
 " The mapping is mimicking <Leader>as for c,cpp.
 au FileType python nnoremap <buffer> <Leader>as :call <SID>ShowPythonTestsInSplit()<CR>
