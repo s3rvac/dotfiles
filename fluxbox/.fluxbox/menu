@@ -29,7 +29,7 @@
 		[exec] (Firefox) {firefox} <~/.fluxbox/icons/firefox.png>
 		[exec] (Konqueror) {kfmclient openProfile webbrowsing} <~/.fluxbox/icons/konqueror.png>
 		[exec] (KTorrent) {ktorrent} <~/.fluxbox/icons/ktorrent.png>
-		[exec] (Midori Private Browsing) {midori} <~/.fluxbox/icons/midori.png>
+		[exec] (Midori) {midori} <~/.fluxbox/icons/midori.png>
 		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
 		[exec] (Thunderbird) {thunderbird} <~/.fluxbox/icons/thunderbird.png>
 		[exec] (Wicd) {wicd-client} <~/.fluxbox/icons/wicd.png>
