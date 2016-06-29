@@ -43,7 +43,6 @@
 		[exec] (LibreOffice Impress) {loimpress} <~/.fluxbox/icons/libreoffice-impress.png>
 		[exec] (LibreOffice Writer) {lowriter} <~/.fluxbox/icons/libreoffice-writer.png>
 		[exec] (Okular) {okular} <~/.fluxbox/icons/okular.png>
-		[exec] (PDF Editor) {pdfedit} <~/.fluxbox/icons/pdfedit.png>
 		[exec] (QStarDict) {qstardict} <~/.fluxbox/icons/qstardict.png>
 	[end]
 	[submenu] (System)
