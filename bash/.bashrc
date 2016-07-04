@@ -250,7 +250,7 @@ alias e='egrep'
 alias ei='egrep -i'
 alias er='egrep -rI'
 alias eri='egrep -rIi'
-alias et='easytag'
+alias et='easytag .'
 alias gdb='gdb -quiet'
 # We have to force xterm-256color because mc does not work properly with
 # screen-256color ($TERM used in tmux).
