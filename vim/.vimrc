@@ -948,10 +948,10 @@ au FileType c,cpp nnoremap <buffer> <Leader>ac :call <SID>AlternateCOrHFile()<CR
 
 " Let F10 compile and run the currently edited code
 " (F10 -> use GCC, S-F10 -> use Clang).
-au FileType c nnoremap <buffer> <F10> :w<CR>:!clear; gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType c nnoremap <buffer> <S-F10> :w<CR>:!clear; clang -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType cpp nnoremap <buffer> <F10> :w<CR>:!clear; g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
-au FileType cpp nnoremap <buffer> <S-F10> :w<CR>:!clear; clang++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out<CR>
+au FileType c nnoremap <buffer> <F10> :w<CR>:!clear; gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
+au FileType c nnoremap <buffer> <S-F10> :w<CR>:!clear; clang -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
+au FileType cpp nnoremap <buffer> <F10> :w<CR>:!clear; g++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
+au FileType cpp nnoremap <buffer> <S-F10> :w<CR>:!clear; clang++ -std=c++14 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
 augroup end
 
 " PHP
