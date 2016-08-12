@@ -51,7 +51,7 @@
 	p = push
 	pb = "!git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`"
 	pl = pull --rebase=preserve --prune
-	rb = rebase
+	rb = rebase --preserve-merges
 	rba = rebase --abort
 	rbc = rebase --continue
 	rbi = rebase --interactive
