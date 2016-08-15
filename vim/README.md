@@ -36,6 +36,7 @@ I use the following Vim plugins, which you can install by using
 
 * Filetype:
   * [LaTeX Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) - Lightweight Toolbox for LaTeX.
+  * [rust.vim](https://github.com/rust-lang/rust.vim) - Vim configuration for Rust.
   * [vim-mail-refs](https://github.com/sopticek/vim-mail-refs) - Automatic insertion of URL references into mails.
   * [xmledit](https://github.com/sukima/xmledit) - Helps edit XML files.
 
