@@ -738,6 +738,23 @@ let g:python_highlight_string_templates=0
 let g:python_slow_sync=1
 let g:python_print_as_function=1
 
+"--------------------------------------
+" rust.vim: Vim configuration for Rust.
+"--------------------------------------
+" I set the style (formatting) manually.
+let g:rust_recommended_style=0
+" Customize the syntax highlighting (the default one is too colorful for my
+" taste).
+hi def link rustDeriveTrait Normal
+hi def link rustEnum        Normal
+hi def link rustFuncCall    Normal
+hi def link rustIdentifier  Normal
+hi def link rustModPath     Normal
+hi def link rustModPathSep  Normal
+hi def link rustOperator    Normal
+hi def link rustSigil       Normal
+hi def link rustTrait       Normal
+
 "-----------------------------------------
 " Command-T: Fast file navigation for VIM.
 "-----------------------------------------
@@ -1021,6 +1038,23 @@ function! s:ShowPythonTestsInSplit()
 endfunction
 " The mapping is mimicking <Leader>as for c,cpp.
 au FileType python nnoremap <buffer> <Leader>as :call <SID>ShowPythonTestsInSplit()<CR>
+augroup end
+
+" Rust
+augroup rust
+au!
+" The following settings are based on these guidelines:
+"  - https://github.com/rust-lang/rust/tree/master/src/doc/style
+au FileType rust setl expandtab     " Use spaces instead of tabs.
+au FileType rust setl tabstop=4     " A tab counts for 4 spaces.
+au FileType rust setl softtabstop=4 " Causes backspace to delete 4 spaces.
+au FileType rust setl shiftwidth=4  " Shift by 4 spaces.
+
+" Let F9 compile and run tests for the current project.
+au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo test<CR>
+
+" Let F10 compile and run the current project.
+au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo run<CR>
 augroup end
 
 " Ruby
