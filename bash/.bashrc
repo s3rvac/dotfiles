@@ -286,9 +286,8 @@ alias gl='g l'
 alias gp='g p'
 alias gs='g s'
 alias gu='g u'
-alias py='python'
+alias py='python3'
 alias py2='python2'
-alias py3='python3'
 alias ri='ri --format=ansi'
 # Automatically disable flow control (Ctrl-S/Q) after reset because I use the
 # Ctrl-S shortcut in Vim.
