@@ -67,6 +67,7 @@
 	sw = show --format=fuller
 	sf = show --pretty="format:" --name-status
 	tags = tag --list -n1
+	today = "!git ll --since=midnight"
 	; https://github.com/aanand/git-up
 	u = up
 	undo = reset --soft HEAD^
