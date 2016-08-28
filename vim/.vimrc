@@ -993,7 +993,6 @@ augroup end
 " Shell
 augroup sh
 au!
-au FileType sh setl noexpandtab  " Use tabs instead of spaces.
 augroup end
 
 " MySQL
