@@ -993,6 +993,8 @@ augroup end
 " Shell
 augroup sh
 au!
+" Let F10 run the currently opened script.
+au FileType sh nnoremap <buffer> <F10> :w<CR>:!clear; sh %<CR>
 augroup end
 
 " MySQL
