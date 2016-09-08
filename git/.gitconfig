@@ -102,6 +102,10 @@
 	; branch with the same name over there.
 	default = simple
 
+[rebase]
+	; Automatically stash before a rebase and unstash afterwards.
+	autoStash = true
+
 [status]
 	; Use a submodule-aware status.
 	submoduleSummary = true
