@@ -41,7 +41,7 @@ session.screen0.slit.alpha:	255
 session.screen0.slit.autoHide:	false
 session.screen0.slit.layer:	Dock
 session.screen0.slit.maxOver:	false
-session.screen0.slit.onhead:	0
+session.screen0.slit.onhead:	1
 session.screen0.slit.placement:	RightBottom
 session.screen0.strftimeFormat:	%F  %T
 session.screen0.tab.placement:	TopLeft
