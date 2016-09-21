@@ -52,7 +52,7 @@
 	m = merge --no-ff
 	p = push
 	pb = "!git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`"
-	pl = pull --rebase=preserve --prune
+	pl = pull --rebase=preserve --stat --prune
 	rb = rebase --preserve-merges
 	rba = rebase --abort
 	rbc = rebase --continue
