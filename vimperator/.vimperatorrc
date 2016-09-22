@@ -169,6 +169,9 @@ set! browser.fullscreen.animateUp=0
 " Do not close the window when the last tab is closed.
 set! browser.tabs.closeWindowWithLastTab=false
 
+" Do not show the 'Recently bookmarked' section in bookmarks.
+set! browser.bookmarks.showRecentlyBookmarked=false
+
 " Do not check if Firefox is the default browser.
 set! browser.shell.checkDefaultBrowser=false
 
