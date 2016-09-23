@@ -615,6 +615,9 @@ nnoremap <silent> gl :call <SID>OpenLinkUnderCursor()<CR>
 " A text object for the entire file ("a file").
 onoremap af :<C-u>normal! ggVG<CR>
 
+" Expand %% to the path of the current buffer in command mode.
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " Git leader commands.
 " They require https://github.com/tpope/vim-fugitive.
 noremap <Leader>gbl :Gblame<CR>
