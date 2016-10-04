@@ -16,8 +16,8 @@ I use the following Vim plugins, which you can install by using
 
 * General:
   * [AutoFenc](https://github.com/s3rvac/AutoFenc) - Automatically detects and sets file encoding when opening files.
-  * [Command-T](https://github.com/wincent/command-t) - Fast, intuitive mechanism for opening files.
   * [CSApprox](https://github.com/godlygeek/csapprox) - Makes GVim-only colorschemes work transparently in terminal Vim.
+  * [Command-T](https://github.com/wincent/command-t) - Fast, intuitive mechanism for opening files.
   * [matchit](http://www.vim.org/scripts/script.php?script_id=39) - Extends `%` matching for HTML, LaTeX, and many other languages.
   * [netrw](http://www.vim.org/scripts/script.php?script_id=1075) - Network oriented reading, writing, and browsing.
   * [Rename](http://www.vim.org/scripts/script.php?script_id=1928) - Easier renaming of files.
@@ -30,8 +30,8 @@ I use the following Vim plugins, which you can install by using
   * [vim-bracketed-paste](https://github.com/ConradIrwin/vim-bracketed-paste) - Handles bracketed-paste-mode (aka automatic `:set paste`).
   * [vim-grepper](https://github.com/mhinz/vim-grepper) - A convenient wrapper around grepping facilities in Vim.
   * [vim-indent-object](https://github.com/michaeljsmith/vim-indent-object) - Adds a text object representing lines with the same indent.
-  * [vim-sort-motion](https://github.com/christoomey/vim-sort-motion) - Adds a motion to sort text objects.
   * [vim-repeat](https://github.com/tpope/vim-repeat) - Enables repeating-supported plugin maps with `"."`.
+  * [vim-sort-motion](https://github.com/christoomey/vim-sort-motion) - Adds a motion to sort text objects.
   * [vim-surround](https://github.com/tpope/vim-surround) - Quoting/parenthesizing made simple.
 
 * Filetype:
@@ -43,9 +43,9 @@ I use the following Vim plugins, which you can install by using
 * Syntax:
   * [dokuwiki](https://github.com/nblock/vim-dokuwiki)
   * [jinja2](https://github.com/Glench/Vim-Jinja2-Syntax)
+  * [llvm](https://llvm.org/svn/llvm-project/llvm/trunk/utils/vim/syntax/llvm.vim)
   * [python](https://github.com/hdima/python-syntax)
   * [rdoc](https://github.com/depuracao/vim-rdoc)
   * [redminewiki](https://github.com/s3rvac/vim-syntax-redminewiki)
   * [retdecdsm](https://github.com/s3rvac/vim-syntax-retdecdsm)
   * [tracwiki](http://www.vim.org/scripts/script.php?script_id=3337)
-  * [llvm](https://llvm.org/svn/llvm-project/llvm/trunk/utils/vim/syntax/llvm.vim)
