@@ -30,6 +30,7 @@ I use the following Vim plugins, which you can install by using
   * [vim-bracketed-paste](https://github.com/ConradIrwin/vim-bracketed-paste) - Handles bracketed-paste-mode (aka automatic `:set paste`).
   * [vim-grepper](https://github.com/mhinz/vim-grepper) - A convenient wrapper around grepping facilities in Vim.
   * [vim-indent-object](https://github.com/michaeljsmith/vim-indent-object) - Adds a text object representing lines with the same indent.
+  * [vim-online-thesaurus](https://github.com/beloglazov/vim-online-thesaurus) - Looking up words in an online thesaurus.
   * [vim-repeat](https://github.com/tpope/vim-repeat) - Enables repeating-supported plugin maps with `"."`.
   * [vim-sort-motion](https://github.com/christoomey/vim-sort-motion) - Adds a motion to sort text objects.
   * [vim-surround](https://github.com/tpope/vim-surround) - Quoting/parenthesizing made simple.
