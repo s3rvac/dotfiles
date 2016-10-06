@@ -774,6 +774,12 @@ let g:CommandTCancelMap=['<Esc>', '<C-c>'] " Keys to close the search window.
 " ---------------------------------------------------------
 let g:sort_motion_flags = 'u' " Remove duplicates while sorting.
 
+" --------------------------------------------------------------
+" vim-online-thesaurus: Looking up words in an online thesaurus.
+" --------------------------------------------------------------
+let g:online_thesaurus_map_keys = 0 " Disable default key maps.
+nnoremap <Leader>ot :OnlineThesaurusCurrentWord<CR>
+
 " -----------------------------------------------------
 " vim-mail-refs: Adding references when writing emails.
 " -----------------------------------------------------
