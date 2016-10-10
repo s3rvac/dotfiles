@@ -36,7 +36,7 @@ set showcmd             " Show (partial) command in the status line.
 set noshowmatch         " Don't show matching brackets when typing them.
 set showmode            " Show the current mode.
 set shortmess+=aIoOtT   " Abbreviation of messages (avoids 'hit enter ...').
-set path=$PWD/**        " Include everything under $PWD into the path.
+set path+=$PWD/**       " Include everything under $PWD into the path.
 set nrformats-=octal    " Make incrementing 007 result into 008 rather than 010.
 
 " Backup and swap files.
