@@ -1165,7 +1165,14 @@ if s:opened_file_path =~ '\.mozilla/firefox/'
 	au BufRead,BufNewFile *.txt setl spell
 	au BufRead,BufNewFile *.txt setl spelllang=cs
 
-	au BufRead,BufNewFile *.txt setl ft=html
+	" GitHub
+	if s:opened_file_path =~ 'github.com'
+		au BufRead,BufNewFile *.txt setl ft=markdown
+		au BufRead,BufNewFile *.txt setl spelllang=en
+	" Other
+	else
+		au BufRead,BufNewFile *.txt setl ft=html
+	endif
 endif
 augroup end
 
