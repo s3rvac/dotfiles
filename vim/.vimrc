@@ -36,7 +36,7 @@ set showcmd             " Show (partial) command in the status line.
 set noshowmatch         " Don't show matching brackets when typing them.
 set showmode            " Show the current mode.
 set shortmess+=aIoOtT   " Abbreviation of messages (avoids 'hit enter ...').
-set path+=$PWD/**       " Include everything under $PWD into the path.
+set path=.,,**          " Search in dir of the current file, cwd, and subdirs.
 set nrformats-=octal    " Make incrementing 007 result into 008 rather than 010.
 
 " Backup and swap files.
@@ -876,6 +876,8 @@ au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,
 " Go to includes.
 au FileType c,cpp nnoremap <buffer> <Leader>inc /^#include <<CR>:nohlsearch<CR>:echo<CR>
 au FileType c,cpp nnoremap <buffer> <Leader>Inc /^#include "<CR>:nohlsearch<CR>:echo<CR>
+" Search also in /usr/include.
+au FileType c,cpp setl path+=/usr/include
 
 " Open both a .c|cpp|cc file and the corresponding .h file in a new tab.
 function! s:GetCFile(base_name)
