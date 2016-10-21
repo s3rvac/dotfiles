@@ -131,6 +131,11 @@
 	; Include a local config when it exists.
 	path = .gitconfig.local
 
+; Settings for the `git-edit-index` script.
+; https://github.com/s3rvac/git-edit-index
+[git-edit-index]
+	onEmptyBuffer = act
+
 ; Settings for the `git-up` script.
 ; https://github.com/aanand/git-up
 [git-up "rebase"]
