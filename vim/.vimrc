@@ -222,7 +222,7 @@ set spelllang=en_us,en_gb
 " Graphical Vim.
 if has('gui_running')
 	" Font.
-	set guifont=Monospace\ 11
+	set guifont=Monospace\ 10.5
 
 	" GUI options:
 	"  - aA: Enable autoselection.
