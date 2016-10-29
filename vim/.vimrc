@@ -345,6 +345,9 @@ au BufEnter * hi VertSplit guibg=white guifg=black ctermbg=white ctermfg=black
 " Cursor.
 au BufEnter * hi Cursor guibg=white guifg=bg
 
+" Color special comments (e.g. //! in C++ or Rust) as ordinary comments.
+au BufEnter * hi link SpecialComment Comment
+
 " Visual selection.
 au BufEnter * hi Visual guibg=black guifg=gray ctermfg=gray
 
