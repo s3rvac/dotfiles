@@ -848,7 +848,7 @@ au BufNewFile,BufRead *.dsm setl ft=retdecdsm
 " Consider all .wsgi files as Python files.
 au BufNewFile,BufRead *.wsgi setl ft=python
 " Use Vim highlighting when editing Vimperator's configuration.
-au BufNewFile,BufRead .vimperatorrc setl ft=vim
+au BufNewFile,BufRead .vimperatorrc setl ft=vimperator
 " Use tex filetype rather than plaintex.
 au BufNewFile,BufRead *.tex setl ft=tex
 " Use mysql filetype rather than sql.
