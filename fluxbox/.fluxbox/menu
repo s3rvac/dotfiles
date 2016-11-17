@@ -27,9 +27,7 @@
 	[submenu] (Network)
 		[exec] (Chromium) {chromium} <~/.fluxbox/icons/chromium.png>
 		[exec] (Firefox) {firefox} <~/.fluxbox/icons/firefox.png>
-		[exec] (Konqueror) {kfmclient openProfile webbrowsing} <~/.fluxbox/icons/konqueror.png>
 		[exec] (KTorrent) {ktorrent} <~/.fluxbox/icons/ktorrent.png>
-		[exec] (Midori) {midori} <~/.fluxbox/icons/midori.png>
 		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
 		[exec] (Thunderbird) {thunderbird} <~/.fluxbox/icons/thunderbird.png>
 		[exec] (Wicd) {wicd-client} <~/.fluxbox/icons/wicd.png>
@@ -51,8 +49,6 @@
 			[exec] (KDE System Settings) {systemsettings5}
 			[exec] (CUPS) {firefox http://localhost:631/} <~/.fluxbox/icons/cups.png>
 			[exec] (NVIDIA X Server Settings) {nvidia-settings} <~/.fluxbox/icons/nvidia-settings.png>
-			[exec] (XFCE Panel) {xfce4-panel --preferences}
-			[exec] (XFCE Power Manager) {xfce4-power-manager-settings}
 			[exec] (XFCE Preferred Applications) {exo-preferred-applications}
 		[end]
 		[exec] (Htop) {konsole -e htop} <~/.fluxbox/icons/htop.png>
