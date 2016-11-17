@@ -13,5 +13,6 @@ Installation
 * Programs that are used by the scripts and keys:
  * `feh` (background setting)
  * `gsimplecal` (calendar)
+ * `parcellite` (clipboard manager)
  * `xdotool` (switching focus between screens)
  * `xlockmore` (locking)

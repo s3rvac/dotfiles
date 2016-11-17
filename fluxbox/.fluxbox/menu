@@ -63,6 +63,7 @@
 		[exec] (KRename) {krename} <~/.fluxbox/icons/krename.png>
 		[exec] (Konsole) {konsole} <~/.fluxbox/icons/konsole.png>
 		[exec] (Krusader) {krusader} <~/.fluxbox/icons/krusader.png>
+		[exec] (Parcellite) {parcellite} <~/.fluxbox/icons/parcellite.png>
 		[exec] (QXKB) {qxkb} <~/.fluxbox/icons/qxkb.png>
 		[exec] (Yakuake) {yakuake} <~/.fluxbox/icons/yakuake.png>
 	[end]
