@@ -12,6 +12,6 @@ Installation
   `$HOME/.fluxbox/scripts/set-background.sh`.
 * Programs that are used by the scripts and keys:
  * `feh` (background setting)
- * `xlockmore` (locking)
  * `gsimplecal` (calendar)
  * `xdotool` (switching focus between screens)
+ * `xlockmore` (locking)
