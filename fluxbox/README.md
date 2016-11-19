@@ -15,4 +15,4 @@ Installation
  * `gsimplecal` (calendar)
  * `parcellite` (clipboard manager)
  * `xdotool` (switching focus between screens)
- * `xlockmore` (locking)
+ * `xsecurelock` (screen locking)

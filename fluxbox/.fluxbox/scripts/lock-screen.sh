@@ -5,4 +5,4 @@
 # Locks the screen.
 #
 
-xlock -mode blank
+xsecurelock auth_pam_x11 saver_blank
