@@ -1,12 +1,13 @@
 Vim
 ===
 
-My configuration file for the [Vim](http://www.vim.org/) editor.
+My configuration files for the [Vim](http://www.vim.org/) editor.
 
 Installation
 ------------
 
 * Copy `.vimrc` to `$HOME/`.
+* Copy `.vim/colors/s3rvac.vim` to `$HOME/.vim/colors/`.
 
 Plugins:
 --------

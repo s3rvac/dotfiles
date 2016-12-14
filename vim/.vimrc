@@ -138,7 +138,6 @@ function! MyTabLine()
 	return s
 endfunction
 set tabline=%!MyTabLine()
-highlight link TabNum Special
 
 " Statusline.
 set laststatus=2        " Always display a statusline.
@@ -297,63 +296,20 @@ endif
 " Syntax highlighting.
 syntax on
 
-" Color scheme. Thanks to the CSApprox plugin, I may use the same scheme in
-" both graphical and terminal Vims.
-colorscheme koehler
+" Color scheme (my own scheme based on the standard 'koehler' color scheme).
+" Thanks to the CSApprox plugin, I can use the same scheme in both the
+" graphical and terminal Vims.
+colorscheme s3rvac
 
-" Use a dark background.
-set background=dark
-
-augroup colors_and_highlighting
-au!
 " Highlight mixture of spaces and tabs.
-au BufEnter * hi SpacesTabsMixtureGroup guibg=gray19 guifg=red ctermbg=236 ctermfg=red
+hi SpacesTabsMixture guifg=red guibg=gray19
 " Highlight mixtures only when there are at least two successive spaces to
 " prevent highlighting of false positives (e.g. in git diffs, which may begin
 " with a space).
-au BufEnter * match SpacesTabsMixtureGroup /^  \+\t\+[\t ]*\|^\t\+  \+[\t ]*/
-
-" Statusline.
-au BufEnter * hi StatusLine guibg=black guifg=white ctermbg=black ctermfg=white
-au BufEnter * hi StatusLineNC guibg=black guifg=gray70 ctermbg=black ctermfg=gray
+match SpacesTabsMixture /^  \+\t\+[\t ]*\|^\t\+  \+[\t ]*/
 
 " Characters exceeding textwidth or 80 characters.
-au BufEnter * hi ExceedCharsGroup guibg=darkblue guifg=white ctermbg=darkblue ctermfg=white
-
-" Wild menu.
-au BufEnter * hi Pmenu guibg=gray30 guifg=white ctermbg=darkgray ctermfg=white
-au BufEnter * hi PmenuSel guibg=white guifg=black ctermbg=white ctermfg=black
-
-" Folds.
-au BufEnter * hi Folded guibg=gray30 guifg=white ctermbg=darkgray ctermfg=white
-au BufEnter * hi FoldColumn guibg=gray30 guifg=white ctermbg=darkgray ctermfg=white
-
-" Tab colors.
-au BufEnter * hi TabLine guibg=black guifg=gray ctermbg=black ctermfg=gray
-au BufEnter * hi TabLineSel guibg=black guifg=white ctermbg=black ctermfg=white
-au BufEnter * hi TabLineFill guibg=black guifg=black ctermbg=black ctermfg=black
-
-" Colorcolumn.
-au BufEnter * hi ColorColumn guibg=gray19 guifg=white ctermbg=236 ctermfg=white
-
-" Messages.
-au BufEnter * hi MoreMsg guibg=black guifg=green1 ctermbg=black ctermfg=46
-
-" Splits.
-au BufEnter * hi VertSplit guibg=white guifg=black ctermbg=white ctermfg=black
-
-" Cursor.
-au BufEnter * hi Cursor guibg=white guifg=bg
-
-" Color special comments (e.g. //! in C++ or Rust) as ordinary comments.
-au BufEnter * hi link SpecialComment Comment
-
-" Visual selection.
-au BufEnter * hi Visual guibg=black guifg=gray ctermfg=gray
-
-" Use the same color in the sign column as it is used in the numbers column.
-au BufEnter * hi clear SignColumn
-augroup end
+hi ExceedChars guifg=white guibg=darkblue
 
 "------------------------------------------------------------------------------
 " Function keys.
@@ -383,10 +339,10 @@ function! s:ToggleExceedingCharsHighlight()
 		unlet w:long_line_match
 		echo 'Disable highlighting.'
 	elseif &textwidth > 0
-		let w:long_line_match=matchadd('ExceedCharsGroup', '\%>' . &textwidth . 'v.\+', -1)
+		let w:long_line_match=matchadd('ExceedChars', '\%>' . &textwidth . 'v.\+', -1)
 		echo 'Enable highlighting after ' . &textwidth . ' characters.'
 	else
-		let w:long_line_match=matchadd('ExceedCharsGroup', '\%>80v.\+', -1)
+		let w:long_line_match=matchadd('ExceedChars', '\%>80v.\+', -1)
 		echo 'Enable highlighting after 80 characters.'
 	endif
 endfunction
