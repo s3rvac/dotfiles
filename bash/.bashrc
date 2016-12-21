@@ -22,13 +22,13 @@ function prepend_to_path() {
 # Include the path to Ruby gems.
 prepend_to_path "$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
 
-# Include the path to Cargo crates (Rust).
+# Include the path to programs from Cargo crates (Rust).
 prepend_to_path "$HOME/.cargo/bin"
 
-# Include the local bin.
+# Include the path to local programs (used e.g. by pip).
 prepend_to_path "$HOME/.local/bin"
 
-# Include the user's private bin.
+# Include the home bin.
 prepend_to_path "$HOME/bin"
 
 #------------------------------------------------------------------------------
