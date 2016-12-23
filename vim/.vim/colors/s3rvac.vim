@@ -27,6 +27,7 @@ hi Search           guifg=white guibg=red
 hi MoreMsg          gui=bold guifg=green1 guibg=black
 hi ModeMsg          gui=bold guifg=white guibg=blue
 hi LineNr           guifg=yellow
+hi CursorLineNr     guifg=yellow
 hi Question         gui=bold guifg=green
 hi StatusLine       gui=bold guifg=white guibg=black
 hi StatusLineNC     gui=none guifg=black guibg=gray70
