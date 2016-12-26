@@ -327,6 +327,13 @@ function pi() {
 # Run the given command with arguments through gdb.
 function gdbc() { gdb -quiet -ex run --args "$@"; }
 
+# Prints memory usage of processes with the given name.
+# Usage: mem PROG
+function mem() {
+	ps -eo rss,pid,euser,args:100 --sort -%mem | grep -v grep | grep -i $@ \
+		| awk '{printf "%.1f", $1/1024 "MB"; $1=""; print }'
+}
+
 # Recursive sed.
 # Usage: rsed -i 's/what/with-what/g'
 function rsed() { find . -type f -exec sed "$@" {} \+; }
