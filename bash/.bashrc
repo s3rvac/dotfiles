@@ -309,7 +309,7 @@ function bak() { cp -a "$1" "$1".bak; }
 alias valgrind-leak='valgrind --leak-check=full --show-leak-kinds=all'
 alias valgrind-uninit='valgrind --track-origins=yes'
 alias valgrind-callgrind='valgrind --tool=callgrind'
-alias yt='youtube-dl'
+alias yt='youtube-dl --no-part'
 
 # Translation. It uses https://github.com/soimort/translate-shell, which has to
 # be available in $PATH under name 'trs'.
