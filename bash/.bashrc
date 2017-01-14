@@ -274,6 +274,8 @@ alias vd='vimdiff'
 alias gvim='gvim -p'
 alias gv='gvim'
 alias gvd='gvimdiff'
+# A git commit browser in Vim (https://github.com/junegunn/gv.vim).
+function GV() { vim -c ":GV $*" -c ":+tabclose"; }
 alias m='make'
 function M() { make "$@" && make install; }
 alias news='newsbeuter -q'
