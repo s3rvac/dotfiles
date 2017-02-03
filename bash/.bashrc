@@ -192,7 +192,7 @@ fi
 
 # Editor.
 export EDITOR=vim
-export VISUAL=vim
+export VISUAL="$EDITOR"
 
 # History.
 export HISTSIZE=10000
