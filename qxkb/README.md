@@ -1,7 +1,8 @@
 qxkb
 ====
 
-My configuration file for the [qxkb](https://github.com/disels/qxkb) keyboard layout switcher.
+My configuration file for the [qxkb](https://github.com/disels/qxkb) keyboard
+layout switcher.
 
 Installation
 ------------

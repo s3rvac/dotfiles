@@ -1,7 +1,8 @@
 Git
 ===
 
-My configuration files for the [Git](http://git-scm.com/) version control system.
+My configuration files for the [Git](http://git-scm.com/) version control
+system.
 
 Installation
 ------------
