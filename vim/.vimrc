@@ -308,9 +308,6 @@ hi SpacesTabsMixture guifg=red guibg=gray19
 " with a space).
 match SpacesTabsMixture /^  \+\t\+[\t ]*\|^\t\+  \+[\t ]*/
 
-" Characters exceeding textwidth or 80 characters.
-hi ExceedChars guifg=white guibg=darkblue
-
 "------------------------------------------------------------------------------
 " Function keys.
 "------------------------------------------------------------------------------
@@ -332,21 +329,7 @@ nnoremap <silent> <S-F1> :call <SID>ToggleSpelllang()<CR>
 " F2: Toggle the display of unprintable characters.
 nnoremap <silent> <F2> :set list!<CR>:set list?<CR>
 
-" Shift+F2: Toggle highlighting of characters exceeding textwidth.
-function! s:ToggleExceedingCharsHighlight()
-	if exists('w:long_line_match')
-		silent! call matchdelete(w:long_line_match)
-		unlet w:long_line_match
-		echo 'Disable highlighting.'
-	elseif &textwidth > 0
-		let w:long_line_match=matchadd('ExceedChars', '\%>' . &textwidth . 'v.\+', -1)
-		echo 'Enable highlighting after ' . &textwidth . ' characters.'
-	else
-		let w:long_line_match=matchadd('ExceedChars', '\%>80v.\+', -1)
-		echo 'Enable highlighting after 80 characters.'
-	endif
-endfunction
-nnoremap <silent> <S-F2> :call <SID>ToggleExceedingCharsHighlight()<CR>
+" Shift+F2: Unused.
 
 " F3: Toggle line wrapping.
 nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
