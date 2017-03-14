@@ -329,12 +329,7 @@ nnoremap <silent> <S-F1> :call <SID>ToggleSpelllang()<CR>
 " F2: Toggle the display of unprintable characters.
 nnoremap <silent> <F2> :set list!<CR>:set list?<CR>
 
-" Shift+F2: Unused.
-
-" F3: Toggle line wrapping.
-nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
-
-" Shift+F3: Toggle the display of colorcolumn.
+" Shift+F2: Toggle the display of colorcolumn.
 function! s:ToggleColorColumn()
 	if &colorcolumn > 0
 		set colorcolumn=""
@@ -344,7 +339,13 @@ function! s:ToggleColorColumn()
 		set colorcolumn=80
 	endif
 endfunction
-nnoremap <silent> <S-F3> :call <SID>ToggleColorColumn()<CR>
+nnoremap <silent> <S-F2> :call <SID>ToggleColorColumn()<CR>
+
+" F3: Toggle line wrapping.
+nnoremap <silent> <F3> :set nowrap!<CR>:set nowrap?<CR>
+
+" Shift+F3: Toggle relative/absolute numbers.
+nnoremap <silent> <S-F3> :set relativenumber!<CR>:set relativenumber?<CR>
 
 " F4: Toggle hexdump view of binary files.
 function! s:ToggleHexdumpView()
@@ -386,9 +387,6 @@ function! s:ToggleObjdumpView()
 	endif
 endfunction
 nnoremap <silent> <S-F4> :call <SID>ToggleObjdumpView()<CR>
-
-" F6: Toggle relative/absolute numbers.
-nnoremap <silent> <F6> :set relativenumber!<CR>:set relativenumber?<CR>
 
 " F9: Run tests for the given file.
 " The mapping is defined separately for each file type.
