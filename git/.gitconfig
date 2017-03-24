@@ -67,6 +67,7 @@
 	shs = stash show -p
 	sw = show --format=fuller
 	sf = show --pretty="format:" --name-status
+	sync-fork="!git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD` && git push"
 	tags = tag --list -n1
 	today = "!git ll --since=midnight"
 	; https://github.com/aanand/git-up
