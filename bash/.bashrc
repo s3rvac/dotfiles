@@ -331,6 +331,19 @@ function pi() {
 # Run the given command with arguments through gdb.
 function gdbc() { gdb -quiet -ex run --args "$@"; }
 
+# Activates a Python virtual environment (or first creates one when none
+# exists).
+function pyve {
+	if [ -d "virtualenv" ]; then
+		. virtualenv/bin/activate
+	elif [ -d "venv" ]; then
+		. venv/bin/activate
+	else
+		python3 -m venv virtualenv
+		. virtualenv/bin/activate
+	fi
+}
+
 # Prints memory usage of processes with the given name.
 # Usage: mem PROG
 function mem() {
