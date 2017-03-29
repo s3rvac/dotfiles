@@ -52,3 +52,4 @@ I use the following Vim plugins, which you can install by using
   * [retdecdsm](https://github.com/s3rvac/vim-syntax-retdecdsm)
   * [tracwiki](http://www.vim.org/scripts/script.php?script_id=3337)
   * [vimperator](https://github.com/vimperator/vimperator.vim)
+  * [yara](https://github.com/yaunj/vim-yara)
