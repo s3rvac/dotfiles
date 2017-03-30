@@ -782,8 +782,8 @@ au BufNewFile,BufRead *.ll setl ft=llvm
 " Consider all .dsm files as files containing disassembly from the retdec.com
 " decompilation service.
 au BufNewFile,BufRead *.dsm setl ft=retdecdsm
-" Consider all .yara files as YARA files.
-au BufNewFile,BufRead *.yara setl ft=yara
+" Consider all .yar(a) files as YARA files.
+au BufNewFile,BufRead *.yar,*.yara setl ft=yara
 " Consider all .wsgi files as Python files.
 au BufNewFile,BufRead *.wsgi setl ft=python
 " Use Vim highlighting when editing Vimperator's configuration.
