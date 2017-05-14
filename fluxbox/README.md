@@ -14,5 +14,6 @@ Installation
  * `feh` (background setting)
  * `gsimplecal` (calendar)
  * `parcellite` (clipboard manager)
+ * `qxkb` (keyboard layout switcher)
  * `xdotool` (switching focus between screens)
  * `xsecurelock` (screen locking)
