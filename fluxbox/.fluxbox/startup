@@ -12,32 +12,16 @@ fbpid=$!
 
 sleep 1
 {
-	# Set background.
-	~/.fluxbox/scripts/set-background.sh
+	~/.fluxbox/scripts/set-background.sh &
+	~/.fluxbox/scripts/setup-keyboard.sh &
 
 	# A list of applications to be started automatically.
 	wicd-client &
 	kmix &
 	yakuake &
-	qxkb &
 	qstardict &
 	clementine &
 	parcellite &
-
-	# Disable tapping while writing (for 1 second).
-	syndaemon -i 1 -d -t
-
-	# Keyboard repeat delay and rate.
-	xset r rate 200 40
-
-	# Keyboard layouts.
-	setxkbmap -model pc104 -layout us,cz -variant ,qwerty
-
-	# Use Alt+Shift to toggle between layouts.
-	setxkbmap -option grp:alt_shift_toggle
-
-	# Turn Caps Lock into a second Escape.
-	setxkbmap -option caps:escape
 } &
 
 wait $fbpid
