@@ -6,6 +6,10 @@
   [Maximized] {yes}
   [Deco] {BORDER}
 [end]
+[app] (name=evince) (class=Evince)
+  [Maximized] {yes}
+  [Deco] {BORDER}
+[end]
 [app] (name=gvim) (class=Gvim)
   [Maximized] {yes}
   [Deco] {BORDER}
