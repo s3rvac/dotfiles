@@ -15,6 +15,9 @@ Control Mod4 w :Exec ~/.fluxbox/scripts/set-background.sh
 # Lock the system.
 Control Mod4 l :Exec ~/.fluxbox/scripts/lock-screen.sh
 
+# Setup the keyboard.
+Control Mod4 q :Exec ~/.fluxbox/scripts/setup-keyboard.sh
+
 # Reload the configuration.
 Control Mod4 r :Reconfigure
 
