@@ -11,9 +11,9 @@ Installation
   `wallpaper.jpg`. You can change it in
   `$HOME/.fluxbox/scripts/set-background.sh`.
 * Programs that are used by the scripts and keys:
- * `feh` (background setting)
+ * `feh` (setting of background)
  * `gsimplecal` (calendar)
  * `parcellite` (clipboard manager)
- * `qxkb` (keyboard layout switcher)
+ * `qxkb` (switching between keyboard layouts)
  * `xdotool` (switching focus between screens)
  * `xsecurelock` (screen locking)
