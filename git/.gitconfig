@@ -105,6 +105,9 @@
 	; same name at the remote repository only when it is set to track the
 	; branch with the same name over there.
 	default = simple
+	; Check that all submodules have been properly pushed before pushing the
+	; main project.
+	recurseSubmodules = check
 
 [rebase]
 	; Automatically stash before a rebase and unstash afterwards.
