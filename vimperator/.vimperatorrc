@@ -181,6 +181,9 @@ set! browser.tabs.warnOnCloseOtherTabs=false
 set! browser.tabs.warnOnOpen=false
 set! general.warnOnAboutConfig=false
 
+" Disable the new JSON viewer/reader and show just plain JSON as text.
+set! devtools.jsonview.enabled=false
+
 " Do not select trailing spaces when selecting words.
 set! layout.word_select.eat_space_to_next_word=false
 
