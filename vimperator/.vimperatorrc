@@ -206,3 +206,7 @@ set! privacy.clearOnShutdown.siteSettings=false
 
 " Do not wait before installing extensions.
 set! security.dialog_enable_delay=0
+
+" Display the "raw", punycode version of internationalized domain names (IDNs).
+" This mitigates phishing attacks via IDNs.
+set! network.IDN_show_punycode=true
