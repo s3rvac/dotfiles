@@ -41,6 +41,9 @@ function showCollectionSizes() {
 	db.getCollectionNames().forEach(function (c) {
 		stats.push(db[c].stats());
 	});
+	if (stats.length == 0) {
+		return;
+	}
 	var longestNameLength = stats.sort(function (c1, c2) {
 		return c2['ns'].length - c1['ns'].length;
 	})[0]['ns'].length;
