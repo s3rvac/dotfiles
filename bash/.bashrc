@@ -333,7 +333,7 @@ function gdbc() { gdb -quiet -ex run --args "$@"; }
 
 # Activates a Python virtual environment (or first creates one when none
 # exists).
-function pyve {
+function pyve() {
 	if [ -d "virtualenv" ]; then
 		. virtualenv/bin/activate
 	elif [ -d "venv" ]; then
