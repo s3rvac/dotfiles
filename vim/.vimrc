@@ -737,6 +737,16 @@ augroup end
 "---------
 let g:xml_tag_completion_map = '<C-l>'
 
+"--------------------------------------
+" targets.vim: Additional text objects.
+"--------------------------------------
+" When seeking, prefer multiline targets around the cursor over distant targets
+" within the cursor line. This works better than the default setting when e.g.
+" doing ci{ inside of a block on a line that also contains curly brackets (the
+" expected behavior is to change the block, not seek to the curly brackets on
+" the current line).
+let g:targets_seekRanges = 'cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
+
 "------------------------------------------------------------
 " tcomment_vim: An extensible & universal comment vim-plugin.
 "------------------------------------------------------------
