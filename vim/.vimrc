@@ -1125,6 +1125,10 @@ if s:opened_file_path =~ '\.mozilla/firefox/'
 	if s:opened_file_path =~ 'github.com'
 		au BufRead,BufNewFile *.txt setl ft=markdown
 		au BufRead,BufNewFile *.txt setl spelllang=en
+	" Stack Overflow
+	elseif s:opened_file_path =~ 'stackoverflow.com'
+		au BufRead,BufNewFile *.txt setl ft=markdown
+		au BufRead,BufNewFile *.txt setl spelllang=en
 	" Other
 	else
 		au BufRead,BufNewFile *.txt setl ft=html
