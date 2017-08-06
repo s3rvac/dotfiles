@@ -825,7 +825,7 @@ au FileType c,cpp runtime ftplugin/man.vim
 au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :Man 3 <cword><CR>
 " Use astyle for = command indention.
 au FileType c,cpp execute 'setl equalprg=astyle\ --mode=c\ --options=' . $HOME . '/.vim/astyle/c-cpp.options'
-" Allow "gq" on comments to work properly.
+" Make "gq" on comments work properly.
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Go to includes.
 au FileType c,cpp nnoremap <buffer> <Leader>inc /^#include <<CR>:nohlsearch<CR>:echo<CR>
@@ -965,7 +965,7 @@ augroup end
 " MySQL
 augroup mysql
 au!
-" Allow "gq" on comments to work properly.
+" Make "gq" on comments work properly.
 au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
 augroup end
 
