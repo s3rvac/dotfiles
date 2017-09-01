@@ -13,4 +13,5 @@ License
 
 Copyright (c) 2014-2017 Petr Zemek <s3rvac@gmail.com>
 
-Distributed under the MIT license. See the LICENSE file for more details.
+Distributed under the MIT license. See the [LICENSE](LICENSE) file for more
+details.
