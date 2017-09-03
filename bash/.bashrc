@@ -286,7 +286,6 @@ else
 fi
 alias umntd='sudo umount /mnt/disk'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
-alias my='mysql -p'
 alias g='git'
 alias gd='g d'
 alias gl='g l'
