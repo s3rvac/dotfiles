@@ -157,4 +157,4 @@ Control Alt o :Exec chromium
 Control Alt n :Exec konsole
 Control Alt g :Exec gvim
 Control Alt u :Exec krusader
-Control Alt t :Exec ~/.fluxbox/scripts/toggle-thunderbird.sh firefox
+Control Alt t :Exec ~/.fluxbox/scripts/toggle-thunderbird.sh
