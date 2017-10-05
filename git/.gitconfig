@@ -73,7 +73,7 @@
 	today = "!git ll --since=midnight"
 	; https://github.com/aanand/git-up
 	u = up
-	undo = reset --soft HEAD^
+	undo = "!git reset --soft HEAD^ && git reset"
 	wip = "!git add --all && git commit -m 'WIP'"
 	unwip = "!if [ `git show --oneline --pretty='%s' | head -n1` == 'WIP' ]; then git undo && git reset; fi"
 
