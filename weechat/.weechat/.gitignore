@@ -1,0 +1,4 @@
+/logs/
+/script/plugins.xml.gz
+/weechat.log
+/weechat_fifo_*
