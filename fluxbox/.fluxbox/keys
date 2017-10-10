@@ -149,6 +149,7 @@ OnToolbar Mouse5 :NextWorkspace
 
 # Application shortcuts.
 # 'Control Alt a' shows/hide Clementine (the shortcut is set in Clementine).
+# 'Control Alt x' shows Parcellite (the shortcut is set in Parcellite).
 Control Alt c :Exec gsimplecal
 Control Alt d :Exec ~/.fluxbox/scripts/activate-window.sh firefox
 Control Alt f :Exec firefox
