@@ -1021,6 +1021,9 @@ au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo test<CR>
 
 " Let F10 compile and run the current project.
 au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo run<CR>
+
+" Re-formatting via `RustFmt` from the rust.vim plugin.
+au FileType rust nnoremap <buffer> <silent> <Leader>ff :RustFmt<CR>
 augroup end
 
 " Ruby
