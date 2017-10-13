@@ -16,4 +16,5 @@ Installation
  * `parcellite` (clipboard manager)
  * `qxkb` (switching between keyboard layouts)
  * `xdotool` (switching focus between screens)
+ * `xfce4-notifyd` (notifications)
  * `xsecurelock` (screen locking)
