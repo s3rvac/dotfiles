@@ -1026,6 +1026,19 @@ au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo run<CR>
 au FileType rust nnoremap <buffer> <silent> <Leader>ff :RustFmt<CR>
 augroup end
 
+" Go
+augroup go
+au!
+" The default indentation settings are fine (Go uses tabs).
+
+" Re-formatting via `gofmt`.
+au FileType go nnoremap <buffer> <silent> <Leader>ff
+	\ :w <Bar>
+	\ set autoread <Bar>
+	\ SilentExecute gofmt -w % <Bar>
+	\ set noautoread<CR>
+augroup end
+
 " Ruby
 augroup ruby
 au!
