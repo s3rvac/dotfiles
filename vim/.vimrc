@@ -759,6 +759,7 @@ let g:tcomment#blank_lines = 0
 call tcomment#DefineType('c', tcomment#GetLineC('// %s'))
 call tcomment#DefineType('gdb', '# %s')
 call tcomment#DefineType('llvm', '; %s')
+call tcomment#DefineType('yara', tcomment#GetLineC('// %s'))
 
 "------------------------------------------------------------------------------
 " File-type specific settings and other autocommands.
