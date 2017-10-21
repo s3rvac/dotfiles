@@ -72,6 +72,11 @@ Alt F11 :Fullscreen
 # Toggles the visibility of the current window on all workspaces.
 Alt F12 :Stick
 
+# Fn+F3/F4: Decrease/increase keyboard backlight on my notebook.
+# If these do not work, use xev to find out your real keycodes.
+237 :Exec ~/.fluxbox/scripts/set-keyboard-backlight.py -
+238 :Exec ~/.fluxbox/scripts/set-keyboard-backlight.py +
+
 # Moving/resizing.
 OnTitlebar Move1 :StartMoving
 OnLeftGrip Move1 :StartResizing bottomleft

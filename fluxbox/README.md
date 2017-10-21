@@ -14,6 +14,7 @@ Installation
  * `feh` (setting of background)
  * `gsimplecal` (calendar)
  * `parcellite` (clipboard manager)
+ * `python-dbus` (setting keyboard backlight)
  * `qxkb` (switching between keyboard layouts)
  * `xdotool` (switching focus between screens)
  * `xfce4-notifyd` (notifications)
