@@ -75,7 +75,6 @@
 	u = up
 	undo = "!git reset --soft HEAD^ && git reset"
 	wip = "!git add --all && git commit -m 'WIP'"
-	unwip = "!if [ `git show --oneline --pretty='%s' | head -n1` == 'WIP' ]; then git undo && git reset; fi"
 
 [advice]
 	; Make git a little less verbose.
