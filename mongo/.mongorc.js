@@ -13,7 +13,7 @@ prompt = function() {
 
 	// Check the last database operation.
 	try {
-		db.runCommand({ "getLastError": 1 });
+		db.runCommand({ 'getLastError': 1 });
 	} catch (e) {
 		print(e);
 	}
@@ -30,7 +30,7 @@ function showCollectionSizes() {
 	function formatSize(size) {
 		// Based on http://stackoverflow.com/a/20732091/2580955.
 		if (size == 0) {
-			return "0 B";
+			return '0 B';
 		}
 		var i = Math.floor(Math.log(size) / Math.log(1024));
 		return (size / Math.pow(1024, i)).toFixed(1) * 1 + ' ' +
@@ -52,15 +52,15 @@ function showCollectionSizes() {
 	});
 	for (var c in stats) {
 		var size = formatSize(stats[c]['size']);
-		var sizePadding = " ".repeat(9 - size.length);
+		var sizePadding = ' '.repeat(9 - size.length);
 		var totalIndexSize = formatSize(stats[c]['totalIndexSize']);
-		var totalIndexSizePadding = " ".repeat(9 - totalIndexSize.length);
+		var totalIndexSizePadding = ' '.repeat(9 - totalIndexSize.length);
 		var storageSize = formatSize(stats[c]['storageSize']);
-		var storageSizePadding = " ".repeat(9 - storageSize.length);
-		print(stats[c]['ns'] + ": " + " ".repeat(longestNameLength - stats[c]['ns'].length + 1) +
-			"size:" + sizePadding + size + "  " +
-			"totalIndexSize:" + totalIndexSizePadding + totalIndexSize + "  " +
-			"storageSize:" + storageSizePadding + storageSize
+		var storageSizePadding = ' '.repeat(9 - storageSize.length);
+		print(stats[c]['ns'] + ': ' + ' '.repeat(longestNameLength - stats[c]['ns'].length + 1) +
+			'size:' + sizePadding + size + '  ' +
+			'totalIndexSize:' + totalIndexSizePadding + totalIndexSize + '  ' +
+			'storageSize:' + storageSizePadding + storageSize
 		);
 	}
 }
