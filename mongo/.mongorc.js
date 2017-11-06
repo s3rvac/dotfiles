@@ -25,7 +25,7 @@ prompt = function() {
 DBQuery.prototype._prettyShell = true
 
 // Prints a listing of all collections in the database alongside with their
-// sizes. It is a collection-level equivalent for `show dbs`.
+// sizes. It is a collection-level equivalent for `show databases`.
 function showCollectionSizes() {
 	function formatSize(size) {
 		// Based on http://stackoverflow.com/a/20732091/2580955.
