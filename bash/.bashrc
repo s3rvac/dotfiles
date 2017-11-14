@@ -334,12 +334,12 @@ function gdbc() { gdb -quiet -ex run --args "$@"; }
 # exists).
 function pyve() {
 	if [ -d "virtualenv" ]; then
-		. virtualenv/bin/activate
+		source virtualenv/bin/activate
 	elif [ -d "venv" ]; then
-		. venv/bin/activate
+		source venv/bin/activate
 	else
 		python3 -m venv virtualenv
-		. virtualenv/bin/activate
+		source virtualenv/bin/activate
 	fi
 }
 
