@@ -298,7 +298,6 @@ alias ri='ri --format=ansi'
 # Automatically disable flow control (Ctrl-S/Q) after reset because I use the
 # Ctrl-S shortcut in Vim.
 alias reset='reset && stty -ixon'
-alias smem='sync && echo mem > /sys/power/state'
 alias t='tmux'
 alias Time='/usr/bin/time -v'
 alias unzipa='for f in *.zip; do unzip "$f" && rm -f "$f"; done'
