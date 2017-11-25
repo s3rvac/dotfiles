@@ -243,19 +243,14 @@ stty -ixon 2> /dev/null
 
 alias c='clear'
 alias l='ls -lA --group-directories-first'
-alias md='mkdir -p'
 function mdc() { mkdir -p "$@" && eval cd "\"\$$#\""; }
-alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ds='du -hs'
 alias dsa='du -h --all --max-depth=1 --one-file-system 2> /dev/null | sort -h'
 alias e='egrep'
-alias ei='egrep -i'
 alias er='egrep -rI'
-alias eri='egrep -rIi'
-alias et='easytag .'
 alias fer='echo "nameserver 8.8.8.8" > /etc/resolv.conf'
 alias gdb='gdb -quiet'
 alias rust-gdb='rust-gdb -quiet'
@@ -293,7 +288,6 @@ alias gs='g s'
 alias gu='g u'
 alias py='python3'
 alias py2='python2'
-alias ri='ri --format=ansi'
 # Automatically disable flow control (Ctrl-S/Q) after reset because I use the
 # Ctrl-S shortcut in Vim.
 alias reset='reset && stty -ixon'
@@ -302,28 +296,15 @@ alias Time='/usr/bin/time -v'
 alias unzipa='for f in *.zip; do unzip "$f" && rm -f "$f"; done'
 alias untara='for f in $(ls | grep "\.\(tar\|gz\|tgz\|bz2\)"); do tar xf "$f" && rm -f "$f"; done'
 alias unrara='for f in *.rar; do unrar x "$f" && rm -f "$f"; done'
-function zipf() { zip -q "$1".zip "$1"; echo "$1".zip; }
 function zipd() { zip -rq "$1".zip "$1"; echo "$1".zip; }
-function bak() { cp -a "$1" "$1".bak; }
 alias valgrind-leak='valgrind --leak-check=full --show-leak-kinds=all'
 alias valgrind-uninit='valgrind --track-origins=yes'
-alias valgrind-callgrind='valgrind --tool=callgrind'
 alias yt='youtube-dl --no-part'
 
 # Translation. It uses https://github.com/soimort/translate-shell, which has to
 # be available in $PATH under name 'trs'.
 alias toen='trs cs:en'
 alias tocs='trs en:cs'
-
-# When run without any arguments, ping google.com; otherwise, ping whatever the
-# user wants.
-function pi() {
-	if [ $# -eq 0 ]; then
-		ping google.com
-	else
-		ping "$@"
-	fi
-}
 
 # Run the given command with arguments through gdb.
 function gdbc() { gdb -quiet -ex run --args "$@"; }
@@ -360,17 +341,10 @@ function files() { cut -d: -f1 | sort -u; }
 # Usage: ver PATTERN
 function ver() { v $(er "$@" | files); }
 
-
-# Checks the syntax of the given C file and prints errors.
-function csyntax() {
-	gcc -std=c11 -fsyntax-only "$1" 2>&1 | grep "error:"
-}
-
 # Conversions.
 alias HEX="ruby -e 'printf(\"0x%X\n\", ARGV[0])'"
 alias DEC="ruby -e 'printf(\"%d\n\", ARGV[0])'"
 alias BIN="ruby -e 'printf(\"%bb\n\", ARGV[0])'"
-alias WORD="ruby -e 'printf(\"0x%04X\n\", ARGV[0])'"
 
 # Pacman/yaourt aliases.
 if command -v yaourt &> /dev/null; then
@@ -393,9 +367,6 @@ alias apts='aptitude search'
 alias aptr='aptitude remove'
 alias aptp='aptitude purge'
 alias aptu='aptitude update && aptitude upgrade'
-
-# Deflates the given file/contents, like a Git object.
-alias deflate="perl -MCompress::Zlib -e 'undef $/; print uncompress(<>)'"
 
 #------------------------------------------------------------------------------
 # RVM (Ruby Version Manager).
