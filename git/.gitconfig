@@ -60,6 +60,11 @@
 	rbi = rebase --interactive
 	rbs = rebase --skip
 	s = status --short --branch
+	sm = submodule
+	sma = submodule add
+	smf = submodule foreach
+	sms = submodule status --recursive
+	smu = submodule update --init --recursive
 	sh = stash
 	sha = stash apply
 	shd = stash drop
