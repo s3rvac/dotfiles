@@ -8,7 +8,8 @@
 #
 # $ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPO
 #
-# where ORIGINAL_OWNER and ORIGINAL_REPO are determined automatically.
+# where ORIGINAL_OWNER and ORIGINAL_REPO are determined automatically by using
+# GitHub's API.
 #
 
 import json
