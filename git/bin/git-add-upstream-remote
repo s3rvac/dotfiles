@@ -21,7 +21,7 @@ fork_url = subprocess.check_output(
     ['git', 'remote', 'get-url', '--push', 'origin'],
     universal_newlines=True
 )
-m = re.match(r'.*[:/](.+)/(.+)(?:\.git)/?$', fork_url)
+m = re.match(r'.*[:/](.+)/(.+?)(?:\.git)?/?$', fork_url)
 fork_owner, fork_repo = m.groups()
 api_repo_url = 'https://api.github.com/repos/{}/{}'.format(fork_owner, fork_repo)
 with urllib.request.urlopen(api_repo_url) as url:
