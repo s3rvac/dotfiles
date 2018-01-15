@@ -217,7 +217,7 @@ export LC_MEASUREMENT=en_GB.UTF-8
 export QUOTING_STYLE=literal
 
 # Make.
-export MAKEFLAGS="-j $(nproc)"
+export MAKEFLAGS="-j$(nproc)"
 
 # Fix the displayed channels in kmix.
 export KMIX_PULSEAUDIO_DISABLE=1
