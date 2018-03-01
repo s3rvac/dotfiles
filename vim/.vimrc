@@ -1088,6 +1088,15 @@ au FileType gitcommit setl softtabstop=4 " Causes backspace to delete 4 spaces.
 au FileType gitcommit setl shiftwidth=4  " Shift by 4 spaces.
 augroup end
 
+" YAML
+augroup yaml
+au!
+au FileType yaml setl expandtab     " Use spaces instead of tabs.
+au FileType yaml setl tabstop=2     " A tab counts for 2 spaces.
+au FileType yaml setl softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType yaml setl shiftwidth=2  " Shift by 2 spaces.
+augroup end
+
 " Dokuwiki
 augroup dokuwiki
 au!
