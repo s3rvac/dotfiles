@@ -1,16 +1,13 @@
-Vim
-===
+# Vim
 
 My configuration files for the [Vim](http://www.vim.org/) editor.
 
-Installation
-------------
+## Installation
 
 * Copy `.vimrc` to `$HOME/`.
 * Copy `.vim/colors/s3rvac.vim` to `$HOME/.vim/colors/`.
 
-Plugins:
---------
+## Plugins:
 
 I use the following Vim plugins, which you can install by using
 [pathogen](https://github.com/tpope/vim-pathogen).

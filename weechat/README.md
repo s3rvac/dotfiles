@@ -1,15 +1,12 @@
-WeeChat
-=======
+# WeeChat
 
 My configuration files for the [WeeChat](https://weechat.org/) chat client.
 
-Installation
-------------
+## Installation
 
 * Copy `.weechat` to `$HOME/`.
 
-Plugins
--------
+## Plugins
 
 I use the following plugins:
 

@@ -1,9 +1,7 @@
-GDB
-===
+# GDB
 
 My configuration file for [GDB](https://www.gnu.org/software/gdb/).
 
-Installation
-------------
+## Installation
 
 * Copy `.gdbinit` to `$HOME/`.

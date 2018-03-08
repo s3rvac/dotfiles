@@ -1,15 +1,12 @@
-Petr Zemek's Dot Files
-======================
+# Petr Zemek's Dot Files
 
 These are some of the configuration files I use.
 
-Installation
-------------
+## Installation
 
 See the README files in subdirectories.
 
-License
--------
+## License
 
 Copyright (c) 2014-2018 Petr Zemek <s3rvac@gmail.com>
 

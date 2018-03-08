@@ -1,10 +1,8 @@
-Fluxbox
-=======
+# Fluxbox
 
 My configuration files for the [Fluxbox](http://fluxbox.org/) window manager.
 
-Installation
-------------
+## Installation
 
 * Copy `.fluxbox` to `$HOME/`.
 * Add a wallpaper to `$HOME/.fluxbox/backgrounds`. The default name is

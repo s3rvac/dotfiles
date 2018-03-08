@@ -1,16 +1,13 @@
-Tmux
-====
+# Tmux
 
 My configuration file for the [tmux](http://tmux.sourceforge.net/) terminal
 multiplexer.
 
-Installation
-------------
+## Installation
 
 * Copy `.tmux.conf` to `$HOME/`.
 
-Plugins
--------
+## Plugins
 
 I use the following plugins:
 

@@ -1,5 +1,4 @@
-screen
-======
+# screen
 
 My configuration file for [screen](http://www.gnu.org/software/screen/).
 
@@ -7,7 +6,6 @@ My configuration file for [screen](http://www.gnu.org/software/screen/).
 [tmux](https://github.com/s3rvac/dotfiles/tree/master/tmux), so the
 configuration file for screen is rather short.
 
-Installation
-------------
+## Installation
 
 * Copy `.screenrc` to `$HOME/`.

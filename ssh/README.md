@@ -1,9 +1,7 @@
-SSH
-===
+# SSH
 
 My configuration file for SSH.
 
-Installation
-------------
+## Installation
 
 * Copy `config` to `$HOME/.ssh/`.
