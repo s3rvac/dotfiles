@@ -247,6 +247,8 @@ function mdc() { mkdir -p "$@" && eval cd "\"\$$#\""; }
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+# 2018-03-17: Without TERM=linux, cargo no longer emits colored error messages.
+alias cargo='TERM=linux cargo'
 alias ds='du -hs'
 alias dsa='du -h --all --max-depth=1 --one-file-system 2> /dev/null | sort -h'
 alias e='egrep'
