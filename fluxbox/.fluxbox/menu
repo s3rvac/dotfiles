@@ -15,7 +15,7 @@
 		[exec] (XSane} <~/.fluxbox/icons/xsane.xpm>
 	[end]
 	[submenu] (Multimedia)
-		[exec] (Audacity) {audacity} <~/.fluxbox/icons/audacity.xpm>
+		[exec] (Audacity) {audacity} <~/.fluxbox/icons/audacity.png>
 		[exec] (Clementine) {clementine} <~/.fluxbox/icons/clementine.png>
 		[exec] (DeVeDe) {devede} <~/.fluxbox/icons/devede.png>
 		[exec] (EasyTag) {easytag} <~/.fluxbox/icons/easytag.png>
