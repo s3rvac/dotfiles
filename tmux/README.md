@@ -21,3 +21,8 @@ I use the following plugins:
 To install the plugins, either put them into the `~/.tmux/plugins/` directory
 and use the `run-shell` commands from the end of my configuration file, or use
 the [tmux plugin manager](https://github.com/tmux-plugins/tpm).
+
+## Notes
+
+A detailed description of my tmux configuration is available
+[here](https://blog.petrzemek.net/2016/02/11/my-tmux-configuration/).
