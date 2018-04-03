@@ -18,6 +18,9 @@ Control Mod4 l :Exec ~/.fluxbox/scripts/lock-screen.sh
 # Setup the keyboard.
 Control Mod4 q :Exec ~/.fluxbox/scripts/setup-keyboard.sh
 
+# Suspend the system into RAM.
+Control Alt Mod4 s :Exec ~/.fluxbox/scripts/suspend-to-ram.sh
+
 # Reload the configuration.
 Control Mod4 r :Reconfigure
 
