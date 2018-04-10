@@ -264,6 +264,7 @@ alias rust-gdb='rust-gdb -quiet'
 # By disabling the mouse (--nomouse), it is possible to copy text through the
 # terminal emulator.
 alias mc='TERM=xterm-256color source /usr/lib/mc/mc-wrapper.sh --nomouse'
+alias vi='vim'
 alias vim='vim -p'
 alias v='vim'
 alias vd='vimdiff'
