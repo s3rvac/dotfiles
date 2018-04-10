@@ -284,11 +284,6 @@ fi
 alias umntd='sudo umount /mnt/disk'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias g='git'
-alias gd='g d'
-alias gl='g l'
-alias gp='g p'
-alias gs='g s'
-alias gu='g u'
 alias py='python3'
 alias py2='python2'
 # Automatically disable flow control (Ctrl-S/Q) after reset because I use the
@@ -303,6 +298,13 @@ function zipd() { zip -rq "$1".zip "$1"; echo "$1".zip; }
 alias valgrind-leak='valgrind --leak-check=full --show-leak-kinds=all'
 alias valgrind-uninit='valgrind --track-origins=yes'
 alias yt='youtube-dl --no-part'
+
+# Common typos.
+alias gd='g d'
+alias gl='g l'
+alias gp='g p'
+alias gs='g s'
+alias gu='g u'
 
 # Translation. It uses https://github.com/soimort/translate-shell, which has to
 # be available in $PATH under name 'trs'.
