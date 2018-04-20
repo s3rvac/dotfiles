@@ -300,6 +300,7 @@ alias valgrind-uninit='valgrind --track-origins=yes'
 alias yt='youtube-dl --no-part'
 
 # Common typos.
+alias G='g'
 alias gd='g d'
 alias gl='g l'
 alias gp='g p'
