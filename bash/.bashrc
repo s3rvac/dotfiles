@@ -368,12 +368,12 @@ else
 	alias pacu='pacman -Syu' # Upgrade
 fi
 
-# Aptitude aliases.
-alias apti='aptitude install'
-alias apts='aptitude search'
-alias aptr='aptitude remove'
-alias aptp='aptitude purge'
-alias aptu='aptitude update && aptitude upgrade'
+# Apt aliases.
+alias apti='apt install'
+alias apts='apt search'
+alias aptr='apt remove'
+alias aptp='apt purge'
+alias aptu='apt update && apt upgrade'
 
 #------------------------------------------------------------------------------
 # RVM (Ruby Version Manager).
