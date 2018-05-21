@@ -187,6 +187,9 @@ set! devtools.jsonview.enabled=false
 " Do not select trailing spaces when selecting words.
 set! layout.word_select.eat_space_to_next_word=false
 
+" Speed up scrolling with the middle mouse button.
+set! mousewheel.default.delta_multiplier_y=250
+
 " Enable pipelining to speed things up.
 set! network.http.pipelining=true
 set! network.http.pipelining.maxrequests=16
