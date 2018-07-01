@@ -348,6 +348,30 @@ function files() { cut -d: -f1 | sort -u; }
 # Usage: ver PATTERN
 function ver() { v $(er "$@" | files); }
 
+# Removes trailing whitespace from the given file or directory.
+# Usage: remove-trailing-whitespace [FILE|DIR]
+function remove-trailing-whitespace() {
+	if [ ! -z "$1" ]; then
+		find "$1" -type f -exec sed -i 's/[[:blank:]]\+$//' {} \;
+	else
+		# When no argument was given, remove trailing whitespace from all files
+		# under version control.
+		git ls-files | xargs sed -i 's/[[:blank:]]\+$//'
+	fi
+}
+
+# Removes duplicate empty lines from the given file or directory.
+# Usage: remove-duplicate-empty-lines [FILE|DIR]
+function remove-duplicate-empty-lines() {
+	if [ ! -z "$1" ]; then
+		find "$1" -type f -exec sed -i 'N;/^\n$/D;P;D;' {} \;
+	else
+		# When no argument was given, remove duplicate empty lines from all
+		# files under version control.
+		git ls-files | xargs sed -i 'N;/^\n$/D;P;D;'
+	fi
+}
+
 # Conversions.
 alias HEX="ruby -e 'printf(\"0x%X\n\", ARGV[0])'"
 alias DEC="ruby -e 'printf(\"%d\n\", ARGV[0])'"
