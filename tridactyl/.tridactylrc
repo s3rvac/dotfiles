@@ -1,0 +1,101 @@
+"------------------------------------------------------------------------------
+" File:   $HOME/.tridactylrc
+" Author: Petr Zemek <s3rvac@gmail.com>
+"------------------------------------------------------------------------------
+
+" Note: Most of the options are described here:
+"       https://github.com/cmcaine/tridactyl/blob/master/src/config.ts
+
+"------------------------------------------------------------------------------
+" Tridactyl settings.
+"------------------------------------------------------------------------------
+
+" Vimperator-like hinting mode.
+set hintfiltermode vimperator-reflow
+set hintchars 1234567890
+
+" Open new tabs at the end of the tab list instead of after the current tab.
+" (Remember to also set browser.tabs.insertRelatedAfterCurrent=false in
+" about:config.)
+set tabopenpos last
+set relatedopenpos last
+
+" Do not allow pages to focus elements for me.
+" (Remember to also set browser.autofocus=false in about:config.)
+set allowautofocus false
+
+" Make Tridactyl work on more sites at the expense of some security.
+set csp clobber
+fixamo
+
+"------------------------------------------------------------------------------
+" Key bindings.
+"------------------------------------------------------------------------------
+
+" Before we begin, clear all user-defined commands.
+comclear
+
+" Previous/next tab.
+bind J tabprev
+bind K tabnext
+
+" Backward/forward in history.
+bind h back
+bind l forward
+
+"------------------------------------------------------------------------------
+" Keyword searches.
+"------------------------------------------------------------------------------
+
+searchsetkeyword cmake https://cmake.org/cmake/help/latest/search.html?q=%s&check_keywords=yes&area=default
+searchsetkeyword cpp http://en.cppreference.com/mwiki/index.php?title=Special%3ASearch&search=%s
+searchsetkeyword crate https://crates.io/search?q=%s
+searchsetkeyword g http://www.google.cz/search?hl=cs&q=%s
+searchsetkeyword php http://php.net/search.php?show=quickref&=&pattern=%s
+searchsetkeyword py https://docs.python.org/3/search.html?q=%s&check_keywords=yes&area=default
+searchsetkeyword rs https://doc.rust-lang.org/std/?search=%s
+searchsetkeyword w http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=%s
+searchsetkeyword yt https://www.youtube.com/results?search_query=%s
+
+"------------------------------------------------------------------------------
+" Firefox settings.
+"------------------------------------------------------------------------------
+
+" Note: Not supported by Tridactyl at the moment.
+
+" Do not close the window when the last tab is closed.
+" set browser.tabs.closeWindowWithLastTab=false
+
+" Open new tabs at the end instead of after the current tab.
+" set browser.tabs.insertRelatedAfterCurrent=false
+
+" Do not warn when closing a window with tabs.
+" set browser.tabs.warnOnClose=false
+
+" Prevent focus stealing when opening links from external applications.
+" set browser.tabs.loadDivertedInBackground=true
+
+" Do not shorten URLs (protocol and trailing slash).
+" set browser.urlbar.trimURLs=false
+
+" Do not check if Firefox is the default browser.
+" set browser.shell.checkDefaultBrowser=false
+
+" Disable autofocusing elements via HTML.
+" set browser.autofocus=false
+
+" Disable warnings.
+" set browser.tabs.warnOnClose=false
+" set browser.tabs.warnOnCloseOtherTabs=false
+" set browser.tabs.warnOnOpen=false
+" set general.warnOnAboutConfig=false
+
+" Disable Pocket (I always click on that thing instead of on 'Copy Location').
+" set extensions.pocket.enabled=false
+
+" Disable autoplay of videos.
+" set media.autoplay.enabled=false
+
+" Display the raw, punycode version of internationalized domain names (IDNs).
+" This mitigates phishing attacks via IDNs.
+" set network.IDN_show_punycode=true
