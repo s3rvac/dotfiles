@@ -8,7 +8,7 @@ See the README files in subdirectories.
 
 ## License
 
-Copyright (c) 2014-2018 Petr Zemek <s3rvac@gmail.com>
+Copyright (c) 2014 Petr Zemek <s3rvac@gmail.com>
 
 Distributed under the MIT license. See the [LICENSE](LICENSE) file for more
 details.
