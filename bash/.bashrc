@@ -284,6 +284,7 @@ fi
 alias umntd='sudo umount /mnt/disk'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias g='git'
+alias G='git'
 alias py='python3'
 alias py2='python2'
 # Automatically disable flow control (Ctrl-S/Q) after reset because I use the
