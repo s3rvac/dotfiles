@@ -15,7 +15,7 @@ set verbose off
 
 # Save the history.
 set history filename ~/.gdb_history
-set history save
+set history save on
 
 #------------------------------------------------------------------------------
 # Functions.
