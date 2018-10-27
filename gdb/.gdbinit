@@ -17,6 +17,9 @@ set verbose off
 set history filename ~/.gdb_history
 set history save on
 
+# Print structures in an indented format with one member per line.
+set print pretty on
+
 #------------------------------------------------------------------------------
 # Functions.
 #------------------------------------------------------------------------------
