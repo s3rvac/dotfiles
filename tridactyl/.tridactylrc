@@ -94,7 +94,7 @@ searchsetkeyword yt https://www.youtube.com/results?search_query=%s
 " set extensions.pocket.enabled=false
 
 " Disable autoplay of videos.
-" set media.autoplay.enabled=false
+" set media.autoplay.default=1
 
 " Display the raw, punycode version of internationalized domain names (IDNs).
 " This mitigates phishing attacks via IDNs.
