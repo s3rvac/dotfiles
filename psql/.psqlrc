@@ -1,0 +1,11 @@
+#------------------------------------------------------------------------------
+# File:   $HOME/.psqlrc
+# Author: Petr Zemek <s3rvac@gmail.com>
+#------------------------------------------------------------------------------
+
+\encoding utf-8
+\timing on
+\pset null 'NULL'
+\pset pager always
+\set PROMPT1 '%[%033[1;33m%]%M %n@%/%R %#%[%033[0m%] '
+\set PROMPT2 '[more] %R > '
