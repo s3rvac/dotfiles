@@ -47,15 +47,15 @@ bind l forward
 " Keyword searches.
 "------------------------------------------------------------------------------
 
-searchsetkeyword cmake https://cmake.org/cmake/help/latest/search.html?q=%s&check_keywords=yes&area=default
-searchsetkeyword cpp http://en.cppreference.com/mwiki/index.php?title=Special%3ASearch&search=%s
-searchsetkeyword crate https://crates.io/search?q=%s
-searchsetkeyword g http://www.google.cz/search?hl=cs&q=%s
-searchsetkeyword php http://php.net/search.php?show=quickref&=&pattern=%s
-searchsetkeyword py https://docs.python.org/3/search.html?q=%s&check_keywords=yes&area=default
-searchsetkeyword rs https://doc.rust-lang.org/std/?search=%s
-searchsetkeyword w http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=%s
-searchsetkeyword yt https://www.youtube.com/results?search_query=%s
+set searchurls.cmake https://cmake.org/cmake/help/latest/search.html?q=%s&check_keywords=yes&area=default
+set searchurls.cpp http://en.cppreference.com/mwiki/index.php?title=Special%3ASearch&search=%s
+set searchurls.crate https://crates.io/search?q=%s
+set searchurls.g http://www.google.cz/search?hl=cs&q=%s
+set searchurls.php http://php.net/search.php?show=quickref&=&pattern=%s
+set searchurls.py https://docs.python.org/3/search.html?q=%s&check_keywords=yes&area=default
+set searchurls.rs https://doc.rust-lang.org/std/?search=%s
+set searchurls.w http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=%s
+set searchurls.yt https://www.youtube.com/results?search_query=%s
 
 "------------------------------------------------------------------------------
 " Firefox settings.
