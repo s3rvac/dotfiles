@@ -1136,13 +1136,13 @@ au FileType mail setl expandtab     " Use spaces instead of tabs.
 augroup end
 
 "-------------------------------------------------------------------------------
-" Firefox "It's all text plugin".
+" Firefox "Textern" plugin.
 "-------------------------------------------------------------------------------
 
-augroup firefox_its_all_text
+augroup firefox_textern_plugin
 au!
 let s:opened_file_path = expand('%:p')
-if s:opened_file_path =~ '\.mozilla/firefox/'
+if s:opened_file_path =~ 'textern-'
 	" Enable Czech spell checking by default.
 	au BufRead,BufNewFile *.txt setl spell
 	au BufRead,BufNewFile *.txt setl spelllang=cs
