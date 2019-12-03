@@ -1135,6 +1135,12 @@ au FileType mail setl spelllang=cs
 au FileType mail setl expandtab     " Use spaces instead of tabs.
 augroup end
 
+" INI files
+" I dislike the change in the original syntax/dosini.vim file that caused
+" values to be highlighted as strings. I want them to be highlighted as regular
+" text (the original highlighting).
+hi def link dosiniValue Normal
+
 "-------------------------------------------------------------------------------
 " Firefox "Textern" plugin.
 "-------------------------------------------------------------------------------
