@@ -11,4 +11,9 @@
 # General. Has to be at the bottom.
 Host *
 	SendEnv LANG LC_*
-	ServerAliveInterval 30
+	# Set a timeout interval in seconds after which if no data has been
+	# received from the server, ssh will send a message through the encrypted
+	# channel to request a response from the server. The default is 0,
+	# indicating that these messages will not be sent to the server, which
+	# makes SSH sessions timeout. We want to prevent that.
+	ServerAliveInterval 120
