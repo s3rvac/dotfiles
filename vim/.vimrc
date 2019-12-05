@@ -686,7 +686,7 @@ let g:python_print_as_function=1
 "--------------------------------------
 " rust.vim: Vim configuration for Rust.
 "--------------------------------------
-" I set the style (formatting) manually.
+" I set Vim indentation and textwrap manually.
 let g:rust_recommended_style=0
 " Customize the syntax highlighting (the default one is too colorful for my
 " taste).
