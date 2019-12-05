@@ -101,6 +101,7 @@
 [diff]
 	; Allow `git diff` to do basic rename and copy detection.
 	renames = copies
+	renameLimit = 10000
 
 [fetch]
 	; Automatically prune during `git fetch`.
