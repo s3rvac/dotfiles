@@ -50,6 +50,7 @@
 	lg = log --graph --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
 	lga = log --graph --branches --remotes --tags --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
 	m = merge --no-ff
+	ma = merge --abort
 	p = push
 	pb = "!git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`"
 	db = "!git branch --delete \"$1\" && git push origin --delete \"$1\" #"
