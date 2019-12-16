@@ -219,9 +219,6 @@ export QUOTING_STYLE=literal
 # Make.
 export MAKEFLAGS="-j$(nproc)"
 
-# Fix the displayed channels in kmix.
-export KMIX_PULSEAUDIO_DISABLE=1
-
 # Make ls, du, df and possibly other programs report sizes in a human-readable
 # way by default (e.g. `df` implicitly becomes `df -h`).
 export BLOCKSIZE=human-readable
