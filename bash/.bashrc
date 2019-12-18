@@ -134,17 +134,6 @@ if [[ -f ~/.tmuxinator-completion.bash ]]; then
 	source ~/.tmuxinator-completion.bash
 fi
 
-# pacman
-pacman_completion() {
-	cur=$(_get_cword)
-	COMPREPLY=($(pacman -Sl | cut -d " " -f 2 | grep "^$cur" 2> /dev/null))
-	return 0
-}
-complete -F pacman_completion paci
-complete -F pacman_completion pacr
-complete -F pacman_completion pacp
-complete -F pacman_completion pacs
-
 # Other aliases.
 complete -o default v
 complete -o default vd
@@ -376,21 +365,6 @@ function remove-duplicate-empty-lines() {
 alias HEX="ruby -e 'printf(\"0x%X\n\", ARGV[0])'"
 alias DEC="ruby -e 'printf(\"%d\n\", ARGV[0])'"
 alias BIN="ruby -e 'printf(\"%bb\n\", ARGV[0])'"
-
-# Pacman/yaourt aliases.
-if command -v yaourt &> /dev/null; then
-	alias paci='yaourt -S'   # Install
-	alias pacr='yaourt -R'   # Remove
-	alias pacp='yaourt -Rns' # Purge
-	alias pacs='yaourt -Ss'  # Search
-	alias pacu='yaourt -Syu' # Upgrade
-else
-	alias paci='pacman -S'   # Install
-	alias pacr='pacman -R'   # Remove
-	alias pacp='pacman -Rns' # Purge
-	alias pacs='pacman -Ss'  # Search
-	alias pacu='pacman -Syu' # Upgrade
-fi
 
 # Apt aliases.
 alias apti='apt install'
