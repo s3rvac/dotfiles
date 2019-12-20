@@ -42,6 +42,7 @@ I use the following Vim plugins, which you can install by using
 * Syntax:
   * [dokuwiki](https://github.com/nblock/vim-dokuwiki)
   * [jinja2](https://github.com/Glench/Vim-Jinja2-Syntax)
+  * [kotlin](https://github.com/udalov/kotlin-vim)
   * [llvm](https://llvm.org/svn/llvm-project/llvm/trunk/utils/vim/syntax/llvm.vim)
   * [pgsql](https://github.com/lifepillar/pgsql.vim)
   * [python](https://github.com/hdima/python-syntax)
