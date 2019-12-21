@@ -18,25 +18,25 @@
   [Maximized] {yes}
   [Deco] {BORDER}
 [end]
-[app] (name=krusader) (class=Krusader) (role=MainWindow#1)
+[app] (name=krusader) (class=krusader) (role=MainWindow#1)
   [Maximized] {yes}
   [Deco] {BORDER}
 [end]
-[app] (title=File Already Exists) (class=Krusader)
+[app] (title=File Already Exists) (class=krusader)
   [Position] (CENTER) {0 -100}
   [Layer] {6}
 [end]
-[app] (title=Progress Dialog) (class=Krusader)
+[app] (title=Progress Dialog) (class=krusader)
   [Position] (CENTER) {0 0}
   [FocusNewWindow] {no}
   [Minimized] {yes}
 [end]
-[app] (title=Copying.*) (class=Krusader)
+[app] (title=Copying.*) (class=krusader)
   [Position] (CENTER) {0 0}
   [FocusNewWindow] {no}
   [Minimized] {yes}
 [end]
-[app] (title=Moving.*) (class=Krusader)
+[app] (title=Moving.*) (class=krusader)
   [Position] (CENTER) {0 0}
   [FocusNewWindow] {no}
   [Minimized] {yes}
@@ -60,7 +60,7 @@
   [FocusNewWindow] {no}
   [FocusHidden] {no}
 [end]
-[app] (name=Navigator) (class=Firefox) (role=browser)
+[app] (class=firefox) (role=browser)
   [Maximized] {yes}
   [Deco] {BORDER}
 [end]
