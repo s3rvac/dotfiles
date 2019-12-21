@@ -1027,7 +1027,7 @@ au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo test<CR>
 au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo run<CR>
 
 " Re-formatting via `RustFmt` from the rust.vim plugin.
-au FileType rust nnoremap <buffer> <silent> <Leader>ff :RustFmt<CR>
+au FileType rust nnoremap <buffer> <silent> <Leader>rf :RustFmt<CR>
 augroup end
 
 " Go
