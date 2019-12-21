@@ -24,14 +24,14 @@ Control Mod4 r :Reconfigure
 # Clear all notifications sent by notify-send.
 Mod4 space :Exec ~/.fluxbox/scripts/clear-notifications.sh
 
-# Volume control. The shortcuts are defined in Kmix.
+# Volume control. The shortcuts are defined in volumeicon.
 # Win+PgDown: Volume down.
 # Win+PgUp: Volume up.
+# Win+End: Mute/unmute.
 
 # Audio player control. The shortcuts are defined in Clementine.
 # Win+Pause: Play/Pause.
 # Win+Home: Stop.
-# Win+End: Stop after the current track.
 
 # Make a screenshot by pressing PrintScreen.
 Print :Exec spectacle

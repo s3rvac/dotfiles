@@ -20,7 +20,7 @@
 		[exec] (DeVeDe) {devede} <~/.fluxbox/icons/devede.png>
 		[exec] (EasyTag) {easytag} <~/.fluxbox/icons/easytag.png>
 		[exec] (K3b) {k3b} <~/.fluxbox/icons/k3b.png>
-		[exec] (KMix) {kmix} <~/.fluxbox/icons/kmix.png>
+		[exec] (Volumeicon) {volumeicon} <~/.fluxbox/icons/volumeicon.png>
 		[exec] (mpv) {mpv} <~/.fluxbox/icons/mpv.png>
 		[exec] (VLC) {vlc} <~/.fluxbox/icons/vlc.png>
 	[end]
