@@ -52,10 +52,10 @@ Alt F3 :CommandDialog
 Alt F4 :Close
 
 # Move the current window to the left monitor.
-Alt F5 :MacroCmd {SetHead 1}
+Alt F5 :MacroCmd {SendToPrevHead}
 
 # Move the current window to the right monitor.
-Alt F6 :MacroCmd {SetHead 2}
+Alt F6 :MacroCmd {SendToNextHead}
 
 # Resize and move the window to the left half of the screen.
 Alt F7 :MacroCmd {ResizeTo 960 540} {Moveto 0 0} {MaximizeVertical}
