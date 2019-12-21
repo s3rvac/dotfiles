@@ -36,6 +36,9 @@ Mod4 space :Exec ~/.fluxbox/scripts/clear-notifications.sh
 # Make a screenshot via Spectacle.
 Print :Exec spectacle
 
+# Make a screenshot via Flameshot.
+Ctrl Print :Exec flameshot gui
+
 # Toggle Yakuake.
 # Alt+F1: The shortcut is set in Yakuake.
 
