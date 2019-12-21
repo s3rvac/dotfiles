@@ -929,6 +929,9 @@ function! s:AlternateCOrHFile()
 endfunction
 au FileType c,cpp nnoremap <buffer> <Leader>ac :call <SID>AlternateCOrHFile()<CR>
 
+" Re-formatting via `clang-format`.
+au FileType c,cpp nnoremap <buffer> <silent> <Leader>rf :%!clang-format --style=file<CR>
+
 " Let F10 compile and run the currently edited code
 " (F10 -> use GCC, S-F10 -> use Clang).
 au FileType c nnoremap <buffer> <F10> :w<CR>:!clear; gcc -std=c11 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
