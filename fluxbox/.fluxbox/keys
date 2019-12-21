@@ -33,7 +33,7 @@ Mod4 space :Exec ~/.fluxbox/scripts/clear-notifications.sh
 # Win+Pause: Play/Pause.
 # Win+Home: Stop.
 
-# Make a screenshot by pressing PrintScreen.
+# Make a screenshot via Spectacle.
 Print :Exec spectacle
 
 # Toggle Yakuake.
