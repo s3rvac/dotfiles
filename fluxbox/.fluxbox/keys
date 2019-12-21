@@ -9,9 +9,6 @@ OnDesktop Mouse2 :WorkspaceMenu
 OnDesktop Mouse3 :RootMenu
 Control Mod4 space :RootMenu
 
-# Set background (wallpaper).
-Control Mod4 w :Exec ~/.fluxbox/scripts/set-background.sh
-
 # Lock the screen.
 Control Mod4 l :Exec ~/.fluxbox/scripts/lock-screen.sh
 
