@@ -12,7 +12,7 @@ fbpid=$!
 
 sleep 1
 {
-	~/.fluxbox/scripts/set-background.sh &
+	~/.fluxbox/scripts/setup-background.sh &
 	~/.fluxbox/scripts/setup-keyboard.sh &
 
 	# A list of applications to be started automatically.
