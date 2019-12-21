@@ -27,7 +27,7 @@
 	[submenu] (Network)
 		[exec] (Chromium) {chromium} <~/.fluxbox/icons/chromium.png>
 		[exec] (Firefox) {firefox} <~/.fluxbox/icons/firefox.png>
-		[exec] (KTorrent) {ktorrent} <~/.fluxbox/icons/ktorrent.png>
+		[exec] (Transmission) {transmission-qt} <~/.fluxbox/icons/transmission.png>
 		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
 		[exec] (Thunderbird) {thunderbird} <~/.fluxbox/icons/thunderbird.png>
 		[exec] (Wicd) {wicd-client} <~/.fluxbox/icons/wicd.png>
