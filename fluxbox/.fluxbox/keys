@@ -58,10 +58,10 @@ Alt F5 :MacroCmd {SendToPrevHead}
 Alt F6 :MacroCmd {SendToNextHead}
 
 # Resize and move the window to the left half of the screen.
-Alt F7 :MacroCmd {ResizeTo 960 540} {Moveto 0 0} {MaximizeVertical}
+Alt F7 :Exec ~/.fluxbox/scripts/move-current-window-to-half-screen.sh left
 
 # Resize and move the window to the right half of the screen.
-Alt F8 :MacroCmd {ResizeTo 960 540} {Moveto 960 0} {MaximizeVertical}
+Alt F8 :Exec ~/.fluxbox/scripts/move-current-window-to-half-screen.sh right
 
 # Maximize the current window.
 Alt F9 :Maximize
