@@ -95,8 +95,8 @@ OnTitlebar Double Mouse1 :Maximize
 OnTitlebar Mouse3 :WindowMenu
 
 # Move focus between screens.
-Control Alt h :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 0
-Control Alt l :Exec ~/.fluxbox/scripts/switch-screen-focus.sh 1
+Control Alt h :Exec ~/.fluxbox/scripts/switch-screen-focus.sh left
+Control Alt l :Exec ~/.fluxbox/scripts/switch-screen-focus.sh right
 
 # Cycle through windows.
 Alt Tab :NextWindow {groups} (workspace=[current])
