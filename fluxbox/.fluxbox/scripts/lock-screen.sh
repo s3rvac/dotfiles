@@ -5,4 +5,8 @@
 # Locks the screen.
 #
 
-xsecurelock auth_pam_x11 saver_blank
+# Turn off the screen.
+sleep 0.3; xset dpms force off
+
+# Lock the screen.
+XSECURELOCK_SAVER=saver_blank XSECURELOCK_AUTH=auth_pam_x11 xsecurelock
