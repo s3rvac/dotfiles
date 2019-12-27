@@ -7,7 +7,7 @@
 
 MOUSE='Logitech G403 Prodigy Gaming Mouse'
 
-# Disable accelleration.
+# Disable acceleration.
 xinput --set-prop "$MOUSE" 'libinput Accel Profile Enabled' 0, 1
 
 # Increase sensitivity.
