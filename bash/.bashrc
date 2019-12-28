@@ -129,6 +129,11 @@ if [[ -f ~/.git-completion.bash ]]; then
 fi
 complete -o default -o nospace -F _git g
 
+# kubectl
+if command -v kubectl &> /dev/null; then
+	source <(kubectl completion bash | sed s/kubectl/k/g)
+fi
+
 # tmuxinator
 if [[ -f ~/.tmuxinator-completion.bash ]]; then
 	source ~/.tmuxinator-completion.bash
@@ -273,6 +278,7 @@ alias umntd='sudo umount /mnt/disk'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias g='git'
 alias G='git'
+alias k='kubectl'
 alias py='python3'
 alias py2='python2'
 # Automatically disable flow control (Ctrl-S/Q) after reset because I use the
