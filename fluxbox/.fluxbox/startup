@@ -16,6 +16,7 @@ sleep 1
 	~/.fluxbox/scripts/setup-keyboard.sh &
 	~/.fluxbox/scripts/setup-mouse.sh &
 	~/.fluxbox/scripts/setup-automatic-screen-locking.sh &
+	~/.fluxbox/scripts/enable-notifications.sh &
 
 	# A list of applications to be started automatically.
 	wicd-client &
