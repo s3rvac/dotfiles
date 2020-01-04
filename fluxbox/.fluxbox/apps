@@ -64,9 +64,9 @@
   [Maximized] {yes}
   [Deco] {BORDER}
 [end]
-[app] (name=qstardict) (class=Qstardict)
+[app] (name=QStarDict) (class=qstardict)
   [Position] (CENTER) {0 0}
 [end]
-[app] (name=vlc) (class=Vlc) (role=vlc-main)
-  [Position] (UPPERLEFT) {35% 25%}
+[app] (class=vlc) (role=vlc-main)
+  [Position] (CENTER) {0 0}
 [end]
