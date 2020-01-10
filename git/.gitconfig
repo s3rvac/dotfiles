@@ -54,7 +54,7 @@
 	p = push
 	pb = "!git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`"
 	db = "!git branch --delete \"$1\" && git push origin --delete \"$1\" #"
-	pl = pull --rebase=preserve --stat --prune
+	pl = pull --rebase=preserve --autostash --stat --prune
 	rb = rebase --preserve-merges
 	rba = rebase --abort
 	rbc = rebase --continue
