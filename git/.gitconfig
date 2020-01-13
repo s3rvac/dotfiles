@@ -76,6 +76,7 @@
 	sf = show --pretty="format:" --name-status
 	sync-fork="!git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD` && git push"
 	tags = tag --list -n1
+	showtag = show --quiet
 	today = "!git ll --since=midnight"
 	; https://github.com/aanand/git-up
 	u = up
