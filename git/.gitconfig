@@ -57,7 +57,6 @@
 	rba = rebase --abort
 	rbc = rebase --continue
 	rbi = rebase --interactive
-	rbs = rebase --skip
 	s = status --short --branch
 	sm = submodule
 	sma = submodule add
