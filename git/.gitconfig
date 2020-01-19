@@ -23,7 +23,7 @@
 	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 	bl = blame
 	br = branch -vv
-	bra = branch --all -vv
+	bra = branch -vv --all
 	c = commit --verbose
 	ca = commit --verbose --all
 	clear = reset --hard
