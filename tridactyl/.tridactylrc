@@ -24,10 +24,6 @@ set relatedopenpos last
 " (Remember to also set browser.autofocus=false in about:config.)
 set allowautofocus false
 
-" Make Tridactyl work on more sites at the expense of some security.
-set csp clobber
-fixamo
-
 "------------------------------------------------------------------------------
 " Key bindings.
 "------------------------------------------------------------------------------
