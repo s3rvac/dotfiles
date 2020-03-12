@@ -12,8 +12,8 @@ Control Mod4 space :RootMenu
 # Lock the screen.
 Control Mod4 l :Exec ~/.fluxbox/scripts/lock-screen.sh
 
-# Setup the keyboard.
-Control Mod4 q :Exec ~/.fluxbox/scripts/setup-keyboard.sh
+# Setup the keyboard and mouse.
+Control Mod4 q :Exec ~/.fluxbox/scripts/setup-keyboard-and-mouse.sh
 
 # Suspend the system into RAM.
 Control Alt Mod4 s :Exec ~/.fluxbox/scripts/suspend-to-ram.sh
