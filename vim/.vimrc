@@ -1030,7 +1030,7 @@ au!
 " The default indentation settings are fine (Go uses tabs).
 
 " Re-formatting via `gofmt`.
-au FileType go nnoremap <buffer> <silent> <Leader>ff
+au FileType go nnoremap <buffer> <silent> <Leader>rf
 	\ :w <Bar>
 	\ set autoread <Bar>
 	\ SilentExecute gofmt -w % <Bar>
