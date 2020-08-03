@@ -1035,6 +1035,9 @@ au FileType go nnoremap <buffer> <silent> <Leader>rf
 	\ set autoread <Bar>
 	\ SilentExecute gofmt -w % <Bar>
 	\ set noautoread<CR>
+
+" Let F10 compile and run the current file.
+au FileType go nnoremap <buffer> <F10> :w<CR>:!clear; go run %<CR>
 augroup end
 
 " Ruby
