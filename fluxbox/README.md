@@ -9,6 +9,7 @@ My configuration files for the [Fluxbox](http://fluxbox.org/) window manager.
   `wallpaper.jpg`. You can change it in
   `$HOME/.fluxbox/scripts/set-background.sh`.
 * Programs that are used by the scripts and keys:
+    * `connman` and `cmst` (connection manager)
     * `feh` (setting of background)
     * `flameshot` (screenshots)
     * `gsimplecal` (calendar)

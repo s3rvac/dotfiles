@@ -19,7 +19,7 @@ sleep 1
 	~/.fluxbox/scripts/enable-notifications.sh &
 
 	# A list of applications to be started automatically.
-	wicd-client &
+	cmst &
 	volumeicon &
 	yakuake &
 	qstardict &

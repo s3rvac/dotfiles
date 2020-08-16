@@ -30,7 +30,7 @@
 		[exec] (Transmission) {transmission-qt} <~/.fluxbox/icons/transmission.png>
 		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
 		[exec] (Thunderbird) {thunderbird} <~/.fluxbox/icons/thunderbird.png>
-		[exec] (Wicd) {wicd-client} <~/.fluxbox/icons/wicd.png>
+		[exec] (ConnMan) {cmst} <~/.fluxbox/icons/connman.png>
 	[end]
 	[submenu] (Office)
 		[exec] (Calibre) {calibre} <~/.fluxbox/icons/calibre.png>
