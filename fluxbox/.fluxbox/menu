@@ -20,17 +20,17 @@
 		[exec] (DeVeDe) {devede} <~/.fluxbox/icons/devede.png>
 		[exec] (EasyTag) {easytag} <~/.fluxbox/icons/easytag.png>
 		[exec] (K3b) {k3b} <~/.fluxbox/icons/k3b.png>
+		[exec] (VLC) {vlc} <~/.fluxbox/icons/vlc.png>
 		[exec] (Volumeicon) {volumeicon} <~/.fluxbox/icons/volumeicon.png>
 		[exec] (mpv) {mpv} <~/.fluxbox/icons/mpv.png>
-		[exec] (VLC) {vlc} <~/.fluxbox/icons/vlc.png>
 	[end]
 	[submenu] (Network)
 		[exec] (Chromium) {chromium} <~/.fluxbox/icons/chromium.png>
+		[exec] (ConnMan) {cmst} <~/.fluxbox/icons/connman.png>
 		[exec] (Firefox) {firefox} <~/.fluxbox/icons/firefox.png>
-		[exec] (Transmission) {transmission-qt} <~/.fluxbox/icons/transmission.png>
 		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
 		[exec] (Thunderbird) {thunderbird} <~/.fluxbox/icons/thunderbird.png>
-		[exec] (ConnMan) {cmst} <~/.fluxbox/icons/connman.png>
+		[exec] (Transmission) {transmission-qt} <~/.fluxbox/icons/transmission.png>
 	[end]
 	[submenu] (Office)
 		[exec] (Calibre) {calibre} <~/.fluxbox/icons/calibre.png>
@@ -45,9 +45,9 @@
 	[end]
 	[submenu] (System)
 		[submenu] (Settings)
+			[exec] (CUPS) {firefox http://localhost:631/} <~/.fluxbox/icons/cups.png>
 			[exec] (IcedTea-Web Control Panel) {itweb-settings}
 			[exec] (KDE System Settings) {systemsettings5}
-			[exec] (CUPS) {firefox http://localhost:631/} <~/.fluxbox/icons/cups.png>
 			[exec] (NVIDIA X Server Settings) {nvidia-settings} <~/.fluxbox/icons/nvidia-settings.png>
 			[exec] (XFCE Preferred Applications) {exo-preferred-applications}
 		[end]
