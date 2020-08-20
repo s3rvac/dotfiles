@@ -27,6 +27,7 @@
 	[submenu] (Network)
 		[exec] (Chromium) {chromium} <~/.fluxbox/icons/chromium.png>
 		[exec] (ConnMan) {cmst} <~/.fluxbox/icons/connman.png>
+		[exec] (Opera) {opera} <~/.fluxbox/icons/opera.png>
 		[exec] (Firefox) {firefox} <~/.fluxbox/icons/firefox.png>
 		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
 		[exec] (Thunderbird) {thunderbird} <~/.fluxbox/icons/thunderbird.png>
