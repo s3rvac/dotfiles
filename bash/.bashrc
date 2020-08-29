@@ -277,7 +277,7 @@ fi
 alias umntd='sudo umount /mnt/disk'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias g='git'
-alias k='kubectl'
+alias kc='kubectl'
 alias kgc='kubectl config current-context'
 alias kcc='kubectl config use-context'
 alias py='python3'
