@@ -47,6 +47,7 @@ set searchurls.cmake https://cmake.org/cmake/help/latest/search.html?q=%s&check_
 set searchurls.cpp http://en.cppreference.com/mwiki/index.php?title=Special%3ASearch&search=%s
 set searchurls.crate https://crates.io/search?q=%s
 set searchurls.g http://www.google.cz/search?hl=cs&q=%s
+set searchurls.ddg https://duckduckgo.com/?q=%s
 set searchurls.go https://golang.org/search?q=%s
 set searchurls.php http://php.net/search.php?show=quickref&=&pattern=%s
 set searchurls.py https://docs.python.org/3/search.html?q=%s&check_keywords=yes&area=default
