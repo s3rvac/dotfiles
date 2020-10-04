@@ -3,24 +3,24 @@
   [Layer] {2}
 [end]
 [app] (name=clementine) (class=Clementine)
-  [Maximized] {yes}
   [Deco] {BORDER}
+  [Maximized] {yes}
 [end]
 [app] (name=evince) (class=Evince)
-  [Maximized] {yes}
   [Deco] {BORDER}
+  [Maximized] {yes}
 [end]
 [app] (name=gvim) (class=Gvim)
-  [Maximized] {yes}
   [Deco] {BORDER}
+  [Maximized] {yes}
 [end]
 [app] (name=konsole) (class=konsole)
-  [Maximized] {yes}
   [Deco] {BORDER}
+  [Maximized] {yes}
 [end]
 [app] (name=krusader) (class=krusader) (role=MainWindow#1)
-  [Maximized] {yes}
   [Deco] {BORDER}
+  [Maximized] {yes}
 [end]
 [app] (title=File Already Exists) (class=krusader)
   [Position] (CENTER) {0 -100}
@@ -45,8 +45,8 @@
   [Position] (CENTER) {0 0}
 [end]
 [app] (name=Mail) (class=Thunderbird) (role=3pane)
-  [Maximized] {yes}
   [Deco] {BORDER}
+  [Maximized] {yes}
 [end]
 [app] (name=Mail) (class=Thunderbird) (role=messageWindow)
   [Position] (CENTER) {0 0}
@@ -57,16 +57,21 @@
   [Maximized] {no}
 [end]
 [app] (name=xfce4-notifyd) (class=Xfce4-notifyd)
-  [FocusNewWindow] {no}
   [FocusHidden] {no}
+  [FocusNewWindow] {no}
 [end]
 [app] (class=firefox) (role=browser)
-  [Maximized] {yes}
   [Deco] {BORDER}
+  [Maximized] {yes}
 [end]
-[app] (name=QStarDict) (class=qstardict)
+[app] (class=okular)
+  [Maximized] {yes}
+[end]
+[app] (class=qstardict)
   [Position] (CENTER) {0 0}
 [end]
 [app] (class=vlc) (role=vlc-main)
   [Position] (CENTER) {0 0}
+[end]
+[app] (name=zoom) (class=zoom)
 [end]
