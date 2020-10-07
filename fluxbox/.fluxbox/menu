@@ -53,6 +53,7 @@
 			[exec] (XFCE Preferred Applications) {exo-preferred-applications}
 		[end]
 		[exec] (Htop) {konsole -e htop} <~/.fluxbox/icons/htop.png>
+		[exec] (Redis Desktop Manager) {rdm} <~/.fluxbox/icons/redis-desktop-manager.png>
 		[exec] (VirtualBox) {VirtualBox} <~/.fluxbox/icons/virtualbox.png>
 		[exec] (Wireshark) {wireshark} <~/.fluxbox/icons/wireshark.png>
 	[end]
