@@ -24,6 +24,11 @@ if command -v ruby &> /dev/null; then
 	prepend_to_path "$(ruby -e 'puts Gem.user_dir')/bin"
 fi
 
+# Include the path to Go programs.
+if command -v go &> /dev/null; then
+	prepend_to_path "$(go env GOPATH)/bin"
+fi
+
 # Include the path to programs from Cargo crates (Rust).
 prepend_to_path "$HOME/.cargo/bin"
 
