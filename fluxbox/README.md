@@ -22,6 +22,5 @@ My configuration files for the [Fluxbox](http://fluxbox.org/) window manager.
     * `xautolock` (automatic locking of screen on inactivity)
     * `xdotool` (switching focus between screens)
     * `xfce4-notifyd` (notifications)
-    * `xfce4-power-manager` (battery management)
     * `xorg-xset` (turning off screen)
     * `xsecurelock` (screen locking)

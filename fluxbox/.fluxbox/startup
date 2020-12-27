@@ -25,7 +25,6 @@ sleep 1
 	qstardict &
 	clementine &
 	parcellite &
-	xfce4-power-manager &
 } &
 
 wait $fbpid
