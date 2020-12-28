@@ -64,6 +64,10 @@
   [Deco] {BORDER}
   [Maximized] {yes}
 [end]
+[app] (class=Chromium) (role=browser)
+  [Deco] {BORDER}
+  [Maximized] {yes}
+[end]
 [app] (class=okular)
   [Maximized] {yes}
 [end]
