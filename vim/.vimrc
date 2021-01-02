@@ -487,6 +487,31 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 noremap <silent> J gT
 noremap <silent> K gt
 
+" Alt-# goes to the #th tab.
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
+nnoremap <A-0> 10gt
+if !has('gui_running')
+	" Konsole sends <Esc># when pressing Alt-#.
+	nnoremap <Esc>1 1gt
+	nnoremap <Esc>2 2gt
+	nnoremap <Esc>3 3gt
+	nnoremap <Esc>4 4gt
+	nnoremap <Esc>5 5gt
+	nnoremap <Esc>6 6gt
+	nnoremap <Esc>7 7gt
+	nnoremap <Esc>8 8gt
+	nnoremap <Esc>9 9gt
+	nnoremap <Esc>0 10gt
+endif
+
 " Join lines by <Leader>+j because I use J to go to the previous tab.
 noremap <Leader>j J
 
