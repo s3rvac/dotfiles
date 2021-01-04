@@ -992,6 +992,15 @@ au!
 au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
 augroup end
 
+" Kotlin
+augroup kotlin
+au!
+au FileType kotlin setl expandtab     " Use spaces instead of tabs.
+au FileType kotlin setl tabstop=4     " A tab counts for 4 spaces.
+au FileType kotlin setl softtabstop=4 " Causes backspace to delete 4 spaces.
+au FileType kotlin setl shiftwidth=4  " Shift by 4 spaces.
+augroup end
+
 " Python
 augroup python
 au!
