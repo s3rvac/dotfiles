@@ -820,6 +820,8 @@ au BufNewFile,BufRead *.wsgi setl ft=python
 au BufNewFile,BufRead .tridactylrc setl ft=vim
 " Use tex filetype rather than plaintex.
 au BufNewFile,BufRead *.tex setl ft=tex
+" Consider all .hql files as Hive files.
+au BufNewFile,BufRead *.hql set ft=hive
 " Use mysql filetype rather than sql.
 au BufNewFile,BufRead *.sql setl ft=mysql
 augroup end
