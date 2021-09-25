@@ -60,7 +60,7 @@
   [FocusHidden] {no}
   [FocusNewWindow] {no}
 [end]
-[app] (class=firefox) (role=browser)
+[app] (class=firefox)
   [Deco] {BORDER}
   [Maximized] {yes}
 [end]
