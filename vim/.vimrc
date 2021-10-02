@@ -1103,6 +1103,15 @@ au FileType haskell setl softtabstop=4 " Causes backspace to delete 4 spaces.
 au FileType haskell setl shiftwidth=4  " Shift by 4 spaces.
 augroup end
 
+" Hive
+augroup hive
+au!
+au FileType hive setl expandtab     " Use spaces instead of tabs.
+au FileType hive setl tabstop=4     " A tab counts for 4 spaces.
+au FileType hive setl softtabstop=4 " Causes backspace to delete 4 spaces.
+au FileType hive setl shiftwidth=4  " Shift by 4 spaces.
+augroup end
+
 " LLVM
 augroup llvm
 au!
