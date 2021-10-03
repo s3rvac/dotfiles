@@ -102,6 +102,9 @@
 	renames = copies
 	renameLimit = 10000
 
+[init]
+	defaultBranch = master
+
 [fetch]
 	; Automatically prune during `git fetch`.
 	prune = true
