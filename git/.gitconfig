@@ -32,6 +32,7 @@
 	co = checkout
 	cob = checkout -b
 	cop = checkout -p
+	com = "!git show-ref --verify --quiet refs/heads/master && git checkout master || git checkout main"
 	cp = cherry-pick
 	d = diff
 	da = diff HEAD
