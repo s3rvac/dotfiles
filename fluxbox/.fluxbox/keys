@@ -40,7 +40,7 @@ Print :Exec spectacle
 Ctrl Print :Exec flameshot gui
 
 # Toggle Yakuake.
-# Alt+F1: The shortcut is set in Yakuake.
+Alt F1 :Exec yakuake
 
 # Open a dialog to run programs.
 Alt F2 :Exec fbrun
