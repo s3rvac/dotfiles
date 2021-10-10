@@ -15,6 +15,7 @@ My configuration files for the [Fluxbox](http://fluxbox.org/) window manager.
     * `gsimplecal` (calendar)
     * `parcellite` (clipboard manager)
     * `python-dbus` (setting keyboard backlight)
+    * `mate-power-manager` (power manager)
     * `qxkb` (switching between keyboard layouts)
     * `spectacle` (screenshots)
     * `volumeicon` (volume manager)
