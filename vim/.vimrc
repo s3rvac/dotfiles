@@ -398,8 +398,7 @@ nnoremap <silent> <S-F4> :call <SID>ToggleObjdumpView()<CR>
 " The mapping is defined separately for each file type.
 
 " F11: Make.
-" Executes :make and opens the quickfix window if there is an error.
-nnoremap <F11> mp :echo 'Making...' <Bar> silent make <Bar> botright cw<CR><C-w><Up>
+" The mapping is defined separately for each file type.
 
 "------------------------------------------------------------------------------
 " General-purpose commands.
@@ -829,18 +828,6 @@ au BufNewFile,BufRead *.hql set ft=hive
 au BufNewFile,BufRead *.sql setl ft=mysql
 augroup end
 
-augroup makeprg
-au!
-" If there is a Makefile in the current working directory,
-" use the `make` command instead of a concrete program.
-function! s:SetMakeprg()
-	if filereadable('Makefile') || filereadable('makefile')
-		set makeprg='make'
-	endif
-endfunction
-au FileType * call s:SetMakeprg()
-augroup end
-
 " C and C++
 augroup c_cpp
 au!
@@ -977,10 +964,10 @@ augroup end
 augroup latex
 au!
 au FileType tex,plaintex setl spell    " Enable spell checking.
-" Compilation.
-" This errorformat presumes that you are using `pdflatex -file-line-error`
-" to compile .tex files.
-au FileType tex,plaintex setl errorformat=%f:%l:\ %m
+" Compilation. Requires the LaTeX-Box plugin.
+" After the command finishes, the quickfix window is opened. In such a case,
+" move to the original window.
+au FileType tex,plaintex nnoremap <buffer> <F11> :wa<CR>:Latexmk<CR><C-w><Up>
 augroup end
 
 " Shell
