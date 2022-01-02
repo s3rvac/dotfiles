@@ -41,6 +41,7 @@ I use the following Vim plugins, which you can install by using
 
 * Syntax:
   * [dokuwiki](https://github.com/nblock/vim-dokuwiki)
+  * [elixir](https://github.com/elixir-editors/vim-elixir)
   * [hive](https://github.com/autowitch/hive.vim)
   * [jinja2](https://github.com/Glench/Vim-Jinja2-Syntax)
   * [kotlin](https://github.com/udalov/kotlin-vim)
