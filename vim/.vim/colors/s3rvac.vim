@@ -3,8 +3,8 @@
 "
 " Heavily based on the standard 'koehler' color scheme.
 "
-" Use together with the CSApprox plugin, which makes Vim use the GUI colors in
-" the terminal.
+" Use together with the CSApprox plugin, which makes Vim use GUI colors in the
+" terminal.
 "------------------------------------------------------------------------------
 
 hi clear
