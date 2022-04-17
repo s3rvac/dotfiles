@@ -302,7 +302,7 @@ alias valgrind-uninit='valgrind --track-origins=yes'
 alias x1='xrandr && xrandr --output eDP-1-1 --mode 1920x1080 --dpi 102x102'
 alias x2='xrandr && xrandr --output eDP-1-1 --off --output DP-0 --primary --mode 2560x1440 --dpi 102x102 --output HDMI-0 --mode 1920x1200 --dpi 102x102 --right-of DP-0'
 alias x3='xrandr && xrandr --output eDP-1-1 --mode 1920x1080 --dpi 111x102 --left-of DP-0 --output DP-0 --primary --mode 2560x1440 --dpi 102x102 --output HDMI-0 --mode 1920x1200 --dpi 102x102 --right-of DP-0'
-alias yt='youtube-dl --no-part'
+alias yt='yt-dlp'
 
 # Common typos.
 alias G='g'
