@@ -44,15 +44,15 @@
 [app] (name=spectacle) (class=spectacle)
   [Position] (CENTER) {0 0}
 [end]
-[app] (name=Mail) (class=Thunderbird) (role=3pane)
+[app] (name=Mail) (class=thunderbird) (role=3pane)
   [Deco] {BORDER}
   [Maximized] {yes}
 [end]
-[app] (name=Mail) (class=Thunderbird) (role=messageWindow)
+[app] (name=Mail) (class=thunderbird) (role=messageWindow)
   [Position] (CENTER) {0 0}
   [Maximized] {no}
 [end]
-[app] (name=Msgcompose) (class=Thunderbird) (role=Msgcompose)
+[app] (name=Msgcompose) (class=thunderbird) (role=Msgcompose)
   [Position] (CENTER) {0 0}
   [Maximized] {no}
 [end]
