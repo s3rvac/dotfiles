@@ -162,7 +162,7 @@ LS_COLORS="$LS_COLORS*.JPG=01;35:*.GIF=01;35:*.jpeg=01;35:*.pcx=01;35:*.png=01;3
 alias ls='ls --color=auto'
 
 # grep
-export GREP_COLOR='1;33'
+export GREP_COLORS='1;33'
 # GREP_OPTIONS is deprecated, so we use aliases.
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -249,8 +249,8 @@ alias ....='cd ../../..'
 alias cargo='TERM=linux cargo'
 alias ds='du -hs'
 alias dsa='du -h --all --max-depth=1 --one-file-system 2> /dev/null | sort -h'
-alias e='egrep'
-alias er='egrep -rI'
+alias e='grep -E'
+alias er='grep -ErI'
 alias fer='echo "nameserver 8.8.8.8" > /etc/resolv.conf'
 alias gdb='gdb -quiet'
 alias rust-gdb='rust-gdb -quiet'
