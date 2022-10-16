@@ -80,6 +80,10 @@
   [Deco] {BORDER}
   [Maximized] {yes}
 [end]
+[app] (name=google\-chrome) (role=browser)
+  [Deco] {BORDER}
+  [Maximized] {yes}
+[end]
 [app] (class=okular)
   [Maximized] {yes}
 [end]
