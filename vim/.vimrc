@@ -407,6 +407,25 @@ nnoremap <silent> <S-F4> :call <SID>ToggleObjdumpView()<CR>
 " Runs silently the given shell command.
 command! -nargs=1 SilentExecute execute ':silent !' . <q-args> | execute ':redraw!'
 
+" Opens multiple files at once.
+" Usage example: Etabs dir/*.cpp
+" Based on http://vim.wikia.com/wiki/Load_multiple_files_with_a_single_command.
+command! -complete=file -nargs=+ Etabs call s:ETW('tabnew', <f-args>)
+command! -complete=file -nargs=+ Ewindows call s:ETW('new', <f-args>)
+command! -complete=file -nargs=+ Evwindows call s:ETW('vnew', <f-args>)
+function! s:ETW(what, ...)
+	for f1 in a:000
+		let files = glob(f1)
+		if files == ''
+			execute a:what . ' ' . escape(f1, '\ "')
+		else
+			for f2 in split(files, '\n')
+				execute a:what . ' ' . escape(f2, '\ "')
+			endfor
+		endif
+	endfor
+endfunction
+
 "------------------------------------------------------------------------------
 " Abbreviations and other mappings.
 "------------------------------------------------------------------------------
