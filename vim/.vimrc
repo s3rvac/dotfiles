@@ -426,6 +426,21 @@ function! s:ETW(what, ...)
 	endfor
 endfunction
 
+" Opens all files in the quickfix window in buffers/tabs.
+" Based on http://vimrcfu.com/snippet/143.
+command! Cbufs call s:Copenall('edit')
+command! Ctabs call s:Copenall('tabedit')
+function! s:Copenall(edit_cmd)
+	let files = {}
+	for entry in getqflist()
+		let filename = bufname(entry.bufnr)
+		let files[filename] = 1
+	endfor
+	for file in keys(files)
+		silent execute a:edit_cmd . ' ' . fnameescape(file)
+	endfor
+endfunction
+
 "------------------------------------------------------------------------------
 " Abbreviations and other mappings.
 "------------------------------------------------------------------------------
