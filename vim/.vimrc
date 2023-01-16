@@ -599,6 +599,22 @@ else
 	noremap <C-l> <C-w>l
 endif
 
+" Zoom/restore the currently active window.
+" Based on https://coderwall.com/p/qqz1lq/vim-zoom-restore-window.
+function! s:WindowZoomToggle() abort
+	if exists('t:zoomed') && t:zoomed
+		execute t:zoom_winrestcmd
+		let t:zoomed = 0
+	else
+		let t:zoom_winrestcmd = winrestcmd()
+		resize
+		vertical resize
+		let t:zoomed = 1
+	endif
+endfunction
+command! WindowZoomToggle call s:WindowZoomToggle()
+nnoremap <silent> <Leader>wz :WindowZoomToggle<CR>
+
 " Open a link under the cursor in a web browser (similar to gx, but faster).
 let s:web_browser_path='/usr/bin/firefox'
 function! s:OpenLinkUnderCursor()
