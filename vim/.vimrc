@@ -545,6 +545,11 @@ if !has('gui_running')
 	nnoremap <Esc>0 10gt
 endif
 
+" Switch to the last active tab.
+let g:last_tab = 1
+au TabLeave * let g:last_tab = tabpagenr()
+nmap <Leader>lt :execute 'tabnext ' . g:last_tab<CR>
+
 " Join lines by <Leader>+j because I use J to go to the previous tab.
 noremap <Leader>j J
 
