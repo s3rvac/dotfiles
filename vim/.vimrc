@@ -550,6 +550,10 @@ let g:last_tab = 1
 au TabLeave * let g:last_tab = tabpagenr()
 nmap <Leader>lt :execute 'tabnext ' . g:last_tab<CR>
 
+" Show a list of buffers and initiate a moving into a buffer (type e.g. buffer
+" number or name after pressing 'gb').
+nnoremap <silent> gb :ls<CR>:b<Space>
+
 " Join lines by <Leader>+j because I use J to go to the previous tab.
 noremap <Leader>j J
 
