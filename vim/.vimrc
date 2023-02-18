@@ -160,7 +160,12 @@ set whichwrap+=<,>,[,]
 set wildmenu
 set wildchar=<Tab>
 set wildmode=list:longest
-set wildignore+=*.o,*.obj,*.pyc,*.aux,*.bbl,*.blg,.git,.svn,.hg
+" Ignore various binary/temporary files.
+set wildignore+=*.o,*.obj,*.pyc,*.aux,*.bbl,*.blg
+" Ignore various version-control directories.
+set wildignore+=.git,.svn,.hg
+" Ignore various Python-related directories.
+set wildignore+=*.egg-info,.mypy_cache,.pytest_cache,coverage,htmlcov,dist,venv,virtualenv
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These files are less likely to be edited.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
