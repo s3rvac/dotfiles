@@ -1170,6 +1170,13 @@ au FileType hive setl softtabstop=4 " Causes backspace to delete 4 spaces.
 au FileType hive setl shiftwidth=4  " Shift by 4 spaces.
 augroup end
 
+" JavaScript
+augroup javascript
+au!
+" Additional syntax highlighting that is missing in the original syntax file.
+au FileType javascript syn keyword javaScriptOperator of
+augroup end
+
 " LLVM
 augroup llvm
 au!
