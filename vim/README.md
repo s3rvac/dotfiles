@@ -52,4 +52,5 @@ I use the following Vim plugins, which you can install by using
   * [rdoc](https://github.com/depuracao/vim-rdoc)
   * [redminewiki](https://github.com/s3rvac/vim-syntax-redminewiki)
   * [retdecdsm](https://github.com/s3rvac/vim-syntax-retdecdsm)
+  * [terraform](https://github.com/hashivim/vim-terraform)
   * [yara](https://github.com/s3rvac/vim-syntax-yara)
