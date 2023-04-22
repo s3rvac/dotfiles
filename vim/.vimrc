@@ -894,6 +894,10 @@ au BufNewFile,BufRead *.tex setl ft=tex
 au BufNewFile,BufRead *.hql set ft=hive
 " Use mysql filetype rather than sql.
 au BufNewFile,BufRead *.sql setl ft=mysql
+" Terraform-related files.
+au BufNewFile,BufRead *.tf,*.tfvars set ft=terraform
+au BufNewFile,BufRead *.hcl set ft=hcl
+au BufNewFile,BufRead *.tfstate,*.tfstate.backup set filetype=json
 augroup end
 
 " C and C++
@@ -1251,6 +1255,16 @@ augroup end
 " text (the original highlighting).
 hi def link dosiniValue Normal
 
+" Terraform
+augroup terraform
+au!
+au FileType terraform setl expandtab     " Use spaces instead of tabs.
+au FileType terraform setl tabstop=2     " A tab counts for 2 spaces.
+au FileType terraform setl softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType terraform setl shiftwidth=2  " Shift by 2 spaces.
+
+au FileType terraform nnoremap <buffer> <Leader>rf :SilentExecute terraform fmt<CR>
+augroup end
 "-------------------------------------------------------------------------------
 " Firefox "Textern" plugin.
 "-------------------------------------------------------------------------------
