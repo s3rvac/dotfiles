@@ -1127,7 +1127,7 @@ augroup go
 au!
 " The default indentation settings are fine (Go uses tabs).
 
-" Re-formatting via `gofmt`.
+" Re-format via `gofmt`.
 au FileType go nnoremap <buffer> <silent> <Leader>rf
 	\ :w <Bar>
 	\ set autoread <Bar>
