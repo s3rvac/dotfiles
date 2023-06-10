@@ -276,6 +276,7 @@ function M() { make "$@" && make install; }
 alias news='newsboat -q'
 alias notes='vim ~/notes/ -c "cd %:p:h"'
 alias todo='vim ~/todo/todo.txt -c "cd %:p:h"'
+alias tf='terraform'
 if [ "$(id -u)" -eq 0 ]; then
 	alias mntd='mount /dev/"`dmesg | grep -o "\\[[a-z1-9]*\\]" | tail -n 1 | tr -d []`"1 /mnt/disk && chown root:disk /mnt/disk && chmod 0770 /mnt/disk'
 else
