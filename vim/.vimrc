@@ -1209,6 +1209,13 @@ au FileType yaml setl expandtab     " Use spaces instead of tabs.
 au FileType yaml setl tabstop=2     " A tab counts for 2 spaces.
 au FileType yaml setl softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType yaml setl shiftwidth=2  " Shift by 2 spaces.
+
+" Reformat via `yq`.
+au FileType yaml nnoremap <buffer> <silent> <Leader>rf
+	\ :w <Bar>
+	\ set autoread <Bar>
+	\ SilentExecute yq --inplace % <Bar>
+	\ set noautoread<CR>
 augroup end
 
 " Dokuwiki
