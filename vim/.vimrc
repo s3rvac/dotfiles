@@ -894,10 +894,6 @@ au BufNewFile,BufRead *.tex setl ft=tex
 au BufNewFile,BufRead *.hql set ft=hive
 " Use mysql filetype rather than sql.
 au BufNewFile,BufRead *.sql setl ft=mysql
-" Terraform-related files.
-au BufNewFile,BufRead *.tf,*.tfvars set ft=terraform
-au BufNewFile,BufRead *.hcl set ft=hcl
-au BufNewFile,BufRead *.tfstate,*.tfstate.backup set filetype=json
 augroup end
 
 " C and C++
