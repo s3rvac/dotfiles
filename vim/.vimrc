@@ -1266,13 +1266,12 @@ au FileType terraform setl tabstop=2     " A tab counts for 2 spaces.
 au FileType terraform setl softtabstop=2 " Causes backspace to delete 2 spaces.
 au FileType terraform setl shiftwidth=2  " Shift by 2 spaces.
 
-" Reformat via `terraform fmt`.
+" Reformat (via the vim-terraform plugin).
 au FileType terraform nnoremap <buffer> <silent> <Leader>rf
 	\ :w <Bar>
-	\ set autoread <Bar>
-	\ SilentExecute terraform fmt %<Bar>
-	\ set noautoread<CR>
+	\ TerraformFmt<CR>
 augroup end
+
 "-------------------------------------------------------------------------------
 " Firefox "Textern" plugin.
 "-------------------------------------------------------------------------------
