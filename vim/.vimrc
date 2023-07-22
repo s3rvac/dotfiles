@@ -1272,6 +1272,21 @@ au FileType terraform nnoremap <buffer> <silent> <Leader>rf
 	\ TerraformFmt<CR>
 augroup end
 
+" Terragrunt (.hcl)
+augroup hcl
+au!
+au FileType hcl setl expandtab     " Use spaces instead of tabs.
+au FileType hcl setl tabstop=2     " A tab counts for 2 spaces.
+au FileType hcl setl softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType hcl setl shiftwidth=2  " Shift by 2 spaces.
+
+" Reformat via `terragrunt hclfmt`.
+au FileType hcl nnoremap <buffer> <silent> <Leader>rf
+	\ :w <Bar>
+	\ set autoread <Bar>
+	\ SilentExecute terragrunt hclfmt %<Bar>
+	\ set noautoread<CR>
+augroup end
 "-------------------------------------------------------------------------------
 " Firefox "Textern" plugin.
 "-------------------------------------------------------------------------------
