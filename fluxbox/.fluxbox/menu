@@ -29,6 +29,7 @@
 		[exec] (ConnMan) {cmst} <~/.fluxbox/icons/connman.png>
 		[exec] (Opera) {opera} <~/.fluxbox/icons/opera.png>
 		[exec] (Firefox) {firefox} <~/.fluxbox/icons/firefox.png>
+		[exec] (Signal) {signal-desktop} <~/.fluxbox/icons/signal.png>
 		[exec] (Skype) {skype} <~/.fluxbox/icons/skype.png>
 		[exec] (Thunderbird) {thunderbird} <~/.fluxbox/icons/thunderbird.png>
 		[exec] (Transmission) {transmission-qt} <~/.fluxbox/icons/transmission.png>
