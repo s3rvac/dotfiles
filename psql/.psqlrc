@@ -1,6 +1,6 @@
 -- -----------------------------------------------------------------------------
 --  File:   $HOME/.psqlrc
---  Author: Petr Zemek <s3rvac@gmail.com>
+--  Author: Petr Zemek <s3rvac@petrzemek.net>
 -- -----------------------------------------------------------------------------
 
 \encoding utf-8

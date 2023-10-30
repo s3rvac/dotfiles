@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------
 # File:   $HOME/.bashrc
-# Author: Petr Zemek <s3rvac@gmail.com>
+# Author: Petr Zemek <s3rvac@petrzemek.net>
 #
 # Based on http://www.hermann-uwe.de/files/bashrc.
 #------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // File:   $HOME/.mongoshrc.js
-// Author: Petr Zemek <s3rvac@gmail.com>
+// Author: Petr Zemek <s3rvac@petrzemek.net>
 //------------------------------------------------------------------------------
 
 // Prints a listing of all collections in the database alongside with their

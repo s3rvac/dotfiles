@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Author: Petr Zemek <s3rvac@gmail.com>
+# Author: Petr Zemek <s3rvac@petrzemek.net>
 #
 # Toggles Thunderbird:
 # - When it is not running, it starts it.

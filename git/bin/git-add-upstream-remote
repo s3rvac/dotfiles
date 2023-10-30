@@ -2,7 +2,7 @@
 #
 # Adds the 'upstream' remote for a GitHub fork.
 #
-# Author: Petr Zemek <s3rvac@gmail.com>
+# Author: Petr Zemek <s3rvac@petrzemek.net>
 #
 # This command is an equivalent of running
 #

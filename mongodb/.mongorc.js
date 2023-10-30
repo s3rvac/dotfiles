@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // File:   $HOME/.mongorc.js
-// Author: Petr Zemek <s3rvac@gmail.com>
+// Author: Petr Zemek <s3rvac@petrzemek.net>
 //------------------------------------------------------------------------------
 
 // A custom prompt showing the current time and the selected database.

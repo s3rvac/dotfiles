@@ -1,6 +1,6 @@
 "------------------------------------------------------------------------------
 " File:     $HOME/.vimrc
-" Author:   Petr Zemek <s3rvac@gmail.com>
+" Author:   Petr Zemek <s3rvac@petrzemek.net>
 "
 " Based on http://www.hermann-uwe.de/files/vimrc.
 "------------------------------------------------------------------------------
@@ -756,7 +756,7 @@ let g:netrw_sort_sequence='[\/]$'
 "-----------------------------
 " UltiSnips: Snippets for Vim.
 "-----------------------------
-let g:snips_author='Petr Zemek <s3rvac@gmail.com>'
+let g:snips_author='Petr Zemek <s3rvac@petrzemek.net>'
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsEnableSnipMate='no'
 let g:UltiSnipsSnippetDirectories=[$HOME . '/.vim/snippets']

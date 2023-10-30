@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Author: Petr Zemek <s3rvac@gmail.com>
+# Author: Petr Zemek <s3rvac@petrzemek.net>
 #
 # Clears all notifications sent by notify-send.
 #

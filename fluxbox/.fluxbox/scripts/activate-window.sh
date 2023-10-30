@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Author: Petr Zemek <s3rvac@gmail.com>
+# Author: Petr Zemek <s3rvac@petrzemek.net>
 #
 # Activates a window of the given application ($1) on the current desktop. If
 # there is no such window, it runs the application.

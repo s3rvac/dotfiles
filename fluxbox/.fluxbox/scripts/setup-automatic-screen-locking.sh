@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Author: Petr Zemek <s3rvac@gmail.com>
+# Author: Petr Zemek <s3rvac@petrzemek.net>
 #
 # Sets up automatic screen locking. Requires xautolock.
 #
