@@ -1188,6 +1188,15 @@ au FileType llvm setl shiftwidth=2  " Shift by 2 spaces.
 au FileType llvm setl comments=bO:;
 augroup end
 
+" Lua
+augroup lua
+au!
+au FileType lua setl expandtab     " Use spaces instead of tabs.
+au FileType lua setl tabstop=2     " A tab counts for 2 spaces.
+au FileType lua setl softtabstop=2 " Causes backspace to delete 2 spaces.
+au FileType lua setl shiftwidth=2  " Shift by 2 spaces.
+augroup end
+
 " Git commits
 augroup gitcommit
 au!
