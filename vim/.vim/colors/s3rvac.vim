@@ -58,6 +58,10 @@ hi Folded           guifg=white guibg=gray30
 hi FoldColumn       guifg=white guibg=gray30
 hi ColorColumn      guifg=white guibg=gray19
 hi VertSplit        gui=none guifg=white guibg=black
+hi DiffAdd          gui=none guifg=cyan guibg=black
+hi DiffChange       gui=none guifg=violet guibg=black
+hi DiffDelete       gui=none guifg=orange guibg=black
+hi DiffText         gui=none guifg=blue guibg=black
 
 hi link IncSearch       Visual
 hi link String          Constant
