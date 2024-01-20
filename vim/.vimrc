@@ -244,8 +244,9 @@ if has('gui_running')
 	" Hide mouse cursor when editing.
 	set mousehide
 
-	" Disable cursor blinking.
-	set guicursor=a:blinkon0
+	" Keep the cursor fat in all modes (including insert mode) and disable
+	" cursor blinking, just like in the terminal.
+	set guicursor=a:block,a:blinkon0
 " Vim in terminal.
 else
 	" Lower the timeout when entering normal mode from insert mode.
