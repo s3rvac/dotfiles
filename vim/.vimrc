@@ -1206,6 +1206,11 @@ au FileType gitcommit setl expandtab     " Use spaces instead of tabs.
 au FileType gitcommit setl tabstop=4     " A tab counts for 4 spaces.
 au FileType gitcommit setl softtabstop=4 " Causes backspace to delete 4 spaces.
 au FileType gitcommit setl shiftwidth=4  " Shift by 4 spaces.
+" Use consistent diff highlighting for Git commits across Vim versions.
+au FileType gitcommit hi DiffAdd    gui=none guifg=cyan guibg=black cterm=none ctermfg=cyan ctermbg=black
+au FileType gitcommit hi DiffChange gui=none guifg=violet guibg=black cterm=none ctermfg=177 ctermbg=black
+au FileType gitcommit hi DiffDelete gui=none guifg=orange guibg=black cterm=none ctermfg=214 ctermbg=black
+au FileType gitcommit hi DiffText   gui=none guifg=blue guibg=black cterm=none ctermfg=blue ctermbg=black
 augroup end
 
 " YAML
