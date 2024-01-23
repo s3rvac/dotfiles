@@ -851,6 +851,38 @@ call tcomment#DefineType('gdb', '# %s')
 call tcomment#DefineType('llvm', '; %s')
 call tcomment#DefineType('yara', tcomment#GetLineC('// %s'))
 
+"----------------------------------------------
+" github-copilot: Vim plugin for GitHub Copilot
+"----------------------------------------------
+let g:copilot_enabled = 1
+" Enable the plugin only for certain file types.
+let g:copilot_filetypes = {
+	\ '*': 0,
+	\ 'c': 1,
+	\ 'cpp': 1,
+	\ 'gitcommit': 1,
+	\ 'go': 1,
+	\ 'html': 1,
+	\ 'java': 1,
+	\ 'javascript': 1,
+	\ 'markdown': 1,
+	\ 'php': 1,
+	\ 'python': 1,
+	\ 'ruby': 1,
+	\ 'rust': 1,
+	\ 'sh': 1,
+	\ 'sql': 1,
+	\ 'typescript': 1,
+	\ 'vim': 1,
+	\ 'xml': 1,
+	\ 'yaml': 1,
+	\ }
+" Use a custom completion command.
+let g:copilot_no_tab_map = 1
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+" Custom commands.
+noremap <Leader>gc :Copilot panel<CR>
+
 "------------------------------------------------------------------------------
 " File-type specific settings and other autocommands.
 "------------------------------------------------------------------------------

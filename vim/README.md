@@ -16,6 +16,7 @@ I use the following Vim plugins, which you can install by using
   * [AutoFenc](https://github.com/s3rvac/AutoFenc) - Automatically detects and sets file encoding when opening files.
   * [CSApprox](https://github.com/godlygeek/csapprox) - Makes GVim-only colorschemes work transparently in terminal Vim.
   * [Command-T](https://github.com/wincent/command-t) - Fast, intuitive mechanism for opening files.
+  * [copilot-vim](https://github.com/github/copilot.vim) - Vim plugin for GitHub Copilot.
   * [matchit](http://www.vim.org/scripts/script.php?script_id=39) - Extends `%` matching for HTML, LaTeX, and many other languages.
   * [netrw](http://www.vim.org/scripts/script.php?script_id=1075) - Network oriented reading, writing, and browsing.
   * [Rename](http://www.vim.org/scripts/script.php?script_id=1928) - Easier renaming of files.
