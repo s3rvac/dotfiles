@@ -77,6 +77,9 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # Allow typing just 'dir' instead of 'cd dir'.
 shopt -s autocd
 
+# Automatically correct mistyped directory names.
+shopt -s cdspell
+
 # Check that a command found in the hash table exists before trying to execute
 # it. If a hashed command no longer exists, a normal path search is performed.
 shopt -s checkhash
