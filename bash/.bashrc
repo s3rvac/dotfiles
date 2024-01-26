@@ -254,7 +254,6 @@ alias ds='du -hs'
 alias dsa='du -h --all --max-depth=1 --one-file-system 2> /dev/null | sort -h'
 alias e='grep -E'
 alias er='grep -ErI'
-alias fer='echo "nameserver 8.8.8.8" > /etc/resolv.conf'
 alias gdb='gdb -quiet'
 alias rust-gdb='rust-gdb -quiet'
 # We have to force xterm-256color because mc does not work properly with
