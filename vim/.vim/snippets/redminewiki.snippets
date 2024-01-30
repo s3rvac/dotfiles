@@ -1,0 +1,121 @@
+# Headings
+
+snippet h1 "h1"
+h1. ${1}
+endsnippet
+
+snippet h2 "h2"
+h2. ${1}
+endsnippet
+
+snippet h3 "h3"
+h3. ${1}
+endsnippet
+
+# Links
+
+snippet a "a" w
+"${1:text}":${2}
+endsnippet
+
+snippet wa "wiki a" w
+[[${1}|${2:text}]]
+endsnippet
+
+# Blocks
+
+snippet pre "pre" w
+<pre>
+${1}
+</pre>
+endsnippet
+
+snippet code "code" w
+<pre><code class="${1:c}">
+${2}
+</code></pre>
+endsnippet
+
+snippet cpp "cpp" w
+<pre><code class="cpp">
+${1}
+</code></pre>
+endsnippet
+
+snippet py "py" w
+<pre><code class="python">
+${1}
+</code></pre>
+endsnippet
+
+snippet ll "ll" w
+<pre><code class="llvm">
+${1}
+</code></pre>
+endsnippet
+
+snippet cb "code block"
+*${1}*:
+<pre><code class="c">
+${2}
+</code></pre>
+endsnippet
+
+snippet pb "pre block"
+*${1}*:
+<pre>
+${2}
+</pre>
+endsnippet
+
+snippet tb "text block"
+*${1}*:
+
+${2}
+endsnippet
+
+# Colors
+
+snippet color "color" w
+%{color:${1:color}}${2:text}%
+endsnippet
+
+snippet green "green" w
+%{color:green}${2:text}%
+endsnippet
+
+snippet red "red" w
+%{color:red}${2:text}%
+endsnippet
+
+snippet blue "blue" w
+%{color:blue}${2:text}%
+endsnippet
+
+snippet orange "orange" w
+%{color:orange}${2:text}%
+endsnippet
+
+# Other
+
+snippet @ "at"
+<notextile>@</notextile>
+endsnippet
+
+snippet c "@...@" w
+@${1}@${2}
+endsnippet
+
+snippet hr "horizontal rule"
+----
+endsnippet
+
+# Macros
+
+snippet toc "toc"
+{{>toc}}
+endsnippet
+
+snippet todo "todo"
+{TODO}
+endsnippet

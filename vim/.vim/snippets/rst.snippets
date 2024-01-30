@@ -1,0 +1,45 @@
+# Headings
+
+snippet h1 "h1"
+${1:Heading}`!p snip.rv = '\n' + '='*len(t[1])`
+endsnippet
+
+snippet h2 "h2"
+${1:Heading}`!p snip.rv = '\n' + '-'*len(t[1])`
+endsnippet
+
+snippet h3 "h3"
+${1:Heading}`!p snip.rv = '\n' + '^'*len(t[1])`
+endsnippet
+
+# Links
+
+snippet a "a" w
+\`${1:text} <${2}>\`_
+endsnippet
+
+# Code
+
+snippet c "c" w
+\`\`${1}\`\`
+endsnippet
+
+snippet py "py"
+.. code-block:: python
+
+    ${1}
+endsnippet
+
+snippet text "text"
+.. code-block:: text
+
+    ${1}
+endsnippet
+
+# Other blocks
+
+snippet note "note"
+.. note::
+
+    ${1}
+endsnippet

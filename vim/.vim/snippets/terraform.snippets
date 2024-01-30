@@ -1,0 +1,37 @@
+snippet res "Resource"
+resource "${1}" "${2}" {
+	${2}
+}
+endsnippet
+
+snippet var "Variable"
+variable "${1}" {
+	description = "${2}"
+	type = ${3}
+}
+endsnippet
+
+snippet out "Output variable"
+output "${1}" {
+	description = "${2}"
+	value = ${3}
+}
+endsnippet
+
+snippet data "Data source"
+data "${1}" "${2}" {
+	${3}
+}
+endsnippet
+
+snippet mod "Module"
+module "${1}" {
+	source = "${2}"
+}
+endsnippet
+
+snippet loc "Local values"
+locals {
+	${1}
+}
+endsnippet

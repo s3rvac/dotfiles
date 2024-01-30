@@ -1,0 +1,72 @@
+# #!/bin/bash
+
+snippet hb "#!"
+#!/bin/bash
+endsnippet
+
+# Commands
+
+snippet e "e"
+echo "${2}"
+endsnippet
+
+snippet er "er"
+echo "${2}" >&2
+endsnippet
+
+# Control flow
+
+snippet if "if"
+if [ ${1} ]; then
+	${2}
+fi
+endsnippet
+
+snippet iff "if (bash)"
+if [[ ${1} ]]; then
+	${2}
+fi
+endsnippet
+
+snippet ife "ife"
+if [ ${1} ]; then
+	${2}
+else
+	${3}
+fi
+endsnippet
+
+snippet iffe "ife (bash)"
+if [ ${1} ]; then
+	${2}
+else
+	${3}
+fi
+endsnippet
+
+snippet elif "elif"
+elif [ ${1} ]; then
+	${2}
+endsnippet
+
+snippet eliff "elif (bash)"
+elif [[ ${1} ]]; then
+	${2}
+endsnippet
+
+snippet el "else"
+else
+	${1}
+endsnippet
+
+snippet wh "while"
+while ${1}; do
+	${2}
+done
+endsnippet
+
+# Other
+
+snippet todo "TODO"
+# TODO ${1}
+endsnippet

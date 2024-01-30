@@ -1,0 +1,67 @@
+# Headers
+
+snippet h1 "h1"
+# ${1}
+endsnippet
+
+snippet h2 "h2"
+## ${1}
+endsnippet
+
+snippet h3 "h3"
+### ${1}
+endsnippet
+
+# Links
+
+snippet a "a" w
+[${2:text}](${1:url})
+endsnippet
+
+# Code
+
+snippet c "c" w
+\`${1}\`
+endsnippet
+
+snippet cb "code block"
+\`\`\`
+${1}
+\`\`\`
+endsnippet
+
+snippet cpp "cpp code block"
+\`\`\`cpp
+${1}
+\`\`\`
+endsnippet
+
+snippet py "python code block"
+\`\`\`python
+${1}
+\`\`\`
+endsnippet
+
+snippet sh "shell code block"
+\`\`\`shell
+${1}
+\`\`\`
+endsnippet
+
+snippet diff "diff code block"
+\`\`\`diff
+${1}
+\`\`\`
+endsnippet
+
+# Images
+
+snippet img "img"
+![${1:alt text}](${2:URL} "${3:title}")
+endsnippet
+
+# Other
+
+snippet nrc "not related comment"
+_(A general comment that is not related to the attached line.)_
+endsnippet
