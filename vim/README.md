@@ -6,6 +6,8 @@ My configuration files for the [Vim](http://www.vim.org/) editor.
 
 * Copy `.vimrc` to `$HOME/`.
 * Copy `.vim/colors/s3rvac.vim` to `$HOME/.vim/colors/`.
+* Copy `.vim/snippets` to your [ultisnips](https://github.com/SirVer/ultisnips)
+  directory.
 
 ## Plugins
 
