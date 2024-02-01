@@ -42,33 +42,114 @@ prepend_to_path "$HOME/bin"
 # Prompt.
 #------------------------------------------------------------------------------
 
-if [ "$BASH" ]; then
-	if [ "$(id -u)" -eq 0 ]; then
-		# Root prompt is red.
-		PROMPT_COLOR='0;31m'
-		PROMPT_SYMBOL='#'
-	else
-		# Normal prompt is blue.
-		PROMPT_COLOR='1;34m'
-		PROMPT_SYMBOL='$'
-	fi
-	PS1="\[\033[$PROMPT_COLOR\]\A \u@\h \W \[\033[0m\]"
-	# When we are in GNU screen, insert '(screen)' in between ']' and '$'.
-	if [ ! -z "$STY" ]; then
-		PS1+='\[\033[1;33m(screen)\033[0m\] '
-	fi
-	PS1+="\[\033[$PROMPT_COLOR\]$PROMPT_SYMBOL\[\033[0m\] "
-else
-	if [ "$(id -u)" -eq 0 ]; then
-		PS1='# '
-	else
-		PS1='$ '
-	fi
-fi
-export PS1
+# Requires https://github.com/rcaloras/bash-preexec, which is sourced at the
+# bottom of this file.
 
-# Whenever the prompt is displayed, write the previous line to .bash_history.
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+# General settings.
+if [ "$(id -u)" -eq 0 ]; then
+	PROMPT_COLOR_LEFT='\e[31m' # normal red
+else
+	PROMPT_COLOR_LEFT='\e[1m\e[34m' # bold blue
+fi
+PROMPT_COLOR_RIGHT='\e[2m\e[37m' # dim gray
+PROMPT_COLOR_OFF='\e[0m'
+
+function prompt_preexec() {
+	# Store the time when the last command was executed.
+	last_command_start_time=$(date +'%H:%M:%S')
+
+	# Start the timer of the last executed command.
+	last_command_timer=$EPOCHREALTIME
+}
+preexec_functions+=(prompt_preexec)
+
+function prompt_precmd() {
+	# We need to store the exit code of the last command as soon as possible so
+	# that it does not get overwritten.
+	last_exit_code="$?"
+
+	# Whenever the prompt is displayed, write the previous line to .bash_history.
+	history -a
+
+	# Evaluate the timer of the last executed command.
+	if [ -z "$last_command_timer" ]; then
+		last_command_runtime="0m0.000s"
+	else
+		# Add a leading zero because `bc` does not include it for numbers less
+		# than one and `date` cannot handle those.
+		local duration="0$(bc <<< "$EPOCHREALTIME - $last_command_timer")"
+		last_command_runtime=$(date -d@"$duration" -u +'%-Mm%-S.%3Ns')
+	fi
+	unset last_command_timer
+}
+precmd_functions+=(prompt_precmd)
+
+# Call both functions to ensure that all variables are properly initialied for
+# the first propmt.
+prompt_preexec
+prompt_precmd
+
+function prompt_show_mark_if_inside_screen() {
+	if [ -n "$STY" ]; then
+		echo '(screen) '
+	fi
+}
+
+function prompt_show_mark_if_inside_virtualenv() {
+	if [ -n "$VIRTUAL_ENV" ]; then
+		echo '(venv) '
+	fi
+}
+
+function prompt_command() {
+	# Based on https://superuser.com/a/1203400
+	#
+	# Note: "\[" and "\]" are used so that bash can calculate the number of
+	# printed characters so that the prompt does not do strange things when
+	# editing the entered text.
+
+	# Create the left-hand side prompt.
+	PS1_lhs=''
+	PS1_lhs+='$(prompt_show_mark_if_inside_screen)'
+	PS1_lhs+='$(prompt_show_mark_if_inside_virtualenv)'
+	PS1_lhs+="\[$PROMPT_COLOR_LEFT\]"
+	# Add current time.
+	PS1_lhs+='\A '
+	# Add username and hostname.
+	PS1_lhs+='\u@\h '
+	# Add the current working directory.
+	PS1_lhs+='\W '
+	# Add prompt symbol.
+	PS1_lhs+='\$'
+	# Finalize the prompt.
+	PS1_lhs+="\[$PROMPT_COLOR_OFF\] "
+
+	# Create the right-hand side prompt.
+	printf -v PS1_rhs "${PROMPT_COLOR_RIGHT}$last_command_runtime | $last_command_start_time ($last_exit_code)${PROMPT_COLOR_OFF}"
+	# Strip ANSI commands before counting length.
+	# From: https://www.commandlinefu.com/commands/view/12043/remove-color-special-escape-ansi-codes-from-text-with-sed
+	PS1_rhs_stripped=$(sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" <<< "$PS1_rhs")
+
+	# The right-side prompt messes up with Midnight Commander's prompt, so do not
+	# use the right prompt when running under MC.
+	if [ -n "$MC_TMPDIR" ]; then
+		unset PS1_rhs
+		unset PS1_rhs_stripped
+	fi
+
+	# Create the final prompt.
+	#
+	# Save cursor position, jump to right hand edge, then go left N columns
+	# where N is the length of the printable RHS string. Print the RHS string,
+	# then return to the saved position and print the LHS prompt.
+	#
+	# Reference: https://en.wikipedia.org/wiki/ANSI_escape_code
+	local save='\e[s' # Save cursor position
+	local rest='\e[u' # Restore cursor to save point
+	PS1="\[${save}\e[${COLUMNS:-$(tput cols)}C\e[${#PS1_rhs_stripped}D${PS1_rhs}${rest}\]${PS1_lhs}"
+}
+
+PROMPT_COMMAND=prompt_command
 
 #------------------------------------------------------------------------------
 # Shell options.
@@ -407,9 +488,15 @@ if [[ -f /usr/local/rvm/scripts/completion ]]; then
 fi
 
 #------------------------------------------------------------------------------
-# Import local settings.
+# Import other scripts/settings.
 #------------------------------------------------------------------------------
 
+# https://github.com/rcaloras/bash-preexec
+if [[ -f ~/.bash_preexec ]]; then
+	source ~/.bash_preexec
+fi
+
+# Local settings.
 if [[ -f ~/.bashrc.local ]]; then
 	source ~/.bashrc.local
 fi
