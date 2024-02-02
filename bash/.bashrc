@@ -479,7 +479,7 @@ alias HEX="ruby -e 'printf(\"0x%X\n\", ARGV[0])'"
 alias DEC="ruby -e 'printf(\"%d\n\", ARGV[0])'"
 alias BIN="ruby -e 'printf(\"%bb\n\", ARGV[0])'"
 
-# Apt aliases.
+# Apt aliases for Debian/Ubuntu.
 alias apti='apt install'
 alias apts='apt search'
 alias aptr='apt remove'
