@@ -398,6 +398,12 @@ alias valgrind-uninit='valgrind --track-origins=yes'
 alias yt='yt-dlp'
 alias yt-mp3='yt-dlp --format ba --extract-audio --audio-format mp3 -o "%(title)s-%(id)s.%(ext)s"'
 
+# Some distributions install the binaries/scripts for the following commands
+# under a different name, so unify that.
+if command -v fdfind &> /dev/null; then
+	alias fd='fdfind'
+fi
+
 # Common typos.
 alias G='g'
 alias gd='g d'
