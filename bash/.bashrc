@@ -246,8 +246,11 @@ LS_COLORS="$LS_COLORS*.JPG=01;35:*.GIF=01;35:*.jpeg=01;35:*.pcx=01;35:*.png=01;3
 alias ls='ls --color=auto'
 
 # grep
-export GREP_COLORS='1;33'
-# GREP_OPTIONS is deprecated, so we use aliases.
+# Export both these variables to ensure that grep on all systems use the same
+# colors (GREP_COLOR is deprecated, but some grep versions still use it).
+export GREP_COLOR='1;33'
+export GREP_COLORS=$GREP_COLOR
+# GREP_OPTIONS is deprecated, so use aliases.
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
