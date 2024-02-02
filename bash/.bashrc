@@ -317,6 +317,11 @@ export BLOCKSIZE=human-readable
 # Graphics.
 export MESA_GLX_FX=fullscreen
 
+# Disable the automatic prepending of "(virtualenv) " to the prompt when
+# Python's virtualenv is activated. The reason is that I have a custom code for
+# doing that.
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 #------------------------------------------------------------------------------
 # Terminal settings.
 #------------------------------------------------------------------------------
