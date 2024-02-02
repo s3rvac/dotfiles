@@ -286,7 +286,7 @@ export VISUAL="$EDITOR"
 
 # History.
 export HISTSIZE=10000
-export HISTFILESIZE=10000
+export HISTFILESIZE=100000
 export HISTTIMEFORMAT='%y-%m-%d %H:%M:%S '
 export HISTIGNORE='c:l:cd*:builtin cd*'
 export HISTCONTROL=ignoreboth
