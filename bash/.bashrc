@@ -440,7 +440,7 @@ function mem() {
 function rsed() { find . -type f -exec sed "$@" {} \+; }
 
 # Filter files from the given output.
-# Usage: gvim `grep -r PATTERN | files`
+# Usage: vim `grep -r PATTERN | files`
 function files() { cut -d: -f1 | sort -u; }
 
 # Opens files found by recursive egrep in vim.
