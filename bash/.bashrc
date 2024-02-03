@@ -490,6 +490,43 @@ alias aptp='apt purge'
 alias aptu='apt update && apt upgrade'
 
 #------------------------------------------------------------------------------
+# Settings for fzf, a command-line fuzzy finder.
+# https://github.com/junegunn/fzf
+#------------------------------------------------------------------------------
+
+# Default options.
+FZF_COLORS='hl:#ffff60,hl+:#ffff60'
+if command -v bat &> /dev/null; then
+	FZF_PREVIEW_COMMAND='bat --style=numbers --color=always --line-range :50 {}'
+else
+	FZF_PREVIEW_COMMAND='nl -ba {}'
+fi
+export FZF_DEFAULT_OPTS="--no-mouse --reverse --multi --height 40% --border --color '$FZF_COLORS' --preview '$FZF_PREVIEW_COMMAND'"
+
+# If available, use fd (https://github.com/sharkdp/fd) for listing files and
+# directories.
+if command -v fd &> /dev/null; then
+	FZF_FD_COMMAND='fd --color=never --follow --hidden --no-ignore --exclude .git'
+	export FZF_DEFAULT_COMMAND="$FZF_FD_COMMAND --type f"
+	export FZF_ALT_C_COMMAND="$FZF_FD_COMMAND --type d"
+fi
+
+# Options for Ctrl+T: Paste the selected files and directories onto the command-line.
+export FZF_CTRL_T_OPTS="--select-1 --exit-0"
+
+# Options for Ctrl+R: Paste the selected command from history onto the command-line.
+export FZF_CTRL_R_OPTS="--no-sort --no-preview --exact"
+
+# Options for Alt+C: cd into the selected directory.
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
+
+# Import completion and key bindings.
+if [[ -d ~/.fzf ]]; then
+	source ~/.fzf/key-bindings.bash
+	source ~/.fzf/completion.bash
+fi
+
+#------------------------------------------------------------------------------
 # RVM (Ruby Version Manager).
 #------------------------------------------------------------------------------
 
