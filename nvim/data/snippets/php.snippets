@@ -1,0 +1,171 @@
+snippet php "php"
+<?php
+${1}
+?>
+endsnippet
+
+snippet ec "ec"
+echo '${1}'${2};
+endsnippet
+
+snippet vd "vd"
+var_dump(${1});
+endsnippet
+
+# Includes and requires
+
+snippet inc "inc"
+include '${1}';${2}
+endsnippet
+
+snippet inc1 "inc1"
+include_once '${1}';${2}
+endsnippet
+
+snippet req "req"
+require '${1}';${2}
+endsnippet
+
+snippet req1 "req1"
+require_once '${1}';${2}
+endsnippet
+
+# define(...)
+
+snippet def "def"
+define('${1}'${2});${3}
+endsnippet
+
+# Doxygen comments
+
+snippet d "/**"
+/**
+* ${1}
+*/${2}
+endsnippet
+
+snippet code "code"
+* @code
+* ${1}
+* @endcode
+endsnippet
+
+# Class
+
+snippet cl "cl"
+class ${1} {
+	${2}
+	function ${3:__construct}(${4}) {
+		${5}
+	}
+}
+endsnippet
+
+# $this->
+
+snippet . "$this->" i
+$this->
+endsnippet
+
+# If statement
+
+snippet if "if"
+if (${1}) {
+	${2}
+}
+endsnippet
+
+snippet ife "ife"
+if (${1}) {
+	${2}
+} else {
+	${3}
+}
+endsnippet
+
+snippet elif "elif"
+else if (${1}) {
+	${2}
+}
+endsnippet
+
+snippet el "el"
+else {
+	${1}
+}
+endsnippet
+
+# Switch
+
+snippet sw "sw"
+switch (${1}) {
+	default:
+		break;
+}
+endsnippet
+
+snippet case "case"
+case '${1}':
+	${2}
+	break;${3}
+endsnippet
+
+# Do-while loop
+
+snippet do "do"
+do {
+	${2}
+} while (${1});
+endsnippet
+
+# While loop
+
+snippet wh "wh"
+while (${1}) {
+	${2}
+}
+endsnippet
+
+# For loop
+
+snippet for "for"
+for (${1}; ${2}; ${3}) {
+	${4}
+}
+endsnippet
+
+snippet fore "fore"
+foreach (${1} as ${2}) {
+	${3}
+}
+endsnippet
+
+# Functions and methods
+
+snippet fun "fun"
+function ${1}(${2}) {
+	${3}
+}
+endsnippet
+
+snippet met "met"
+${1}function ${2}(${3}) {
+	${4}
+}
+endsnippet
+
+# Return
+
+snippet r "return"
+return ${1}
+endsnippet
+
+# Todos
+
+snippet todo "todo"
+// TODO ${1}
+endsnippet
+
+snippet todor "todo (remove)"
+// TODO Remove.
+endsnippet

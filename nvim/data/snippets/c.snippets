@@ -1,0 +1,216 @@
+# main()
+
+snippet main "main"
+int main() {
+	${1}
+	return 0;
+}
+endsnippet
+
+snippet main2 "main2"
+int main(int argc, char **argv) {
+	${1}
+	return 0;
+}
+endsnippet
+
+# Hello world
+
+snippet hw "hello world"
+#include <stdio.h>
+
+int main() {
+	printf("Hello world!\n");${1}
+	return 0;
+}
+endsnippet
+
+# Includes
+
+snippet inc "inc"
+#include <${1:stdio.h}>${2}
+endsnippet
+
+snippet Inc "Inc"
+#include "${1}"${2}
+endsnippet
+
+# If-defs
+
+snippet once "once"
+#ifndef ${1}
+#define $1
+${2}
+#endif
+endsnippet
+
+# Todos
+
+snippet todo "todo"
+// TODO ${1}
+endsnippet
+
+snippet todor "todor"
+// TODO Remove.
+endsnippet
+
+# Doxygen comments
+
+snippet d "d"
+/**
+* @brief ${1}
+*/${2}
+endsnippet
+
+snippet D "D"
+///
+/// ${1}
+///
+endsnippet
+
+snippet code "code"
+* @code
+* ${1}
+* @endcode
+endsnippet
+
+# Blocks
+
+snippet b "block"
+{
+	${1}
+}
+endsnippet
+
+# If statement
+
+snippet if "if"
+if (${1}) {
+	${2}
+}
+endsnippet
+
+snippet ife "ife"
+if (${1}) {
+	${2}
+} else {
+	${3}
+}
+endsnippet
+
+snippet elif "elif"
+else if (${1}) {
+	${2}
+}
+endsnippet
+
+snippet el "el"
+else {
+	${1}
+}
+endsnippet
+
+# Switch
+
+snippet sw "sw"
+switch (${1}) {
+	default:
+		break;
+}
+endsnippet
+
+snippet case "case"
+case '${1}':
+	${2}
+	break;${3}
+endsnippet
+
+# Do-while loop
+
+snippet do "do"
+do {
+	${2}
+} while (${1});
+endsnippet
+
+# While loop
+
+snippet wh "wh"
+while (${1}) {
+	${2}
+}
+endsnippet
+
+# For loop
+
+snippet for "for"
+for (${1}) {
+	${2}
+}
+endsnippet
+
+# Return
+
+snippet r "r"
+return ${1};
+endsnippet
+
+# Function
+
+snippet fun "fun"
+${1:void} ${2:func}(${3}) {
+	${4}
+}
+endsnippet
+
+snippet fund "fund"
+${1:void} ${2:func}(${3});
+endsnippet
+
+# Typedef
+
+snippet td "td"
+typedef ${1:int} ${2};
+endsnippet
+
+# Struct
+
+snippet st "st"
+struct ${1} {
+	${2}
+};
+endsnippet
+
+# Typedefed struct
+
+snippet tds "tds"
+typedef struct ${2:_$1 }{
+	${3}
+} ${1};
+endsnippet
+
+# Enum
+
+snippet en "en"
+enum ${1} {
+	${2}
+};
+endsnippet
+
+# Typdefed enum
+
+snippet tde "tde"
+typedef enum {
+	${1}
+} ${2};
+endsnippet
+
+# printf
+
+snippet pr "pr"
+printf("${1:%s}\n"${2});
+endsnippet
+
+snippet fpr "fpr"
+fprintf(${1:stderr}, "${2:%s}\n"${3});
+endsnippet

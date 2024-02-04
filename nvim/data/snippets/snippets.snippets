@@ -1,0 +1,13 @@
+# We use a little hack so that the snippet is expanded
+# and parsed correctly
+snippet sni "Snippet definition" !
+`!p snip.rv = "snippet"` ${1:Trigger} "${2:Description}"
+$0
+`!p snip.rv = "endsnippet"`
+endsnippet
+
+snippet global "Global snippet" !
+`!p snip.rv = "global"` !p
+$0
+`!p snip.rv = "endglobal"`
+endsnippet

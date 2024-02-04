@@ -1,0 +1,73 @@
+# Headings
+
+snippet h1 "h1" w
+<h1>${1}</h1>${2}
+endsnippet
+
+snippet h2 "h2" w
+<h2>${1}</h2>${2}
+endsnippet
+
+snippet h3 "h3" w
+<h3>${1}</h3>${2}
+endsnippet
+
+snippet h4 "h4" w
+<h4>${1}</h4>${2}
+endsnippet
+
+snippet h6 "h6" w
+<h5>${1}</h5>${2}
+endsnippet
+
+snippet h7 "h7" w
+<h7>${1}</h7>${2}
+endsnippet
+
+# Anchors
+
+snippet a "a" w
+<a href="${1}">${2}</a>${3}
+endsnippet
+
+# Code
+
+snippet c "code" w
+<code>${1}</code>${2}
+endsnippet
+
+# Tags (general)
+
+snippet t "Tag" w
+<${1:tag}>${2}</${1/([\w:._-]+).*/$1/}>
+endsnippet
+
+snippet at "Add tag to selected text" w
+<${1:tag}>${VISUAL}</${1/([\w:._-]+).*/$1/}>
+endsnippet
+
+snippet ct "Centered Tag" w
+<${1:tag}>
+	${2}
+</${1/([\w:._-]+).*/$1/}>
+endsnippet
+
+# Tags (other)
+
+snippet center "center"
+<center>
+	${1}
+</center>
+endsnippet
+
+snippet s "s" w
+<strong>${1}</strong>
+endsnippet
+
+snippet b "b" w
+<b>${1}</b>
+endsnippet
+
+snippet em "em" w
+<em>${1}</em>
+endsnippet

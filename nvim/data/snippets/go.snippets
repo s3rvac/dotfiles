@@ -1,0 +1,101 @@
+# main
+
+snippet main "main"
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	${1}
+}
+endsnippet
+
+# Imports
+
+snippet im "import"
+import (
+	"${1}"
+)
+endsnippet
+
+# Types
+
+snippet st "struct"
+struct ${1}{
+	${2}
+}
+endsnippet
+
+# Functions
+
+snippet fun "function"
+func ${1}(${2}) ${3}{
+	${4}
+}
+endsnippet
+
+snippet r "return"
+return ${1}
+endsnippet
+
+snippet t "test"
+func Test${1}(t *testing.T) {
+	${2}
+}
+endsnippet
+
+# Statements
+
+snippet if "if"
+if ${1} {
+	${2}
+}
+endsnippet
+
+snippet ife "if-else"
+if ${1} {
+	${2}
+} else {
+	${3}
+}
+endsnippet
+
+snippet for "for"
+for ${1} {
+	${2}
+}
+endsnippet
+
+snippet sel "select"
+select {
+case ${1}:
+}
+endsnippet
+
+snippet sw "switch"
+switch ${1} {
+case ${2}:
+}
+endsnippet
+
+snippet pr "print"
+fmt.Println(${1})
+endsnippet
+
+# Todo
+
+snippet todo "todo"
+// TODO
+endsnippet
+
+snippet todor "todo (remove)"
+// TODO (remove)
+endsnippet
+
+# Other
+
+snippet dt "dt"
+fmt.Println(${1}.dummy_attr)
+endsnippet

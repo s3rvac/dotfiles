@@ -1,0 +1,218 @@
+# Hashbang
+
+snippet hb "hb"
+#!/usr/bin/env python3
+endsnippet
+
+# Strings
+
+snippet " "tripple quote"
+"""${1}"""
+endsnippet
+
+snippet ' "tripple quote"
+'''${1}'''
+endsnippet
+
+# Comments
+
+snippet todo "todo"
+# TODO ${1}
+endsnippet
+
+snippet todor "todo (remove)"
+# TODO Remove.${1}
+endsnippet
+
+# Documentation
+
+snippet py "py"
+.. code-block:: python
+
+	${1}
+endsnippet
+
+# Imports
+
+snippet im "im"
+import ${1}
+endsnippet
+
+snippet fr "fr"
+from ${1} import ${2}
+endsnippet
+
+# Printing
+
+snippet pr "pr"
+print(${1})
+endsnippet
+
+snippet pp "pp"
+from pprint import pprint; pprint(${1})
+endsnippet
+
+# Loops
+
+snippet wh "wh"
+while ${1}:
+	${2}
+endsnippet
+
+snippet for "for"
+for ${1} in ${2}:
+	${3}
+endsnippet
+
+# If
+
+snippet if "if"
+if ${1}:
+	${2}
+endsnippet
+
+snippet ife "ife"
+if ${1}:
+	${2}
+else:
+	${3}
+endsnippet
+
+# With
+
+snippet wi "wi"
+with ${1}:
+	${2}
+endsnippet
+
+# Other Statements
+
+snippet r "r"
+return ${1}
+endsnippet
+
+# Classes
+
+snippet cl "cl"
+class ${1:A}:
+	"""${2}"""
+
+	def __init__(self${4}):
+		${3}
+endsnippet
+
+# Functions/methods
+
+snippet def "def"
+def ${1}(${2}):
+	"""${3}"""
+	${4}
+endsnippet
+
+snippet defm "def method"
+def ${1}(self${2}):
+	"""${3}"""
+	${4}
+endsnippet
+
+snippet defs "def special"
+def __${1:}__(self${2}):
+	${3}
+endsnippet
+
+snippet prop "property"
+@property
+def ${1}(self):
+	"""${2}"""
+endsnippet
+
+snippet . "self" i
+self.
+endsnippet
+
+# Exceptions
+
+snippet try "try/except"
+try:
+	${1:pass}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+endsnippet
+
+snippet try "try/except/else"
+try:
+	${1:pass}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+else:
+	${5:pass}
+endsnippet
+
+snippet try "try/except/finally"
+try:
+	${1:pass}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+finally:
+	${5:pass}
+endsnippet
+
+snippet try "try/except/else/finally"
+try:
+	${1:pass}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+else:
+	${5:pass}
+finally:
+	${6:pass}
+endsnippet
+
+# Tests
+
+snippet tc "test class"
+class ${1}Tests(unittest.TestCase):
+	"""Tests for \`${2}\`."""
+
+	${3}
+endsnippet
+
+snippet t "test method"
+def test_${1}(self):
+	${2}
+endsnippet
+
+snippet ts "setup method"
+def setUp(self):
+	${1:super().setUp()}
+	${2}
+endsnippet
+
+snippet at "at"
+self.assertTrue(${1})
+endsnippet
+
+snippet af "af"
+self.assertFalse(${1})
+endsnippet
+
+snippet ae "ae"
+self.assertEqual(${1})
+endsnippet
+
+snippet ar "ar"
+with self.assertRaises(${1}):
+	${2}
+endsnippet
+
+snippet arr "arr"
+with self.assertRaisesRegex(${1}):
+	${2}
+endsnippet
+
+# Main
+
+snippet main "main"
+if __name__ == '__main__':
+	${1}
+endsnippet

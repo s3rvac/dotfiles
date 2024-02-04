@@ -1,0 +1,233 @@
+# Generic \begin{}...\end{}
+
+snippet begin "begin"
+\begin{${1:env}}
+	${2}
+\end{$1}
+endsnippet
+
+# Class
+
+snippet cl "cl"
+\documentclass{${1:article}}
+endsnippet
+
+# Usepackage
+
+snippet up "up"
+\usepackage{${1}}
+endsnippet
+
+# Document
+
+snippet doc "doc"
+\begin{document}
+	${1}
+\end{document}
+endsnippet
+
+# \textttt{}
+
+snippet c "c" w
+\texttt{${1}}${2}
+endsnippet
+
+# \emph{}
+
+snippet em "em" w
+\emph{${1}}${2}
+endsnippet
+
+# Tabular
+
+snippet tab "tab"
+\begin{tabular}{${1}}
+	${2}
+\end{tabular}
+endsnippet
+
+# Array
+
+snippet arr "arr"
+\begin{array}{${1}}
+	${2}
+\end{array}
+endsnippet
+
+# Centered array
+
+snippet carr "carr"
+\[
+\begin{array}{${1}}
+	${2}
+\end{array}
+\]
+endsnippet
+
+# Enumerate
+
+snippet enum "enum"
+\begin{enumerate}
+	\item ${1}
+\end{enumerate}
+endsnippet
+
+# Itemize
+
+snippet item "item"
+\begin{itemize}
+	\item ${1}
+\end{itemize}
+endsnippet
+
+# Description
+
+snippet desc "desc"
+\begin{description}
+	\item[${1}] ${2}
+\end{description}
+endsnippet
+
+# Section
+
+snippet sec "sec"
+\section{${1}}
+\label{sec:${2}}
+${3}
+endsnippet
+
+# Subsection
+
+snippet sub "sub"
+\subsection{${1}}
+\label{sec:${2}}
+${3}
+endsnippet
+
+# Subsubsection
+
+snippet subs "subs"
+\subsubsection{${1}}
+\label{sec:${2}}
+${3}
+endsnippet
+
+# Example
+
+snippet ex "ex"
+\begin{example}
+\label{ex:${1}}
+\end{example}
+endsnippet
+
+# Definition
+
+snippet def "def"
+\begin{definition}
+\label{def:${1}}
+\end{definition}
+endsnippet
+
+# Lemma
+
+snippet lemma "lemma"
+\begin{lemma}
+\label{lemma:${1}}
+\end{lemma}
+endsnippet
+
+# Theorem
+
+snippet theorem "theorem"
+\begin{theorem}
+\label{theorem:${1}}
+\end{theorem}
+endsnippet
+
+# Proof
+
+snippet proof "proof"
+\begin{proof}
+\end{proof}
+endsnippet
+
+# Claim
+
+snippet claim "claim"
+\begin{claim}
+\label{claim:${1}}
+\end{claim}
+endsnippet
+
+# Center
+
+snippet center "center"
+\begin{center}
+	${1}
+\end{center}
+endsnippet
+
+# Centered math
+
+snippet cm "cm"
+\[
+	${1}
+\]
+endsnippet
+
+# Figure
+
+snippet fig "fig"
+\begin{figure}
+	\centering
+	\includegraphics[scale=${1:1.0}]{img/${2}}
+	\caption{${3}}
+	\label{fig:${4}}
+\end{figure}
+endsnippet
+
+# Graphics
+
+snippet incg "incg"
+\includegraphics[width=\linewidth,keepaspectratio]{${1}}
+endsnippet
+
+snippet cincg "cincg"
+\begin{center}
+	\includegraphics[width=\linewidth,keepaspectratio]{${1}}
+\end{center}
+endsnippet
+
+# Frame
+
+snippet frame "frame"
+\begin{frame}{${1}}
+${2}
+\end{frame}
+endsnippet
+
+snippet fframe "fragile frame"
+\begin{frame}[fragile]{${1}}
+${2}
+\end{frame}
+endsnippet
+
+# Listings
+
+snippet cpp "cpp listing"
+\begin{lstlisting}[style=CPPListing]
+${1}
+\end{lstlisting}
+endsnippet
+
+snippet cppc "cpp listing continued"
+\begin{lstlisting}[style=CPPListing,firstnumber=last]
+${1}
+\end{lstlisting}
+endsnippet
+
+# Todo
+
+snippet todo "todo"
+% TODO ${1}
+endsnippet
