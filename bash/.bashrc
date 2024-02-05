@@ -68,9 +68,6 @@ function prompt_precmd() {
 	# that it does not get overwritten.
 	last_exit_code="$?"
 
-	# Whenever the prompt is displayed, write the previous line to .bash_history.
-	history -a
-
 	# Evaluate the timer of the last executed command.
 	if [ -z "$last_command_timer" ]; then
 		last_command_runtime="0m0.000s"
