@@ -2,6 +2,9 @@
 
 My configuration files for the [Vim](http://www.vim.org/) editor.
 
+> [!WARNING]
+> In 2024, I switched to [Neovim](https://neovim.io/), so my Vim configuration is no longer actively maintained.
+
 ## Installation
 
 * Copy `.vimrc` to `$HOME/`.
