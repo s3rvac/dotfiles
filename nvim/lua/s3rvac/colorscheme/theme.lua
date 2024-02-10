@@ -1,7 +1,3 @@
--------------------------------------------------------------------------------
--- The theme of my own colorscheme.
--------------------------------------------------------------------------------
-
 -- Palette.
 p = {
   black = "#000000",
@@ -37,12 +33,12 @@ function theme.setup()
     DiffDelete = { fg = "#0000ff", bg = "#008787", bold = true },
     DiffText = { fg = p.white, bg = "#ff0000", bold = true },
     Directory = { fg = "#cc8000", bg = p.none },
-    EndOfBuffer = { fg = "#cd0000", bg = p.none, bold = true },
-    Error = { fg = "#cd0000", bg = p.white, reverse = true },
-    ErrorMsg = { fg = "#cd0000", bg = p.white, reverse = true },
+    EndOfBuffer = { fg = "#ff0000", bg = p.none, bold = true },
+    Error = { fg = "#ff0000", bg = p.none },
+    ErrorMsg = { fg = "#ff0000", bg = p.none },
     Exception = { link = "Statement" },
     Float = { link = "Number" },
-    FloatBorder = { fg = "#ff0000", bg = p.none },
+    FloatBorder = { fg = p.white, bg = p.none },
     FoldColumn = { fg = p.white, bg = "gray30" },
     Folded = { fg = p.white, bg = "gray30" },
     Function = { fg = "#5fffff", bg = p.none },
@@ -67,7 +63,7 @@ function theme.setup()
     NormalNC = { fg = p.white, bg = p.black },
     Number = { link = "Constant" },
     Operator = { fg = p.white, bg = p.none },
-    Pmenu = { fg = p.white, bg = "gray30" },
+    Pmenu = { fg = p.white, bg = "#282828" },
     PmenuSbar = { fg = p.none, bg = p.none },
     PmenuSel = { fg = p.black, bg = p.white },
     PmenuThumb = { fg = p.none, bg = p.white },
@@ -84,10 +80,10 @@ function theme.setup()
     SpecialChar = { link = "Special" },
     SpecialComment = { link = "Special" },
     SpecialKey = { fg = "#cc0000", bg = p.none },
-    SpellBad = { fg = "#ff4040", bg = p.none, sp = "#ff4040", undercurl = true },
-    SpellCap = { fg = "#00aaff", bg = p.none, sp = "#00aaff", undercurl = true },
-    SpellLocal = { fg = "#00ffff", bg = p.none, sp = "#00ffff", undercurl = true },
-    SpellRare = { fg = "#ff00ff", bg = p.none, sp = "#ff00ff", undercurl = true },
+    SpellBad = { sp = "#ff4040", undercurl = true },
+    SpellCap = { sp = "#00aaff", undercurl = true },
+    SpellLocal = { sp = "#00ffff", undercurl = true },
+    SpellRare = { sp = "#ff00ff", undercurl = true },
     Statement = { fg = "#ffff60", bg = p.none, bold = true },
     StatusLine = { fg = p.white, bg = p.black, bold = true },
     StatusLineNC = { fg = p.black, bg = "gray70" },
@@ -113,31 +109,77 @@ function theme.setup()
     VertSplit = { fg = p.white, bg = p.black },
     Visual = { fg = p.black, bg = "#bcbcbc" },
     VisualNOS = { fg = p.none, bg = p.black, bold = true, underline = true },
-    WarningMsg = { fg = "#ff0000", bg = p.none },
+    WarningMsg = { fg = "#ffbf00", bg = p.none },
     Whitespace = { fg = "#ff0000", bg = p.none },
     WildMenu = { fg = p.black, bg = "#ffff00" },
     lCursor = { link = "Cursor" },
 
-    -- LSP
-    -- LspReferenceRead = { bg = "#36383F" },
-    -- LspReferenceText = { bg = "#36383F" },
-    -- LspReferenceWrite = { bg = "#36383f" },
-    -- DiagnosticError = { fg = palette.error },
-    -- DiagnosticWarn = { fg = palette.warning },
-    -- DiagnosticInfo = { fg = palette.info },
-    -- DiagnosticHint = { fg = palette.hint },
-    -- DiagnosticVirtualTextError = { fg = palette.error },
-    -- DiagnosticVirtualTextWarn = { fg = palette.warning },
-    -- DiagnosticVirtualTextInfo = { fg = palette.info },
-    -- DiagnosticVirtualTextHint = { fg = palette.hint },
-    -- DiagnosticUnderlineError = {},
-    -- DiagnosticUnderlineWarn = {},
-    -- DiagnosticUnderlineInfo = {},
-    -- DiagnosticUnderlineHint = {},
-    -- LspSignatureActiveParameter = { bg = palette.alt_bg, bold = true },
-    -- LspCodeLens = { fg = palette.comment },
+    -- The checkhealth command
+    helpHeader = { link = "PreProc" },
+    healthError = { link = "Error" },
+    healthHelp = { link = "Normal" },
+    healthSuccess = { fg = "#5fff00", bg = p.none },
+    healthWarning = { link = "WarningMsg" },
 
-    -- nvim-treesitter: https://github.com/nvim-treesitter/nvim-treesitter
+    -- LSP
+    LspInfoTitle = { link = "PreProc" },
+    LspInfoList = { link = "Function" },
+    LspInfoFiletype = { fg = "#5fff5f", bg = p.none },
+    LspInfoTip = { link = "Comment" },
+    LspInfoBorder = { link = "FloatBorder" },
+
+    -- Diagnostics
+    DiagnosticError = { fg = "#ff0000" },
+    DiagnosticWarn = { fg = "#dbc074" },
+    DiagnosticInfo = { fg = "#719cd6" },
+    DiagnosticHint = { fg = "#c3ccdc" },
+    DiagnosticOk = { fg = "#21c7a8" },
+    DiagnosticUnderlineError = { sp = "#ff0000", undercurl = true },
+    DiagnosticUnderlineWarn = { sp = "#dbc074", undercurl = true },
+    DiagnosticUnderlineInfo = { sp = "#719cd6", undercurl = true },
+    DiagnosticUnderlineHint = { sp = "#c3ccdc", undercurl = true },
+    DiagnosticUnderlineOk = { sp = "#21c7a8", undercurl = true },
+    DiagnosticVirtualTextError = { fg = "#ff0000", bg = "#3c2c3c" },
+    DiagnosticVirtualTextWarn = { fg = "#dbc074", bg = "#40423e" },
+    DiagnosticVirtualTextInfo = { fg = "#719cd6", bg = "#2b3b51" },
+    DiagnosticVirtualTextHint = { fg = "#c3ccdc", bg = "#2e4045" },
+    DiagnosticVirtualTextOk = { fg = "#21c7a8", bg = "#2e4045" },
+    DiagnosticFloatingError = { link = "DiagnosticError" },
+    DiagnosticFloatingWarn = { link = "DiagnosticWarn" },
+    DiagnosticFloatingInfo = { link = "DiagnosticInfo" },
+    DiagnosticFloatingHint = { link = "DiagnosticHint" },
+    DiagnosticFloatingOk = { link = "DiagnosticOk" },
+    DiagnosticSignError = { link = "DiagnosticError" },
+    DiagnosticSignWarn = { link = "DiagnosticWarn" },
+    DiagnosticSignInfo = { link = "DiagnosticInfo" },
+    DiagnosticSignHint = { link = "DiagnosticHint" },
+    DiagnosticSignOk = { link = "DiagnosticOk" },
+    DiagnosticDeprecated = { sp = "#ff0000", strikethrough = true },
+    DiagnosticUnnecessary = { sp = "#c3ccdc", undercurl = true },
+
+    -- GitHub Copilot
+    -- https://github.com/github/copilot.vim
+    CopilotSuggestion = { fg = "#808080" },
+
+    -- nvim-cmp
+    -- https://github.com/hrsh7th/nvim-cmp
+    CmpItemAbbrDeprecated = { fg = "#808080", bg = p.none, strikethrough = true },
+    CmpItemAbbrMatch = { fg = "#33b1ff", bg = p.none },
+    CmpItemAbbrMatchFuzzy = { link = "CmpIntemAbbrMatch" },
+    CmpItemKindFunction = { fg = "#5fffff", bg = p.none },
+    CmpItemKindMethod = { link="CmpItemKindFunction" },
+    CmpItemKindVariable = { fg = "#33b1ff", bg = p.none },
+    CmpItemKindProperty = { link = "CmpItemKindVariable" },
+    CmpItemKindClass = { fg = "#ffbf00", bg = p.none },
+    CmpItemKindInterface = { link = "CmpItemKindClass" },
+    CmpItemKindModule = { fg = "#bd95ff", bg = p.none },
+    CmpItemKindConstant = { fg = "#ffafaf", bg = p.none },
+    CmpItemKindKeyword = { fg = "#d4d4d4", bg = p.none },
+    CmpItemKindUnit = { link = "CmpItemKindKeyword" },
+    CmpItemKindText = { fg = p.white, bg = p.none },
+
+    -- nvim-treesitter
+    -- https://github.com/nvim-treesitter/nvim-treesitter
     -- ["@attribute"] = {},
     ["@boolean"] = { link = "Boolean" },
     ["@character"] = { link = "Character" },
@@ -246,7 +288,7 @@ function theme.setup()
     -- ["@text.warning"] = {},
     ["@type"] = { link = "Identifier" },
     ["@type.builtin"] = { link = "Type" },
-    ["@type.definition"] = { link = "Type" },
+    ["@type.definition"] = { link = "Identifier" },
     ["@type.qualifier"] = { link = "Type" },
     ["@variable"] = { fg = p.white },
     -- ["@variable.builtin"] = {},
@@ -272,8 +314,22 @@ function theme.setup()
     diffLine = { fg = "#18b2b2", bg = p.none },
     diffIndexLine = { fg = p.white, bg = p.none, bold = true },
     diffSubName = { fg = "#b2b2b2", bg = p.none },
-    ["@text.reference.gitcommit"] = { link = "Special" },
-    ["@text.uri.gitcommit"] = { link = "String" },
+    -- Gitrebase
+    gitrebaseCommit = { link = "Special" },
+    gitrebaseHash = { link = "Special" },
+    gitrebaseSummary = { link = "Normal" },
+    gitrebasePick = { link = "Type" },
+    gitrebaseReword = { link = "PreProc" },
+    gitrebaseEdit = { link = "PreProc" },
+    gitrebaseSquash = { link = "PreProc" },
+    gitrebaseFixup = { link = "PreProc" },
+    gitrebaseExec = { link = "PreProc" },
+    gitrebaseBreak = { link = "PreProc" },
+    gitrebaseDrop = { link = "PreProc" },
+    gitrebaseNoop = { link = "PreProc" },
+    gitrebaseMerge = { link = "PreProc" },
+    gitrebaseLabel = { link = "PreProc" },
+    gitrebaseReset = { link = "PreProc" },
     -- Haskell
     ["@constructor.haskell"] = { link = "Identifier" },
     ["@function.call.haskell"] = { link = "Function" },
@@ -281,44 +337,36 @@ function theme.setup()
     htmlTag = { link = "Function" },
     htmlEndTag = { link = "Function" },
     -- INI
-    dosiniHeader = { link = "Statement" },
-    dosiniLabel = { link = "Function" },
-    dosiniValue = { link = "Normal" },
+    dosiniHeader = { link = "PreProc" },
+    dosiniLabel = { link = "Identifier" },
+    dosiniValue = { link = "String" },
     -- JSON
-    ["@punctuation.bracket.json"] = { link = "Special" },
+    -- ["@punctuation.bracket.json"] = { link = "Special" }, XXX
     -- Lua
     ["@constructor.lua"] = { link = "Identifier" },
     -- Makefile
     makeIdent = { link = "Function" },
+    makeCommands = { link = "Normal" },
     -- Markdown
     ["@label.markdown"] = { link = "Constant" },
     ["@punctuation.bracket.markdown_inline"] = { link = "Special" },
     ["@text.quote.markdown"] = { link = "Comment" },
     ["@text.reference.markdown_inline"] = { link = "Underlined" },
     ["@text.uri.markdown_inline"] = { link = "Constant" },
-    -- PHP
-    ["@operator.php"] = { link = "Statement" },
-    ["@function.call.php"] = { link = "Function" },
-    ["@punctuation.bracket.php"] = { link = "Special" },
     -- Python
     pythonBuiltin = { link = "Identifier" },
     pythonOperator = { link = "Statement" },
     -- SQL
     ["@attribute.sql"] = { link = "Statement" },
     -- Terraform
-    ["@type.terraform"] = { link = "Type" },
-    ["@punctuation.bracket.terraform"] = { link = "Special" },
+    hclBraces = { link = "Normal" },
     -- TOML
-    tomlTable = { link = "Statement" },
-    tomlTableArray = { link = "Function" },
-    tomlKey = { link = "Function" },
+    tomlTable = { link = "PreProc" },
+    tomlTableArray = { link = "PreProc" },
     -- Vim
     ["@variable.builtin.vim"] = { link = "PreProc" },
     -- YAML
-    ["@field.yaml"] = { link = "Function" },
-    ["@string.yaml"] = { link = "Normal" },
-    ["@punctuation.bracket.yaml"] = { link = "Special" },
-    ["@punctuation.delimiter.yaml"] = { link = "Special" },
+    yamlBlockMappingKey = { link = "Function" },
   }
 
   -- Set terminal colors.

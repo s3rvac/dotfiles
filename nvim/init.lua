@@ -1,8 +1,4 @@
--------------------------------------------------------------------------------
--- Configuration imports.
--------------------------------------------------------------------------------
-
--- My global vimrc.
+-- My global vimrc (not everything that I have right now is configured via Lua).
 local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 

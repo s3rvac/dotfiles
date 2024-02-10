@@ -9,7 +9,12 @@ set sidescroll=5
 " Maximum number of tabs to open by the -p argument.
 set tabpagemax=1000
 " Don't redraw during complex operations (e.g. macros).
-set lazyredraw
+" TODO: Causes screen tearing / visual glitches?
+" set lazyredraw
+" Decrease updatetime (the time Vim waits after you stop typing before it
+" triggers CursorHold autocommands) from the default 4 seconds, which is
+" too long, to 1 second.
+set updatetime=1000
 " Automatically save before :next, :make etc.
 set autowrite
 " Ask to save file before operations like :q or :e fail.
@@ -39,6 +44,12 @@ set nrformats-=octal
 set number
 " Show relative numbers instead of absolute ones.
 set relativenumber
+
+" ---- Sign column ----
+
+" Always show the sign column so that the whole screen does not move when there
+" is a diagnostic message.
+set signcolumn=yes:1
 
 " ---- Whitespace ----
 
@@ -76,10 +87,13 @@ set viminfo+=h
 
 " ---- Undo ----
 
-" Enable undo files to preserve undo history across Vim runs.
-set undofile
+" Do not preserve undo history across Vim runs. I know that this can be very
+" useful, but I currently find it annoying. Indeed, when I open a file, do some
+" changes, and then hit undo a couple of times, I expect to end up in a state
+" when the file was opened, not in a state e.g. a month ago.
+set noundofile
 " Number of undo levels.
-set undolevels=200
+set undolevels=1000
 
 " ---- Splitting ----
 
@@ -225,8 +239,8 @@ set wildignore+=*.egg-info,.mypy_cache,.pytest_cache,coverage,htmlcov,dist,venv,
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These files are less likely to be edited.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-
-set completeopt=longest,menuone
+" Options for the completion menu.
+set completeopt=menu,menuone,longest
 " Do not search in included/imported files (it slows down completion, mostly
 " on network filesystems).
 set complete-=i
@@ -244,7 +258,7 @@ set smartcase
 
 " ---- Sessions ----
 
-set sessionoptions=blank,buffers,curdir,globals,help,localoptions,resize,tabpages,winpos,winsize
+set sessionoptions=curdir,folds,globals,tabpages
 
 " ---- Folds ----
 
@@ -483,9 +497,6 @@ noremap <Leader>y "+y
 " Cut the selected text into the clipboard.
 noremap <Leader>d "+d
 
-" Make Ctrl-e jump to the end of the line in the insert mode.
-inoremap <C-e> <C-o>$
-
 " Stay in visual mode when indenting.
 vnoremap < <gv
 vnoremap > >gv
@@ -546,10 +557,6 @@ if !has('gui_running')
 	nnoremap <Esc>9 9gt
 	nnoremap <Esc>0 10gt
 endif
-
-" Show a list of buffers and initiate a moving into a buffer (type e.g. buffer
-" number or name after pressing 'gb').
-nnoremap <silent> gb :ls<CR>:b<Space>
 
 " Join lines by <Leader>j because I use J to go to the previous tab.
 noremap <Leader>j J
@@ -620,17 +627,6 @@ endfunction
 command! WindowZoomToggle call s:WindowZoomToggle()
 nnoremap <silent> <Leader>wz :WindowZoomToggle<CR>
 
-" Open a link under the cursor in a web browser (similar to gx, but faster).
-let s:web_browser_path='/usr/bin/firefox'
-function! s:OpenLinkUnderCursor()
-	let curr_line = getline('.')
-	let link = matchstr(curr_line, '\(http\|https\|ftp\|file\)://[^ )"]*')
-	if link != ''
-		execute ':silent !' . s:web_browser_path . ' ' . '"' . link . '"'
-	endif
-endfunction
-nnoremap <silent> gl :call <SID>OpenLinkUnderCursor()<CR>
-
 " A function for formatting the currently opened buffer via the given formatting
 " shell command.
 "
@@ -671,9 +667,6 @@ function! s:FormatCurrentBufferWith(format_cmd) abort
 	" Cleanup.
 	call delete(tmp_file)
 endfunction
-
-" A text object for the entire file ("a file").
-onoremap aF :<C-u>normal! ggVG<CR>
 
 " Expand %% to the path of the current buffer in command mode.
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -758,6 +751,8 @@ au BufNewFile,BufRead .tridactylrc setl ft=vim
 au BufNewFile,BufRead *.tex setl ft=tex
 " Consider all .hql files as Hive files.
 au BufNewFile,BufRead *.hql set ft=hive
+" Consider all .yar/.yara files as YARA files.
+au BufNewFile,BufRead *.yar,*.yara set filetype=yara
 augroup end
 
 augroup remove_trailing_whitespace
@@ -1074,14 +1069,6 @@ hi SpacesTabsMixture guifg=red guibg=gray19
 " with a space).
 match SpacesTabsMixture /^  \+\t\+[\t ]*\|^\t\+  \+[\t ]*/
 
-" Set explicit highlighting colors for gitcommit as the ones for regular diffs
-" look strange in Git commit messages.
-augroup gitcommit_diff_colors
-au!
-au FileType gitcommit hi DiffAdd    gui=none guifg=cyan guibg=black
-au FileType gitcommit hi DiffDelete gui=none guifg=orange guibg=black
-augroup end
-
 "------------------------------------------------------------------------------
 " Plugin settings.
 "------------------------------------------------------------------------------
@@ -1097,38 +1084,6 @@ let g:autofenc_ext_prog_args='-i -L czech'
 let g:autofenc_ext_prog_unknown_fenc='???'
 " Sometimes, enca detects UTF-7, which is almost always invalid detection.
 let g:autofenc_enc_blacklist='utf-7'
-
-"-----------------------------------------------
-" github-copilot: Vim plugin for GitHub Copilot.
-"-----------------------------------------------
-let g:copilot_enabled = 1
-" Enable the plugin only for certain file types.
-let g:copilot_filetypes = {
-	\ '*': 0,
-	\ 'c': 1,
-	\ 'cpp': 1,
-	\ 'gitcommit': 1,
-	\ 'go': 1,
-	\ 'html': 1,
-	\ 'java': 1,
-	\ 'javascript': 1,
-	\ 'markdown': 1,
-	\ 'php': 1,
-	\ 'python': 1,
-	\ 'ruby': 1,
-	\ 'rust': 1,
-	\ 'sh': 1,
-	\ 'sql': 1,
-	\ 'typescript': 1,
-	\ 'vim': 1,
-	\ 'xml': 1,
-	\ 'yaml': 1,
-	\ }
-" Use a custom completion command.
-let g:copilot_no_tab_map = 1
-imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
-" Custom commands.
-noremap <Leader>gc :Copilot panel<CR>
 
 "--------------------------------------------------------
 " netrw: Network oriented reading, writing, and browsing.
@@ -1170,11 +1125,11 @@ let g:tcomment#blank_lines = 0
 let g:snips_author='Petr Zemek <s3rvac@petrzemek.net>'
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsEnableSnipMate='no'
-let g:UltiSnipsSnippetDirectories=[$HOME . '/.config/nvim/data/snippets']
+let g:UltiSnipsSnippetDirectories=[$HOME . '/.config/nvim/snippets']
 let g:UltiSnipsExpandTrigger='<Tab>'
 let g:UltiSnipsJumpForwardTrigger='<Tab>'
 let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
-nnoremap <Leader>sni :execute 'tabe ~/.config/nvim/data/snippets/' . &filetype . '.snippets'<CR>
+nnoremap <Leader>sni :execute 'tabe ~/.config/nvim/snippets/' . &filetype . '.snippets'<CR>
 
 " ---------------------------------------------------------
 " vim-sort-motion: Vim mapping for sorting a range of text.
@@ -1211,18 +1166,18 @@ if s:opened_file_path =~ 'textern-'
 		au BufRead,BufNewFile *.txt setl spelllang=en
 	" cs-blog.petrzemek.net
 	elseif s:opened_file_path =~ 'cs-blog.petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=html
+		au BufRead,BufNewFile *.txt setl ft=xhtml
 	" blog.petrzemek.net
 	elseif s:opened_file_path =~ 'blog.petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=html
+		au BufRead,BufNewFile *.txt setl ft=xhtml
 		au BufRead,BufNewFile *.txt setl spelllang=en
 	" petrzemek.net
 	elseif s:opened_file_path =~ 'petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=html
+		au BufRead,BufNewFile *.txt setl ft=xhtml
 		au BufRead,BufNewFile *.txt setl spelllang=en
 	" Other
 	else
-		au BufRead,BufNewFile *.txt setl ft=html
+		au BufRead,BufNewFile *.txt setl ft=xhtml
 	endif
 endif
 augroup end
