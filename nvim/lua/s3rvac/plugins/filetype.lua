@@ -7,12 +7,19 @@ return {
     "udalov/kotlin-vim",
     ft = "kotlin",
   },
-  -- Syntax highlighting for Terraform.
-  -- Note: The treesitter-based one works but looks a bit worse than this one.
-  -- https://github.com/hashivim/vim-terraform
+  -- Syntax highlighting and other features for LaTeX.
+  -- Note: The treesitter-based highlighting works but looks worse than this one.
+  -- https://github.com/lervag/vimtex
   {
-    "hashivim/vim-terraform",
-    ft = { "terraform", "terraform-vars", "hcl" },
+    "lervag/vimtex",
+    ft = "tex",
+    config = function()
+      -- Disable built-in mappings.
+      vim.g.vimtex_mappings_enabled = false
+      -- Use Okular as the PDF viewer.
+      vim.g.vimtex_view_general_viewer = "okular"
+      vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
+    end,
   },
   -- Syntax highlighting for YARA rules.
   -- https://github.com/s3rvac/vim-syntax-yara
