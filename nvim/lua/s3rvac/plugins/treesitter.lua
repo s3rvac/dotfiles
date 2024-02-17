@@ -6,11 +6,10 @@ return {
     tag = "v0.9.2",
     build = ":TSUpdate",
     config = function()
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
+      require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "bash",
+          "bibtex",
           "c",
           "cmake",
           "cpp",
@@ -19,9 +18,13 @@ return {
           "diff",
           "dockerfile",
           "doxygen",
+          "gitattributes",
+          "gitcommit",
           "gitignore",
           "go",
           "haskell",
+          "hcl",
+          "hocon",
           "html",
           "java",
           "javascript",
@@ -30,13 +33,17 @@ return {
           "latex",
           "llvm",
           "lua",
+          "make",
           "markdown",
           "markdown_inline",
           "php",
           "proto",
+          "puppet",
           "python",
+          "rst",
           "ruby",
           "rust",
+          "scala",
           "sql",
           "terraform",
           "toml",
@@ -51,15 +58,15 @@ return {
           -- Disable treesitter highlighting for the following file types
           -- as the original, non-treesitter, regex-based version looks
           -- better, at least at the moment.
-          --
-          -- Note: When you update this list, update the list in
-          -- lua/s3rvac/plugins/fzf.lua as well.
           disable = {
+            "css",
             "diff",
             "gitcommit",
             "kotlin",
+            "latex",
+            "make",
             "python",
-            "terraform",
+            "rst",
             "toml",
             "yaml",
           },
@@ -72,9 +79,12 @@ return {
           enable = false,
         },
         indent = {
-          enable = false
+          enable = false,
         },
       })
-    end
+
+      -- Custom mapping of filetypes to parsers.
+      vim.treesitter.language.register("html", { "xhtml" })
+    end,
   },
 }
