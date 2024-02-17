@@ -1,4 +1,4 @@
-;; extends
+; extends
 
 "extern" @keyword
 (crate) @keyword
