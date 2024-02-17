@@ -1,5 +1,5 @@
 -- Palette.
-p = {
+local p = {
   black = "#000000",
   white = "#ffffff",
   none = "none",
@@ -20,7 +20,7 @@ function theme.setup()
     CurSearch = { link = "Search" },
     Cursor = { fg = p.black, bg = "#00ff00" },
     CursorColumn = { fg = p.none, bg = "#555555" },
-    CursorIM = { fg = p.none, bg = fg },
+    CursorIM = { fg = p.none, bg = p.none },
     CursorLine = { fg = p.none, bg = "#555555" },
     CursorLineFold = { link = "CursorLine" },
     CursorLineNr = { fg = "#ffff00", bg = p.none, bold = true },
@@ -47,7 +47,7 @@ function theme.setup()
     IncSearch = { link = "Search" },
     Include = { link = "PreProc" },
     Keyword = { link = "Statement" },
-    Label = { link = "Statement" },
+    Label = { link = "Special" },
     LineNr = { fg = "#ffff00", bg = p.none },
     LineNrAbove = { link = "LineNr" },
     LineNrBelow = { link = "LineNr" },
@@ -167,7 +167,7 @@ function theme.setup()
     CmpItemAbbrMatch = { fg = "#33b1ff", bg = p.none },
     CmpItemAbbrMatchFuzzy = { link = "CmpIntemAbbrMatch" },
     CmpItemKindFunction = { fg = "#5fffff", bg = p.none },
-    CmpItemKindMethod = { link="CmpItemKindFunction" },
+    CmpItemKindMethod = { link = "CmpItemKindFunction" },
     CmpItemKindVariable = { fg = "#33b1ff", bg = p.none },
     CmpItemKindProperty = { link = "CmpItemKindVariable" },
     CmpItemKindClass = { fg = "#ffbf00", bg = p.none },
@@ -180,30 +180,31 @@ function theme.setup()
 
     -- nvim-treesitter
     -- https://github.com/nvim-treesitter/nvim-treesitter
-    -- ["@attribute"] = {},
+    -- https://neovim.io/doc/user/treesitter.html#treesitter-highlight-groups
+    ["@attribute"] = { link = "PreProc" },
     ["@boolean"] = { link = "Boolean" },
     ["@character"] = { link = "Character" },
-    -- ["@character.special"] = {},
+    ["@character.special"] = { link = "Special" },
     ["@comment"] = { link = "Comment" },
-    -- ["@comment.documentation"] = {},
-    -- ["@comment.error"] = {},
-    -- ["@comment.note"] = {},
-    -- ["@comment.todo"] = {},
-    -- ["@comment.warning"] = {},
+    ["@comment.documentation"] = { link = "@comment" },
+    ["@comment.error"] = { link = "@comment" },
+    ["@comment.note"] = { link = "@comment" },
+    ["@comment.todo"] = { link = "@comment" },
+    ["@comment.warning"] = { link = "@comment" },
     ["@conditional"] = { link = "Conditional" },
-    -- ["@conditional.ternary"] = {},
-    ["@constant"] = { link = "Constant" },
+    ["@conditional.ternary"] = { link = "Operator" },
+    ["@constant"] = { link = "Identifier" },
     ["@constant.builtin"] = { link = "Constant" },
-    -- ["@constant.macro"] = {},
-    ["@constructor"] = { link = "Function" },
+    ["@constant.macro"] = { link = "Constant" },
+    ["@constructor"] = { link = "Identifier" },
     ["@constructor.call"] = { link = "Identifier" },
     ["@define"] = { link = "Define" },
-    -- ["@diff.delta"] = {},
-    -- ["@diff.minus"] = {},
-    -- ["@diff.plus"] = {},
+    ["@diff.plus"] = { fg = "#18b218", bg = p.none },
+    ["@diff.minus"] = { fg = "#b21818", bg = p.none },
+    ["@diff.delta"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@error"] = { link = "Error" },
     ["@exception"] = { link = "Exception" },
-    -- ["@field"] = {},
+    ["@field"] = { link = "Identifier" },
     ["@function"] = { link = "Function" },
     ["@function.builtin"] = { link = "Identifier" },
     ["@function.call"] = { link = "Identifier" },
@@ -211,101 +212,113 @@ function theme.setup()
     ["@function.method"] = { link = "Function" },
     ["@include"] = { link = "Include" },
     ["@keyword"] = { link = "Keyword" },
-    -- ["@keyword.conditional"] = {},
-    -- ["@keyword.conditional.ternary"] = {},
-    -- ["@keyword.coroutine"] = {},
-    -- ["@keyword.debug"] = {},
-    -- ["@keyword.directive"] = {},
-    -- ["@keyword.directive.define"] = {},
-    -- ["@keyword.exception"] = {},
-    -- ["@keyword.function"] = {},
-    -- ["@keyword.import"] = {},
-    -- ["@keyword.operator"] = {},
-    -- ["@keyword.repeat"] = {},
-    -- ["@keyword.return"] = {},
-    -- ["@keyword.storage"] = {},
+    ["@keyword.conditional"] = { link = "Keyword" },
+    ["@keyword.conditional.ternary"] = { link = "Keyword" },
+    ["@keyword.coroutine"] = { link = "Keyword" },
+    ["@keyword.debug"] = { link = "Keyword" },
+    ["@keyword.directive"] = { link = "Keyword" },
+    ["@keyword.directive.define"] = { link = "Keyword" },
+    ["@keyword.exception"] = { link = "Keyword" },
+    ["@keyword.function"] = { link = "Keyword" },
+    ["@keyword.import"] = { link = "Keyword" },
+    ["@keyword.operator"] = { link = "Keyword" },
+    ["@keyword.repeat"] = { link = "Keyword" },
+    ["@keyword.return"] = { link = "Keyword" },
+    ["@keyword.storage"] = { link = "Keyword" },
     ["@label"] = { link = "Label" },
-    -- ["@markup.environment"] = {},
-    -- ["@markup.heading"] = {},
-    -- ["@markup.italic"] = {},
-    -- ["@markup.link"] = {},
-    -- ["@markup.link.label"] = {},
-    -- ["@markup.link.url"] = {},
-    -- ["@markup.list"] = {},
-    -- ["@markup.list.checked"] = {},
-    -- ["@markup.list.unchecked"] = {},
-    -- ["@markup.math"] = {},
-    -- ["@markup.quote"] = {},
-    -- ["@markup.raw"] = {},
-    -- ["@markup.raw.block"] = {},
-    -- ["@markup.strikethrough"] = {},
-    -- ["@markup.strong"] = {},
-    -- ["@markup.underline"] = {},
+    ["@markup.environment"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@markup.heading"] = { link = "Title" },
+    ["@markup.italic"] = { italic = true },
+    ["@markup.link"] = { link = "Underlined" },
+    ["@markup.link.label"] = { link = "Underlined" },
+    ["@markup.link.url"] = { link = "Underlined" },
+    ["@markup.list"] = { link = "Special" },
+    ["@markup.list.checked"] = { link = "Special" },
+    ["@markup.list.unchecked"] = { link = "Special" },
+    ["@markup.math"] = { link = "Special" },
+    ["@markup.quote"] = { link = "Comment" },
+    ["@markup.raw"] = { link = "String" },
+    ["@markup.raw.block"] = { link = "String" },
+    ["@markup.strikethrough"] = { strikethrough = true },
+    ["@markup.strong"] = { bold = true },
+    ["@markup.underline"] = { underline = true },
     ["@method"] = { link = "Function" },
     ["@method.call"] = { link = "Identifier" },
-    -- ["@module"] = {},
-    -- ["@module.builtin"] = {},
-    -- ["@namespace"] = {},
+    ["@module"] = { link = "Identifier" },
+    ["@module.builtin"] = { link = "Identifier" },
+    ["@namespace"] = { link = "Identifier" },
     ["@number"] = { link = "Number" },
-    -- ["@number.float"] = {},
+    ["@number.float"] = { link = "@number" },
     ["@operator"] = { link = "Operator" },
     ["@preproc"] = { link = "PreProc" },
-    -- ["@property"] = {},
+    ["@property"] = { link = "Identifier" },
     ["@punctuation.bracket"] = { link = "Normal" },
     ["@punctuation.delimiter"] = { link = "Normal" },
     ["@punctuation.special"] = { link = "Special" },
     ["@repeat"] = { link = "Repeat" },
     ["@string"] = { link = "String" },
-    -- ["@string.documentation"] = {},
-    -- ["@string.escape"] = {},
-    -- ["@string.regexp"] = {},
+    ["@string.documentation"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@string.escape"] = { link = "@string.special" },
+    ["@string.regexp"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@string.special"] = { link = "Special" },
-    -- ["@string.special.path"] = {},
-    -- ["@string.special.symbol"] = {},
-    -- ["@string.special.url"] = {},
-    -- ["@symbol"] = {},
+    ["@string.special.path"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@string.special.symbol"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@string.special.url"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@symbol"] = { link = "Constant" },
     ["@tag"] = { link = "Tag" },
-    -- ["@tag.attribute"] = {},
-    -- ["@tag.delimiter"] = {},
-    -- ["@text"] = {},
-    -- ["@text.danger"] = {},
+    ["@tag.attribute"] = { link = "Type" },
+    ["@tag.delimiter"] = { link = "Function" },
+    ["@text"] = { link = "Normal" },
+    ["@text.danger"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@text.emphasis"] = { italic = true },
-    -- ["@text.environment"] = {},
-    -- ["@text.environment.name"] = {},
+    ["@text.environment"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@text.environment.name"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@text.literal"] = { link = "String" },
     ["@text.literal.block"] = { link = "String" },
-    -- ["@text.math"] = {},
-    -- ["@text.note"] = {},
-    -- ["@text.reference"] = {},
+    ["@text.math"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@text.note"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@text.reference"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@text.strike"] = { strikethrough = true },
     ["@text.strong"] = { bold = true },
-    ["@text.title"] = { link = "Title"},
-    -- ["@text.todo"] = {},
-    -- ["@text.todo.checked"] = {},
-    -- ["@text.todo.unchecked"] = {},
-    ["@text.underline"] = { link = "Underline" },
-    -- ["@text.uri"] = {},
-    -- ["@text.warning"] = {},
+    ["@text.title"] = { link = "Title" },
+    ["@text.todo"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@text.todo.checked"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@text.todo.unchecked"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@text.underline"] = { link = "Underlined" },
+    ["@text.uri"] = { link = "Underlined" },
+    ["@text.warning"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@type"] = { link = "Identifier" },
     ["@type.builtin"] = { link = "Type" },
     ["@type.definition"] = { link = "Identifier" },
     ["@type.qualifier"] = { link = "Type" },
-    ["@variable"] = { fg = p.white },
-    -- ["@variable.builtin"] = {},
-    -- ["@variable.member"] = {},
-    -- ["@variable.parameter"] = {},
+    ["@variable"] = { link = "Identifier" },
+    ["@variable.builtin"] = { link = "Identifier" },
+    ["@variable.member"] = { link = "Identifier" },
+    ["@variable.parameter"] = { link = "Identifier" },
 
     -- Language-specific highlights.
     --
     -- Bash
+    ["@constant.bash"] = { link = "Identifier" },
     ["@function.builtin.bash"] = { link = "Function" },
     ["@function.call.bash"] = { link = "Function" },
     ["@operator.bash"] = { link = "Statement" },
     ["@punctuation.bracket.bash"] = { link = "Special" },
     ["@punctuation.delimiter.bash"] = { link = "Statement" },
     ["@punctuation.special.bash"] = { link = "Special" },
-    -- Git
+    -- BibTeX
+    ["@function.builtin.bibtex"] = { link = "Function" },
+    ["@symbol.bibtex"] = { link = "Special" },
+    -- CMake
+    ["@function.builtin.cmake"] = { link = "Function" },
+    ["@type.cmake"] = { link = "Type" },
+    -- CSS
+    cssBraces = { link = "Normal" },
+    cssAttrComma = { link = "Normal" },
+    -- Gitconfig
     gitconfigVariable = { link = "Function" },
+    -- Gitattributes
+    ["@variable.builtin.gitattributes"] = { link = "Function" },
     -- Gitcommit (use similar colors to `git diff`)
     gitcommitDiff = { fg = "#b2b2b2", bg = p.none },
     diffAdded = { fg = "#18b218", bg = p.none },
@@ -334,14 +347,16 @@ function theme.setup()
     ["@constructor.haskell"] = { link = "Identifier" },
     ["@function.call.haskell"] = { link = "Function" },
     -- HTML
+    ["@tag.html"] = { link = "Statement" },
+    ["@constant.html"] = { link = "Constant" },
     htmlTag = { link = "Function" },
     htmlEndTag = { link = "Function" },
     -- INI
     dosiniHeader = { link = "PreProc" },
     dosiniLabel = { link = "Identifier" },
     dosiniValue = { link = "String" },
-    -- JSON
-    -- ["@punctuation.bracket.json"] = { link = "Special" }, XXX
+    -- Kotlin
+    ktAnnotation = { link = "PreProc" },
     -- Lua
     ["@constructor.lua"] = { link = "Identifier" },
     -- Makefile
@@ -353,18 +368,35 @@ function theme.setup()
     ["@text.quote.markdown"] = { link = "Comment" },
     ["@text.reference.markdown_inline"] = { link = "Underlined" },
     ["@text.uri.markdown_inline"] = { link = "Constant" },
+    -- Proto
+    ["@type.proto"] = { link = "Type" },
     -- Python
     pythonBuiltin = { link = "Identifier" },
     pythonOperator = { link = "Statement" },
+    pythonDecoratorName = { link = "PreProc" },
+    -- RST
+    rstInterpretedTextOrHyperlinkReference = { link = "Function" },
+    -- Ruby
+    ["@label.ruby"] = { link = "Identifier" },
     -- SQL
     ["@attribute.sql"] = { link = "Statement" },
     -- Terraform
-    hclBraces = { link = "Normal" },
+    ["@keyword.terraform"] = { link = "Type" },
+    ["@type.terraform"] = { link = "Type" },
+    -- Tmux
+    tmuxFlags = { link = "Function" },
     -- TOML
+    ["@type.toml"] = { link = "PreProc" },
     tomlTable = { link = "PreProc" },
     tomlTableArray = { link = "PreProc" },
     -- Vim
     ["@variable.builtin.vim"] = { link = "PreProc" },
+    -- Vimdoc
+    ["@text.reference.vimdoc"] = { link = "Function" },
+    ["@text.note.vimdoc"] = { link = "Normal" },
+    -- XML
+    ["@punctuation.delimiter.xml"] = { link = "String" },
+    ["@tag.xml"] = { link = "Statement" },
     -- YAML
     yamlBlockMappingKey = { link = "Function" },
   }
