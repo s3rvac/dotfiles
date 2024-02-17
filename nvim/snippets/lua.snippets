@@ -4,7 +4,7 @@ snippet hb "hashbang"
 #!/usr/bin/lua
 endsnippet
 
-# Constructs
+# Functions
 
 snippet fun "function"
 function ${1}(${2})
@@ -12,13 +12,35 @@ function ${1}(${2})
 end
 endsnippet
 
-snippet cb "curly braces"
+# Control flow
+
+snippet if "if"
+if ${1} then
+	${2}
+end
+endsnippet
+
+snippet ife "if-else"
+if ${1} then
+	${2}
+else
+	${3}
+end
+endsnippet
+
+snippet for "for"
+for ${1} do
+	${2}
+end
+endsnippet
+
+snippet cb "curly braces" w
 {
 	${1}
 }
 endsnippet
 
-# Commands
+# Statements
 
 snippet pr "print"
 print(${1})
