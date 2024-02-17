@@ -123,5 +123,5 @@ return {
       -- Neovim without any issues.
       cmd = { pyright_server, "--stdio" },
     })
-  end
+  end,
 }

@@ -13,26 +13,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(
-  {
-    { import = "s3rvac.plugins" },
-  },
-  {
-    lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
-    -- Disable automatic detection of changes in files as they make editing of
-    -- files in the plugins directory cumbersome.
-    change_detection = { enabled = false },
-    install = {
-      -- Do not install missing plugins at startup (I prefer to do this
-      -- manually instead of Lazy.nvim popping up unexpectedly).
-      missing = false,
+require("lazy").setup({
+  { import = "s3rvac.plugins" },
+}, {
+  lockfile = vim.fn.stdpath("config") .. "/data/lazy-lock.json",
+  -- Disable automatic detection of changes in files as they make editing of
+  -- files in the plugins directory cumbersome.
+  change_detection = { enabled = false },
+  ui = {
+    border = "single",
+    icons = {
+      -- Use a custom icon for the following items as the default ones are weird.
+      ft = "",
     },
-    ui = {
-      border = "single",
-      icons = {
-        -- Use a custom icon for the following items as the default ones are weird.
-        ft = "",
-      },
-    }
-  }
-)
+  },
+})

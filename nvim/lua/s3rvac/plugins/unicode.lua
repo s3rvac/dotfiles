@@ -10,5 +10,5 @@ return {
     vim.keymap.set("i", "<C-x><C-u>", "<Plug>(UnicodeComplete)", {
       desc = "Completion of Unicode characters",
     })
-  end
+  end,
 }

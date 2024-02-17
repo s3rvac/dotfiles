@@ -16,10 +16,14 @@ return {
         vim.schedule_wrap(function(selected)
           if selected then
             vim.api.nvim_feedkeys("ciw" .. selected, "n", true)
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, true, true), "n", true)
+            vim.api.nvim_feedkeys(
+              vim.api.nvim_replace_termcodes("<Esc>", true, true, true),
+              "n",
+              true
+            )
           end
         end)
       )
     end)
-  end
+  end,
 }

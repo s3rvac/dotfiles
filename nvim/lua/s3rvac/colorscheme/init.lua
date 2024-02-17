@@ -6,7 +6,7 @@ function M.load()
 
   -- The clearing only needs to be done when there is no colorscheme set.
   if vim.g.colors_name then
-    vim.cmd "hi clear"
+    vim.cmd("hi clear")
   end
 
   vim.g.colors_name = "s3rvac"

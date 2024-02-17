@@ -46,8 +46,8 @@ return {
             },
           },
         },
-      }
-    end
+      })
+    end,
   },
   -- https://github.com/chrisgrieser/nvim-various-textobjs
   {
@@ -57,16 +57,32 @@ return {
     opts = { useDefaultKeymaps = false },
     config = function()
       -- Identation (a replacement for https://github.com/michaeljsmith/vim-indent-object).
-      vim.keymap.set({ "o", "x" }, "ii", "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<CR>")
-      vim.keymap.set({ "o", "x" }, "ai", "<cmd>lua require('various-textobjs').indentation('outer', 'inner')<CR>")
-      vim.keymap.set({ "o", "x" }, "iI", "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<CR>")
-      vim.keymap.set({ "o", "x" }, "aI", "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<CR>")
+      vim.keymap.set(
+        { "o", "x" },
+        "ii",
+        "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<CR>"
+      )
+      vim.keymap.set(
+        { "o", "x" },
+        "ai",
+        "<cmd>lua require('various-textobjs').indentation('outer', 'inner')<CR>"
+      )
+      vim.keymap.set(
+        { "o", "x" },
+        "iI",
+        "<cmd>lua require('various-textobjs').indentation('inner', 'inner')<CR>"
+      )
+      vim.keymap.set(
+        { "o", "x" },
+        "aI",
+        "<cmd>lua require('various-textobjs').indentation('outer', 'outer')<CR>"
+      )
 
       -- The entire file (buffer).
       vim.keymap.set({ "o", "x" }, "aF", "<cmd>lua require('various-textobjs').entireBuffer()<CR>")
 
       -- URL.
       vim.keymap.set({ "o", "x" }, "aU", "<cmd>lua require('various-textobjs').url()<CR>")
-    end
+    end,
   },
 }

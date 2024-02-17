@@ -28,12 +28,9 @@ return {
       -- completion in case there are characters around the cursor, e.g. in
       -- `[text](|)`, where `|` is the cursor. Those cases are not handled by
       -- FzF very well.)
-      vim.keymap.set(
-        { "n", "v", "i" },
-        "<C-x><C-p>",
-        function() fzf.complete_path() end,
-        { silent = true, desc = "Fuzzy complete path" }
-      )
+      vim.keymap.set({ "n", "v", "i" }, "<C-x><C-p>", function()
+        fzf.complete_path()
+      end, { silent = true, desc = "Fuzzy complete path" })
 
       -- Configuration.
       local fzf_defaults = require("fzf-lua.defaults").defaults;
@@ -49,7 +46,7 @@ return {
         },
         fzf_colors = {
           -- Use the same colors as I use in the shell version of fzf.
-          ["hl"]  = { "fg", "Statement" },
+          ["hl"] = { "fg", "Statement" },
           ["hl+"] = { "fg", "Statement" },
         },
         files = {
@@ -60,7 +57,8 @@ return {
         grep = {
           -- 1) Make ripgrep search also in hidden files/directories when grepping.
           -- 2) Use the same colors as I have defined for grep, git grep, etc.
-          rg_opts = "--hidden --colors \"match:fg:0xff,0xff,0x60\" --colors \"match:bg:black\" --colors \"match:style:bold\" " .. fzf_defaults.grep.rg_opts,
+          rg_opts = '--hidden --colors "match:fg:0xff,0xff,0x60" --colors "match:bg:black" --colors "match:style:bold" '
+            .. fzf_defaults.grep.rg_opts,
         },
         previewers = {
           builtin = {
@@ -75,9 +73,9 @@ return {
                 "toml",
               }
             },
-          }
-        }
-      }
-    end
-  }
+          },
+        },
+      })
+    end,
+  },
 }

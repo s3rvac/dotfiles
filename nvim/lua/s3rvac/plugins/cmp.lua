@@ -28,60 +28,58 @@ return {
             nvim_lsp = "[LSP]",
           })[entry.source.name]
           return vim_item
-        end
+        end,
       },
       mapping = cmp.mapping.preset.insert({
         -- Enable Omni completion triggered by <C-x><C-o>.
         ["<C-x><C-o>"] = cmp.mapping(function()
+          cmp.complete()
+        end),
+
+        -- Initating the completion and scrolling through the items.
+        -- Note: I use <C-k> in insert mode to show the signature of the
+        --       current function, which is why there is `fallback()` instead
+        --       of `cmp.complete()`.
+        ["<C-j>"] = cmp.mapping(function()
+          if cmp.visible() then
+            cmp.select_next_item({ behavior = "insert" })
+          else
             cmp.complete()
           end
-        ),
-
-        -- Initating the completion and scrolling the items.
-        ["<C-j>"] = cmp.mapping(function()
-            if cmp.visible() then
-              cmp.select_next_item({behavior = "insert"})
-            else
-              cmp.complete()
-            end
+        end, { "i", "s" }),
+        ["<C-k>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item({ behavior = "insert" })
+          else
+            fallback()
           end
-        ),
-        ["<C-k>"] = cmp.mapping(function()
-            if cmp.visible() then
-              cmp.select_prev_item({behavior = "insert"})
-            else
-              cmp.complete()
-            end
-          end
-        ),
+        end, { "i", "s" }),
 
         -- Scrolling the preview window.
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
         -- Preserve the original mapping of <C-p>/<C-n> (I need those to be
-        -- fast and complete just text) but allow those to be used when cmp is
-        -- visible.
+        -- fast and complete just buffer text) but allow those to be used when
+        -- cmp is visible.
         ["<C-p>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item(select_opts)
-            else
-              fallback()
-            end
-          end, {"i", "s"}
-        ),
+          if cmp.visible() then
+            cmp.select_prev_item(select_opts)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
         ["<C-n>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item(select_opts)
-            else
-              fallback()
-            end
-          end, {"i", "s"}
-        ),
+          if cmp.visible() then
+            cmp.select_next_item(select_opts)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
 
         -- Safely select entries with <CR>.
-        -- * If nothing is selected (including preselections), add a newline as usual.
-        -- * If something has explicitly been selected, select it.
+        -- - If nothing is selected (including preselections), add a newline as usual.
+        -- - If something has explicitly been selected, select it.
         ["<CR>"] = cmp.mapping({
           i = function(fallback)
             if cmp.visible() and cmp.get_active_entry() then
@@ -113,7 +111,7 @@ return {
         },
         documentation = {
           border = "single",
-        }
+        },
       },
     })
   end,

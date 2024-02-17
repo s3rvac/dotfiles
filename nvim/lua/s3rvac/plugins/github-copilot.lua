@@ -9,7 +9,9 @@ return {
     -- few hundred milliseconds. I have also tried loading the plugin with
     -- `event = "VeryLazy"`, but it did not have any effect.
     vim.g.copilot_enabled = false
-    vim.cmd("au BufNewFile,BufRead * call timer_start(1000, { tid -> execute('lua vim.g.copilot_enabled = true')})")
+    vim.cmd(
+      "au BufNewFile,BufRead * call timer_start(1000, { tid -> execute('lua vim.g.copilot_enabled = true')})"
+    )
 
     -- Enable the plugin only for certain file types.
     vim.g.copilot_filetypes = {
@@ -44,5 +46,5 @@ return {
 
     -- Mappings.
     vim.keymap.set("n", "<Leader>gcp", ":Copilot panel")
-  end
+  end,
 }

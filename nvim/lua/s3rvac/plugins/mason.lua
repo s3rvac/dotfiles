@@ -30,5 +30,5 @@ return {
       -- are capable of running all servers.
       automatic_installation = false,
     })
-  end
+  end,
 }
