@@ -5,6 +5,15 @@ return {
   tag = "stable",
   event = "VeryLazy",
   config = function()
+    require("dressing").setup({
+      border = "single",
+      select = {
+        -- Do not trim the trailing `:` from prompt (the trimmed version looks
+        -- weird as the cursor is right after the prompt).
+        trim_prompt = false,
+      },
+    })
+
     -- Show a better looking menu when asking for spelling suggestions.
     -- https://github.com/stevearc/dressing.nvim/issues/60#issuecomment-1239488340
     vim.keymap.set("n", "z=", function()
