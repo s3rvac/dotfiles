@@ -1,5 +1,8 @@
 "------------------------------------------------------------------------------
 " General settings.
+"
+" (The present configuration file contains settings, mappings, etc. that I have
+" not yet moved to the Lua of the config.)
 "------------------------------------------------------------------------------
 
 " Keep a context (rows) when scrolling vertically.
@@ -677,21 +680,21 @@ iabbrev hte the
 
 augroup file_types
 au!
-" Consider all .tpl files as Smarty files.
+" Consider all .tpl files to be Smarty files.
 au BufNewFile,BufRead *.tpl setl ft=smarty
-" Consider all .php* files (.phps, .phpt etc.) as PHP files.
+" Consider all .php* files (.phps, .phpt etc.) to be PHP files.
 au BufNewFile,BufRead *.php[0-9a-zA-Z] setl ft=php
-" Consider all .ll files as LLVM IR files.
+" Consider all .ll files to be LLVM IR files.
 au BufNewFile,BufRead *.ll setl ft=llvm
-" Consider all .wsgi files as Python files.
+" Consider all .wsgi files to be Python files.
 au BufNewFile,BufRead *.wsgi setl ft=python
 " Use Vim highlighting when editing Tridactyl's configuration.
 au BufNewFile,BufRead .tridactylrc setl ft=vim
 " Use tex filetype rather than plaintex.
 au BufNewFile,BufRead *.tex setl ft=tex
-" Consider all .hql files as Hive files.
+" Consider all .hql files to be Hive files.
 au BufNewFile,BufRead *.hql set ft=hive
-" Consider all .yar/.yara files as YARA files.
+" Consider all .yar/.yara files to be YARA files.
 au BufNewFile,BufRead *.yar,*.yara set filetype=yara
 augroup end
 

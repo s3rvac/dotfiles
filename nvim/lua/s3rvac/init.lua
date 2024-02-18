@@ -1,5 +1,6 @@
--- My own colorscheme.
+-- Colorscheme and colors to ensure that those are loaded first.
 require("s3rvac.colorscheme")
+require("s3rvac.config.colors")
 
 -- Plugin management via lazy.nvim.
 require("s3rvac.lazy")
