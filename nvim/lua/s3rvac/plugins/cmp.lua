@@ -92,6 +92,15 @@ return {
           c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
         }),
       }),
+      snippet = {
+        -- The snippet configuration is required, even though that I do not
+        -- complete snippets with nvim-cmp. If I do not include the following
+        -- code, I get the issues described in
+        -- https://github.com/hrsh7th/nvim-cmp/issues/1619.
+        expand = function(args)
+          vim.fn["UltiSnips#Anon"](args.body)
+        end,
+      },
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "buffer" },
