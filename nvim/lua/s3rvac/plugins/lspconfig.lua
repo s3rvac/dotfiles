@@ -32,20 +32,6 @@ return {
     local on_attach = function(client, bufnr)
       opts.buffer = bufnr
 
-      opts.desc = "Open line diagnostics"
-      vim.keymap.set("n", "<Leader>df", vim.diagnostic.open_float, opts)
-
-      opts.desc = "Open line diagnostics"
-      vim.keymap.set("n", "<Leader>df", vim.diagnostic.open_float, opts)
-
-      opts.desc = "Go to the previous diagnostic"
-      vim.keymap.set("n", "<Leader>dp", vim.diagnostic.goto_prev, opts)
-
-      opts.desc = "Go to the next diagnostic"
-      vim.keymap.set("n", "<Leader>dn", vim.diagnostic.goto_next, opts)
-
-      opts.desc = "List all diagnostics from the current buffer"
-      vim.keymap.set("n", "<Leader>dl", "<cmd>FzfLua diagnostics_document<CR>", opts)
 
       opts.desc = "LSP: Jump to the definition of the symbol under cursor"
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
