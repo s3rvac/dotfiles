@@ -5,6 +5,10 @@ return {
     "ibhagwan/fzf-lua",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
+      -- List nvim-treesitter as a dependency to ensure that when fzf.lua is
+      -- initialized, we can get the list of disabled treesitter modules from
+      -- the treesitter.lua configuration.
+      "nvim-treesitter/nvim-treesitter",
     },
     event = "VeryLazy",
     config = function()
@@ -33,11 +37,17 @@ return {
       end, { silent = true, desc = "Fuzzy complete path" })
 
       -- Configuration.
-      local fzf_defaults = require("fzf-lua.defaults").defaults;
-      require("fzf-lua").setup {
+      local fzf_defaults = require("fzf-lua.defaults").defaults
+      require("fzf-lua").setup({
+        defaults = {
+          -- Disable icons (speedup + it more resembles fzf in the shell).
+          git_icons = false,
+          file_icons = false,
+        },
         winopts = {
           width = 0.90,
           height = 0.80,
+          border = "single",
           preview = {
             -- Decrease the width of the preview window to have more available space
             -- for file names.
@@ -48,11 +58,6 @@ return {
           -- Use the same colors as I use in the shell version of fzf.
           ["hl"] = { "fg", "Statement" },
           ["hl+"] = { "fg", "Statement" },
-        },
-        files = {
-          -- Disable icons (speedup + it more resembles fzf in the shell).
-          git_icons = false,
-          file_icons = false,
         },
         grep = {
           -- 1) Make ripgrep search also in hidden files/directories when grepping.
@@ -66,12 +71,7 @@ return {
               enable = true,
               -- Disable the same types as disabled in the configuration for
               -- the nvim-treesitter plugin.
-              disable = {
-                "gitcommit",
-                "kotlin",
-                "python",
-                "toml",
-              }
+              disable = require("nvim-treesitter.configs").get_module("highlight").disable,
             },
           },
         },
