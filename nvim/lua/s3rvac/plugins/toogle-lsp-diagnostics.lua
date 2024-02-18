@@ -4,12 +4,15 @@ return {
   "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
   event = "VeryLazy",
   config = function()
-    require('toggle_lsp_diagnostics').init(vim.diagnostic.config())
+    require("toggle_lsp_diagnostics").init(vim.diagnostic.config())
+    local fns = require("s3rvac.functions")
 
     -- Mappings.
-    local opts = { noremap = true, silent = true }
-
-    opts.desc = "Toggle virtual windows for diagnostics (globally)"
-    vim.keymap.set("n", "<Leader>dv", "<Plug>(toggle-lsp-diag-vtext)", opts)
-  end
+    vim.keymap.set(
+      "n",
+      "<Leader>dt",
+      "<Plug>(toggle-lsp-diag)",
+      fns.keymap_opts({ desc = "Toggle diagnostics (globally)" })
+    )
+  end,
 }
