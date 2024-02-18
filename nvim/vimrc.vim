@@ -821,16 +821,6 @@ au FileType llvm setl shiftwidth=2
 au FileType llvm setl comments=bO:;
 augroup end
 
-" Lua
-augroup lua
-au!
-" Indentation settings.
-au FileType lua setl expandtab
-au FileType lua setl tabstop=2
-au FileType lua setl softtabstop=2
-au FileType lua setl shiftwidth=2
-augroup end
-
 " Mail
 augroup mail
 au!
