@@ -608,47 +608,6 @@ endfunction
 command! WindowZoomToggle call s:WindowZoomToggle()
 nnoremap <silent> <Leader>wz :WindowZoomToggle<CR>
 
-" A function for formatting the currently opened buffer via the given formatting
-" shell command.
-"
-" The shell command is expected to read the input from stdin and write to stdout.
-"
-" Based on https://github.com/hashivim/vim-terraform/blob/master/autoload/terraform.vim
-function! s:FormatCurrentBufferWith(format_cmd) abort
-	" Save the view.
-	let current_view = winsaveview()
-
-	" Make a fake change so that the undo point is correct.
-	normal! ix
-	normal! "_x
-
-	" Execute the formatting command, redirecting stderr to a temporary file.
-	let tmp_file = tempname()
-	let shellredir_save = &shellredir
-	let &shellredir = '>%s 2>' . tmp_file
-	silent execute '%!' . a:format_cmd
-	let &shellredir = shellredir_save
-
-	" Persist the changes if there was no error, the buffer is modifiable, and
-	" the buffer has a path.
-	if v:shell_error == 0 && &modifiable && expand('%:p') != ''
-		write
-	endif
-
-	" If there was an error, undo any changes and show the content of stderr.
-	if v:shell_error != 0
-		silent undo
-		echo 'Error running ' . a:format_cmd
-		echo join(readfile(tmp_file), '\n')
-	endif
-
-	" Restore the original view.
-	call winrestview(current_view)
-
-	" Cleanup.
-	call delete(tmp_file)
-endfunction
-
 " Expand %% to the path of the current buffer in command mode.
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -763,10 +722,6 @@ au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,
 " Search also in /usr/include.
 au FileType c,cpp setl path+=/usr/include
 
-" Re-formatting via `clang-format`.
-au FileType c,cpp nnoremap <buffer> <silent> <Leader>rf
-	\ :call <SID>FormatCurrentBufferWith('clang-format --style=file')<CR>
-
 " Let F10 compile and run the currently edited code
 " (F10 -> use GCC, S-F10 -> use Clang).
 au FileType c nnoremap <buffer> <F10> :w<CR>:!clear; gcc -std=c2x -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
@@ -807,10 +762,6 @@ augroup go
 au!
 " The default indentation settings are OK as Go uses tabs.
 
-" Re-format via `gofmt`.
-au FileType go nnoremap <buffer> <silent> <Leader>rf
-	\ :call <SID>FormatCurrentBufferWith('gofmt')<CR>
-
 " Let F10 compile and run the current file.
 au FileType go nnoremap <buffer> <F10> :w<CR>:!clear; go run %<CR>
 augroup end
@@ -833,14 +784,6 @@ au FileType hive setl expandtab
 au FileType hive setl tabstop=4
 au FileType hive setl softtabstop=4
 au FileType hive setl shiftwidth=4
-augroup end
-
-" JSON
-augroup json
-au!
-" Reformat via `python -m json.tool`.
-au FileType json nnoremap <buffer> <silent> <Leader>rf
-	\ :call <SID>FormatCurrentBufferWith('python -m json.tool')<CR>
 augroup end
 
 " JavaScript
@@ -937,10 +880,6 @@ au FileType python setl tabstop=4
 au FileType python setl softtabstop=4
 au FileType python setl shiftwidth=4
 
-" Re-format via `black`.
-au FileType python nnoremap <buffer> <silent> <Leader>rf
-	\ :call <SID>FormatCurrentBufferWith('black --quiet --no-color -S -')<CR>
-
 " Let F10 run the currently opened script.
 au FileType python nnoremap <buffer> <F10> :w<CR>:!clear; python %<CR>
 augroup end
@@ -980,9 +919,6 @@ au FileType rust setl tabstop=4
 au FileType rust setl softtabstop=4
 au FileType rust setl shiftwidth=4
 
-" Re-formatting via `RustFmt` from the rust.vim plugin.
-au FileType rust nnoremap <buffer> <silent> <Leader>rf :RustFmt<CR>
-
 " Let F9 compile and run tests for the current project.
 au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo test<CR>
 
@@ -1005,10 +941,6 @@ au FileType terraform setl expandtab
 au FileType terraform setl tabstop=2
 au FileType terraform setl softtabstop=2
 au FileType terraform setl shiftwidth=2
-
-" Reformat via terraform fmt.
-au FileType terraform nnoremap <buffer> <silent> <Leader>rf
-	\ :call <SID>FormatCurrentBufferWith('terraform fmt -no-color -')<CR>
 augroup end
 
 " Terragrunt (.hcl)
@@ -1019,10 +951,6 @@ au FileType hcl setl expandtab
 au FileType hcl setl tabstop=2
 au FileType hcl setl softtabstop=2
 au FileType hcl setl shiftwidth=2
-
-" Reformat via `terragrunt hclfmt`.
-au FileType hcl nnoremap <buffer> <silent> <Leader>rf
-	\ :call <SID>FormatCurrentBufferWith('terragrunt hclfmt -no-color -')<CR>
 augroup end
 
 " YAML
@@ -1033,10 +961,6 @@ au FileType yaml setl expandtab
 au FileType yaml setl tabstop=2
 au FileType yaml setl softtabstop=2
 au FileType yaml setl shiftwidth=2
-
-" Reformat via `yq`.
-au FileType yaml nnoremap <buffer> <silent> <Leader>rf
-	\ :call <SID>FormatCurrentBufferWith('yq --no-colors -')<CR>
 augroup end
 
 "------------------------------------------------------------------------------
