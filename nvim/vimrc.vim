@@ -206,25 +206,6 @@ function! MyTabLine()
 endfunction
 set tabline=%!MyTabLine()
 
-" ---- Statusline ----
-
-" Always display a statusline.
-set laststatus=2
-" Since I'm using a statusline, disable ruler.
-set noruler
-" Path to the file in the buffer.
-set statusline=%<%f
-" Flags (e.g. [+], [RO]).
-set statusline+=\ %h%w%m%r%k
-" Encoding and line endings.
-set statusline+=\ [%{(&fenc\ ==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")},%{&ff}]
-" File type.
-set statusline+=\ %y
-" Codes of the character under cursor.
-set statusline+=\ [\%03.3b,0x\%02.2B,U+%04B]
-" Line and column numbers.
-set statusline+=\ [%l/%L\ (%p%%),%v]
-
 " ---- Completion ----
 
 set wildmenu
