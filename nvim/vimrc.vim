@@ -510,28 +510,28 @@ noremap <silent> J :tabprevious<CR>
 noremap <silent> K :tabnext<CR>
 
 " Alt-# goes to the #th tab.
-nnoremap <A-1> 1gt
-nnoremap <A-2> 2gt
-nnoremap <A-3> 3gt
-nnoremap <A-4> 4gt
-nnoremap <A-5> 5gt
-nnoremap <A-6> 6gt
-nnoremap <A-7> 7gt
-nnoremap <A-8> 8gt
-nnoremap <A-9> 9gt
-nnoremap <A-0> 10gt
+nnoremap <silent> <A-1> 1gt
+nnoremap <silent> <A-2> 2gt
+nnoremap <silent> <A-3> 3gt
+nnoremap <silent> <A-4> 4gt
+nnoremap <silent> <A-5> 5gt
+nnoremap <silent> <A-6> 6gt
+nnoremap <silent> <A-7> 7gt
+nnoremap <silent> <A-8> 8gt
+nnoremap <silent> <A-9> 9gt
+nnoremap <silent> <A-0> :tablast<CR>
 if !has('gui_running')
 	" Konsole sends <Esc># when pressing Alt-#.
-	nnoremap <Esc>1 1gt
-	nnoremap <Esc>2 2gt
-	nnoremap <Esc>3 3gt
-	nnoremap <Esc>4 4gt
-	nnoremap <Esc>5 5gt
-	nnoremap <Esc>6 6gt
-	nnoremap <Esc>7 7gt
-	nnoremap <Esc>8 8gt
-	nnoremap <Esc>9 9gt
-	nnoremap <Esc>0 10gt
+	nnoremap <silent> <Esc>1 1gt
+	nnoremap <silent> <Esc>2 2gt
+	nnoremap <silent> <Esc>3 3gt
+	nnoremap <silent> <Esc>4 4gt
+	nnoremap <silent> <Esc>5 5gt
+	nnoremap <silent> <Esc>6 6gt
+	nnoremap <silent> <Esc>7 7gt
+	nnoremap <silent> <Esc>8 8gt
+	nnoremap <silent> <Esc>9 9gt
+	nnoremap <silent> <Esc>0 :tablast<CR>
 endif
 
 " Join lines by <Leader>j because I use J to go to the previous tab.
