@@ -14,10 +14,6 @@ set tabpagemax=1000
 " Don't redraw during complex operations (e.g. macros).
 " TODO: Causes screen tearing / visual glitches?
 " set lazyredraw
-" Decrease updatetime (the time Vim waits after you stop typing before it
-" triggers CursorHold autocommands) from the default 4 seconds, which is
-" too long, to 1 second.
-set updatetime=1000
 " Automatically save before :next, :make etc.
 set autowrite
 " Ask to save file before operations like :q or :e fail.
