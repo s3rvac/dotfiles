@@ -506,8 +506,8 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Jump to the previous/next tab.
-noremap <silent> J gT
-noremap <silent> K gt
+noremap <silent> J :tabprevious<CR>
+noremap <silent> K :tabnext<CR>
 
 " Alt-# goes to the #th tab.
 nnoremap <A-1> 1gt
