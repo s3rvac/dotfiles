@@ -9,9 +9,10 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local fns = require("s3rvac.functions")
 
     -- Used to enable autocompletion (assigned to every LSP server config).
-    local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
 
     ------- Settings -------
 
@@ -32,6 +33,8 @@ return {
     local on_attach = function(client, bufnr)
       opts.buffer = bufnr
 
+      -- Disable semantic (lsp) highlights.
+      client.server_capabilities.semanticTokensProvider = nil
 
       opts.desc = "LSP: Jump to the definition of the symbol under cursor"
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -42,6 +45,9 @@ return {
       opts.desc = "LSP: Show documentation for the symbol under cursor"
       vim.keymap.set("n", "<Leader>ll", vim.lsp.buf.hover, opts)
 
+      opts.desc = "LSP: Show signature for the symbol under cursor"
+      vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+
       opts.desc = "LSP: Show references for the symbol under cursor"
       vim.keymap.set("n", "<Leader>lr", "<cmd>FzfLua lsp_references<CR>", opts)
 
@@ -50,9 +56,6 @@ return {
 
       opts.desc = "LSP: Smart rename of the symbol under cursor"
       vim.keymap.set("n", "<Leader>lR", vim.lsp.buf.rename, opts)
-
-      opts.desc = "LSP: Reformat"
-      vim.keymap.set({"n", "x"}, "<Leader>rF", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
 
       -- Unused mappings:
 
@@ -70,44 +73,103 @@ return {
 
       -- opts.desc = "LSP: Show implementations for the symbol under cursor"
       -- vim.keymap.set("n", "xxx", "<cmd>FzfLua lsp_implementations<CR>", opts)
-
-      -- Automatically show the diagnostics on the current line in a floating
-      -- window after `updatetime` seconds of cursor inactivity.
-      local float_window_opts = {
-        focusable = false,
-        close_events = {
-          "BufLeave",
-          "BufHidden",
-          "CursorMoved",
-          "InsertEnter",
-          "FocusLost",
-        },
-      }
-      vim.api.nvim_create_autocmd("CursorHold", {
-          buffer = bufnr,
-          callback = function()
-            vim.diagnostic.open_float(nil, float_window_opts)
-          end,
-        })
     end
 
     ------ Language servers -------
 
-    function file_exists(file)
-      return vim.fn.filereadable(file) == 1
-    end
+    -- Note: I need to specify full paths to servers; otherwise, they fail to
+    --       start (for no apparent reason). I am able to run them manually
+    --       from Neovim without any issues.
+
+    -- Bash
+    local bashls = fns.mason_bin_path_to("bash-language-server")
+    lspconfig["bashls"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      autostart = fns.is_executable(bashls),
+      cmd = { bashls, "start" },
+      settings = {
+        bashIde = {
+          -- Disable shellcheck because it is already handled by nvim-lint.
+          shellcheckPath = "",
+        },
+      },
+    })
+
+    -- Dockerfile
+    local dockerls = fns.mason_bin_path_to("docker-langserver")
+    lspconfig["dockerls"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      autostart = fns.is_executable(dockerls),
+      cmd = { dockerls, "--stdio" },
+    })
+
+    -- Lua
+    local lua_ls = fns.mason_bin_path_to("lua-language-server")
+    lspconfig["lua_ls"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      autostart = fns.is_executable(lua_ls),
+      cmd = { lua_ls },
+      on_init = function(client)
+        -- Use special configuration when editing Neovim's configuration files.
+        -- Based on https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
+        local path = client.workspace_folders[1].name
+        if path == vim.fn.stdpath("config") then
+          client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+            Lua = {
+              diagnostics = {
+                -- Make the language server recognize Neovim's `vim` global.
+                globals = { "vim" },
+                -- Ignore noisy `missing-fields` warnings, e.g. when setting up nvim-treesitter's
+                -- configuration ("Missing required fields in type `TSConfig`").
+                -- https://github.com/LazyVim/LazyVim/issues/1471
+                -- https://github.com/nvim-lua/kickstart.nvim/issues/543
+                disable = { "missing-fields" },
+              },
+              -- Make the language server use the LuaJIT version of Lua.
+              runtime = {
+                version = "LuaJIT",
+              },
+              -- Make the language server aware of Neovim's runtime files.
+              workspace = {
+                checkThirdParty = false,
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+            },
+          })
+          client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+        end
+        return true
+      end,
+    })
 
     -- Python
-    local pyright_server = vim.env.HOME .. "/.local/share/nvim/mason/bin/pyright-langserver"
+    local pyright = fns.mason_bin_path_to("pyright-langserver")
     lspconfig["pyright"].setup({
       capabilities = lsp_capabilities,
       on_attach = on_attach,
-      filetypes = { "python" },
-      autostart = file_exists(pyright_server),
-      -- I need to specify a full path to the server; otherwise, it fails to
-      -- start (for no apparent reason). I am able to run it manually from
-      -- Neovim without any issues.
-      cmd = { pyright_server, "--stdio" },
+      autostart = fns.is_executable(pyright),
+      cmd = { pyright, "--stdio" },
+    })
+
+    -- Python
+    local terraformls = fns.mason_bin_path_to("terraform-ls")
+    lspconfig["terraformls"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      autostart = fns.is_executable(terraformls),
+      cmd = { terraformls, "serve" },
+    })
+
+    -- YAML
+    local yamlls = fns.mason_bin_path_to("yaml-language-server")
+    lspconfig["yamlls"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      autostart = fns.is_executable(yamlls),
+      cmd = { yamlls, "--stdio" },
     })
   end,
 }
