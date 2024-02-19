@@ -1054,18 +1054,18 @@ if s:opened_file_path =~ 'textern-'
 		au BufRead,BufNewFile *.txt setl spelllang=en
 	" cs-blog.petrzemek.net
 	elseif s:opened_file_path =~ 'cs-blog.petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=xhtml
+		au BufRead,BufNewFile *.txt setl ft=html
 	" blog.petrzemek.net
 	elseif s:opened_file_path =~ 'blog.petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=xhtml
+		au BufRead,BufNewFile *.txt setl ft=html
 		au BufRead,BufNewFile *.txt setl spelllang=en
 	" petrzemek.net
 	elseif s:opened_file_path =~ 'petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=xhtml
+		au BufRead,BufNewFile *.txt setl ft=html
 		au BufRead,BufNewFile *.txt setl spelllang=en
 	" Other
 	else
-		au BufRead,BufNewFile *.txt setl ft=xhtml
+		au BufRead,BufNewFile *.txt setl ft=html
 	endif
 endif
 augroup end
