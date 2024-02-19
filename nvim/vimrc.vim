@@ -120,17 +120,13 @@ set nopreserveindent
 set nosmartindent
 " Turn off C-style indent.
 set nocindent
-" Allow formatting of comments with `gq`.
-set fo+=q
 " Turn off automatic insertion of comment characters.
-set fo-=r fo-=o
-" Remove a comment leader when joining comment lines.
-set fo+=j
+set formatoptions-=r formatoptions-=o
 " Turn off indention by filetype (I use custom settings for each filetype).
 filetype indent off
 " Override the previous settings for all file types (some filetype plugins set
 " these options to different values, which is really annoying).
-au FileType * set autoindent nosmartindent nocindent fo+=q fo-=r fo-=o fo+=j
+au FileType * set autoindent nosmartindent nocindent formatoptions-=r formatoptions-=o
 
 " ---- Wrapping ----
 
