@@ -1,0 +1,9 @@
+---
+
+# A configuration file for yamllint.
+# https://github.com/adrienverge/yamllint
+
+extends: default
+rules:
+  # Do not bother me with line-length warnings.
+  line-length: disable
