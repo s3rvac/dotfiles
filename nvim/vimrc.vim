@@ -682,8 +682,6 @@ au BufNewFile,BufRead *.ll setl ft=llvm
 au BufNewFile,BufRead *.wsgi setl ft=python
 " Use Vim highlighting when editing Tridactyl's configuration.
 au BufNewFile,BufRead .tridactylrc setl ft=vim
-" Use tex filetype rather than plaintex.
-au BufNewFile,BufRead *.tex setl ft=tex
 " Consider all .hql files to be Hive files.
 au BufNewFile,BufRead *.hql set ft=hive
 " Consider all .yar/.yara files to be YARA files.
@@ -800,7 +798,7 @@ augroup end
 augroup latex
 au!
 " Enable spell checking by default.
-au FileType tex,plaintex setl spell
+au FileType tex setl spell
 augroup end
 
 " LLVM
