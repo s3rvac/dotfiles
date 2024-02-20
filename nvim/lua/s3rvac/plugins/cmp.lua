@@ -16,6 +16,9 @@ return {
         completeopt = "menu,menuone,preview,noselect",
         -- I want to trigger regular autocompletion manually.
         autocomplete = false,
+        -- Minimum number of characters to trigger completion (only used when
+        -- autocomplete is true).
+        keyword_length = 2,
       },
       formatting = {
         -- Include the source of each item in the menu
@@ -61,14 +64,14 @@ return {
         -- cmp is visible.
         ["<C-p>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_prev_item(select_opts)
+            cmp.select_prev_item({ behavior = "insert" })
           else
             fallback()
           end
         end, { "i", "s" }),
         ["<C-n>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_next_item(select_opts)
+            cmp.select_next_item({ behavior = "insert" })
           else
             fallback()
           end
