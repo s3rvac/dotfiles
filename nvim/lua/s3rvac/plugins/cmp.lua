@@ -6,8 +6,6 @@ return {
   dependencies = {
     -- For completion of text in a buffer.
     "hrsh7th/cmp-buffer",
-    -- For completion of file paths.
-    "hrsh7th/cmp-path",
     -- For LSP completion.
     "hrsh7th/cmp-nvim-lsp",
   },
@@ -24,7 +22,6 @@ return {
         format = function(entry, vim_item)
           vim_item.menu = ({
             buffer = "[Buffer]",
-            path = "[Path]",
             nvim_lsp = "[LSP]",
           })[entry.source.name]
           return vim_item
@@ -100,14 +97,6 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "buffer" },
-        {
-          name = "path",
-          option = {
-            -- When autocompleting a directory, include the trailing slash as
-            -- this is what Neovim's path completion does.
-            trailing_slash = true,
-          },
-        },
       }),
       window = {
         completion = {
