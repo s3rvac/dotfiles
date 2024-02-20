@@ -40,6 +40,7 @@ return {
           "proto",
           "puppet",
           "python",
+          "regex",
           "rst",
           "ruby",
           "rust",
