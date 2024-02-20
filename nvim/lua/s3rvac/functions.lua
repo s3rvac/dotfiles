@@ -36,6 +36,7 @@ function M.keymap_opts(t)
   return {
     noremap = t["noremap"] ~= nil and t["noremap"] or true,
     silent = t["silent"] ~= nil and t["silent"] or true,
+    expr = t["expr"] ~= nil and t["expr"] or false,
     desc = t["desc"] ~= nil and t["desc"] or "",
   }
 end
