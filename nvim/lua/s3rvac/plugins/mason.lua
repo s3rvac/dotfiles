@@ -32,6 +32,7 @@ return {
       ensure_installed = {
         -- LSP servers.
         "bash-language-server",
+        "clangd",
         "dockerfile-language-server",
         "lua_ls",
         "pyright",
@@ -39,6 +40,7 @@ return {
         "yaml-language-server",
 
         -- Formatters.
+        "clang-format",
         "jq",
         "ruff",
         "shfmt",

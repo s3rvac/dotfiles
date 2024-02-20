@@ -87,6 +87,16 @@ return {
     --       start (for no apparent reason). I am able to run them manually
     --       from Neovim without any issues.
 
+    -- C, C++
+    local clangd = fns.mason_bin_path_to("clangd")
+    lspconfig["clangd"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      on_init = on_init,
+      autostart = fns.is_executable(clangd),
+      cmd = { clangd },
+    })
+
     -- Bash
     local bashls = fns.mason_bin_path_to("bash-language-server")
     lspconfig["bashls"].setup({

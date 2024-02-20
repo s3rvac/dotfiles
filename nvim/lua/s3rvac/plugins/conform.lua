@@ -14,6 +14,8 @@ return {
       -- - The `enabled` attribute is my own. I use it to determine whether a
       --   particular linter is available (both in this file and in the statusline).
       formatters_by_ft = {
+        c = { "clang_format" },
+        cpp = { "clang_format" },
         go = { "gofmt" },
         hcl = { "terragrunt" },
         json = { "jq" },
@@ -24,6 +26,11 @@ return {
         yaml = { "yq" },
       },
       formatters = {
+        clang_format = {
+          command = fns.mason_bin_path_to("clang-format"),
+          enabled = fns.mason_bin_exists("clang-format"),
+          prepend_args = { "--fallback-style=Google" },
+        },
         gofmt = {
           command = "gofmt",
           enabled = vim.fn.executable("gofmt"),
