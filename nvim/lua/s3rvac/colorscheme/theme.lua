@@ -127,6 +127,7 @@ function theme.setup()
     LspInfoFiletype = { fg = "#5fff5f", bg = p.none },
     LspInfoTip = { link = "Comment" },
     LspInfoBorder = { link = "FloatBorder" },
+    LspSignatureActiveParameter = { link = "Visual" },
 
     -- Diagnostics
     DiagnosticError = { fg = "#ff0000" },
@@ -306,6 +307,8 @@ function theme.setup()
     ["@punctuation.bracket.bash"] = { link = "Special" },
     ["@punctuation.delimiter.bash"] = { link = "Statement" },
     ["@punctuation.special.bash"] = { link = "Special" },
+    -- C++
+    ["@contructor.cpp"] = { link = "Function" },
     -- BibTeX
     ["@function.builtin.bibtex"] = { link = "Function" },
     ["@symbol.bibtex"] = { link = "Special" },
@@ -358,6 +361,9 @@ function theme.setup()
     -- Kotlin
     ktAnnotation = { link = "PreProc" },
     -- Lua
+    luaTable = { link = "Normal" },
+    luaParenError = { link = "Normal" },
+    luaError = { link = "Normal" },
     ["@constructor.lua"] = { link = "Identifier" },
     -- Makefile
     makeIdent = { link = "Function" },
@@ -424,7 +430,8 @@ function theme.setup()
     vim.g[option] = value
   end
 
-  -- Hide all semantic highlights.
+  -- Clear all semantic highlights as they break syntax highlighting in certain
+  -- cases.
   for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
     vim.api.nvim_set_hl(0, group, {})
   end
