@@ -11,9 +11,6 @@ set scrolloff=10
 set sidescroll=5
 " Maximum number of tabs to open by the -p argument.
 set tabpagemax=1000
-" Don't redraw during complex operations (e.g. macros).
-" TODO: Causes screen tearing / visual glitches?
-" set lazyredraw
 " Automatically save before :next, :make etc.
 set autowrite
 " Ask to save file before operations like :q or :e fail.
@@ -710,7 +707,7 @@ augroup c_cpp
 au!
 " Use <Leader>man to display manual pages for the function under cursor.
 au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :execute ':vertical Man 3 ' . expand('<cword>')<CR>
-" Make "gq" on comments work properly.
+" Make "gw" on comments work properly.
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Search also in /usr/include.
 au FileType c,cpp setl path+=/usr/include
@@ -810,7 +807,7 @@ au FileType llvm setl tabstop=2
 au FileType llvm setl softtabstop=2
 au FileType llvm setl shiftwidth=2
 
-" Make "gq" on comments working properly.
+" Make "gw" on comments working properly.
 au FileType llvm setl comments=bO:;
 augroup end
 
@@ -841,7 +838,7 @@ augroup end
 " MySQL
 augroup mysql
 au!
-" Make "gq" on comments work properly.
+" Make "gw" on comments work properly.
 au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
 augroup end
 
@@ -850,7 +847,7 @@ augroup php
 au!
 " Use <Leader>man to display manual pages for the function under cursor in a browser.
 au FileType php nnoremap <buffer> <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
-" Make "gq" on comments work properly.
+" Make "gw" on comments work properly.
 au FileType php setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
 augroup end
 

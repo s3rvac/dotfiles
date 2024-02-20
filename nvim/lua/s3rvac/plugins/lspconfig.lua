@@ -4,6 +4,7 @@ return {
   "neovim/nvim-lspconfig",
   tag = "v0.1.7",
   dependencies = {
+    -- LSP completion for nvim-cmp.
     "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
@@ -45,7 +46,7 @@ return {
       opts.desc = "LSP: Show documentation for the symbol under cursor"
       vim.keymap.set("n", "<Leader>ll", vim.lsp.buf.hover, opts)
 
-      opts.desc = "LSP: Show signature for the symbol under cursor"
+      opts.desc = "LSP: Show signature for the current function call"
       vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
 
       opts.desc = "LSP: Show references for the symbol under cursor"
@@ -154,7 +155,7 @@ return {
       cmd = { pyright, "--stdio" },
     })
 
-    -- Python
+    -- Terraform
     local terraformls = fns.mason_bin_path_to("terraform-ls")
     lspconfig["terraformls"].setup({
       capabilities = lsp_capabilities,
