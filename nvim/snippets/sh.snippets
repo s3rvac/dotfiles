@@ -1,72 +1,60 @@
 # Hashbang
 
 snippet hb "#!"
-#!/usr/bin/env bash
-endsnippet
+	#!/usr/bin/env bash
 
 # Commands
 
 snippet e "e"
-echo "${2}"
-endsnippet
+	echo "${2}"
 
 snippet er "er"
-echo "${2}" >&2
-endsnippet
+	echo "${2}" >&2
 
 # Control flow
 
 snippet if "if"
-if [ ${1} ]; then
-	${2}
-fi
-endsnippet
+	if [ ${1} ]; then
+		${2}
+	fi
 
 snippet iff "if (bash)"
-if [[ ${1} ]]; then
-	${2}
-fi
-endsnippet
+	if [[ ${1} ]]; then
+		${2}
+	fi
 
 snippet ife "ife"
-if [ ${1} ]; then
-	${2}
-else
-	${3}
-fi
-endsnippet
+	if [ ${1} ]; then
+		${2}
+	else
+		${3}
+	fi
 
 snippet iffe "ife (bash)"
-if [ ${1} ]; then
-	${2}
-else
-	${3}
-fi
-endsnippet
+	if [ ${1} ]; then
+		${2}
+	else
+		${3}
+	fi
 
 snippet elif "elif"
-elif [ ${1} ]; then
-	${2}
-endsnippet
+	elif [ ${1} ]; then
+		${2}
 
 snippet eliff "elif (bash)"
-elif [[ ${1} ]]; then
-	${2}
-endsnippet
+	elif [[ ${1} ]]; then
+		${2}
 
 snippet el "else"
-else
-	${1}
-endsnippet
+	else
+		${1}
 
 snippet wh "while"
-while ${1}; do
-	${2}
-done
-endsnippet
+	while ${1}; do
+		${2}
+	done
 
 # Other
 
 snippet todo "TODO"
-# TODO ${1}
-endsnippet
+	# TODO ${1}

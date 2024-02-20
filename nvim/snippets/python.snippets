@@ -1,218 +1,183 @@
 # Hashbang
 
 snippet hb "hb"
-#!/usr/bin/env python3
-endsnippet
+	#!/usr/bin/env python3
 
 # Strings
 
 snippet " "tripple quote"
-"""${1}"""
-endsnippet
+	"""${1}"""
 
 snippet ' "tripple quote"
-'''${1}'''
-endsnippet
+	'''${1}'''
 
 # Comments
 
 snippet todo "todo"
-# TODO ${1}
-endsnippet
+	# TODO ${1}
 
 snippet todor "todo (remove)"
-# TODO Remove.${1}
-endsnippet
+	# TODO Remove.${1}
 
 # Documentation
 
 snippet py "py"
-.. code-block:: python
+	.. code-block:: python
 
-	${1}
-endsnippet
+		${1}
 
 # Imports
 
 snippet im "im"
-import ${1}
-endsnippet
+	import ${1}
 
 snippet fr "fr"
-from ${1} import ${2}
-endsnippet
+	from ${1} import ${2}
 
 # Printing
 
 snippet pr "pr"
-print(${1})
-endsnippet
+	print(${1})
 
 snippet pp "pp"
-from pprint import pprint; pprint(${1})
-endsnippet
+	from pprint import pprint; pprint(${1})
 
 # Loops
 
 snippet wh "wh"
-while ${1}:
-	${2}
-endsnippet
+	while ${1}:
+		${2}
 
 snippet for "for"
-for ${1} in ${2}:
-	${3}
-endsnippet
+	for ${1} in ${2}:
+		${3}
 
 # If
 
 snippet if "if"
-if ${1}:
-	${2}
-endsnippet
+	if ${1}:
+		${2}
 
 snippet ife "ife"
-if ${1}:
-	${2}
-else:
-	${3}
-endsnippet
+	if ${1}:
+		${2}
+	else:
+		${3}
 
 # With
 
 snippet wi "wi"
-with ${1}:
-	${2}
-endsnippet
+	with ${1}:
+		${2}
 
 # Other Statements
 
 snippet r "r"
-return ${1}
-endsnippet
+	return ${1}
 
 # Classes
 
 snippet cl "cl"
-class ${1:A}:
-	"""${2}"""
+	class ${1:A}:
+		"""${2}"""
 
-	def __init__(self${4}):
-		${3}
-endsnippet
+		def __init__(self${4}):
+			${3}
 
 # Functions/methods
 
 snippet def "def"
-def ${1}(${2}):
-	"""${3}"""
-	${4}
-endsnippet
+	def ${1}(${2}):
+		"""${3}"""
+		${4}
 
 snippet defm "def method"
-def ${1}(self${2}):
-	"""${3}"""
-	${4}
-endsnippet
+	def ${1}(self${2}):
+		"""${3}"""
+		${4}
 
 snippet defs "def special"
-def __${1:}__(self${2}):
-	${3}
-endsnippet
+	def __${1:}__(self${2}):
+		${3}
 
 snippet prop "property"
-@property
-def ${1}(self):
-	"""${2}"""
-endsnippet
+	@property
+	def ${1}(self):
+		"""${2}"""
 
 snippet . "self" i
-self.
-endsnippet
+	self.
 
 # Exceptions
 
 snippet try "try/except"
-try:
-	${1:pass}
-except ${2:Exception} as ${3:e}:
-	${4:raise $3}
-endsnippet
+	try:
+		${1:pass}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
 
 snippet try "try/except/else"
-try:
-	${1:pass}
-except ${2:Exception} as ${3:e}:
-	${4:raise $3}
-else:
-	${5:pass}
-endsnippet
+	try:
+		${1:pass}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	else:
+		${5:pass}
 
 snippet try "try/except/finally"
-try:
-	${1:pass}
-except ${2:Exception} as ${3:e}:
-	${4:raise $3}
-finally:
-	${5:pass}
-endsnippet
+	try:
+		${1:pass}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	finally:
+		${5:pass}
 
 snippet try "try/except/else/finally"
-try:
-	${1:pass}
-except ${2:Exception} as ${3:e}:
-	${4:raise $3}
-else:
-	${5:pass}
-finally:
-	${6:pass}
-endsnippet
+	try:
+		${1:pass}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	else:
+		${5:pass}
+	finally:
+		${6:pass}
 
 # Tests
 
 snippet tc "test class"
-class ${1}Tests(unittest.TestCase):
-	"""Tests for \`${2}\`."""
+	class ${1}Tests(unittest.TestCase):
+		"""Tests for \`${2}\`."""
 
-	${3}
-endsnippet
+		${3}
 
 snippet t "test method"
-def test_${1}(self):
-	${2}
-endsnippet
+	def test_${1}(self):
+		${2}
 
 snippet ts "setup method"
-def setUp(self):
-	${1:super().setUp()}
-	${2}
-endsnippet
+	def setUp(self):
+		${1:super().setUp()}
+		${2}
 
 snippet at "at"
-self.assertTrue(${1})
-endsnippet
+	self.assertTrue(${1})
 
 snippet af "af"
-self.assertFalse(${1})
-endsnippet
+	self.assertFalse(${1})
 
 snippet ae "ae"
-self.assertEqual(${1})
-endsnippet
+	self.assertEqual(${1})
 
 snippet ar "ar"
-with self.assertRaises(${1}):
-	${2}
-endsnippet
+	with self.assertRaises(${1}):
+		${2}
 
 snippet arr "arr"
-with self.assertRaisesRegex(${1}):
-	${2}
-endsnippet
+	with self.assertRaisesRegex(${1}):
+		${2}
 
 # Main
 
 snippet main "main"
-if __name__ == '__main__':
-	${1}
-endsnippet
+	if __name__ == '__main__':
+		${1}

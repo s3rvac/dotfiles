@@ -1,67 +1,66 @@
 # Headers
 
 snippet h1 "h1"
-# ${1}
-endsnippet
+	# ${1}
 
 snippet h2 "h2"
-## ${1}
-endsnippet
+	## ${1}
 
 snippet h3 "h3"
-### ${1}
-endsnippet
+	### ${1}
 
 # Links
 
 snippet a "a" w
-[${2:text}](${1:url})
-endsnippet
+	[${2}](${1})
 
 # Code
 
 snippet c "c" w
-\`${1}\`
-endsnippet
+	\`${1}\`
 
 snippet cb "code block"
-\`\`\`
-${1}
-\`\`\`
-endsnippet
+	\`\`\`
+	${1}
+	\`\`\`
 
 snippet cpp "cpp code block"
-\`\`\`cpp
-${1}
-\`\`\`
-endsnippet
+	\`\`\`cpp
+	${1}
+	\`\`\`
 
 snippet py "python code block"
-\`\`\`python
-${1}
-\`\`\`
-endsnippet
+	\`\`\`python
+	${1}
+	\`\`\`
 
 snippet sh "shell code block"
-\`\`\`shell
-${1}
-\`\`\`
-endsnippet
+	\`\`\`shell
+	${1}
+	\`\`\`
 
 snippet diff "diff code block"
-\`\`\`diff
-${1}
-\`\`\`
-endsnippet
+	\`\`\`diff
+	${1}
+	\`\`\`
 
 # Images
 
 snippet img "img"
-![${1:alt text}](${2:URL} "${3:title}")
-endsnippet
+	![${1:alt text}](${2:URL} "${3:title}")
+
+# Emojis
+
+snippet :slig ":-)"
+	:slightly_smiling_face:
+
+snippet :thu "thumbs up"
+	:thumbs_up:
+
+snippet :check "checkmark"
+	:heavy_check_mark:
 
 # Other
 
 snippet nrc "not related comment"
-_(A general comment that is not related to the attached line.)_
-endsnippet
+	_(A general comment that is not related to the attached line.)_

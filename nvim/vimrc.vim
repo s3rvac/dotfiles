@@ -1007,18 +1007,6 @@ let g:tcomment_mapleader2 = ''
 " Do not comment blank lines.
 let g:tcomment#blank_lines = 0
 
-"-----------------------------
-" UltiSnips: Snippets for Vim.
-"-----------------------------
-let g:snips_author='Petr Zemek <s3rvac@petrzemek.net>'
-let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsEnableSnipMate='no'
-let g:UltiSnipsSnippetDirectories=[$HOME . '/.config/nvim/snippets']
-let g:UltiSnipsExpandTrigger='<Tab>'
-let g:UltiSnipsJumpForwardTrigger='<Tab>'
-let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
-nnoremap <Leader>sni :execute 'tabe ~/.config/nvim/snippets/' . &filetype . '.snippets'<CR>
-
 " ---------------------------------------------------------
 " vim-sort-motion: Vim mapping for sorting a range of text.
 " ---------------------------------------------------------

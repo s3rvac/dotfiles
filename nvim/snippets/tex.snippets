@@ -1,233 +1,202 @@
 # Generic \begin{}...\end{}
 
 snippet begin "begin"
-\begin{${1:env}}
-	${2}
-\end{$1}
-endsnippet
+	\begin{${1:env}}
+		${2}
+	\end{$1}
 
 # Class
 
 snippet cl "cl"
-\documentclass{${1:article}}
-endsnippet
+	\documentclass{${1:article}}
 
 # Usepackage
 
 snippet up "up"
-\usepackage{${1}}
-endsnippet
+	\usepackage{${1}}
 
 # Document
 
 snippet doc "doc"
-\begin{document}
-	${1}
-\end{document}
-endsnippet
+	\begin{document}
+		${1}
+	\end{document}
 
 # \textttt{}
 
 snippet c "c" w
-\texttt{${1}}${2}
-endsnippet
+	\texttt{${1}}${2}
 
 # \emph{}
 
 snippet em "em" w
-\emph{${1}}${2}
-endsnippet
+	\emph{${1}}${2}
 
 # Tabular
 
 snippet tab "tab"
-\begin{tabular}{${1}}
-	${2}
-\end{tabular}
-endsnippet
+	\begin{tabular}{${1}}
+		${2}
+	\end{tabular}
 
 # Array
 
 snippet arr "arr"
-\begin{array}{${1}}
-	${2}
-\end{array}
-endsnippet
+	\begin{array}{${1}}
+		${2}
+	\end{array}
 
 # Centered array
 
 snippet carr "carr"
-\[
-\begin{array}{${1}}
-	${2}
-\end{array}
-\]
-endsnippet
+	\[
+	\begin{array}{${1}}
+		${2}
+	\end{array}
+	\]
 
 # Enumerate
 
 snippet enum "enum"
-\begin{enumerate}
-	\item ${1}
-\end{enumerate}
-endsnippet
+	\begin{enumerate}
+		\item ${1}
+	\end{enumerate}
 
 # Itemize
 
 snippet item "item"
-\begin{itemize}
-	\item ${1}
-\end{itemize}
-endsnippet
+	\begin{itemize}
+		\item ${1}
+	\end{itemize}
 
 # Description
 
 snippet desc "desc"
-\begin{description}
-	\item[${1}] ${2}
-\end{description}
-endsnippet
+	\begin{description}
+		\item[${1}] ${2}
+	\end{description}
 
 # Section
 
 snippet sec "sec"
-\section{${1}}
-\label{sec:${2}}
-${3}
-endsnippet
+	\section{${1}}
+	\label{sec:${2}}
+	${3}
 
 # Subsection
 
 snippet sub "sub"
-\subsection{${1}}
-\label{sec:${2}}
-${3}
-endsnippet
+	\subsection{${1}}
+	\label{sec:${2}}
+	${3}
 
 # Subsubsection
 
 snippet subs "subs"
-\subsubsection{${1}}
-\label{sec:${2}}
-${3}
-endsnippet
+	\subsubsection{${1}}
+	\label{sec:${2}}
+	${3}
 
 # Example
 
 snippet ex "ex"
-\begin{example}
-\label{ex:${1}}
-\end{example}
-endsnippet
+	\begin{example}
+	\label{ex:${1}}
+	\end{example}
 
 # Definition
 
 snippet def "def"
-\begin{definition}
-\label{def:${1}}
-\end{definition}
-endsnippet
+	\begin{definition}
+	\label{def:${1}}
+	\end{definition}
 
 # Lemma
 
 snippet lemma "lemma"
-\begin{lemma}
-\label{lemma:${1}}
-\end{lemma}
-endsnippet
+	\begin{lemma}
+	\label{lemma:${1}}
+	\end{lemma}
 
 # Theorem
 
 snippet theorem "theorem"
-\begin{theorem}
-\label{theorem:${1}}
-\end{theorem}
-endsnippet
+	\begin{theorem}
+	\label{theorem:${1}}
+	\end{theorem}
 
 # Proof
 
 snippet proof "proof"
-\begin{proof}
-\end{proof}
-endsnippet
+	\begin{proof}
+	\end{proof}
 
 # Claim
 
 snippet claim "claim"
-\begin{claim}
-\label{claim:${1}}
-\end{claim}
-endsnippet
+	\begin{claim}
+	\label{claim:${1}}
+	\end{claim}
 
 # Center
 
 snippet center "center"
-\begin{center}
-	${1}
-\end{center}
-endsnippet
+	\begin{center}
+		${1}
+	\end{center}
 
 # Centered math
 
 snippet cm "cm"
-\[
-	${1}
-\]
-endsnippet
+	\[
+		${1}
+	\]
 
 # Figure
 
 snippet fig "fig"
-\begin{figure}
-	\centering
-	\includegraphics[scale=${1:1.0}]{img/${2}}
-	\caption{${3}}
-	\label{fig:${4}}
-\end{figure}
-endsnippet
+	\begin{figure}
+		\centering
+		\includegraphics[scale=${1:1.0}]{img/${2}}
+		\caption{${3}}
+		\label{fig:${4}}
+	\end{figure}
 
 # Graphics
 
 snippet incg "incg"
-\includegraphics[width=\linewidth,keepaspectratio]{${1}}
-endsnippet
+	\includegraphics[width=\linewidth,keepaspectratio]{${1}}
 
 snippet cincg "cincg"
-\begin{center}
-	\includegraphics[width=\linewidth,keepaspectratio]{${1}}
-\end{center}
-endsnippet
+	\begin{center}
+		\includegraphics[width=\linewidth,keepaspectratio]{${1}}
+	\end{center}
 
 # Frame
 
 snippet frame "frame"
-\begin{frame}{${1}}
-${2}
-\end{frame}
-endsnippet
+	\begin{frame}{${1}}
+	${2}
+	\end{frame}
 
 snippet fframe "fragile frame"
-\begin{frame}[fragile]{${1}}
-${2}
-\end{frame}
-endsnippet
+	\begin{frame}[fragile]{${1}}
+	${2}
+	\end{frame}
 
 # Listings
 
 snippet cpp "cpp listing"
-\begin{lstlisting}[style=CPPListing]
-${1}
-\end{lstlisting}
-endsnippet
+	\begin{lstlisting}[style=CPPListing]
+	${1}
+	\end{lstlisting}
 
 snippet cppc "cpp listing continued"
-\begin{lstlisting}[style=CPPListing,firstnumber=last]
-${1}
-\end{lstlisting}
-endsnippet
+	\begin{lstlisting}[style=CPPListing,firstnumber=last]
+	${1}
+	\end{lstlisting}
 
 # Todo
 
 snippet todo "todo"
-% TODO ${1}
-endsnippet
+	% TODO ${1}

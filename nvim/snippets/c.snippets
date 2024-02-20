@@ -1,216 +1,185 @@
 # main()
 
 snippet main "main"
-int main() {
-	${1}
-	return 0;
-}
-endsnippet
+	int main() {
+		${1}
+		return 0;
+	}
 
 snippet main2 "main2"
-int main(int argc, char **argv) {
-	${1}
-	return 0;
-}
-endsnippet
+	int main(int argc, char **argv) {
+		${1}
+		return 0;
+	}
 
 # Hello world
 
 snippet hw "hello world"
-#include <stdio.h>
+	#include <stdio.h>
 
-int main() {
-	printf("Hello world!\n");${1}
-	return 0;
-}
-endsnippet
+	int main() {
+		printf("Hello world!\n");${1}
+		return 0;
+	}
 
 # Includes
 
 snippet inc "inc"
-#include <${1:stdio.h}>${2}
-endsnippet
+	#include <${1:stdio.h}>${2}
 
 snippet Inc "Inc"
-#include "${1}"${2}
-endsnippet
+	#include "${1}"${2}
 
 # If-defs
 
 snippet once "once"
-#ifndef ${1}
-#define $1
-${2}
-#endif
-endsnippet
+	#ifndef ${1}
+	#define $1
+	${2}
+	#endif
 
 # Todos
 
 snippet todo "todo"
-// TODO ${1}
-endsnippet
+	// TODO ${1}
 
 snippet todor "todor"
-// TODO Remove.
-endsnippet
+	// TODO Remove.
 
 # Doxygen comments
 
 snippet d "d"
-/**
-* @brief ${1}
-*/${2}
-endsnippet
+	/**
+	* @brief ${1}
+	*/${2}
 
 snippet D "D"
-///
-/// ${1}
-///
-endsnippet
+	///
+	/// ${1}
+	///
 
 snippet code "code"
-* @code
-* ${1}
-* @endcode
-endsnippet
+	* @code
+	* ${1}
+	* @endcode
 
 # Blocks
 
 snippet b "block"
-{
-	${1}
-}
-endsnippet
+	{
+		${1}
+	}
 
 # If statement
 
 snippet if "if"
-if (${1}) {
-	${2}
-}
-endsnippet
+	if (${1}) {
+		${2}
+	}
 
 snippet ife "ife"
-if (${1}) {
-	${2}
-} else {
-	${3}
-}
-endsnippet
+	if (${1}) {
+		${2}
+	} else {
+		${3}
+	}
 
 snippet elif "elif"
-else if (${1}) {
-	${2}
-}
-endsnippet
+	else if (${1}) {
+		${2}
+	}
 
 snippet el "el"
-else {
-	${1}
-}
-endsnippet
+	else {
+		${1}
+	}
 
 # Switch
 
 snippet sw "sw"
-switch (${1}) {
-	default:
-		break;
-}
-endsnippet
+	switch (${1}) {
+		default:
+			break;
+	}
 
 snippet case "case"
-case '${1}':
-	${2}
-	break;${3}
-endsnippet
+	case '${1}':
+		${2}
+		break;${3}
 
 # Do-while loop
 
 snippet do "do"
-do {
-	${2}
-} while (${1});
-endsnippet
+	do {
+		${2}
+	} while (${1});
 
 # While loop
 
 snippet wh "wh"
-while (${1}) {
-	${2}
-}
-endsnippet
+	while (${1}) {
+		${2}
+	}
 
 # For loop
 
 snippet for "for"
-for (${1}) {
-	${2}
-}
-endsnippet
+	for (${1}) {
+		${2}
+	}
 
 # Return
 
 snippet r "r"
-return ${1};
-endsnippet
+	return ${1};
 
 # Function
 
 snippet fun "fun"
-${1:void} ${2:func}(${3}) {
-	${4}
-}
-endsnippet
+	${1:void} ${2:func}(${3}) {
+		${4}
+	}
 
 snippet fund "fund"
-${1:void} ${2:func}(${3});
-endsnippet
+	${1:void} ${2:func}(${3});
 
 # Typedef
 
 snippet td "td"
-typedef ${1:int} ${2};
-endsnippet
+	typedef ${1:int} ${2};
 
 # Struct
 
 snippet st "st"
-struct ${1} {
-	${2}
-};
-endsnippet
+	struct ${1} {
+		${2}
+	};
 
 # Typedefed struct
 
 snippet tds "tds"
-typedef struct ${2:_$1 }{
-	${3}
-} ${1};
-endsnippet
+	typedef struct ${2:_$1 }{
+		${3}
+	} ${1};
 
 # Enum
 
 snippet en "en"
-enum ${1} {
-	${2}
-};
-endsnippet
+	enum ${1} {
+		${2}
+	};
 
 # Typdefed enum
 
 snippet tde "tde"
-typedef enum {
-	${1}
-} ${2};
-endsnippet
+	typedef enum {
+		${1}
+	} ${2};
 
 # printf
 
 snippet pr "pr"
-printf("${1:%s}\n"${2});
-endsnippet
+	printf("${1:%s}\n"${2});
 
 snippet fpr "fpr"
-fprintf(${1:stderr}, "${2:%s}\n"${3});
-endsnippet
+	fprintf(${1:stderr}, "${2:%s}\n"${3});

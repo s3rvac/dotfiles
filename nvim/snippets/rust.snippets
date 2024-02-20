@@ -1,187 +1,155 @@
 # Crates
 
 snippet ec "extern crate"
-extern crate ${1};
-endsnippet
+	extern crate ${1};
 
 # Modules and functions
 
 snippet mod "module"
-mod ${1} {
-	${2}
-}
-endsnippet
+	mod ${1} {
+		${2}
+	}
 
 snippet fn "function"
-fn ${1}(${2}) ${3}{
-	${4}
-}
-endsnippet
+	fn ${1}(${2}) ${3}{
+		${4}
+	}
 
 snippet fun "function"
-fn ${1}(${2}) ${3}{
-	${4}
-}
-endsnippet
+	fn ${1}(${2}) ${3}{
+		${4}
+	}
 
 snippet main "main"
-fn main() {
-	${1}
-}
-endsnippet
+	fn main() {
+		${1}
+	}
 
 # Structures, enums, and traits
 
 snippet st "struct"
-struct ${1} {
-	${2}
-}
-endsnippet
+	struct ${1} {
+		${2}
+	}
 
 snippet en "enum"
-enum ${1} {
-	${2}
-}
-endsnippet
+	enum ${1} {
+		${2}
+	}
 
 snippet tr "trait"
-trait ${1} {
-	${2}
-}
-endsnippet
+	trait ${1} {
+		${2}
+	}
 
 snippet im "impl"
-impl${1} {
-	${2}
-}
-endsnippet
+	impl${1} {
+		${2}
+	}
 
 # Flow control
 
 snippet b "block"
-{
-	${1}
-}
-endsnippet
+	{
+		${1}
+	}
 
 snippet if "if"
-if ${1} {
-	${2}
-}
-endsnippet
+	if ${1} {
+		${2}
+	}
 
 snippet ife "if-else"
-if ${1} {
-	${2}
-} else {
-	${3}
-}
-endsnippet
+	if ${1} {
+		${2}
+	} else {
+		${3}
+	}
 
 snippet m "match"
-match ${1} {
-	${2}
-}
-endsnippet
+	match ${1} {
+		${2}
+	}
 
 snippet lo "loop"
-loop {
-	${1}
-}
-endsnippet
+	loop {
+		${1}
+	}
 
 snippet wh "while"
-while ${1} {
-	${2}
-}
-endsnippet
+	while ${1} {
+		${2}
+	}
 
 snippet for "for"
-for ${1} in ${2} {
-	${3}
-}
-endsnippet
+	for ${1} in ${2} {
+		${3}
+	}
 
 # Other statements
 
 snippet r "return"
-return ${1};
-endsnippet
+	return ${1};
 
 snippet pr "println!"
-println!("${1}"${2});
-endsnippet
+	println!("${1}"${2});
 
 snippet epr "eprintln!"
-eprintln!("${1}"${2});
-endsnippet
+	eprintln!("${1}"${2});
 
 snippet pa "panic!"
-panic!("${1}"${2});
-endsnippet
+	panic!("${1}"${2});
 
 snippet un "unimplemented!"
-unimplemented!(${1});
-endsnippet
+	unimplemented!(${1});
 
 # Comments
 
 snippet d "documentation"
-//! ${1}
-endsnippet
+	//! ${1}
 
 snippet D "documentation"
-/// ${1}
-endsnippet
+	/// ${1}
 
 snippet todo "todo"
-// TODO ${1}
-endsnippet
+	// TODO ${1}
 
 snippet todor "todor"
-// TODO (remove)
-endsnippet
+	// TODO (remove)
 
 snippet code "code"
-/// \`\`\`
-/// ${1}
-/// \`\`\`
-endsnippet
+	/// \`\`\`
+	/// ${1}
+	/// \`\`\`
 
 # Attributes
 
 snippet at "attribute"
-#[${1}]
-endsnippet
+	#[${1}]
 
 # Other
 
 snippet . "self"
-self.
-endsnippet
+	self.
 
 snippet dt "display type"
-let _: () = ${1};
-endsnippet
+	let _: () = ${1};
 
 # Tests
 
 snippet tm "test module"
-#[cfg(test)]
-mod tests {
-	use super::*;
+	#[cfg(test)]
+	mod tests {
+		use super::*;
 
-	${1}
-}
-endsnippet
+		${1}
+	}
 
 snippet t "test"
-#[test]
-fn ${1}() {
-	${2}
-}
-endsnippet
+	#[test]
+	fn ${1}() {
+		${2}
+	}
 
 snippet ae "ae"
-assert_eq!(${1});
-endsnippet
+	assert_eq!(${1});

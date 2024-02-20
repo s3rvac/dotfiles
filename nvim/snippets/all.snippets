@@ -1,38 +1,20 @@
 # Date and time
 
 snippet date "date" i
-`!v strftime("%Y-%m-%d")`
-endsnippet
+	`strftime("%Y-%m-%d")`
 
 snippet time "time" i
-`!v strftime("%Y-%m-%d %H:%M:%S %z")`
-endsnippet
+	`strftime("%Y-%m-%d %H:%M:%S %z")`
 
 # Lorem ipsum generators
 
 snippet lorem "Lorem Ipsum - 50 Words" b
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-no sea takimata sanctus est Lorem ipsum dolor sit amet.
-endsnippet
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+	tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+	vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+	no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 # Personal
 
 snippet me "My name and email"
-`!v g:snips_author`
-endsnippet
-
-# Emojis
-
-snippet :slig ":-)"
-:slightly_smiling_face:
-endsnippet
-
-snippet :thu "thumbs up"
-:thumbs_up:
-endsnippet
-
-snippet :check "checkmark"
-:heavy_check_mark:
-endsnippet
+	Petr Zemek <s3rvac@petrzemek.net>

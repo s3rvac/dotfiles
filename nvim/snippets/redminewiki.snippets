@@ -1,121 +1,98 @@
 # Headings
 
 snippet h1 "h1"
-h1. ${1}
-endsnippet
+	h1. ${1}
 
 snippet h2 "h2"
-h2. ${1}
-endsnippet
+	h2. ${1}
 
 snippet h3 "h3"
-h3. ${1}
-endsnippet
+	h3. ${1}
 
 # Links
 
 snippet a "a" w
-"${1:text}":${2}
-endsnippet
+	"${1:text}":${2}
 
 snippet wa "wiki a" w
-[[${1}|${2:text}]]
-endsnippet
+	[[${1}|${2:text}]]
 
 # Blocks
 
 snippet pre "pre" w
-<pre>
-${1}
-</pre>
-endsnippet
+	<pre>
+	${1}
+	</pre>
 
 snippet code "code" w
-<pre><code class="${1:c}">
-${2}
-</code></pre>
-endsnippet
+	<pre><code class="${1:c}">
+	${2}
+	</code></pre>
 
 snippet cpp "cpp" w
-<pre><code class="cpp">
-${1}
-</code></pre>
-endsnippet
+	<pre><code class="cpp">
+	${1}
+	</code></pre>
 
 snippet py "py" w
-<pre><code class="python">
-${1}
-</code></pre>
-endsnippet
+	<pre><code class="python">
+	${1}
+	</code></pre>
 
 snippet ll "ll" w
-<pre><code class="llvm">
-${1}
-</code></pre>
-endsnippet
+	<pre><code class="llvm">
+	${1}
+	</code></pre>
 
 snippet cb "code block"
-*${1}*:
-<pre><code class="c">
-${2}
-</code></pre>
-endsnippet
+	*${1}*:
+	<pre><code class="c">
+	${2}
+	</code></pre>
 
 snippet pb "pre block"
-*${1}*:
-<pre>
-${2}
-</pre>
-endsnippet
+	*${1}*:
+	<pre>
+	${2}
+	</pre>
 
 snippet tb "text block"
-*${1}*:
+	*${1}*:
 
-${2}
-endsnippet
+	${2}
 
 # Colors
 
 snippet color "color" w
-%{color:${1:color}}${2:text}%
-endsnippet
+	%{color:${1:color}}${2:text}%
 
 snippet green "green" w
-%{color:green}${2:text}%
-endsnippet
+	%{color:green}${2:text}%
 
 snippet red "red" w
-%{color:red}${2:text}%
-endsnippet
+	%{color:red}${2:text}%
 
 snippet blue "blue" w
-%{color:blue}${2:text}%
-endsnippet
+	%{color:blue}${2:text}%
 
 snippet orange "orange" w
-%{color:orange}${2:text}%
-endsnippet
+	%{color:orange}${2:text}%
 
 # Other
 
 snippet @ "at"
-<notextile>@</notextile>
-endsnippet
+	<notextile>@</notextile>
 
 snippet c "@...@" w
-@${1}@${2}
-endsnippet
+	@${1}@${2}
 
 snippet hr "horizontal rule"
-----
-endsnippet
+	----
 
 # Macros
 
 snippet toc "toc"
-{{>toc}}
-endsnippet
+	{{>toc}}
 
 snippet todo "todo"
-{TODO}
-endsnippet
+	{TODO}

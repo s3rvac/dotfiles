@@ -1,101 +1,86 @@
 # main
 
 snippet main "main"
-package main
+	package main
 
-import (
-	"fmt"
-)
+	import (
+		"fmt"
+	)
 
-func main() {
-	${1}
-}
-endsnippet
+	func main() {
+		${1}
+	}
 
 # Imports
 
 snippet im "import"
-import (
-	"${1}"
-)
-endsnippet
+	import (
+		"${1}"
+	)
 
 # Types
 
 snippet st "struct"
-struct ${1}{
-	${2}
-}
-endsnippet
+	struct ${1}{
+		${2}
+	}
 
 # Functions
 
 snippet fun "function"
-func ${1}(${2}) ${3}{
-	${4}
-}
-endsnippet
+	func ${1}(${2}) ${3}{
+		${4}
+	}
 
 snippet r "return"
-return ${1}
-endsnippet
+	return ${1}
 
 snippet t "test"
-func Test${1}(t *testing.T) {
-	${2}
-}
-endsnippet
+	func Test${1}(t *testing.T) {
+		${2}
+	}
 
 # Statements
 
 snippet if "if"
-if ${1} {
-	${2}
-}
-endsnippet
+	if ${1} {
+		${2}
+	}
 
 snippet ife "if-else"
-if ${1} {
-	${2}
-} else {
-	${3}
-}
-endsnippet
+	if ${1} {
+		${2}
+	} else {
+		${3}
+	}
 
 snippet for "for"
-for ${1} {
-	${2}
-}
-endsnippet
+	for ${1} {
+		${2}
+	}
 
 snippet sel "select"
-select {
-case ${1}:
-}
-endsnippet
+	select {
+	case ${1}:
+	}
 
 snippet sw "switch"
-switch ${1} {
-case ${2}:
-}
-endsnippet
+	switch ${1} {
+	case ${2}:
+	}
 
 snippet pr "print"
-fmt.Println(${1})
-endsnippet
+	fmt.Println(${1})
 
 # Todo
 
 snippet todo "todo"
-// TODO
-endsnippet
+	// TODO
 
 snippet todor "todo (remove)"
-// TODO (remove)
-endsnippet
+	// TODO (remove)
 
 # Other
 
 snippet dt "dt"
-fmt.Println(${1}.dummy_attr)
-endsnippet
+	fmt.Println(${1}.dummy_attr)

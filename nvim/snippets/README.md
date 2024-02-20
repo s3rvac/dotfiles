@@ -1,3 +1,3 @@
 # My snippets
 
-My [ultisnips](https://github.com/SirVer/ultisnips) snippets.
+My [LuaSnip](https://github.com/L3MON4D3/LuaSnip) snippets.

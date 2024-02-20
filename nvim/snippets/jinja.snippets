@@ -1,37 +1,31 @@
 # Blocks
 
 snippet b "block"
-{% ${1} %}
-{% end %}
-endsnippet
+	{% ${1} %}
+	{% end %}
 
 snippet macro "macro"
-{% macro ${1} -%}
-{%- endmacro %}
-endsnippet
+	{% macro ${1} -%}
+	{%- endmacro %}
 
 snippet for "for"
-{% for ${1}%}
-	${2}
-{% endfor %}
-endsnippet
+	{% for ${1}%}
+		${2}
+	{% endfor %}
 
 snippet if "if"
-{% if ${1}%}
-	${2}
-{% endif %}
-endsnippet
+	{% if ${1}%}
+		${2}
+	{% endif %}
 
 snippet ife "ife"
-{% if ${1}%}
-	${2}
-{% else ${3}%}
-	${4}
-{% endif %}
-endsnippet
+	{% if ${1}%}
+		${2}
+	{% else ${3}%}
+		${4}
+	{% endif %}
 
 # Code
 
 snippet c "code" i
-{{ ${1} }}
-endsnippet
+	{{ ${1} }}

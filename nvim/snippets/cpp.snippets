@@ -3,158 +3,119 @@ extends c
 # Namespaces
 
 snippet ns "ns"
-namespace ${1} {
-${2}
-}
-endsnippet
+	namespace ${1} {
+	${2}
+	}
 
 snippet ans "ans"
-namespace {
-${1}
-}
-endsnippet
+	namespace {
+	${1}
+	}
 
 snippet un "un"
-using namespace ${1};
-endsnippet
+	using namespace ${1};
 
 # Class
 
 snippet cl "cl"
-class ${1} {
-public:
-	${2}
-};
-endsnippet
+	class ${1} {
+	public:
+		${2}
+	};
 
 # Function
 
 snippet fn "fn"
-auto ${1}(${2}) -> ${3} {
-	${4}
-}
-endsnippet
+	auto ${1}(${2}) -> ${3} {
+		${4}
+	}
 
 # Foreach
 
 snippet fore "fore"
-for (${1}) {
-	${2}
-}
-endsnippet
+	for (${1}) {
+		${2}
+	}
 
 snippet forec "forec"
-for (${1:auto} ${2:i} = ${3}begin(), ${4:e} = ${5}end(); $2 != $4; ++$2) {
-	${6}
-}
-endsnippet
+	for (${1:auto} ${2:i} = ${3}begin(), ${4:e} = ${5}end(); $2 != $4; ++$2) {
+		${6}
+	}
 
 # Scoped enum
 
 snippet enc "enc"
-enum class ${1} {
-	${2}
-};
-endsnippet
+	enum class ${1} {
+		${2}
+	};
 
 # cout and cerr
 
 snippet cout "cout"
-std::cout << ${1} << "\n";
-endsnippet
+	std::cout << ${1} << "\n";
 
 snippet coutf "coutf"
-std::cout << __FILE__ << ":" << __LINE__ << ": " << ${1} << "\n";
-endsnippet
+	std::cout << __FILE__ << ":" << __LINE__ << ": " << ${1} << "\n";
 
 snippet cerr "cerr"
-std::cerr << ${1} << "\n";
-endsnippet
+	std::cerr << ${1} << "\n";
 
 snippet cerrf "cerrf"
-std::cerr << __FILE__ << ":" << __LINE__ << ": " << ${1} << "\n";
-endsnippet
+	std::cerr << __FILE__ << ":" << __LINE__ << ": " << ${1} << "\n";
 
 # errs() for LLVM
 
 snippet errs "errs"
-llvm::errs() << ${1} << "\n";
-endsnippet
+	llvm::errs() << ${1} << "\n";
 
 snippet errsf "errsf"
-llvm::errs() << __FILE__ << ":" << __LINE__ << ": " << ${1} << "\n";
-endsnippet
+	llvm::errs() << __FILE__ << ":" << __LINE__ << ": " << ${1} << "\n";
 
 # Display type of a variable
 
 snippet dt "dt"
-static_assert(decltype(${1:var})::dummy_error, "display type");
-endsnippet
-
-# Shared pointer
-
-snippet Sh "Sh" w
-ShPtr<${1}> ${2}
-endsnippet
-
-# Weak pointer
-
-snippet Wk "Wk" w
-WkPtr<${1}> ${2}
-endsnippet
+	static_assert(decltype(${1:var})::dummy_error, "display type");
 
 # Google Test
 
 snippet t "test"
-TEST(${1},
-${2}) {
-	${3}
-}
-endsnippet
+	TEST(${1},
+	${2}) {
+		${3}
+	}
 
 snippet tf "tf"
-TEST_F(${1},
-${2}) {
-	${3}
-}
-endsnippet
+	TEST_F(${1},
+	${2}) {
+		${3}
+	}
 
 snippet ae "ae"
-ASSERT_EQ(${1}, ${2});
-endsnippet
+	ASSERT_EQ(${1}, ${2});
 
 snippet ee "ee"
-EXPECT_EQ(${1}, ${2});
-endsnippet
+	EXPECT_EQ(${1}, ${2});
 
 snippet an "an"
-ASSERT_NE(${1}, ${2});
-endsnippet
+	ASSERT_NE(${1}, ${2});
 
 snippet en "en"
-EXPECT_NE(${1}, ${2});
-endsnippet
+	EXPECT_NE(${1}, ${2});
 
 snippet at "at"
-ASSERT_TRUE(${1});
-endsnippet
+	ASSERT_TRUE(${1});
 
 snippet et "et"
-EXPECT_TRUE(${1});
-endsnippet
+	EXPECT_TRUE(${1});
 
 snippet af "af"
-ASSERT_FALSE(${1});
-endsnippet
+	ASSERT_FALSE(${1});
 
 snippet ef "ef"
-EXPECT_FALSE(${1});
-endsnippet
+	EXPECT_FALSE(${1});
 
 snippet ad "ad"
-ASSERT_DEATH(${1}, ${2});
-endsnippet
+	ASSERT_DEATH(${1}, ${2});
 
 snippet ed "ed"
-EXPECT_DEATH(${1}, ${2});
-endsnippet
+	EXPECT_DEATH(${1}, ${2});
