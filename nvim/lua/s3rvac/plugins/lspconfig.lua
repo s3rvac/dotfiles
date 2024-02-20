@@ -6,8 +6,13 @@ return {
   dependencies = {
     -- LSP completion for nvim-cmp.
     "hrsh7th/cmp-nvim-lsp",
+    -- Better development experience for Neovim configuration and plugins.
+    "folke/neodev.nvim",
   },
   config = function()
+    -- Important: Make sure to set up neodev before lspconfig.
+    require("neodev").setup()
+
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local fns = require("s3rvac.functions")
@@ -116,27 +121,18 @@ return {
       on_init = function(client)
         -- Use special configuration when editing Neovim's configuration files.
         -- Based on https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
-        local path = client.workspace_folders[1].name
-        if path == vim.fn.stdpath("config") then
+        -- Note: Only a part of the original code is used here as
+        --       https://github.com/folke/neodev.nvim does the rest.
+        local cwd = client.workspace_folders[1].name
+        if cwd == vim.fn.stdpath("config") then
           client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
             Lua = {
               diagnostics = {
-                -- Make the language server recognize Neovim's `vim` global.
-                globals = { "vim" },
                 -- Ignore noisy `missing-fields` warnings, e.g. when setting up nvim-treesitter's
                 -- configuration ("Missing required fields in type `TSConfig`").
                 -- https://github.com/LazyVim/LazyVim/issues/1471
                 -- https://github.com/nvim-lua/kickstart.nvim/issues/543
                 disable = { "missing-fields" },
-              },
-              -- Make the language server use the LuaJIT version of Lua.
-              runtime = {
-                version = "LuaJIT",
-              },
-              -- Make the language server aware of Neovim's runtime files.
-              workspace = {
-                checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true),
               },
             },
           })
