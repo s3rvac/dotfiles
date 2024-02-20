@@ -88,6 +88,10 @@ return {
 
       -- URL.
       vim.keymap.set({ "o", "x" }, "aU", "<cmd>lua require('various-textobjs').url()<CR>")
+
+      -- Markdown links (il, al).
+      -- Defined in lua/s3rvac/config/autocommands.lua as this is a
+      -- filetype-specific text object.
     end,
   },
 }

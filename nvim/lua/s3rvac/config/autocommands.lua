@@ -26,3 +26,28 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   callback = fns.set_indent_style_to_2_spaces,
   desc = "FileType lua: Indent style - Neovim's config",
 })
+
+-------------------------------------------------------------------------------
+-- Markdown
+-------------------------------------------------------------------------------
+
+vim.api.nvim_create_augroup("FileTypeMarkdown", {})
+-- Text object: markdown link (using nvim-various-textobjs).
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.keymap.set(
+      { "o", "x" },
+      "il",
+      "<cmd>lua require('various-textobjs').mdlink('inner')<CR>",
+      { buffer = true }
+    )
+    vim.keymap.set(
+      { "o", "x" },
+      "al",
+      "<cmd>lua require('various-textobjs').mdlink('outer')<CR>",
+      { buffer = true }
+    )
+  end,
+  desc = "nvim-various-textobjs: Markdown links",
+})
