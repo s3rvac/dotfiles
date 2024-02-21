@@ -602,6 +602,12 @@ endfunction
 command! WindowZoomToggle call s:WindowZoomToggle()
 nnoremap <silent> <Leader>wz :WindowZoomToggle<CR>
 
+" Increase/decrease window width and height.
+nnoremap <silent> <A-j> 10<C-w>-
+nnoremap <silent> <A-k> 10<C-w>+
+nnoremap <silent> <A-h> 10<C-w>>
+nnoremap <silent> <A-l> 10<C-w><
+
 " Expand %% to the path of the current buffer in command mode.
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
