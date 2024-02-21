@@ -179,6 +179,16 @@ return {
       cmd = { terraformls, "serve" },
     })
 
+    -- Vim
+    local vimls = fns.mason_bin_path_to("vim-language-server")
+    lspconfig["vimls"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      on_init = on_init,
+      autostart = fns.is_executable(vimls),
+      cmd = { vimls, "--stdio" },
+    })
+
     -- YAML
     local yamlls = fns.mason_bin_path_to("yaml-language-server")
     lspconfig["yamlls"].setup({

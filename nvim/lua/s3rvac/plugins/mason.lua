@@ -37,6 +37,7 @@ return {
         "lua_ls",
         "pyright",
         "terraformls",
+        "vim-language-server",
         "yaml-language-server",
 
         -- Formatters.
