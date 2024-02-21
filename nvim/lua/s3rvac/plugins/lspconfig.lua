@@ -67,9 +67,6 @@ return {
 
       -- Unused mappings:
 
-      -- opts.desc = "LSP: Show the signature of the symbol under cursor"
-      -- vim.keymap.set("n", "xxx", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-
       -- opts.desc = "LSP: Show definitions for the symbol under cursor"
       -- vim.keymap.set("n", "xxx", "<cmd>FzfLua lsp_definitions<CR>", opts)
 
