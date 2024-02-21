@@ -8,7 +8,7 @@
 " Keep a context (rows) when scrolling vertically.
 set scrolloff=10
 " Keep a context (columns) when scrolling horizontally.
-set sidescroll=5
+set sidescroll=10
 " Maximum number of tabs to open by the -p argument.
 set tabpagemax=1000
 " Automatically save before :next, :make etc.
