@@ -669,6 +669,9 @@ iabbrev hte the
 " File-type specific settings and other autocommands.
 "------------------------------------------------------------------------------
 
+" Runs silently the given shell command.
+command! -nargs=1 SilentExecute execute ':silent !' . <q-args> | execute ':redraw!'
+
 augroup file_types
 au!
 " Consider all .tpl files to be Smarty files.
@@ -713,6 +716,8 @@ au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :execute ':vertical Man
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
 " Search also in /usr/include.
 au FileType c,cpp setl path+=/usr/include
+" Switch between the header and the source file (requires https://clangd.llvm.org/).
+au FileType c,cpp nnoremap <buffer> <silent> <Leader>hs :ClangdSwitchSourceHeader<CR>
 
 " Let F10 compile and run the currently edited code
 " (F10 -> use GCC, S-F10 -> use Clang).
