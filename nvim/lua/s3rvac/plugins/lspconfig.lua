@@ -41,11 +41,8 @@ return {
 
     -- Buffer-local mappings and settings that only work if there is an active
     -- language server.
-    local on_attach = function(client, bufnr)
+    local on_attach = function(_, bufnr)
       opts.buffer = bufnr
-
-      -- Disable semantic (lsp) highlights.
-      client.server_capabilities.semanticTokensProvider = nil
 
       opts.desc = "LSP: Jump to the definition of the symbol under cursor"
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
