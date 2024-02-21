@@ -80,6 +80,11 @@ return {
       -- vim.keymap.set("n", "xxx", "<cmd>FzfLua lsp_implementations<CR>", opts)
     end
 
+    local on_init = function(_, _)
+      -- No need to do anything special here for now.
+      return true
+    end
+
     ------ Language servers -------
 
     -- Note: I need to specify full paths to servers; otherwise, they fail to
@@ -101,6 +106,7 @@ return {
     lspconfig["bashls"].setup({
       capabilities = lsp_capabilities,
       on_attach = on_attach,
+      on_init = on_init,
       autostart = fns.is_executable(bashls),
       cmd = { bashls, "start" },
       settings = {
@@ -116,6 +122,7 @@ return {
     lspconfig["dockerls"].setup({
       capabilities = lsp_capabilities,
       on_attach = on_attach,
+      on_init = on_init,
       autostart = fns.is_executable(dockerls),
       cmd = { dockerls, "--stdio" },
     })
@@ -147,7 +154,8 @@ return {
           })
           client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
         end
-        return true
+        -- We also need to call the original on_init() function.
+        return on_init(client)
       end,
     })
 
@@ -156,6 +164,7 @@ return {
     lspconfig["pyright"].setup({
       capabilities = lsp_capabilities,
       on_attach = on_attach,
+      on_init = on_init,
       autostart = fns.is_executable(pyright),
       cmd = { pyright, "--stdio" },
     })
@@ -165,6 +174,7 @@ return {
     lspconfig["terraformls"].setup({
       capabilities = lsp_capabilities,
       on_attach = on_attach,
+      on_init = on_init,
       autostart = fns.is_executable(terraformls),
       cmd = { terraformls, "serve" },
     })
@@ -174,6 +184,7 @@ return {
     lspconfig["yamlls"].setup({
       capabilities = lsp_capabilities,
       on_attach = on_attach,
+      on_init = on_init,
       autostart = fns.is_executable(yamlls),
       cmd = { yamlls, "--stdio" },
     })
