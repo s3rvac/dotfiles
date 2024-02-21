@@ -217,6 +217,8 @@ set completeopt=menu,menuone,longest
 " Do not search in included/imported files (it slows down completion, mostly
 " on network filesystems).
 set complete-=i
+" Maximal number of items in completion menus.
+set pumheight=15
 
 " ---- Searching ----
 
