@@ -278,7 +278,7 @@ fi
 #------------------------------------------------------------------------------
 
 # Editor.
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL="$EDITOR"
 
 # History.
@@ -353,20 +353,22 @@ alias rust-gdb='rust-gdb -quiet'
 # By disabling the mouse (--nomouse), it is possible to copy text through the
 # terminal emulator.
 alias mc='TERM=xterm-256color source /usr/lib/mc/mc-wrapper.sh --nomouse'
-alias vi='vim'
-alias vim='vim -p'
-alias v='vim'
-alias vd='vimdiff'
-alias gvim='gvim -p'
-alias gv='gvim'
-alias gvd='gvimdiff'
+# I use Neovim as my primary editor (https://neovim.io/).
+alias nv='nvim -p'
+alias v='nv'
+alias vi='nv'
+alias vim='nv'
+alias vd='nvim -d'
+alias gv='nvim-qt -- -p'
+alias gvim='gv'
+alias gvd='nvim-qt -- -d'
 # A git commit browser in Vim (https://github.com/junegunn/gv.vim).
-function GV() { vim -c ":GV $*" -c ":+tabclose"; }
+function GV() { v -c ":GV $*" -c ":+tabclose"; }
 alias m='make'
 function M() { make "$@" && make install; }
 alias news='newsboat -q'
-alias notes='vim ~/notes/ -c "cd %:p:h"'
-alias todo='vim ~/todo/todo.txt -c "cd %:p:h"'
+alias notes='v ~/notes/ -c "cd %:p:h"'
+alias todo='v ~/todo/todo.txt -c "cd %:p:h"'
 alias tf='terraform'
 alias tfmt='terraform fmt --recursive .'
 if [ "$(id -u)" -eq 0 ]; then
@@ -446,7 +448,7 @@ function rsed() { find . -type f -exec sed "$@" {} \+; }
 # Usage: vim `grep -r PATTERN | files`
 function files() { cut -d: -f1 | sort -u; }
 
-# Opens files found by recursive egrep in vim.
+# Opens files found by recursive egrep in Vim.
 # Usage: ver PATTERN
 function ver() { v $(er "$@" | files); }
 
