@@ -96,7 +96,7 @@
 	; Used pager.
 	pager = less -iFRXS -x4
 	; Used editor.
-	editor = vim
+	editor = nvim
 
 [diff]
 	; Allow `git diff` to do basic rename and copy detection.
@@ -132,7 +132,7 @@
 
 [merge]
 	; The used merge tool.
-	tool = vimdiff
+	tool = nvim -d
 
 [sendemail]
 	; Review and edit each patch before sending.
