@@ -1,0 +1,4 @@
+# A list of file patterns to always ignore.
+
+# Project-local Neovim configuration.
+.nvim.lua
