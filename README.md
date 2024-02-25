@@ -1,10 +1,10 @@
-# Petr Zemek's Dot Files
+# Petr Zemek's dot files
 
-These are some of the configuration files I use.
+This repository contains some of the configuration files that I use.
 
 ## Installation
 
-See the README files in subdirectories.
+See README files in subdirectories.
 
 ## License
 
