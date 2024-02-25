@@ -73,7 +73,7 @@
 	shs = stash show -p
 	sw = show --format=fuller --show-signature
 	sf = show --pretty="format:" --name-status
-	sync-fork="!git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD` && git push"
+	sync-fork = "!gh repo sync `git remote get-url --push origin` && git up"
 	tags = tag --list -n1
 	showtag = show --quiet
 	today = "!git ll --since=midnight"
