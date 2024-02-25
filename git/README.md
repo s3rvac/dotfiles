@@ -12,4 +12,6 @@ system.
 ## Notes
 
 A detailed description of my Git configuration from 2015 is available
-[here](https://blog.petrzemek.net/2015/07/19/my-git-configuration/).
+[here](https://blog.petrzemek.net/2015/07/19/my-git-configuration/). A video
+version of the same content is
+[here](https://www.youtube.com/watch?v=woCwZ9OnvYo).
