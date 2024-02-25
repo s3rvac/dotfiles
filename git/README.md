@@ -11,5 +11,5 @@ system.
 
 ## Notes
 
-A detailed description of my Git configuration is available
+A detailed description of my Git configuration from 2015 is available
 [here](https://blog.petrzemek.net/2015/07/19/my-git-configuration/).
