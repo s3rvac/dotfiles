@@ -33,6 +33,8 @@
 	cob = checkout -b
 	cop = checkout -p
 	com = "!git show-ref --verify --quiet refs/heads/master && git checkout master || git checkout main"
+	; https://github.com/s3rvac/dotfiles/blob/master/git/bin/git-change-branch
+	cb = change-branch
 	cp = cherry-pick
 	d = diff
 	da = diff HEAD
