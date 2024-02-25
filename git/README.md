@@ -5,7 +5,8 @@ system.
 
 ## Installation
 
-* Copy `.gitconfig` to `$HOME/`.
+* Copy `.gitconfig` either to `$HOME/` as `.gitconfig` or to
+  `$HOME/.config/git/` as `config`.
 * Copy scripts from `bin/` to a place on your `PATH`. Ensure they are
   executable.
 
