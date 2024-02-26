@@ -358,6 +358,8 @@ function theme.setup()
     dosiniHeader = { link = "PreProc" },
     dosiniLabel = { link = "Identifier" },
     dosiniValue = { link = "String" },
+    -- JSON
+    ["@label.json"] = { link = "Statement" },
     -- Kotlin
     ktAnnotation = { link = "PreProc" },
     -- Lua
@@ -369,6 +371,13 @@ function theme.setup()
     makeIdent = { link = "Function" },
     makeCommands = { link = "Normal" },
     -- Markdown
+    -- Note: The `mkdX` and `markdownX` highlights are used by LSP hover.
+    mkdEscape = { link = "Normal" },
+    markdownCode = { link = "String" },
+    markdownCodeDelimiter = { link = "String" },
+    markdownEscape = { link = "Normal" },
+    markdownListMarker = { link = "Normal" },
+    markdownError = { link = "Normal" },
     ["@label.markdown"] = { link = "Constant" },
     ["@punctuation.bracket.markdown_inline"] = { link = "Special" },
     ["@text.quote.markdown"] = { link = "Comment" },
