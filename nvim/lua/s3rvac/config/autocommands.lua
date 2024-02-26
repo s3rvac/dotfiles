@@ -72,6 +72,16 @@ fns.create_man_cmd_and_ft_autocmd_for_opening_docs(
 
 vim.api.nvim_create_augroup("FileTypePython", {})
 
+-- Indent style.
+--
+-- References:
+-- - https://peps.python.org/pep-0008/
+vim.api.nvim_create_autocmd("FileType", {
+  group = "FileTypePython",
+  pattern = "python",
+  callback = fns.set_indent_style_to_4_spaces,
+  desc = "FileType python: Indent style - default",
+})
 -- Make <Leader>man open Python documentation for the symbol under the cursor.
 fns.create_man_cmd_and_ft_autocmd_for_opening_docs(
   "FileTypePython",

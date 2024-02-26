@@ -865,12 +865,6 @@ augroup end
 " Python
 augroup python
 au!
-" Indentation settings.
-au FileType python setl expandtab
-au FileType python setl tabstop=4
-au FileType python setl softtabstop=4
-au FileType python setl shiftwidth=4
-
 " Let F10 run the currently opened script.
 au FileType python nnoremap <buffer> <F10> :w<CR>:!clear; python %<CR>
 augroup end
