@@ -858,8 +858,6 @@ augroup end
 " PHP
 augroup php
 au!
-" Use <Leader>man to display manual pages for the function under cursor in a browser.
-au FileType php nnoremap <buffer> <silent> <Leader>man :call <SID>OpenLink('http://php.net/'.expand('<cword>'))<CR>
 " Make "gw" on comments work properly.
 au FileType php setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
 augroup end

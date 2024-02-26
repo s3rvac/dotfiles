@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 -------------------------------------------------------------------------------
 
 vim.api.nvim_create_augroup("FileTypeMarkdown", {})
+
 -- Text object: markdown link (using nvim-various-textobjs).
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
@@ -51,3 +52,29 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "nvim-various-textobjs: Markdown links",
 })
+
+-------------------------------------------------------------------------------
+-- PHP
+-------------------------------------------------------------------------------
+
+vim.api.nvim_create_augroup("FileTypePHP", {})
+
+-- Make <Leader>man open PHP documentation for the symbol under the cursor.
+fns.create_man_cmd_and_ft_autocmd_for_opening_docs(
+  "FileTypePHP",
+  "php",
+  "https://php.net/"
+)
+
+-------------------------------------------------------------------------------
+-- Python
+-------------------------------------------------------------------------------
+
+vim.api.nvim_create_augroup("FileTypePython", {})
+
+-- Make <Leader>man open Python documentation for the symbol under the cursor.
+fns.create_man_cmd_and_ft_autocmd_for_opening_docs(
+  "FileTypePython",
+  "python",
+  "https://docs.python.org/3/search.html?q="
+)
