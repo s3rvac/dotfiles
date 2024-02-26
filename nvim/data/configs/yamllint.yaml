@@ -1,8 +1,7 @@
----
-
 # A configuration file for yamllint.
 # https://github.com/adrienverge/yamllint
-
+# https://yamllint.readthedocs.io/en/stable/rules.html
+---
 extends: default
 rules:
   # Do not bother me with line-length warnings.
