@@ -2,7 +2,7 @@
 -- https://github.com/L3MON4D3/LuaSnip
 return {
   "L3MON4D3/LuaSnip",
-  tag = "v2.2.0",
+  tag = "v2.2.0", -- 2023-12-31
   event = "BufEnter",
   config = function()
     local luasnip = require("luasnip")

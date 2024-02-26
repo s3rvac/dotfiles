@@ -2,6 +2,7 @@
 -- https://github.com/mfussenegger/nvim-lint
 return {
   "mfussenegger/nvim-lint",
+  commit = "6f6d866362c74ec2eb036c32b56fac50b02af669", -- 2024-02-22
   config = function()
     local lint = require("lint")
     local fns = require("s3rvac.functions")

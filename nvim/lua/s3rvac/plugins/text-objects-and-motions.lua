@@ -4,21 +4,25 @@ return {
   -- https://github.com/tpope/vim-surround
   {
     "tpope/vim-surround",
+    commit = "3d188ed2113431cf8dac77be61b842acb64433d9", -- 2022-10-25
     event = "VeryLazy",
   },
   -- https://github.com/wellle/targets.vim
   {
     "wellle/targets.vim",
+    commit = "642d3a4ce306264b05ea3219920b13ea80931767", -- 2023-02-22
     event = "VeryLazy",
   },
   -- https://github.com/christoomey/vim-sort-motion
   {
     "christoomey/vim-sort-motion",
+    commit = "c8782be8f7da414c6442b3ba4b6abb0345d392d9", -- 2021-03-07
     event = "VeryLazy",
   },
   -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    commit = "7f00d94543f1fd37cab2afa2e9a6cd54e1c6b9ef", -- 2024-02-16
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -57,6 +61,7 @@ return {
   -- https://github.com/chrisgrieser/nvim-various-textobjs
   {
     "chrisgrieser/nvim-various-textobjs",
+    commit = "035243ea3c4bf005b24d8068666c7d571c708503", -- 2024-02-03
     event = "VeryLazy",
     -- Use custom mappings.
     opts = { useDefaultKeymaps = false },

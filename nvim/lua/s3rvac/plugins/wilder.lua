@@ -2,9 +2,14 @@
 -- https://github.com/gelguy/wilder.nvim
 return {
   "gelguy/wilder.nvim",
+  commit = "679f348dc90d80ff9ba0e7c470c40a4d038dcecf", -- 2022-08-13
   event = "CmdlineEnter",
   dependencies = {
-    "romgrk/fzy-lua-native",
+    -- https://github.com/romgrk/fzy-lua-native
+    {
+      "romgrk/fzy-lua-native",
+      commit = "820f745b7c442176bcc243e8f38ef4b985febfaf", -- 2023-06-08
+    },
   },
   config = function()
     local wilder = require("wilder")

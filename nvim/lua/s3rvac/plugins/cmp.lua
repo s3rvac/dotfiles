@@ -2,12 +2,21 @@
 -- https://github.com/hrsh7th/nvim-cmp
 return {
   "hrsh7th/nvim-cmp",
+  commit = "04e0ca376d6abdbfc8b52180f8ea236cbfddf782", -- 2024-02-02
   event = "InsertEnter",
   dependencies = {
     -- For completion of text in a buffer.
-    "hrsh7th/cmp-buffer",
+    -- https://github.com/hrsh7th/cmp-buffer
+    {
+      "hrsh7th/cmp-buffer",
+      commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa", -- 2022-08-10
+    },
     -- For LSP completion.
-    "hrsh7th/cmp-nvim-lsp",
+    -- https://github.com/hrsh7th/cmp-nvim-lsp
+    {
+      "hrsh7th/cmp-nvim-lsp",
+      commit = "5af77f54de1b16c34b23cba810150689a3a90312", -- 2023-12-10
+    },
   },
   config = function()
     local cmp = require("cmp")

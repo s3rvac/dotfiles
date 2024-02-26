@@ -1,13 +1,20 @@
 -- Management of external tooling, such as LSP servers.
 -- https://github.com/williamboman/mason.nvim
--- https://github.com/williamboman/mason-lspconfig.nvim
 return {
   "williamboman/mason.nvim",
-  tag = "v1.10.0",
+  tag = "v1.10.0", -- 2024-01-29
   event = "VeryLazy",
   dependencies = {
-    { "williamboman/mason-lspconfig.nvim", tag = "v1.26.0" },
-    { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    -- https://github.com/williamboman/mason-lspconfig.nvim
+    {
+      "williamboman/mason-lspconfig.nvim",
+      tag = "v1.26.0" -- 2023-12-21
+    },
+    -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      commit = "1212fb6082b7177dde17ea65e429e027835aeb40", -- 2023-02-14
+    },
   },
   config = function()
     local mason = require("mason")

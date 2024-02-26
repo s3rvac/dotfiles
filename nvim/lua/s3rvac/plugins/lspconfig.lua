@@ -7,7 +7,11 @@ return {
     -- LSP completion for nvim-cmp.
     "hrsh7th/cmp-nvim-lsp",
     -- Better development experience for Neovim configuration and plugins.
-    "folke/neodev.nvim",
+    -- https://github.com/folke/neodev.nvim
+    {
+      "folke/neodev.nvim",
+      tag = "v2.5.2", -- 2023-03-24
+    },
   },
   config = function()
     -- Important: Make sure to set up neodev before lspconfig.

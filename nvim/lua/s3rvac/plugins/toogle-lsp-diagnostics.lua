@@ -1,7 +1,8 @@
 -- Toggling LSP diagnostics.
--- WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
+-- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
 return {
   "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+  commit = "4fbfb51e3902d17613be0bc03035ce26b9a8d05d", -- 2023-10-10
   event = "VeryLazy",
   config = function()
     require("toggle_lsp_diagnostics").init(vim.diagnostic.config())

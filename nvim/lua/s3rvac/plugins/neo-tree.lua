@@ -2,10 +2,18 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
+  tag = "3.17", -- 2024-02-14
   dependencies = {
-    "MunifTanjim/nui.nvim",
-    "nvim-lua/plenary.nvim",
+    -- https://github.com/MunifTanjim/nui.nvim
+    {
+      "MunifTanjim/nui.nvim",
+      tag = "0.3.0", -- 2024-02-16
+    },
+    -- https://github.com/nvim-lua/plenary.nvim
+    {
+      "nvim-lua/plenary.nvim",
+      commit = "4f71c0c4a196ceb656c824a70792f3df3ce6bb6d", -- 2024-01-29
+    },
     "nvim-tree/nvim-web-devicons",
   },
   config = function()

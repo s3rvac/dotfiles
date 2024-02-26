@@ -3,6 +3,7 @@
 return {
   {
     "ibhagwan/fzf-lua",
+    commit = "3b3cc17c7bb91f6bbef7166c0756f89a189c4db4", -- 2024-02-23
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       -- List nvim-treesitter as a dependency to ensure that when fzf.lua is
