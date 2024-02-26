@@ -34,10 +34,11 @@ end
 -- Returns mapping options with sensible defaults that can be overridden.
 function M.keymap_opts(t)
   return {
+    buffer = t["buffer"] ~= nil and t["buffer"] or false,
+    desc = t["desc"] ~= nil and t["desc"] or "",
+    expr = t["expr"] ~= nil and t["expr"] or false,
     noremap = t["noremap"] ~= nil and t["noremap"] or true,
     silent = t["silent"] ~= nil and t["silent"] or true,
-    expr = t["expr"] ~= nil and t["expr"] or false,
-    desc = t["desc"] ~= nil and t["desc"] or "",
   }
 end
 
