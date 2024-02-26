@@ -86,6 +86,57 @@ function M.select_indent_style()
   )
 end
 
---
+-- Open the given link in a browser.
+function M.open_link(link)
+  -- Use `netrw#BrowseX()` instead of `vim.fn.jobstart({ "xdg-open", link })`
+  -- as the former focues the browser while the latter does not.
+  vim.fn["netrw#BrowseX"](link, 1)
+end
+
+-- Creates a (1) Man command and (2) filetype <Leader>man autocommand for
+-- opening documentation for (1) the selected symbol and (2) the symbol under
+-- the cursor in a web browser.
+function M.create_man_cmd_and_ft_autocmd_for_opening_docs(ft_group, ft_pattern, link_prefix)
+  vim.api.nvim_create_autocmd("FileType", {
+    group = ft_group,
+    pattern = ft_pattern,
+    callback = function()
+      local function open_docs_for_symbol(symbol)
+        local complete_link = link_prefix .. symbol
+        print("Opening " .. complete_link)
+        M.open_link(complete_link)
+      end
+
+      -- :Man <symbol>
+      vim.api.nvim_create_user_command("Man", function(t)
+        open_docs_for_symbol(t.args)
+      end, {
+        nargs = 1,
+        desc = "Open documentation for the given symbol in a web browser",
+      })
+
+      -- <Leader>man
+      vim.keymap.set(
+        "n",
+        "<Leader>man",
+        function()
+          -- When selecting the word under the cursor, include the dot to match
+          -- e.g. "sys.exit" instead of just "exit".
+          local orig_iskeyword = vim.bo.iskeyword
+          vim.bo.iskeyword = vim.bo.iskeyword .. ",."
+          local symbol = vim.fn.expand("<cword>")
+          vim.bo.iskeyword = orig_iskeyword
+
+          open_docs_for_symbol(symbol)
+        end,
+        M.keymap_opts({
+          buffer = true,
+          desc = "Open documentation for the symbol under the cursor in a web browser",
+        })
+      )
+    end,
+    desc = "FileType " .. ft_pattern .. ": Command for <Leader>man",
+  })
+end
 
 return M
