@@ -20,14 +20,15 @@ return {
   },
   config = function()
     local cmp = require("cmp")
+    local cmp_types = require("cmp.types")
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,preview,noselect",
-        -- I want to trigger regular autocompletion manually.
-        autocomplete = false,
+        -- Set to 'false' to disable autocompletion.
+        autocomplete = { cmp_types.cmp.TriggerEvent.TextChanged },
         -- Minimum number of characters to trigger completion (only used when
-        -- autocomplete is true).
-        keyword_length = 2,
+        -- autocompletion is enabled).
+        keyword_length = 0,
       },
       formatting = {
         -- Include the source of each item in the menu
