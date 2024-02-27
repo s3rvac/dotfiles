@@ -13,29 +13,61 @@ return {
     },
     event = "VeryLazy",
     config = function()
+      local fns = require("s3rvac.functions")
+
       -- Mappings.
+      -- Note: LSP-related mappings are defined in lua/s3rvac/plugins/lspconfig.lua.
       local fzf = require("fzf-lua")
-      vim.keymap.set("n", "<leader>fb", fzf.buffers, {})
-      vim.keymap.set("n", "<leader>fc", fzf.command_history, {})
-      vim.keymap.set("n", "<leader>ff", fzf.files, {})
-      vim.keymap.set("n", "<leader>fgb", fzf.git_branches, {})
-      vim.keymap.set("n", "<leader>fgc", fzf.git_commits, {})
-      vim.keymap.set("n", "<leader>fgC", fzf.git_bcommits, {})
-      vim.keymap.set("n", "<leader>fgs", fzf.git_status, {})
-      vim.keymap.set("n", "<leader>fgt", fzf.git_tags, {})
-      vim.keymap.set("n", "<leader>fR", fzf.resume, {})
-      vim.keymap.set("n", "<leader>fs", fzf.search_history, {})
-      vim.keymap.set("n", "<leader>/", fzf.live_grep_native, {})
-      vim.keymap.set("n", "<leader>*", fzf.grep_cword, {})
+      local opts = fns.keymap_opts({})
+
+      opts.desc = "FzF buffers"
+      vim.keymap.set("n", "<leader>fb", fzf.buffers, opts)
+
+      opts.desc = "FzF command history"
+      vim.keymap.set("n", "<leader>fc", fzf.command_history, opts)
+
+      opts.desc = "FzF files"
+      vim.keymap.set("n", "<leader>ff", fzf.files, opts)
+
+      opts.desc = "FzF Git branches"
+      vim.keymap.set("n", "<leader>fgb", fzf.git_branches, opts)
+
+      opts.desc = "FzF git commits"
+      vim.keymap.set("n", "<leader>fgc", fzf.git_commits, opts)
+
+      opts.desc = "FzF git commits in buffer"
+      vim.keymap.set("n", "<leader>fgC", fzf.git_bcommits, opts)
+
+      opts.desc = "FzF git status"
+      vim.keymap.set("n", "<leader>fgs", fzf.git_status, opts)
+
+      opts.desc = "FzF git tags"
+      vim.keymap.set("n", "<leader>fgt", fzf.git_tags, opts)
+
+      opts.desc = "FzF resume the previous window"
+      vim.keymap.set("n", "<leader>fR", fzf.resume, opts)
+
+      opts.desc = "FzF search history"
+      vim.keymap.set("n", "<leader>fs", fzf.search_history, opts)
+
+      opts.desc = "FzF help"
+      vim.keymap.set("n", "<leader>fh", fzf.help_tags, opts)
+
+      opts.desc = "FzF live grep"
+      vim.keymap.set("n", "<leader>/", fzf.live_grep_native, opts)
+
+      opts.desc = "FzF grep cword"
+      vim.keymap.set("n", "<leader>*", fzf.grep_cword, opts)
 
       -- Fuzzy completion of file paths.
       -- (I still use the original implementation of <C-x><C-f> for file
       -- completion in case there are characters around the cursor, e.g. in
       -- `[text](|)`, where `|` is the cursor. Those cases are not handled by
       -- FzF very well.)
+      opts = fns.keymap_opts({ desc = "Fuzzy complete path" })
       vim.keymap.set({ "n", "v", "i" }, "<C-x><C-p>", function()
         fzf.complete_path()
-      end, { silent = true, desc = "Fuzzy complete path" })
+      end, opts)
 
       -- Configuration.
       local fzf_defaults = require("fzf-lua.defaults").defaults
