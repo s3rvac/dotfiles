@@ -215,6 +215,20 @@ return {
       cmd = { pyright, "--stdio" },
     })
 
+    -- Rust
+    local rust_analyzer = fns.mason_bin_path_to("rust-analyzer")
+    lspconfig["rust_analyzer"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      on_init = on_init,
+      autostart = fns.is_executable(rust_analyzer),
+      cmd = { rust_analyzer },
+      settings = {
+        -- https://github.com/rust-lang/rust-analyzer/blob/master/docs/user/generated_config.adoc
+        ["rust-analyzer"] = {},
+      },
+    })
+
     -- Terraform
     local terraformls = fns.mason_bin_path_to("terraform-ls")
     lspconfig["terraformls"].setup({
