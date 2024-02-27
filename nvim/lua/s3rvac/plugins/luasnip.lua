@@ -13,7 +13,18 @@ return {
       { "i", "s" },
       "<Tab>",
       function()
-        return luasnip.expand_or_jumpable() and "<Plug>luasnip-expand-or-jump" or "<Tab>"
+        -- When I am at the beginning of a line (or there is only whitespace
+        -- before the cursor), always insert a tab. This prevents annoying
+        -- behavior when I try to indent and the cursor jumps around.
+        local _, col = unpack(vim.api.nvim_win_get_cursor(0))
+        local prefix = string.sub(vim.api.nvim_get_current_line(), 0, col)
+        if string.match(prefix, "^%s*$") then
+          return "<Tab>"
+        elseif luasnip.expand_or_jumpable() then
+          return "<Plug>luasnip-expand-or-jump"
+        else
+          return "<Tab>"
+        end
       end,
       fns.keymap_opts({
         desc = "Expand a snippet / jump forward / insert a tab",
