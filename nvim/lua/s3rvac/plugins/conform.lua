@@ -22,6 +22,7 @@ return {
         json = { "jq" },
         lua = { "stylua" },
         python = { "ruff_format" },
+        rust = { "rustfmt" },
         sh = { "shfmt" },
         terraform = { "terraform" },
         yaml = { "yq" },
@@ -52,6 +53,10 @@ return {
         stylua = {
           command = fns.mason_bin_path_to("stylua"),
           enabled = fns.mason_bin_exists("stylua"),
+        },
+        rustfmt = {
+          command = "rustfmt",
+          enabled = vim.fn.executable("rustfmt"),
         },
         terragrunt = {
           command = "terragrunt",
