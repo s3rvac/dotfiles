@@ -43,6 +43,7 @@ return {
         "cssls",
         "dockerfile-language-server",
         "html-lsp",
+        "kotlin-language-server",
         "lua_ls",
         "pyright",
         "terraformls",

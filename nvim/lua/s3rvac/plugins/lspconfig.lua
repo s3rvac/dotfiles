@@ -163,6 +163,16 @@ return {
       cmd = { html, "--stdio" },
     })
 
+    -- Kotlin
+    local kotlin_language_server = fns.mason_bin_path_to("kotlin-language-server")
+    lspconfig["kotlin_language_server"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      on_init = on_init,
+      autostart = fns.is_executable(kotlin_language_server),
+      cmd = { kotlin_language_server },
+    })
+
     -- Lua
     local lua_ls = fns.mason_bin_path_to("lua-language-server")
     lspconfig["lua_ls"].setup({
