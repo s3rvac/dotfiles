@@ -33,6 +33,12 @@ return {
       shellcheck = {
         cmd = fns.mason_bin_path_to("shellcheck"),
         enabled = fns.mason_bin_exists("shellcheck"),
+        args = {
+          -- Exclude the following diagnostic:
+          -- * SC1090: ShellCheck can't follow non-constant source.
+          "--exclude=SC1090",
+          fns.unpack(lint.linters.shellcheck.args),
+        },
       },
       tflint = {
         cmd = fns.mason_bin_path_to("tflint"),
