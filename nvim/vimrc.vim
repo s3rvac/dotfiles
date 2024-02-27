@@ -621,13 +621,19 @@ nnoremap <silent> <Leader>wa :ArgWrap<CR>
 " Check for changes in all buffers, automatically reload them, and redraw.
 nnoremap <silent> <Leader>rr :set autoread <Bar> checktime <Bar> redraw! <Bar> set noautoread<CR>
 
-" Replaces the current word (and all occurrences).
+" Replaces the current word and all its occurrences).
 nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
 vnoremap <Leader>rc y:%s/<C-r>"/
+" A fallback if a LSP server is not available (see lspconfig.lua).
+nmap <Leader>rC <Leader>rc
+vmap <Leader>rC <Leader>rc
 
-" Changes the current word (and all occurrences).
+" Changes the current word and all its occurrences.
 nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
 vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+" A fallback if a LSP server is not available (see lspconfig.lua).
+nmap <Leader>cC <Leader>cc
+vmap <Leader>cC <Leader>cc
 
 " Replace tabs with spaces.
 nnoremap <Leader>rts :%s/	/    /g<CR>

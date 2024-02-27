@@ -12,10 +12,17 @@ return {
       "folke/neodev.nvim",
       tag = "v2.5.2", -- 2023-03-24
     },
+    -- Incremental LSP renaming.
+    -- https://github.com/smjonas/inc-rename.nvim
+    {
+      "smjonas/inc-rename.nvim",
+      commit = "6f9b5f9cb237e12935144cdc535322b8c93c1b25", -- 2023-12-28
+    },
   },
   config = function()
     -- Important: Make sure to set up neodev before lspconfig.
     require("neodev").setup()
+    require("inc_rename").setup()
 
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -66,8 +73,13 @@ return {
       opts.desc = "LSP: Show available code actions for the symbol under cursor"
       vim.keymap.set("n", "<Leader>lc", vim.lsp.buf.code_action, opts)
 
-      opts.desc = "LSP: Smart rename of the symbol under cursor"
-      vim.keymap.set("n", "<Leader>lR", vim.lsp.buf.rename, opts)
+      opts.desc = "LSP: Smart rename of the symbol under cursor (no prefill)"
+      vim.keymap.set("n", "<Leader>rC", ":IncRename ", opts)
+
+      opts.desc = "LSP: Smart rename of the symbol under cursor (prefill cword)"
+      vim.keymap.set("n", "<leader>cC", function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+      end, { expr = true, fns.unpack(opts) })
 
       -- Unused mappings:
 
