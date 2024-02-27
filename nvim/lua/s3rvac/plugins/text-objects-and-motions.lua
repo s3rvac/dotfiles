@@ -48,10 +48,10 @@ return {
             include_surrounding_whitespace = true,
 
             keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
               ["ac"] = "@class.outer",
               ["ic"] = "@class.inner",
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
             },
           },
         },
