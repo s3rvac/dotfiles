@@ -69,6 +69,12 @@ return {
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
+        -- Abort completion and close the completion menu.
+        ["<C-e>"] = cmp.mapping({
+          i = cmp.mapping.abort(),
+          c = cmp.mapping.close(),
+        }),
+
         -- Preserve the original mapping of <C-p>/<C-n> (I need those to be
         -- fast and complete just buffer text) but allow those to be used when
         -- cmp is visible.
