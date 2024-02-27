@@ -133,6 +133,16 @@ return {
       },
     })
 
+    -- CSS
+    local cssls = fns.mason_bin_path_to("vscode-css-language-server")
+    lspconfig["cssls"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      on_init = on_init,
+      autostart = fns.is_executable(cssls),
+      cmd = { cssls, "--stdio" },
+    })
+
     -- Dockerfile
     local dockerls = fns.mason_bin_path_to("docker-langserver")
     lspconfig["dockerls"].setup({

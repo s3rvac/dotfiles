@@ -40,6 +40,7 @@ return {
         -- LSP servers.
         "bash-language-server",
         "clangd",
+        "cssls",
         "dockerfile-language-server",
         "lua_ls",
         "pyright",
