@@ -17,11 +17,12 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
+    local fns = require("s3rvac.functions")
+
     -- Configuration.
     local highlights = require("neo-tree.ui.highlights")
     local components = require("neo-tree.sources.common.components")
     require("neo-tree").setup({
-      close_if_last_window = true,
       enable_git_status = false,
       default_component_configs = {
         -- Do not show file types as I do not need to see this information.
@@ -62,13 +63,13 @@ return {
       "n",
       "<leader>nt",
       ":Neotree source=filesystem toggle=true reveal=true position=left<CR>",
-      { desc = "Toggle Neo-tree (left side)" }
+      fns.keymap_opts({ desc = "Toggle Neo-tree (left side)" })
     )
     vim.keymap.set(
       "n",
       "<leader>nT",
       ":Neotree source=filesystem toggle=true reveal=true position=current<CR>",
-      { desc = "Toggle Neo-tree (current buffer)" }
+      fns.keymap_opts({ desc = "Toggle Neo-tree (current buffer)" })
     )
   end,
 }
