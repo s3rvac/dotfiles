@@ -153,6 +153,16 @@ return {
       cmd = { dockerls, "--stdio" },
     })
 
+    -- HTML
+    local html = fns.mason_bin_path_to("vscode-html-language-server")
+    lspconfig["html"].setup({
+      capabilities = lsp_capabilities,
+      on_attach = on_attach,
+      on_init = on_init,
+      autostart = fns.is_executable(html),
+      cmd = { html, "--stdio" },
+    })
+
     -- Lua
     local lua_ls = fns.mason_bin_path_to("lua-language-server")
     lspconfig["lua_ls"].setup({

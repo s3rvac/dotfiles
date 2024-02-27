@@ -42,6 +42,7 @@ return {
         "clangd",
         "cssls",
         "dockerfile-language-server",
+        "html-lsp",
         "lua_ls",
         "pyright",
         "terraformls",
