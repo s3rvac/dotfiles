@@ -64,6 +64,7 @@ return {
         "ruff",
         "shellcheck",
         "tflint",
+        "yamllint",
       },
 
       -- Do not run :MasonToolsInstall on startup (I prefer to run it manually).
