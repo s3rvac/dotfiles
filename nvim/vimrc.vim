@@ -663,12 +663,6 @@ nnoremap <silent> <Leader>mfx :call <SID>MakeFileExecutable()<CR>
 
 " Command aliases.
 cnoreabbrev tn tabnew
-" Open help in a vertical window instead of in a horizontal window.
-cnoreabbrev help vert help
-" Translation. It uses https://github.com/soimort/translate-shell, which has to
-" be available in $PATH under name 'trs'.
-cnoreabbrev toen !trs cs:en
-cnoreabbrev tocs !trs en:cs
 
 " Command mistypes.
 nnoremap :E :e
