@@ -808,6 +808,9 @@ au FileType kotlin setl expandtab
 au FileType kotlin setl tabstop=4
 au FileType kotlin setl softtabstop=4
 au FileType kotlin setl shiftwidth=4
+
+" Fix sometimes incorrect syntax highlighting (at least when using kotlin-vim).
+au BufEnter *.kt syntax sync fromstart
 augroup end
 
 " LaTeX
