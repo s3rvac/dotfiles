@@ -257,6 +257,13 @@ return {
       on_init = on_init,
       autostart = fns.is_executable(yamlls),
       cmd = { yamlls, "--stdio" },
+      settings = {
+        yaml = {
+          schemas = {
+            -- To be defined in project-local configuration files.
+          },
+        },
+      },
     })
   end,
 }
