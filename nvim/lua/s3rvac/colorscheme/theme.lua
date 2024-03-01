@@ -179,6 +179,10 @@ function theme.setup()
     CmpItemKindUnit = { link = "CmpItemKindKeyword" },
     CmpItemKindText = { fg = p.white, bg = p.none },
 
+    -- LuaSnip
+    -- https://github.com/L3MON4D3/LuaSnip
+    snippet = { fg = "#ffff60", bg = p.none, bold = true },
+
     -- nvim-treesitter
     -- https://github.com/nvim-treesitter/nvim-treesitter
     -- https://neovim.io/doc/user/treesitter.html#treesitter-highlight-groups
