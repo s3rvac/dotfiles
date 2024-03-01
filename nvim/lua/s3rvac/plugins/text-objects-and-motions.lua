@@ -12,12 +12,25 @@ return {
     "wellle/targets.vim",
     commit = "642d3a4ce306264b05ea3219920b13ea80931767", -- 2023-02-22
     event = "VeryLazy",
+    config = function()
+      -- When seeking, prefer multiline targets around the cursor over distant
+      -- targets within the cursor line. This works better than the default
+      -- setting when e.g. doing ci{ inside of a block on a line that also
+      -- contains curly brackets (the expected behavior is to change the block,
+      -- not seek to the curly brackets on the current line).
+      vim.g.targets_seekRanges =
+        "cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA"
+    end,
   },
   -- https://github.com/christoomey/vim-sort-motion
   {
     "christoomey/vim-sort-motion",
     commit = "c8782be8f7da414c6442b3ba4b6abb0345d392d9", -- 2021-03-07
     event = "VeryLazy",
+    config = function()
+      -- Remove duplicates while sorting.
+      vim.g.sort_motion_flags = "u"
+    end,
   },
   -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   {
