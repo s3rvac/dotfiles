@@ -72,7 +72,7 @@ function theme.setup()
     PreCondit = { link = "PreProc" },
     PreProc = { fg = "#ff80ff", bg = p.none },
     Question = { link = "MoreMsg" },
-    QuickFixLine = { fg = p.black, bg = "#ffd700" },
+    QuickFixLine = { fg = p.black, bg = "#bcbcbc" },
     Repeat = { link = "Statement" },
     Search = { fg = p.black, bg = "#ffff60" },
     SignColumn = { fg = "#00ffff", bg = p.none },
