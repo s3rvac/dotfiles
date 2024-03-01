@@ -1,6 +1,22 @@
 -- I use my own colorscheme.
 vim.cmd("colorscheme s3rvac")
 
+-- A list of filetypes for which I do not want to use Treesitter-based syntax
+-- highlighting. The reason is that for those file types, the original,
+-- non-treesitter, regex-based version looks better, at least for now.
+vim.g.s3rvac_disable_treesitter_highlight_for_filetypes = {
+  "css",
+  "diff",
+  "gitcommit",
+  "kotlin",
+  "latex",
+  "make",
+  "python",
+  "rst",
+  "toml",
+  "yaml",
+}
+
 -- Highlight mixtures of spaces and tabs.
 vim.cmd([[hi SpacesTabsMixture guifg=red guibg=gray19]])
 

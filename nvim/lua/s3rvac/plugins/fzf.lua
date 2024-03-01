@@ -6,10 +6,6 @@ return {
     commit = "3b3cc17c7bb91f6bbef7166c0756f89a189c4db4", -- 2024-02-23
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      -- List nvim-treesitter as a dependency to ensure that when fzf.lua is
-      -- initialized, we can get the list of disabled treesitter modules from
-      -- the treesitter.lua configuration.
-      "nvim-treesitter/nvim-treesitter",
     },
     event = "VeryLazy",
     config = function()
@@ -102,9 +98,10 @@ return {
           builtin = {
             treesitter = {
               enable = true,
-              -- Disable the same types as disabled in the configuration for
-              -- the nvim-treesitter plugin.
-              disable = require("nvim-treesitter.configs").get_module("highlight").disable,
+              -- Ensure that we use the same syntax-highlighters in the preview
+              -- window as in regular buffers (the list of filetypes needs to
+              -- be synced between fzf-lua and nvim-treesitter).
+              disable = vim.g.s3rvac_disable_treesitter_highlight_for_filetypes,
             },
           },
         },

@@ -56,21 +56,10 @@ return {
         sync_install = false,
         highlight = {
           enable = true,
-          -- Disable treesitter highlighting for the following file types
-          -- as the original, non-treesitter, regex-based version looks
-          -- better, at least at the moment.
-          disable = {
-            "css",
-            "diff",
-            "gitcommit",
-            "kotlin",
-            "latex",
-            "make",
-            "python",
-            "rst",
-            "toml",
-            "yaml",
-          },
+          -- Disable treesitter highlighting for some file types as the
+          -- original, non-treesitter, regex-based version looks better, at
+          -- least at the moment.
+          disable = vim.g.s3rvac_disable_treesitter_highlight_for_filetypes,
 
           -- Do not combine Vim's regex-based highlighting with
           -- Treesitter's highlighting.
