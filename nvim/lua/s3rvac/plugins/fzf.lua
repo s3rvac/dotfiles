@@ -15,8 +15,8 @@ return {
     config = function()
       local fns = require("s3rvac.functions")
 
-      -- Mappings.
-      -- Note: LSP-related mappings are defined in lua/s3rvac/plugins/lspconfig.lua.
+      -- Keymaps.
+      -- Note: LSP-related keymaps are defined in lua/s3rvac/plugins/lspconfig.lua.
       local fzf = require("fzf-lua")
       local opts = fns.keymap_opts({})
 

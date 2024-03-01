@@ -31,7 +31,7 @@ function M.mason_bin_exists(executable)
   return vim.fn.executable(M.mason_bin_path_to(executable)) == 1
 end
 
--- Returns mapping options with sensible defaults that can be overridden.
+-- Returns keymap options with sensible defaults that can be overridden.
 function M.keymap_opts(t)
   return {
     buffer = t["buffer"] ~= nil and t["buffer"] or false,

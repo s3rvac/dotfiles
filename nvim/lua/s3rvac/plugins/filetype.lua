@@ -16,7 +16,7 @@ return {
     tag = "v2.14", -- 2023-06-17
     ft = "tex",
     config = function()
-      -- Disable built-in mappings.
+      -- Disable built-in keymaps.
       vim.g.vimtex_mappings_enabled = false
       -- Use Okular as the PDF viewer.
       vim.g.vimtex_view_general_viewer = "okular"

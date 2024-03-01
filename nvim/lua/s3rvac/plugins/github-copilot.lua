@@ -50,7 +50,7 @@ return {
       replace_keycodes = false,
     })
 
-    -- Mappings.
+    -- Keymaps.
     vim.keymap.set("n", "<Leader>gcp", ":Copilot panel")
   end,
 }

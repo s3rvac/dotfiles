@@ -8,7 +8,7 @@ return {
     require("toggle_lsp_diagnostics").init(vim.diagnostic.config())
     local fns = require("s3rvac.functions")
 
-    -- Mappings.
+    -- Keymaps.
     vim.keymap.set(
       "n",
       "<Leader>dt",

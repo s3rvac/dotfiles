@@ -78,7 +78,7 @@ return {
       },
     })
 
-    -- Mappings.
+    -- Keymaps.
     vim.keymap.set({ "n", "v" }, "<Leader>rf", function()
       conform.format({ async = true, lsp_fallback = true }, function(err)
         if not err then

@@ -30,7 +30,7 @@ return {
       desc = "Loads a session (optionally with the given name)",
     })
 
-    -- Mappings.
+    -- Keymaps.
     local fns = require("s3rvac.functions")
     vim.keymap.set(
       "n",

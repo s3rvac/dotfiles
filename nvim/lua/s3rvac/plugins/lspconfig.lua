@@ -46,11 +46,11 @@ return {
       border = "single",
     })
 
-    ------- Mappings -------
+    ------- Keymaps -------
 
     local opts = { noremap = true, silent = true }
 
-    -- Buffer-local mappings and settings that only work if there is an active
+    -- Buffer-local keymaps and settings that only work if there is an active
     -- language server.
     local on_attach = function(_, bufnr)
       opts.buffer = bufnr
@@ -81,7 +81,7 @@ return {
         return ":IncRename " .. vim.fn.expand("<cword>")
       end, { expr = true, fns.unpack(opts) })
 
-      -- Unused mappings:
+      -- Unused keymaps:
 
       -- opts.desc = "LSP: Show definitions for the symbol under cursor"
       -- vim.keymap.set("n", "xxx", "<cmd>FzfLua lsp_definitions<CR>", opts)

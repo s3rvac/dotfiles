@@ -58,7 +58,7 @@ return {
       },
     })
 
-    -- Mappings.
+    -- Keymaps.
     vim.keymap.set(
       "n",
       "<leader>nt",

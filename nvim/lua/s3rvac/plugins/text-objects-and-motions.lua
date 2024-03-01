@@ -76,7 +76,7 @@ return {
     "chrisgrieser/nvim-various-textobjs",
     commit = "035243ea3c4bf005b24d8068666c7d571c708503", -- 2024-02-03
     event = "VeryLazy",
-    -- Use custom mappings.
+    -- Use custom keymaps.
     opts = { useDefaultKeymaps = false },
     config = function()
       -- Identation (a replacement for https://github.com/michaeljsmith/vim-indent-object).
