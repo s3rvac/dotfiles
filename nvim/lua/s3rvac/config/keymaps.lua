@@ -1,39 +1,27 @@
--- Mappings, commands, abbreviations, etc.
-
 local fns = require("s3rvac.functions")
 local opts = fns.keymap_opts
 
-------- Location list -------
+-------------------------------------------------------------------------------
+-- Location list
+-------------------------------------------------------------------------------
 
-vim.keymap.set(
-  "n",
-  "[l",
-  "<cmd>lprevious<cr>",
-  opts({ desc = "Previous location list item" })
-)
-vim.keymap.set(
-  "n",
-  "[l",
-  "<cmd>lnext<cr>",
-  opts({ desc = "Next location list item" })
-)
+vim.keymap.set("n", "[l", "<cmd>lprevious<cr>", opts({ desc = "Previous location list item" }))
+vim.keymap.set("n", "]l", "<cmd>lnext<cr>", opts({ desc = "Next location list item" }))
+vim.keymap.set("n", "[L", "<cmd>lfirst<cr>", opts({ desc = "First location list item" }))
+vim.keymap.set("n", "]L", "<cmd>llast<cr>", opts({ desc = "Last location list item" }))
 
-------- Quickfix list -------
+-------------------------------------------------------------------------------
+-- Quickfix list
+-------------------------------------------------------------------------------
 
-vim.keymap.set(
-  "n",
-  "[q",
-  "<cmd>cprevious<cr>",
-  opts({ desc = "Previous quickfix list item" })
-)
-vim.keymap.set(
-  "n",
-  "[q",
-  "<cmd>cnext<cr>",
-  opts({ desc = "Next quickfix list item" })
-)
+vim.keymap.set("n", "[q", "<cmd>cprevious<cr>", opts({ desc = "Previous quickfix list item" }))
+vim.keymap.set("n", "]q", "<cmd>cnext<cr>", opts({ desc = "Next quickfix list item" }))
+vim.keymap.set("n", "[Q", "<cmd>cfirst<cr>", opts({ desc = "First quickfix list item" }))
+vim.keymap.set("n", "]Q", "<cmd>clast<cr>", opts({ desc = "Last quickfix list item" }))
 
-------- Diagnostics -------
+-------------------------------------------------------------------------------
+-- Diagnostics
+-------------------------------------------------------------------------------
 
 vim.keymap.set(
   "n",
@@ -41,12 +29,7 @@ vim.keymap.set(
   vim.diagnostic.goto_prev,
   opts({ desc = "Go to the previous diagnostic" })
 )
-vim.keymap.set(
-  "n",
-  "]d",
-  vim.diagnostic.goto_next,
-  opts({ desc = "Go to the next diagnostic" })
-)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts({ desc = "Go to the next diagnostic" }))
 vim.keymap.set(
   "n",
   "<Leader>df",
