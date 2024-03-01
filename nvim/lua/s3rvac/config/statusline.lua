@@ -61,10 +61,16 @@ local function enabled_formatters()
   return table.concat(formatters_enabled, ", ")
 end
 
+local function is_lsp_progressing()
+  local messages = vim.lsp.util.get_progress_messages()
+  return #messages > 0
+end
+
 local function lsp_linter_formatter_status()
   return string.format(
-    "[%s,%s,%s]",
+    "[%s%s,%s,%s]",
     attached_lsp_clients() ~= "" and "lsp" or "-",
+    is_lsp_progressing() and "*" or "",
     enabled_linters() ~= "" and "lnt" or "-",
     enabled_formatters() ~= "" and "fmt" or "-"
   )
