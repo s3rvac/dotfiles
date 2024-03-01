@@ -27,7 +27,13 @@ local function attached_lsp_clients()
 end
 
 local function enabled_linters()
-  local lint = require("lint")
+  local lint_loaded, lint = pcall(require, "lint")
+  if not lint_loaded then
+    -- The plugin is not available right now (this can happen during the
+    -- very first plugin installation).
+    return ""
+  end
+
   local linters_enabled = {}
   for _, linter in ipairs(lint._resolve_linter_by_ft(vim.bo.filetype)) do
     if lint.linters[linter].enabled then
@@ -38,7 +44,13 @@ local function enabled_linters()
 end
 
 local function enabled_formatters()
-  local conform = require("conform")
+  local conform_loaded, conform = pcall(require, "conform")
+  if not conform_loaded then
+    -- The plugin is not available right now (this can happen during the
+    -- very first plugin installation).
+    return ""
+  end
+
   local formatters_enabled = {}
   local formatters_by_ft = conform.formatters_by_ft[vim.bo.filetype] or {}
   for _, formatter in ipairs(formatters_by_ft) do
