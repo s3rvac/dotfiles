@@ -3,11 +3,45 @@
 snippet hb "hashbang"
 	#!/usr/bin/lua
 
-# Functions
+# Definitions, functions
+
+snippet l "local"
+	local ${1}
+
+snippet f "function"
+	function ${1}(${2})
+		${3}
+	end
 
 snippet fun "function"
 	function ${1}(${2})
 		${3}
+	end
+
+snippet lf "local function"
+	local function ${1}(${2})
+		${3}
+	end
+
+# Based on https://stackoverflow.com/a/27028488/2580955
+snippet dump "dump"
+	local function dump(o)
+		if type(o) == "table" then
+			local s = ""
+			for k, v in pairs(o) do
+				if type(k) == "boolean" then
+					k = tostring(k)
+				elseif type(k) ~= "number" then
+					k = '"' .. k .. '"'
+				end
+				s = s .. "[" .. k .. "] = " .. dump(v) .. ", "
+			end
+			return "{ " .. string.sub(s, 1, -3) .. " } "
+		elseif type(o) == "string" then
+			return tostring('"' .. o .. '"')
+		else
+			return tostring(o)
+		end
 	end
 
 # Control flow
@@ -29,12 +63,23 @@ snippet for "for"
 		${2}
 	end
 
-# Statements
+snippet wh "while"
+	while ${1} do
+		${2}
+	end
+
+snippet rep "repeat"
+	repeat
+		${1}
+	until ${2:cond}
+
+snippet r "return"
+	return ${1}
+
+# Other
 
 snippet pr "print"
 	print(${1})
-
-# Other
 
 snippet { "curly braces"
 	{
