@@ -27,6 +27,28 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   desc = "FileType lua: Indent style - Neovim's config",
 })
 
+-- Let <Leader>man open Lua documentation for the symbol under the cursor.
+fns.create_man_cmd_and_ft_autocmd_for_opening_docs(
+  "FileTypeLua",
+  "lua",
+  "https://www.google.com/search?q=site:lua.org+"
+)
+
+-- Let F10 run the currently opened script.
+vim.api.nvim_create_autocmd("FileType", {
+  group = "FileTypeLua",
+  pattern = "lua",
+  callback = function()
+    vim.keymap.set(
+      { "n" },
+      "<F10>",
+      ":w<CR>:!lua %<CR>",
+      fns.keymap_opts({ buffer = true, desc = "Run the currently opened script" })
+    )
+  end,
+  desc = "FileType lua: F10: Run the currently opened script",
+})
+
 -------------------------------------------------------------------------------
 -- Markdown
 -------------------------------------------------------------------------------
