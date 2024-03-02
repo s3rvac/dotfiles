@@ -59,12 +59,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_augroup("FileTypePHP", {})
 
--- Make <Leader>man open PHP documentation for the symbol under the cursor.
-fns.create_man_cmd_and_ft_autocmd_for_opening_docs(
-  "FileTypePHP",
-  "php",
-  "https://php.net/"
-)
+-- Let <Leader>man open PHP documentation for the symbol under the cursor.
+fns.create_man_cmd_and_ft_autocmd_for_opening_docs("FileTypePHP", "php", "https://php.net/")
 
 -------------------------------------------------------------------------------
 -- Python
@@ -82,7 +78,8 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = fns.set_indent_style_to_4_spaces,
   desc = "FileType python: Indent style - default",
 })
--- Make <Leader>man open Python documentation for the symbol under the cursor.
+
+-- Let <Leader>man open Python documentation for the symbol under the cursor.
 fns.create_man_cmd_and_ft_autocmd_for_opening_docs(
   "FileTypePython",
   "python",

@@ -43,7 +43,9 @@ vim.keymap.set(
   opts({ desc = "List all diagnostics from the current buffer" })
 )
 
-------- Other -------
+-------------------------------------------------------------------------------
+-- Other
+-------------------------------------------------------------------------------
 
 vim.keymap.set("n", "<Leader>sis", fns.select_indent_style, opts({ desc = "Select indent style" }))
 
