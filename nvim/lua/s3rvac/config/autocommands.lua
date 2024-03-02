@@ -63,13 +63,13 @@ vim.api.nvim_create_autocmd("FileType", {
       { "o", "x" },
       "il",
       "<cmd>lua require('various-textobjs').mdlink('inner')<CR>",
-      { buffer = true }
+      fns.keymap_opts({ buffer = true, desc = "Text object: markdown link (inner)" })
     )
     vim.keymap.set(
       { "o", "x" },
       "al",
       "<cmd>lua require('various-textobjs').mdlink('outer')<CR>",
-      { buffer = true }
+      fns.keymap_opts({ buffer = true, desc = "Text object: markdown link (outer)" })
     )
   end,
   desc = "nvim-various-textobjs: Markdown links",
