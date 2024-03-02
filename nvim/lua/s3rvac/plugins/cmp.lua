@@ -114,7 +114,16 @@ return {
         end,
       },
       sources = cmp.config.sources({
-        { name = "nvim_lsp" },
+        {
+          name = "nvim_lsp",
+          entry_filter = function(entry, _)
+            -- Do not complete certain kinds that I do not want to be
+            -- completed.
+            local kind = entry:get_kind()
+            return kind ~= cmp.lsp.CompletionItemKind.Snippet
+              and kind ~= cmp.lsp.CompletionItemKind.Text
+          end,
+        },
         { name = "buffer" },
       }),
       window = {
