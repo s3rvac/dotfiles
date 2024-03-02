@@ -88,9 +88,7 @@ end
 
 -- Open the given link in a browser.
 function M.open_link(link)
-  -- Use `netrw#BrowseX()` instead of `vim.fn.jobstart({ "xdg-open", link })`
-  -- as the former focues the browser while the latter does not.
-  vim.fn["netrw#BrowseX"](link, 1)
+  vim.fn.jobstart({ "xdg-open", link })
 end
 
 -- Creates a (1) Man command and (2) filetype <Leader>man autocommand for
