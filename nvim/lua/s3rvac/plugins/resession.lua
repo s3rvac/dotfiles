@@ -3,6 +3,8 @@
 return {
   "stevearc/resession.nvim",
   tag = "v1.2.0", -- 2023-12-10
+  cmd = { "SessionSave", "SessionLoad" },
+  keys = { "<Leader>sl" },
   config = function()
     local resession = require("resession")
 
