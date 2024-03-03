@@ -362,33 +362,33 @@ if s:opened_file_path =~ 'textern-'
   augroup firefox_textern_plugin
   au!
 
-	" Enable Czech spell checking by default.
-	au BufRead,BufNewFile *.txt setl spell
-	au BufRead,BufNewFile *.txt setl spelllang=cs
+  " Enable Czech spell checking by default.
+  au BufRead,BufNewFile *.txt setl spell
+  au BufRead,BufNewFile *.txt setl spelllang=cs
 
-	" stackoverflow.com
-	if s:opened_file_path =~ 'stackoverflow.com'
-		au BufRead,BufNewFile *.txt setl ft=markdown
-		au BufRead,BufNewFile *.txt setl spelllang=en
-	" github.com
-	elseif s:opened_file_path =~ 'github.com'
-		au BufRead,BufNewFile *.txt setl ft=markdown
-		au BufRead,BufNewFile *.txt setl spelllang=en
-	" cs-blog.petrzemek.net
-	elseif s:opened_file_path =~ 'cs-blog.petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=html
-	" blog.petrzemek.net
-	elseif s:opened_file_path =~ 'blog.petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=html
-		au BufRead,BufNewFile *.txt setl spelllang=en
-	" petrzemek.net
-	elseif s:opened_file_path =~ 'petrzemek.net'
-		au BufRead,BufNewFile *.txt setl ft=html
-		au BufRead,BufNewFile *.txt setl spelllang=en
-	" Other
-	else
-		au BufRead,BufNewFile *.txt setl ft=html
-	endif
+  " stackoverflow.com
+  if s:opened_file_path =~ 'stackoverflow.com'
+    au BufRead,BufNewFile *.txt setl ft=markdown
+    au BufRead,BufNewFile *.txt setl spelllang=en
+  " github.com
+  elseif s:opened_file_path =~ 'github.com'
+    au BufRead,BufNewFile *.txt setl ft=markdown
+    au BufRead,BufNewFile *.txt setl spelllang=en
+  " cs-blog.petrzemek.net
+  elseif s:opened_file_path =~ 'cs-blog.petrzemek.net'
+    au BufRead,BufNewFile *.txt setl ft=html
+  " blog.petrzemek.net
+  elseif s:opened_file_path =~ 'blog.petrzemek.net'
+    au BufRead,BufNewFile *.txt setl ft=html
+    au BufRead,BufNewFile *.txt setl spelllang=en
+  " petrzemek.net
+  elseif s:opened_file_path =~ 'petrzemek.net'
+    au BufRead,BufNewFile *.txt setl ft=html
+    au BufRead,BufNewFile *.txt setl spelllang=en
+  " Other
+  else
+    au BufRead,BufNewFile *.txt setl ft=html
+  endif
 
   augroup end
 endif

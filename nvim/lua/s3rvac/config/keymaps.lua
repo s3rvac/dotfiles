@@ -63,12 +63,12 @@ nnoremap <silent> <F1> :set spell!<CR>:set spell?<CR>
 
 " Shift+F1: Toggle spell dictionary between English and Czech.
 function! s:ToggleSpelllang()
-	if &spelllang =~ 'en'
-		set spelllang=cs
-	else
-		set spelllang=en_us,en_gb
-	endif
-	set spelllang?
+  if &spelllang =~ 'en'
+    set spelllang=cs
+  else
+    set spelllang=en_us,en_gb
+  endif
+  set spelllang?
 endfunction
 nnoremap <silent> <S-F1> :call <SID>ToggleSpelllang()<CR>
 
@@ -77,13 +77,13 @@ nnoremap <silent> <F2> :set list!<CR>:set list?<CR>
 
 " Shift+F2: Toggle the display of colorcolumn.
 function! s:ToggleColorColumn()
-	if &colorcolumn > 0
-		set colorcolumn=""
-	elseif &textwidth > 0
-		let &colorcolumn = &textwidth
-	else
-		set colorcolumn=80
-	endif
+  if &colorcolumn > 0
+    set colorcolumn=""
+  elseif &textwidth > 0
+    let &colorcolumn = &textwidth
+  else
+    set colorcolumn=80
+  endif
 endfunction
 nnoremap <silent> <S-F2> :call <SID>ToggleColorColumn()<CR>
 
@@ -95,42 +95,42 @@ nnoremap <silent> <S-F3> :set relativenumber!<CR>:set relativenumber?<CR>
 
 " F4: Toggle hexdump view of binary files.
 function! s:ToggleHexdumpView()
-	if &filetype ==# 'xxd'
-		" Turn off hexdump view.
-		silent! :%!xxd -r
-		set filetype=
-	else
-		" Turn on hexdump view.
-		silent! :%!xxd
-		set filetype=xxd
-	endif
+  if &filetype ==# 'xxd'
+    " Turn off hexdump view.
+    silent! :%!xxd -r
+    set filetype=
+  else
+    " Turn on hexdump view.
+    silent! :%!xxd
+    set filetype=xxd
+  endif
 endfunction
 nnoremap <silent> <F4> :call <SID>ToggleHexdumpView()<CR>
 
 " Shift+F4: Toggle objdump view of binary files.
 function! s:ToggleObjdumpView()
-	if &filetype ==# 'objdump'
-		" Turn off objdump view.
-		" Replace the buffer with the original content of the buffer, stored in
-		" the Z register.
-		normal! ggVG"ZP
-		set filetype=
-		set noreadonly
-	else
-		" Turn on objdump view.
-		" Cut the original content of the buffer into the Z register so I can
-		" use it later to restore the original content.
-		normal! ggVG"Zd
-		" Get the output from objdump and paste it into the buffer.
-		silent! :read !objdump -S %
-		" Go to the beginning of the file.
-		normal! ggdd
-		" Set a proper file type to enable syntax highlighting through
-		" http://www.vim.org/scripts/script.php?script_id=530.
-		set filetype=objdump
-		" Prevent accidental overwrites.
-		set readonly
-	endif
+  if &filetype ==# 'objdump'
+    " Turn off objdump view.
+    " Replace the buffer with the original content of the buffer, stored in
+    " the Z register.
+    normal! ggVG"ZP
+    set filetype=
+    set noreadonly
+  else
+    " Turn on objdump view.
+    " Cut the original content of the buffer into the Z register so I can
+    " use it later to restore the original content.
+    normal! ggVG"Zd
+    " Get the output from objdump and paste it into the buffer.
+    silent! :read !objdump -S %
+    " Go to the beginning of the file.
+    normal! ggdd
+    " Set a proper file type to enable syntax highlighting through
+    " http://www.vim.org/scripts/script.php?script_id=530.
+    set filetype=objdump
+    " Prevent accidental overwrites.
+    set readonly
+  endif
 endfunction
 nnoremap <silent> <S-F4> :call <SID>ToggleObjdumpView()<CR>
 
@@ -217,17 +217,17 @@ nnoremap <silent> <A-8> 8gt
 nnoremap <silent> <A-9> 9gt
 nnoremap <silent> <A-0> :tablast<CR>
 if !has('gui_running')
-	" Konsole sends <Esc># when pressing Alt-#.
-	nnoremap <silent> <Esc>1 1gt
-	nnoremap <silent> <Esc>2 2gt
-	nnoremap <silent> <Esc>3 3gt
-	nnoremap <silent> <Esc>4 4gt
-	nnoremap <silent> <Esc>5 5gt
-	nnoremap <silent> <Esc>6 6gt
-	nnoremap <silent> <Esc>7 7gt
-	nnoremap <silent> <Esc>8 8gt
-	nnoremap <silent> <Esc>9 9gt
-	nnoremap <silent> <Esc>0 :tablast<CR>
+  " Konsole sends <Esc># when pressing Alt-#.
+  nnoremap <silent> <Esc>1 1gt
+  nnoremap <silent> <Esc>2 2gt
+  nnoremap <silent> <Esc>3 3gt
+  nnoremap <silent> <Esc>4 4gt
+  nnoremap <silent> <Esc>5 5gt
+  nnoremap <silent> <Esc>6 6gt
+  nnoremap <silent> <Esc>7 7gt
+  nnoremap <silent> <Esc>8 8gt
+  nnoremap <silent> <Esc>9 9gt
+  nnoremap <silent> <Esc>0 :tablast<CR>
 endif
 
 " Join lines by <Leader>j because I use J to go to the previous tab.
@@ -240,14 +240,14 @@ noremap <Leader>j mzJ`z
 " Also, when joining lines, keep the cursor as-is instead of moving it to the
 " end of the line.
 function! s:JoinWithoutSpaces()
-	" Store the current cursor position and join the lines.
-	normal! mzgJ
-	" Remove any whitespace.
-	if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
-		normal! dw
-	endif
-	" Go back to the stored cursor position.
-	normal! `z
+  " Store the current cursor position and join the lines.
+  normal! mzgJ
+  " Remove any whitespace.
+  if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
+    normal! dw
+  endif
+  " Go back to the stored cursor position.
+  normal! `z
 endfunction
 noremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
 
@@ -265,42 +265,42 @@ inoremap <silent> <C-_> </<C-x><C-o><C-x>
 " Note: I do not use https://github.com/christoomey/vim-tmux-navigator because
 "       it does not work when vim is run over ssh.
 if exists('$TMUX')
-	function! s:TmuxOrSplitSwitch(wincmd, tmuxdir)
-		let previous_winnr = winnr()
-		silent! execute 'wincmd ' . a:wincmd
-		if previous_winnr == winnr()
-			call system('tmux select-pane -' . a:tmuxdir)
-			redraw!
-		endif
-	endfunction
+  function! s:TmuxOrSplitSwitch(wincmd, tmuxdir)
+    let previous_winnr = winnr()
+    silent! execute 'wincmd ' . a:wincmd
+    if previous_winnr == winnr()
+      call system('tmux select-pane -' . a:tmuxdir)
+      redraw!
+    endif
+  endfunction
 
-	let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-	let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-	let &t_te = "\<Esc>]2;" . previous_title . "\<Esc>\\" . &t_te
+  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+  let &t_te = "\<Esc>]2;" . previous_title . "\<Esc>\\" . &t_te
 
-	nnoremap <silent> <C-h> :call <SID>TmuxOrSplitSwitch('h', 'L')<CR>
-	nnoremap <silent> <C-j> :call <SID>TmuxOrSplitSwitch('j', 'D')<CR>
-	nnoremap <silent> <C-k> :call <SID>TmuxOrSplitSwitch('k', 'U')<CR>
-	nnoremap <silent> <C-l> :call <SID>TmuxOrSplitSwitch('l', 'R')<CR>
+  nnoremap <silent> <C-h> :call <SID>TmuxOrSplitSwitch('h', 'L')<CR>
+  nnoremap <silent> <C-j> :call <SID>TmuxOrSplitSwitch('j', 'D')<CR>
+  nnoremap <silent> <C-k> :call <SID>TmuxOrSplitSwitch('k', 'U')<CR>
+  nnoremap <silent> <C-l> :call <SID>TmuxOrSplitSwitch('l', 'R')<CR>
 else
-	noremap <C-h> <C-w>h
-	noremap <C-j> <C-w>j
-	noremap <C-k> <C-w>k
-	noremap <C-l> <C-w>l
+  noremap <C-h> <C-w>h
+  noremap <C-j> <C-w>j
+  noremap <C-k> <C-w>k
+  noremap <C-l> <C-w>l
 endif
 
 " Zoom/restore the currently active window.
 " Based on https://coderwall.com/p/qqz1lq/vim-zoom-restore-window.
 function! s:WindowZoomToggle() abort
-	if exists('t:zoomed') && t:zoomed
-		execute t:zoom_winrestcmd
-		let t:zoomed = 0
-	else
-		let t:zoom_winrestcmd = winrestcmd()
-		resize
-		vertical resize
-		let t:zoomed = 1
-	endif
+  if exists('t:zoomed') && t:zoomed
+    execute t:zoom_winrestcmd
+    let t:zoomed = 0
+  else
+    let t:zoom_winrestcmd = winrestcmd()
+    resize
+    vertical resize
+    let t:zoomed = 1
+  endif
 endfunction
 command! WindowZoomToggle call s:WindowZoomToggle()
 nnoremap <silent> <Leader>wz :WindowZoomToggle<CR>
@@ -347,14 +347,14 @@ nnoremap <Leader>rac :%s/<C-v><Esc>\[\(\d\{1,2}\(;\d\{1,2}\)\{0,2\}\)\?[m\|K]//g
 " Makes the current file executable.
 " Based on http://vim.wikia.com/wiki/Setting_file_attributes_without_reloading_a_buffer
 function! s:MakeFileExecutable()
-	let fname = expand('%:p')
-	checktime
-	execute 'au FileChangedShell ' . fname . ' :echo'
-	silent !chmod a+x %
-	checktime
-	execute 'au! FileChangedShell ' . fname
-	" Fix display issues in terminal Vim.
-	redraw!
+  let fname = expand('%:p')
+  checktime
+  execute 'au FileChangedShell ' . fname . ' :echo'
+  silent !chmod a+x %
+  checktime
+  execute 'au! FileChangedShell ' . fname
+  " Fix display issues in terminal Vim.
+  redraw!
 endfunction
 nnoremap <silent> <Leader>mfx :call <SID>MakeFileExecutable()<CR>
 

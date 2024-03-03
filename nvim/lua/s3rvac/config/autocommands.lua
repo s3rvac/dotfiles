@@ -153,12 +153,12 @@ augroup remove_trailing_whitespace
 au!
 " Automatically remove trailing whitespace when saving a file.
 function! s:RemoveTrailingWhitespace()
-	let pattern = '\\s\\+$'
-	if &ft ==# 'mail'
-		" Do not remove the space from the email signature marker ("-- \n").
-		let pattern = '\\(^--\\)\\@<!' . pattern
-	endif
-	call setline(1, map(getline(1, '$'), 'substitute(v:val, "' . pattern . '", "", "")'))
+  let pattern = '\\s\\+$'
+  if &ft ==# 'mail'
+    " Do not remove the space from the email signature marker ("-- \n").
+    let pattern = '\\(^--\\)\\@<!' . pattern
+  endif
+  call setline(1, map(getline(1, '$'), 'substitute(v:val, "' . pattern . '", "", "")'))
 endfunction
 au BufWritePre * :if !&bin | call s:RemoveTrailingWhitespace()
 " Add a new command :W that can be used to write a file without removing
