@@ -357,10 +357,11 @@ end
 -------------------------------------------------------------------------------
 
 vim.cmd([[
-augroup firefox_textern_plugin
-au!
 let s:opened_file_path = expand('%:p')
 if s:opened_file_path =~ 'textern-'
+  augroup firefox_textern_plugin
+  au!
+
 	" Enable Czech spell checking by default.
 	au BufRead,BufNewFile *.txt setl spell
 	au BufRead,BufNewFile *.txt setl spelllang=cs
@@ -388,6 +389,7 @@ if s:opened_file_path =~ 'textern-'
 	else
 		au BufRead,BufNewFile *.txt setl ft=html
 	endif
+
+  augroup end
 endif
-augroup end
 ]])
