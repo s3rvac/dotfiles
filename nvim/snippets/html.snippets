@@ -1,4 +1,17 @@
-# Headings
+# Tags (general)
+
+snippet t "Tag" w
+	<${1:tag}>${2}</${1/([\w:._-]+).*/$1/}>
+
+snippet at "Add tag to selected text" w
+	<${1:tag}>${VISUAL}</${1/([\w:._-]+).*/$1/}>
+
+snippet ct "Centered Tag" w
+	<${1:tag}>
+		${2}
+	</${1/([\w:._-]+).*/$1/}>
+
+# Tags (specific)
 
 snippet h1 "h1" w
 	<h1>${1}</h1>${2}
@@ -18,30 +31,24 @@ snippet h6 "h6" w
 snippet h7 "h7" w
 	<h7>${1}</h7>${2}
 
-# Anchors
+snippet ul "ul"
+	<ul>
+		<li>${1}</li>
+	</ul>${2}
+
+snippet ol "ol"
+	<ol>
+		<li>${1}</li>
+	</ol>${2}
+
+snippet li "li"
+	<li>${1}</li>
 
 snippet a "a" w
 	<a href="${1}">${2}</a>${3}
 
-# Code
-
 snippet c "code" w
 	<code>${1}</code>${2}
-
-# Tags (general)
-
-snippet t "Tag" w
-	<${1:tag}>${2}</${1/([\w:._-]+).*/$1/}>
-
-snippet at "Add tag to selected text" w
-	<${1:tag}>${VISUAL}</${1/([\w:._-]+).*/$1/}>
-
-snippet ct "Centered Tag" w
-	<${1:tag}>
-		${2}
-	</${1/([\w:._-]+).*/$1/}>
-
-# Tags (other)
 
 snippet center "center"
 	<center>
