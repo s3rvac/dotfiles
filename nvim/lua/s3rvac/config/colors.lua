@@ -6,6 +6,7 @@ vim.cmd("colorscheme s3rvac")
 -- non-treesitter, regex-based version looks better, at least for now.
 vim.g.s3rvac_disable_treesitter_highlight_for_filetypes = {
   "css",
+  "csv",
   "diff",
   "gitcommit",
   "kotlin",
