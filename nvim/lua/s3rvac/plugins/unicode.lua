@@ -3,7 +3,8 @@
 return {
   "chrisbra/unicode.vim",
   commit = "bc20d0fb3331a7b41708388c56bb8221c2104da7", -- 2023-09-20
-  config = function()
+  event = "VeryLazy",
+  init = function()
     -- Use custom keymaps.
     vim.g.Unicode_no_default_mappings = true
 

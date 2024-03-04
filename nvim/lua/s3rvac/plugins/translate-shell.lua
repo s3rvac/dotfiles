@@ -4,6 +4,7 @@
 return {
   "echuraev/translate-shell.vim",
   commit = "d72a2eabd2a5466369df794777e662ecc2d732e9", -- 2020-06-02
+  event = "VeryLazy",
   config = function()
     -- Settings.
     vim.g.trans_win_height = 30

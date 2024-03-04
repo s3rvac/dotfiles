@@ -12,7 +12,7 @@ return {
     "wellle/targets.vim",
     commit = "642d3a4ce306264b05ea3219920b13ea80931767", -- 2023-02-22
     event = "VeryLazy",
-    config = function()
+    init = function()
       -- When seeking, prefer multiline targets around the cursor over distant
       -- targets within the cursor line. This works better than the default
       -- setting when e.g. doing ci{ inside of a block on a line that also
@@ -27,7 +27,7 @@ return {
     "christoomey/vim-sort-motion",
     commit = "c8782be8f7da414c6442b3ba4b6abb0345d392d9", -- 2021-03-07
     event = "VeryLazy",
-    config = function()
+    init = function()
       -- Remove duplicates while sorting.
       vim.g.sort_motion_flags = "u"
     end,

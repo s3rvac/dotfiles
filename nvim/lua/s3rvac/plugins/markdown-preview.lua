@@ -3,9 +3,8 @@
 return {
   "iamcco/markdown-preview.nvim",
   commit = "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee", -- 2023-10-17
-  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  key = { "<Leader>mp" },
   ft = { "markdown" },
+  event = "VeryLazy",
   build = function()
     vim.fn["mkdp#util#install"]()
   end,

@@ -2,8 +2,8 @@
 -- https://github.com/s3rvac/AutoFenc
 return {
   "s3rvac/AutoFenc",
-  config = function()
-    -- Settings.
+  init = function()
+    -- Use `enca` to detect file encodings.
     vim.g.autofenc_ext_prog_path = "enca"
 
     -- I am from the Czech Republic, so assume that input files are in a

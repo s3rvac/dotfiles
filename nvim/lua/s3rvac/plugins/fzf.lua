@@ -4,10 +4,10 @@ return {
   {
     "ibhagwan/fzf-lua",
     commit = "3b3cc17c7bb91f6bbef7166c0756f89a189c4db4", -- 2024-02-23
+    event = "VeryLazy",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    event = "VeryLazy",
     config = function()
       local fns = require("s3rvac.functions")
 
