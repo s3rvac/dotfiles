@@ -124,7 +124,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -------------------------------------------------------------------------------
--- Other (have not been rewritten to Lua yet)
+-- Other (have not been rewritten to Lua yet).
 -------------------------------------------------------------------------------
 
 vim.cmd([[

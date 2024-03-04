@@ -2,25 +2,73 @@ local fns = require("s3rvac.functions")
 local opts = fns.keymap_opts
 
 -------------------------------------------------------------------------------
--- Location list
+-- General.
 -------------------------------------------------------------------------------
 
-vim.keymap.set("n", "[l", "<cmd>lprevious<cr>", opts({ desc = "Previous location list item" }))
-vim.keymap.set("n", "]l", "<cmd>lnext<cr>", opts({ desc = "Next location list item" }))
-vim.keymap.set("n", "[L", "<cmd>lfirst<cr>", opts({ desc = "First location list item" }))
-vim.keymap.set("n", "]L", "<cmd>llast<cr>", opts({ desc = "Last location list item" }))
+-- The leader and local-leader characters.
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
+-- Clipboard paste.
+vim.keymap.set(
+  "n",
+  "<Leader>p",
+  ':set paste<CR>"+]p:set nopaste<CR>',
+  opts({ desc = "Paste from the clipboard" })
+)
+vim.keymap.set(
+  "n",
+  "<Leader>P",
+  ':set paste<CR>"+]P:set nopaste<CR>',
+  opts({ desc = "Paste from the clipboard" })
+)
+vim.keymap.set("v", "<Leader>p", '"+p', opts({ desc = "Paste from the clipboard" }))
+
+-- The following keymap is needed in nvim-qt, which, without it, just emits
+-- "<S-Insert>".
+vim.keymap.set({ "i", "c" }, "<S-Insert>", "<C-r>+", opts({ desc = "Paste from the clipboard" }))
+
+-- Clipboard copy.
+vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', opts({ desc = "Copy into the clipboard" }))
+
+-- Clipboard cut.
+vim.keymap.set({ "n", "v" }, "<Leader>d", '"+d', opts({ desc = "Cut into the clipboard" }))
 
 -------------------------------------------------------------------------------
--- Quickfix list
+-- Visual mode improvements.
 -------------------------------------------------------------------------------
 
-vim.keymap.set("n", "[q", "<cmd>cprevious<cr>", opts({ desc = "Previous quickfix list item" }))
-vim.keymap.set("n", "]q", "<cmd>cnext<cr>", opts({ desc = "Next quickfix list item" }))
-vim.keymap.set("n", "[Q", "<cmd>cfirst<cr>", opts({ desc = "First quickfix list item" }))
-vim.keymap.set("n", "]Q", "<cmd>clast<cr>", opts({ desc = "Last quickfix list item" }))
+-- Stay in visual mode when indenting.
+vim.keymap.set("v", "<", "<gv", opts({ desc = "Dedent and get back to visual mode" }))
+vim.keymap.set("v", ">", ">gv", opts({ desc = "Indent and get back to visual mode" }))
+
+-- Move the selected block down and up.
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv", opts({ desc = "Move selected block down" }))
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv", opts({ desc = "Move selected block up" }))
+
+-- Quickly select the text I just pasted.
+vim.keymap.set("n", "gV", "`[v`]", opts({ desc = "Select pasted text" }))
 
 -------------------------------------------------------------------------------
--- Diagnostics
+-- Location list.
+-------------------------------------------------------------------------------
+
+vim.keymap.set("n", "[l", ":lprevious<CR>", opts({ desc = "Previous location list item" }))
+vim.keymap.set("n", "]l", ":lnext<CR>", opts({ desc = "Next location list item" }))
+vim.keymap.set("n", "[L", ":lfirst<CR>", opts({ desc = "First location list item" }))
+vim.keymap.set("n", "]L", ":llast<CR>", opts({ desc = "Last location list item" }))
+
+-------------------------------------------------------------------------------
+-- Quickfix list.
+-------------------------------------------------------------------------------
+
+vim.keymap.set("n", "[q", ":cprevious<CR>", opts({ desc = "Previous quickfix list item" }))
+vim.keymap.set("n", "]q", ":cnext<CR>", opts({ desc = "Next quickfix list item" }))
+vim.keymap.set("n", "[Q", ":cfirst<CR>", opts({ desc = "First quickfix list item" }))
+vim.keymap.set("n", "]Q", ":clast<CR>", opts({ desc = "Last quickfix list item" }))
+
+-------------------------------------------------------------------------------
+-- Diagnostics.
 -------------------------------------------------------------------------------
 
 vim.keymap.set(
@@ -39,12 +87,12 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<Leader>dl",
-  "<cmd>FzfLua diagnostics_document<CR>",
+  ":FzfLua diagnostics_document<CR>",
   opts({ desc = "List all diagnostics from the current buffer" })
 )
 
 -------------------------------------------------------------------------------
--- Other
+-- Other.
 -------------------------------------------------------------------------------
 
 vim.keymap.set("n", "<Leader>sis", fns.select_indent_style, opts({ desc = "Select indent style" }))
@@ -54,10 +102,6 @@ vim.keymap.set("n", "<Leader>sis", fns.select_indent_style, opts({ desc = "Selec
 -------------------------------------------------------------------------------
 
 vim.cmd([[
-" The leader and local-leader characters.
-let mapleader = ','
-let maplocalleader = ','
-
 " F1: Toggle spell checker.
 nnoremap <silent> <F1> :set spell!<CR>:set spell?<CR>
 
@@ -154,27 +198,6 @@ noremap <silent> Q :q!<CR>
 nnoremap <silent> <C-s> :w<CR>:wa<CR>
 inoremap <silent> <C-s> <Esc>:w<CR><Esc>:wa<CR>
 vnoremap <silent> <C-s> <Esc>:w<CR><Esc>:wa<CR>
-
-" Insert the contents of the clipboard.
-nnoremap <silent> <Leader>P :set paste<CR>"+]P:set nopaste<CR>
-nnoremap <silent> <Leader>p :set paste<CR>"+]p:set nopaste<CR>
-vnoremap          <Leader>p "+p
-" The following keymap is needed in nvim-qt, which, without it, just emits
-" "<S-Insert>".
-map! <S-Insert> <C-r>+
-
-" Copy the selected text into the clipboard.
-noremap <Leader>y "+y
-
-" Cut the selected text into the clipboard.
-noremap <Leader>d "+d
-
-" Stay in visual mode when indenting.
-vnoremap < <gv
-vnoremap > >gv
-
-" Quickly select the text I just pasted.
-noremap gV `[v`]
 
 " Hitting space in normal/visual mode will make the current search disappear.
 noremap <silent> <Space> :silent nohlsearch<CR>
