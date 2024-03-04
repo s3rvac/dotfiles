@@ -256,9 +256,6 @@ noremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
 " line (i.e. the same as yy).
 noremap Y y$
 
-" Close the opened HTML tag with Ctrl+_.
-inoremap <silent> <C-_> </<C-x><C-o><C-x>
-
 " Smart window switching with awareness of Tmux panes. Now, I can use Ctrl+hjkl
 " in both Vim and Tmux (without using the prefix). Based on
 " http://www.codeography.com/2013/06/19/navigating-vim-and-tmux-splits.
