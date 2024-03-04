@@ -189,10 +189,6 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
 
 " Make j and k move by virtual lines instead of physical lines, but only when
 " not used in the count mode (e.g. 3j). This is great when 'wrap' and
