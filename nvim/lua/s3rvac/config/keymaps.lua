@@ -32,9 +32,9 @@ vim.keymap.set(
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts({ desc = "Go to the next diagnostic" }))
 vim.keymap.set(
   "n",
-  "<Leader>df",
+  "<Leader>ds",
   vim.diagnostic.open_float,
-  opts({ desc = "Open line diagnostics" })
+  opts({ desc = "Show line diagnostics" })
 )
 vim.keymap.set(
   "n",
