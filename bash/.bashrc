@@ -414,6 +414,17 @@ alias gu='g u'
 alias toen='trs cs:en'
 alias tocs='trs en:cs'
 
+# Use Neovim to view manual pages.
+#
+# Note: The following (recommended) approach
+#
+#   export MANPAGER='nvim +Man!'
+#
+# does not work when Neovim is installed as an AppImage (opening a manual page
+# results in "fuse: mount failed: Permission denied"). Hence, use the following
+# approach that works.
+function man() { /usr/bin/man "$@" | nvim +Man! -; }
+
 # Run the given command with arguments through gdb.
 function gdbc() { gdb -quiet -ex run --args "$@"; }
 
