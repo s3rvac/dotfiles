@@ -23,6 +23,9 @@ offset = { x = 0, y = -2 }
 
 [keyboard]
 bindings = [
+	# Paste from the clipboard via Shift-Insert.
+	# https://github.com/alacritty/alacritty/issues/3619
+	{ key = "Insert", mods = "Shift", action = "Paste" },
 	# Make Ctrl-+ (Ctrl-Shift-=) increase font size for me as the default key
 	# binding does not work.
 	# https://github.com/alacritty/alacritty/issues/6496
