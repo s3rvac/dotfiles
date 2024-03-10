@@ -2,10 +2,10 @@
 	[submenu] (Development)
 		[exec] (DDD) {ddd} <~/.fluxbox/icons/ddd.xpm>
 		[exec] (GDB) {konsole -e gdb} <~/.fluxbox/icons/gdb.png>
-		[exec] (GVim) {gvim} <~/.fluxbox/icons/gvim.png>
 		[exec] (KCachegrind) {kcachegrind} <~/.fluxbox/icons/kcachegrind.png>
 		[exec] (KDiff3) {kdiff3} <~/.fluxbox/icons/kdiff3.png>
 		[exec] (Kompare) {kompare} <~/.fluxbox/icons/kompare.png>
+		[exec] (Neovim) {nvim-qt} <~/.fluxbox/icons/neovim.png>
 	[end]
 	[submenu] (Graphics)
 		[exec] (GIMP) {gimp} <~/.fluxbox/icons/gimp.png>
