@@ -172,5 +172,6 @@ Control Alt g :Exec nvim-qt
 Control Alt n :Exec konsole
 Control Alt o :Exec ~/.fluxbox/scripts/chromium.sh
 Control Alt p :Exec firefox --private-window
+Control Alt s :Exec signal-desktop
 Control Alt t :Exec ~/.fluxbox/scripts/toggle-thunderbird.sh
 Control Alt u :Exec krusader
