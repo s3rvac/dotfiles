@@ -8,7 +8,7 @@ draw_bold_text_with_bright_colors = true
 primary = { foreground = "#b2b2b2", dim_foreground = "#656565", bright_foreground = "#ffffff", background = "#000000" }
 normal = { black = "#000000", red = "#b21818", green = "#18b218", yellow = "#b26818", blue = "#1818b2", magenta = "#b218b2", cyan = "#18b2b2", white = "#b2b2b2" }
 bright = { black = "#686868", red = "#ff5454", green = "#54ff54", yellow = "#ffff54", blue = "#5454ff", magenta = "#ff54ff", cyan = "#54ffff", white = "#ffffff" }
-dim = { black = "#000000", red = "#650000", green = "#006500", yellow = "#655e00", blue = "#000065", magenta = "#650065", cyan = "#006565", white = "#656565" }
+dim = { black = "#000000", red = "#980000", green = "#006500", yellow = "#655e00", blue = "#000065", magenta = "#650065", cyan = "#006565", white = "#656565" }
 
 [font]
 size = 11
