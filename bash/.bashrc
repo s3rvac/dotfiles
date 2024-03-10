@@ -491,9 +491,11 @@ function remove-duplicate-empty-lines() {
 }
 
 # Conversions.
-alias HEX="ruby -e 'printf(\"0x%X\n\", ARGV[0])'"
-alias DEC="ruby -e 'printf(\"%d\n\", ARGV[0])'"
-alias BIN="ruby -e 'printf(\"%bb\n\", ARGV[0])'"
+function tohex() { printf "0x%x\n" "$1"; }
+function todec() { printf "%d\n" "$1"; }
+function tobin() { bc <<< "obase=2;$1"; }
+# Unix timestamp to date.
+function ts2date() { date -d "@$1"; }
 
 # Apt aliases for Debian/Ubuntu.
 alias apti='apt install'
