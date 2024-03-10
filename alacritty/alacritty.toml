@@ -23,7 +23,7 @@ offset = { x = 0, y = -2 }
 
 [keyboard]
 bindings = [
-	# Make Ctrl-+ (Ctrl-Shift-=) increase font size for me. The default key
+	# Make Ctrl-+ (Ctrl-Shift-=) increase font size for me as the default key
 	# binding does not work.
 	# https://github.com/alacritty/alacritty/issues/6496
 	{ key = "+", mods = "Control|Shift", action = "IncreaseFontSize" },
