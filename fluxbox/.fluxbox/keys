@@ -39,8 +39,8 @@ Print :Exec spectacle
 # Make a screenshot via Flameshot.
 Ctrl Print :Exec flameshot gui
 
-# Toggle Yakuake.
-Alt F1 :Exec yakuake
+# Toggle a terminal dropdown.
+Alt F1 :Exec ~/.fluxbox/scripts/toggle-terminal-dropdown.sh
 
 # Open a dialog to run programs.
 Alt F2 :Exec fbrun

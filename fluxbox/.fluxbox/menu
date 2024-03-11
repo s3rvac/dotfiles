@@ -65,7 +65,6 @@
 		[exec] (Krusader) {krusader} <~/.fluxbox/icons/krusader.png>
 		[exec] (Parcellite) {parcellite} <~/.fluxbox/icons/parcellite.png>
 		[exec] (QXKB) {qxkb} <~/.fluxbox/icons/qxkb.png>
-		[exec] (Yakuake) {yakuake} <~/.fluxbox/icons/yakuake.png>
 	[end]
 	[separator]
 	[submenu] (FluxBox)

@@ -21,7 +21,6 @@ sleep 1
 	# A list of applications to be started automatically.
 	cmst &
 	volumeicon &
-	yakuake &
 	qstardict &
 	clementine &
 	parcellite &
