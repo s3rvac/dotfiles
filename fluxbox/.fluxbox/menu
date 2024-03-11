@@ -1,7 +1,7 @@
 [begin] (FluxBox)
 	[submenu] (Development)
 		[exec] (DDD) {ddd} <~/.fluxbox/icons/ddd.xpm>
-		[exec] (GDB) {konsole -e gdb} <~/.fluxbox/icons/gdb.png>
+		[exec] (GDB) {alacritty -e gdb} <~/.fluxbox/icons/gdb.png>
 		[exec] (KCachegrind) {kcachegrind} <~/.fluxbox/icons/kcachegrind.png>
 		[exec] (KDiff3) {kdiff3} <~/.fluxbox/icons/kdiff3.png>
 		[exec] (Kompare) {kompare} <~/.fluxbox/icons/kompare.png>
@@ -53,12 +53,13 @@
 			[exec] (NVIDIA X Server Settings) {nvidia-settings} <~/.fluxbox/icons/nvidia-settings.png>
 			[exec] (XFCE Preferred Applications) {exo-preferred-applications}
 		[end]
-		[exec] (Htop) {konsole -e htop} <~/.fluxbox/icons/htop.png>
+		[exec] (Htop) {alacritty -e htop} <~/.fluxbox/icons/htop.png>
 		[exec] (Redis Desktop Manager) {rdm} <~/.fluxbox/icons/redis-desktop-manager.png>
 		[exec] (VirtualBox) {VirtualBox} <~/.fluxbox/icons/virtualbox.png>
 		[exec] (Wireshark) {wireshark} <~/.fluxbox/icons/wireshark.png>
 	[end]
 	[submenu] (Utilities)
+		[exec] (Alacritty) {alacritty} <~/.fluxbox/icons/alacritty.png>
 		[exec] (KRename) {krename} <~/.fluxbox/icons/krename.png>
 		[exec] (Konsole) {konsole} <~/.fluxbox/icons/konsole.png>
 		[exec] (Krusader) {krusader} <~/.fluxbox/icons/krusader.png>
