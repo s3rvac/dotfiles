@@ -9,4 +9,6 @@
 # not just Yakuake (KDE Konsole UI).
 #
 
-tdrop -a -m -w '100%' -h '-16' alacritty --title 'Alacritty - Yakuake'
+# The empty width (-w) and height (-h) is used to prevent tdrop from
+# altering the window size.
+tdrop -a -r -w '' -h '' alacritty --title 'Alacritty - Yakuake'
