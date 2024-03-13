@@ -24,7 +24,6 @@ sleep 1
 	qstardict &
 	clementine &
 	parcellite &
-	mate-power-manager &
 } &
 
 wait $fbpid
