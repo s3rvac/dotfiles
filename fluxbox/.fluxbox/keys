@@ -102,6 +102,18 @@ Control Alt l :Exec ~/.fluxbox/scripts/switch-screen-focus.sh right
 Alt Tab :NextWindow {groups} (workspace=[current])
 Alt Shift Tab :PrevWindow {groups} (workspace=[current])
 
+# Focus Nth window on the current workspace.
+Mod4 1 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 1
+Mod4 2 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 2
+Mod4 3 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 3
+Mod4 4 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 4
+Mod4 5 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 5
+Mod4 6 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 6
+Mod4 7 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 7
+Mod4 8 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 8
+Mod4 9 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 9
+Mod4 0 :Exec ~/.fluxbox/scripts/focus-nth-window-on-current-workspace.sh 10
+
 # Change to previous/next workspace.
 Mod4 j :PrevWorkspace
 Mod4 k :NextWorkspace
