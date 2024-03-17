@@ -21,6 +21,15 @@ normal = { family = "monospace", style = "Regular" }
 # similar as possible.
 offset = { x = 0, y = -1 }
 
+# Use hints for links in the output, but only select (and copy) them upon
+# clicking on them. Do not open them in a browser as I do not like that.
+[[hints.enabled]]
+action = "Select"
+hyperlinks = true
+post_processing = true
+mouse.enabled = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
 [keyboard]
 bindings = [
 	# Paste from the clipboard via Shift-Insert.
