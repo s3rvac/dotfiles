@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #------------------------------------------------------------------------------
 # File:   $HOME/.bashrc
 # Author: Petr Zemek <s3rvac@petrzemek.net>
