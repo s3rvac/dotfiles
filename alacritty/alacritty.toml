@@ -45,10 +45,6 @@ bindings = [
 hide_when_typing = true
 
 [selection]
-# A set of characters to delimit text selected by a double click.
-# Changes from the default:
-# - Removed `:`
-semantic_escape_chars = ",│`|\"' ()[]{}<>\t"
 # Automatically copy the selected text into the clipboard.
 save_to_clipboard = true
 
