@@ -17,6 +17,7 @@ WIN_X=$(grep 'Position' <<< "$WIN_GEOMETRY" | sed 's/  Position: \(.*\),.* (scre
 WIN_Y=$(grep 'Position' <<< "$WIN_GEOMETRY" | sed 's/  Position: .*,\(.*\) (screen: .*)/\1/')
 
 # Compute the new size and position.
+WIN_Y=0
 if [ "$1" = "left" ]; then
 	WIN_W=$((WIN_W / 2))
 elif [ "$1" = "right" ]; then
