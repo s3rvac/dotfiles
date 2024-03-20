@@ -29,10 +29,10 @@ return {
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local fns = require("s3rvac.functions")
 
-    -- Used to enable autocompletion (assigned to every LSP server config).
-    local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
-
-    ------- Settings -------
+    -- LSP capabilities with extended configuration to enable autocompletion
+    -- (the capabilities are assigned to every LSP server config).
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
 
     -- Add border around windows.
     require("lspconfig.ui.windows").default_options.border = "single"
@@ -49,14 +49,10 @@ return {
       border = "single",
     })
 
-    ------- Keymaps -------
-
-    local opts = { noremap = true, silent = true }
-
-    -- Buffer-local keymaps and settings that only work if there is an active
-    -- language server.
     local on_attach = function(_, bufnr)
-      opts.buffer = bufnr
+      -- Buffer-local keymaps and settings that only work if there is an active
+      -- language server.
+      local opts = { noremap = true, silent = true, buffer = bufnr }
 
       opts.desc = "LSP: Jump to the definition of the symbol under cursor"
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -106,28 +102,32 @@ return {
 
     ------ Language servers -------
 
-    -- Note: I need to specify full paths to servers; otherwise, they fail to
-    --       start (for no apparent reason). I am able to run them manually
-    --       from Neovim without any issues.
+    local function set_up_language_server(t)
+      local server_name = fns.table_remove_key(t, "server_name")
+      -- I need to specify full paths to servers; otherwise, they fail to start
+      -- (for no apparent reason). I am able to run them manually from Neovim
+      -- without any issues.
+      local server_bin = fns.mason_bin_path_to(fns.table_remove_key(t, "server_bin"))
+      local cmd_args = fns.table_remove_key(t, "cmd_args") or {}
+      lspconfig[server_name].setup(vim.tbl_extend("error", t, {
+        capabilities = fns.table_remove_key(t, "capabilities") or capabilities,
+        on_attach = fns.table_remove_key(t, "on_attach") or on_attach,
+        on_init = fns.table_remove_key(t, "on_init") or on_init,
+        autostart = fns.is_executable(server_bin),
+        cmd = { server_bin, fns.unpack(cmd_args) },
+      }))
+    end
 
     -- C, C++
-    local clangd = fns.mason_bin_path_to("clangd")
-    lspconfig["clangd"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(clangd),
-      cmd = { clangd },
+    set_up_language_server({
+      server_name = "clangd",
+      server_bin = "clangd",
     })
 
     -- Bash
-    local bashls = fns.mason_bin_path_to("bash-language-server")
-    lspconfig["bashls"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(bashls),
-      cmd = { bashls, "start" },
+    set_up_language_server({
+      server_name = "bashls",
+      server_bin = "bash-language-server",
       settings = {
         bashIde = {
           -- Disable shellcheck because it is already handled by nvim-lint.
@@ -137,52 +137,36 @@ return {
     })
 
     -- CSS
-    local cssls = fns.mason_bin_path_to("vscode-css-language-server")
-    lspconfig["cssls"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(cssls),
-      cmd = { cssls, "--stdio" },
+    set_up_language_server({
+      server_name = "cssls",
+      server_bin = "vscode-css-language-server",
+      cmd_args = { "--stdio" },
     })
 
     -- Dockerfile
-    local dockerls = fns.mason_bin_path_to("docker-langserver")
-    lspconfig["dockerls"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(dockerls),
-      cmd = { dockerls, "--stdio" },
+    set_up_language_server({
+      server_name = "dockerls",
+      server_bin = "docker-langserver",
+      cmd_args = { "--stdio" },
     })
 
     -- HTML
-    local html = fns.mason_bin_path_to("vscode-html-language-server")
-    lspconfig["html"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(html),
-      cmd = { html, "--stdio" },
+    set_up_language_server({
+      server_name = "html",
+      server_bin = "vscode-html-language-server",
+      cmd_args = { "--stdio" },
     })
 
     -- Kotlin
-    local kotlin_language_server = fns.mason_bin_path_to("kotlin-language-server")
-    lspconfig["kotlin_language_server"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(kotlin_language_server),
-      cmd = { kotlin_language_server },
+    set_up_language_server({
+      server_name = "kotlin_language_server",
+      server_bin = "kotlin-language-server",
     })
 
     -- Lua
-    local lua_ls = fns.mason_bin_path_to("lua-language-server")
-    lspconfig["lua_ls"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      autostart = fns.is_executable(lua_ls),
-      cmd = { lua_ls },
+    set_up_language_server({
+      server_name = "lua_ls",
+      server_bin = "lua-language-server",
       on_init = function(client)
         -- Use special configuration when editing Neovim's configuration files.
         -- Based on https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
@@ -209,23 +193,16 @@ return {
     })
 
     -- Python
-    local pyright = fns.mason_bin_path_to("pyright-langserver")
-    lspconfig["pyright"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(pyright),
-      cmd = { pyright, "--stdio" },
+    set_up_language_server({
+      server_name = "pyright",
+      server_bin = "pyright-langserver",
+      cmd_args = { "--stdio" },
     })
 
     -- Rust
-    local rust_analyzer = fns.mason_bin_path_to("rust-analyzer")
-    lspconfig["rust_analyzer"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(rust_analyzer),
-      cmd = { rust_analyzer },
+    set_up_language_server({
+      server_name = "rust_analyzer",
+      server_bin = "rust-analyzer",
       settings = {
         -- https://github.com/rust-lang/rust-analyzer/blob/master/docs/user/generated_config.adoc
         ["rust-analyzer"] = {},
@@ -233,33 +210,24 @@ return {
     })
 
     -- Terraform
-    local terraformls = fns.mason_bin_path_to("terraform-ls")
-    lspconfig["terraformls"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(terraformls),
-      cmd = { terraformls, "serve" },
+    set_up_language_server({
+      server_name = "terraformls",
+      server_bin = "terraform-ls",
+      cmd_args = { "serve" },
     })
 
     -- Vim
-    local vimls = fns.mason_bin_path_to("vim-language-server")
-    lspconfig["vimls"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(vimls),
-      cmd = { vimls, "--stdio" },
+    set_up_language_server({
+      server_name = "vimls",
+      server_bin = "vim-language-server",
+      cmd_args = { "--stdio" },
     })
 
     -- YAML
-    local yamlls = fns.mason_bin_path_to("yaml-language-server")
-    lspconfig["yamlls"].setup({
-      capabilities = lsp_capabilities,
-      on_attach = on_attach,
-      on_init = on_init,
-      autostart = fns.is_executable(yamlls),
-      cmd = { yamlls, "--stdio" },
+    set_up_language_server({
+      server_name = "yamlls",
+      server_bin = "yaml-language-server",
+      cmd_args = { "--stdio" },
       settings = {
         yaml = {
           schemas = {
