@@ -5,11 +5,6 @@ return {
   tag = "v1.10.0", -- 2024-01-29
   event = "VeryLazy",
   dependencies = {
-    -- https://github.com/williamboman/mason-lspconfig.nvim
-    {
-      "williamboman/mason-lspconfig.nvim",
-      tag = "v1.26.0" -- 2023-12-21
-    },
     -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/
     {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -18,9 +13,6 @@ return {
   },
   config = function()
     local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
-
-    -- Enable and configure mason.
     mason.setup({
       ui = {
         icons = {
@@ -30,9 +22,6 @@ return {
         },
       },
     })
-
-    -- Enable and configure mason-lspconfig.
-    mason_lspconfig.setup()
 
     -- LSP servers, formatters, and linters to install via :MasonToolsInstall.
     require("mason-tool-installer").setup({
