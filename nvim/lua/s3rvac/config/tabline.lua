@@ -15,7 +15,7 @@ function! MyTabLine()
 		let s .= '%' . i . 'T'
 		let s .= (i == t ? '%1*' : '%2*')
 		let s .= ' '
-		let wn = tabpagewinnr(i,'$')
+		let wn = tabpagewinnr(i, '$')
 		let s .= '%#TabNum#'
 		let s .= i
 		let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')

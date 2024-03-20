@@ -56,7 +56,9 @@ return {
         "yamllint",
       },
 
-      -- Do not run :MasonToolsInstall on startup (I prefer to run it manually).
+      -- Do not run :MasonToolsInstall on startup. I prefer to run it manually
+      -- and only on machines that have all the necessary dependencies
+      -- installed, such as npm.
       run_on_start = false,
     })
   end,

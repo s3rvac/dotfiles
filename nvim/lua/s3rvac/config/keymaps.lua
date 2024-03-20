@@ -270,7 +270,7 @@ if !has('gui_running')
   nnoremap <silent> <Esc>0 :tablast<CR>
 endif
 
-" Join lines by <Leader>j because I use J to go to the previous tab.
+" Use a custom keymap for joining lines as I use J to go to the previous tab.
 " Also, when joining lines, keep the cursor as-is instead of moving it to the
 " end of the line.
 noremap <Leader>j mzJ`z

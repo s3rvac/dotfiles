@@ -36,11 +36,13 @@ return {
 
     -- Add border around windows.
     require("lspconfig.ui.windows").default_options.border = "single"
+
     -- Add border to the documentation hover window (shown via lua
     -- vim.lsp.buf.hover()).
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = "single",
     })
+
     -- Add border to the signature-help hover window (shown via lua
     -- vim.lsp.buf.signature_help()).
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
