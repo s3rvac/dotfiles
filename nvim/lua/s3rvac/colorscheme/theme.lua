@@ -86,7 +86,7 @@ function theme.setup()
     SpellRare = { sp = "#ff00ff", undercurl = true },
     Statement = { fg = "#ffff60", bg = p.none, bold = true },
     StatusLine = { fg = p.white, bg = p.black, bold = true },
-    StatusLineNC = { fg = p.black, bg = "gray70" },
+    StatusLineNC = { fg = p.white, bg = p.black, bold = false },
     StatusLineTerm = { link = "StatusLine" },
     StatusLineTermNC = { link = "StatusLineNC" },
     StorageClass = { link = "Type" },
