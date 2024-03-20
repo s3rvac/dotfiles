@@ -5,6 +5,14 @@ function M.is_executable(file_or_prog)
   return vim.fn.executable(file_or_prog) == 1
 end
 
+-- Returns true if Neovim is running inside a GUI (e.g. nvim-qt), false
+-- otherwise.
+function M.is_running_in_gui()
+  -- This condition works for nvim-qt (which is what I use), but I do not know
+  -- whether it works for other GUIs as well.
+  return vim.o.term == "nvim"
+end
+
 -- Unpacks the given table.
 function M.unpack(t)
   -- Before Lua 5.2, unpack() was a global function. Since Lua 5.2, unpack() is
