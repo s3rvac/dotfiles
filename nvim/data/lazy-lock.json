@@ -2,6 +2,7 @@
   "AutoFenc": { "branch": "master", "commit": "c4136380ac91a0a8c0d58d9ece1d01959aa3ff59" },
   "LuaSnip": { "branch": "master", "commit": "8ae1dedd988eb56441b7858bd1e8554dfadaa46d" },
   "cellular-automaton.nvim": { "branch": "main", "commit": "b7d056dab963b5d3f2c560d92937cb51db61cb5b" },
+  "cloak.nvim": { "branch": "main", "commit": "9abe4e986e924fc54a972c1b0ff52b65a0622624" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
   "conform.nvim": { "branch": "master", "commit": "4c01323a67f1636d73803aad4e8e735bad7a9561" },
