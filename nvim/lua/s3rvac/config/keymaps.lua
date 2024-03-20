@@ -9,6 +9,34 @@ local opts = fns.keymap_opts
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
+-- Make j and k move by virtual lines instead of physical lines, but only when
+-- not used in the count mode (e.g. 3j). This is great when 'wrap' and/or
+-- 'relativenumber' is used.
+vim.keymap.set(
+  "n",
+  "j",
+  "v:count == 0 ? ':silent normal gj<CR>' : 'j'",
+  opts({ expr = true, desc = "Smart move down by virtual lines" })
+)
+vim.keymap.set(
+  "n",
+  "k",
+  "v:count == 0 ? ':silent normal gk<CR>' : 'k'",
+  opts({ expr = true, desc = "Smart move up by virtual lines" })
+)
+vim.keymap.set(
+  "v",
+  "j",
+  "v:count == 0 ? 'gj' : 'j'",
+  opts({ expr = true, desc = "Smart move down by virtual lines" })
+)
+vim.keymap.set(
+  "v",
+  "k",
+  "v:count == 0 ? 'gk' : 'k'",
+  opts({ expr = true, desc = "Smart move up by virtual lines" })
+)
+
 -- Clipboard paste.
 vim.keymap.set(
   "n",
@@ -212,13 +240,6 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-
-" Make j and k move by virtual lines instead of physical lines, but only when
-" not used in the count mode (e.g. 3j). This is great when 'wrap' and
-" 'relativenumber' are used.
-" Based on http://stackoverflow.com/a/21000307/2580955
-noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Jump to the previous/next tab.
 nnoremap <silent> J :tabprevious<CR>
