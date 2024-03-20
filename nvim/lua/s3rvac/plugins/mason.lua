@@ -29,14 +29,14 @@ return {
         -- LSP servers.
         "bash-language-server",
         "clangd",
-        "cssls",
+        "css-lsp",
         "dockerfile-language-server",
         "html-lsp",
         "kotlin-language-server",
-        "lua_ls",
+        "lua-language-server",
         "pyright",
         "rust-analyzer",
-        "terraformls",
+        "terraform-ls",
         "vim-language-server",
         "yaml-language-server",
 
