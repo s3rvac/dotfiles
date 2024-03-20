@@ -2,6 +2,6 @@
 -- https://github.com/nvim-tree/nvim-web-devicons
 return {
   "nvim-tree/nvim-web-devicons",
-  commit = "14ac5887110b06b89a96881d534230dac3ed134d", -- 2024-02-18
+  commit = "75df79feb02d5e0ec114e447453775d4d291ea03", -- 2024-03-09
   event = "VeryLazy",
 }
