@@ -50,7 +50,7 @@
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-syntax-jira": { "branch": "master", "commit": "13f14dc7692193049e47d62d917a1efc91ce37ed" },
   "vim-syntax-yara": { "branch": "master", "commit": "7f163d489bb041fe74f8788662620a0bcd3c0025" },
-  "vim-tag-closer": { "branch": "main", "commit": "2f33c8e92528d246d487cc81c8c8bddda6a61b39" },
+  "vim-tag-closer": { "branch": "main", "commit": "d812d765fef3caf5a4097dadf7c565e0a01a2f36" },
   "vimtex": { "branch": "master", "commit": "5e50cc0e96e8a8ffc6fd10d627d65b8d1354b5da" },
   "wilder.nvim": { "branch": "master", "commit": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf" }
 }
