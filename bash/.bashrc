@@ -416,7 +416,8 @@ alias gs='g s'
 alias gu='g u'
 
 # Translation. It uses https://github.com/soimort/translate-shell, which has to
-# be available in $PATH under name 'trs'.
+# be available in $PATH under name 'trans'.
+alias trs='trans'
 alias toen='trs cs:en'
 alias tocs='trs en:cs'
 
