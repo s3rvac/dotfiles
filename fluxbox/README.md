@@ -14,6 +14,7 @@ My configuration files for the [Fluxbox](http://fluxbox.org/) window manager.
     * `flameshot` (screenshots)
     * `gsimplecal` (calendar)
     * `parcellite` (clipboard manager)
+    * `protonmail-bridge` (access to Proton Mail from Thunderbird)
     * `python-dbus` (setting keyboard backlight)
     * `qxkb` (switching between keyboard layouts)
     * `spectacle` (screenshots)

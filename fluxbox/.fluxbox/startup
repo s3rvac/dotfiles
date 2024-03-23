@@ -24,6 +24,7 @@ sleep 1
 	qstardict &
 	clementine &
 	parcellite &
+	protonmail-bridge &
 } &
 
 wait $fbpid
