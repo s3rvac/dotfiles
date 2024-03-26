@@ -18,5 +18,4 @@ setxkbmap -option grp:alt_shift_toggle
 setxkbmap -option caps:escape
 
 # Start a keyboard layout switcher.
-# (It will automatically run in background.)
-qxkb
+qxkb &
