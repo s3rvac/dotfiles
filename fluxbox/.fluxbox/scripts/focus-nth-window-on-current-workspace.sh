@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # Author: Petr Zemek <s3rvac@petrzemek.net>
 #
