@@ -49,6 +49,11 @@ snippet im "impl"
 
 # Flow control
 
+snippet { "block"
+	{
+		${1}
+	}
+
 snippet b "block"
 	{
 		${1}
@@ -114,9 +119,6 @@ snippet D "documentation"
 snippet todo "todo"
 	// TODO ${1}
 
-snippet todor "todor"
-	// TODO (remove)
-
 snippet code "code"
 	/// \`\`\`
 	/// ${1}
@@ -126,14 +128,6 @@ snippet code "code"
 
 snippet at "attribute"
 	#[${1}]
-
-# Other
-
-snippet . "self"
-	self.
-
-snippet dt "display type"
-	let _: () = ${1};
 
 # Tests
 
@@ -156,7 +150,8 @@ snippet ae "ae"
 
 # Other
 
-snippet { "curly braces"
-	{
-		${1}
-	}
+snippet . "self"
+	self.
+
+snippet dt "display type"
+	let _: () = ${1};
