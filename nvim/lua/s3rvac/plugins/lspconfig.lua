@@ -118,12 +118,6 @@ return {
       }))
     end
 
-    -- C, C++
-    set_up_language_server({
-      server_name = "clangd",
-      server_bin = "clangd",
-    })
-
     -- Bash
     set_up_language_server({
       server_name = "bashls",
@@ -134,6 +128,12 @@ return {
           shellcheckPath = "",
         },
       },
+    })
+
+    -- C, C++
+    set_up_language_server({
+      server_name = "clangd",
+      server_bin = "clangd",
     })
 
     -- CSS
