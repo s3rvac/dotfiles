@@ -70,7 +70,7 @@ return {
       vim.keymap.set("n", "<Leader>lr", "<cmd>FzfLua lsp_references<CR>", opts)
 
       opts.desc = "LSP: Show available code actions for the symbol under cursor"
-      vim.keymap.set("n", "<Leader>lc", vim.lsp.buf.code_action, opts)
+      vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, opts)
 
       opts.desc = "LSP: Smart rename of the symbol under cursor (no prefill)"
       vim.keymap.set("n", "<Leader>rC", ":IncRename ", opts)
