@@ -12,7 +12,6 @@ vim.g.s3rvac_disable_treesitter_highlight_for_filetypes = {
   "kotlin",
   "latex",
   "make",
-  "python",
   "rst",
   "toml",
   "yaml",
