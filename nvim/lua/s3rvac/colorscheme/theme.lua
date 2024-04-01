@@ -17,7 +17,7 @@ function theme.setup()
     Conceal = { fg = "#e5e5e5", bg = "#a9a9a9" },
     Conditional = { link = "Statement" },
     Constant = { fg = "#ffafaf", bg = p.none },
-    CurSearch = { link = "Search" },
+    CurSearch = { fg = "#ff0000", bg = "#ffff60", bold = true },
     Cursor = { fg = p.black, bg = "#00ff00" },
     CursorColumn = { fg = p.none, bg = "#555555" },
     CursorIM = { fg = p.none, bg = p.none },
@@ -393,6 +393,8 @@ function theme.setup()
     pythonBuiltin = { link = "Identifier" },
     pythonOperator = { link = "Statement" },
     pythonDecoratorName = { link = "PreProc" },
+    ["@type.builtin.python"] = { link = "Identifier" },
+    ["@type.definition.python"] = { link = "Function" },
     -- RST
     rstInterpretedTextOrHyperlinkReference = { link = "Function" },
     -- Ruby
