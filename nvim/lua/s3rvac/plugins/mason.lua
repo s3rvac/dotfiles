@@ -46,6 +46,7 @@ return {
         "ruff",
         "shfmt",
         "stylua",
+        "usort",
         "yq",
 
         -- Linters.

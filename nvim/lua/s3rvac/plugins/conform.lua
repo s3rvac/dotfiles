@@ -21,7 +21,7 @@ return {
         hcl = { "terragrunt" },
         json = { "jq" },
         lua = { "stylua" },
-        python = { "ruff_format" },
+        python = { "usort", "ruff_format" },
         rust = { "rustfmt" },
         sh = { "shfmt" },
         terraform = { "terraform" },
@@ -67,6 +67,11 @@ return {
           command = "terraform",
           enabled = vim.fn.executable("terraform"),
           args = { "fmt", "-no-color", "-" },
+        },
+        usort = {
+          command = "usort",
+          enabled = vim.fn.executable("usort"),
+          args = { "format", "-" },
         },
         yq = {
           command = fns.mason_bin_path_to("yq"),
