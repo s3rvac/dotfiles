@@ -20,15 +20,9 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-    local cmp_types = require("cmp.types")
     cmp.setup({
       completion = {
-        completeopt = "menu,menuone,preview,noselect",
-        -- Set to 'false' to disable autocompletion.
-        autocomplete = { cmp_types.cmp.TriggerEvent.TextChanged },
-        -- Minimum number of characters to trigger completion (only used when
-        -- autocompletion is enabled).
-        keyword_length = 0,
+        completeopt = "menu,menuone,noselect,preview",
       },
       formatting = {
         -- Include the source of each item in the menu
@@ -46,24 +40,9 @@ return {
           cmp.complete()
         end),
 
-        -- Initating the completion and scrolling through the items.
-        -- Note: I use <C-k> in insert mode to show the signature of the
-        --       current function, which is why there is `fallback()` instead
-        --       of `cmp.complete()`.
-        ["<C-j>"] = cmp.mapping(function()
-          if cmp.visible() then
-            cmp.select_next_item({ behavior = "insert" })
-          else
-            cmp.complete()
-          end
-        end, { "i", "s" }),
-        ["<C-k>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item({ behavior = "insert" })
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
+        -- Cycling through completion items.
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
 
         -- Scrolling the preview window.
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -73,39 +52,6 @@ return {
         ["<C-e>"] = cmp.mapping({
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
-        }),
-
-        -- Preserve the original mapping of <C-p>/<C-n> (I need those to be
-        -- fast and complete just buffer text) but allow those to be used when
-        -- cmp is visible.
-        ["<C-p>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item({ behavior = "insert" })
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<C-n>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item({ behavior = "insert" })
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-
-        -- Safely select entries with <CR>.
-        -- - If nothing is selected (including preselections), add a newline as usual.
-        -- - If something has explicitly been selected, select it.
-        ["<CR>"] = cmp.mapping({
-          i = function(fallback)
-            if cmp.visible() and cmp.get_active_entry() then
-              cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-            else
-              fallback()
-            end
-          end,
-          s = cmp.mapping.confirm({ select = true }),
-          c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
         }),
       }),
       snippet = {
