@@ -74,7 +74,11 @@ function prompt_precmd() {
 		# Add a leading zero because `bc` does not include it for numbers less
 		# than one and `date` cannot handle those.
 		local duration="0$(bc <<< "$EPOCHREALTIME - $last_command_timer")"
-		last_command_runtime=$(date -d@"$duration" -u +'%-Mm%-S.%3Ns')
+		if (( $(echo "$duration >= 3600" | bc -l) )); then
+			last_command_runtime=$(date -d@"$duration" -u +'%-Hh%-Mm%-S.%3Ns')
+		else
+			last_command_runtime=$(date -d@"$duration" -u +'%-Mm%-S.%3Ns')
+		fi
 	fi
 	unset last_command_timer
 }
