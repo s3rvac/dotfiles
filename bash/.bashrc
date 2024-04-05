@@ -19,14 +19,16 @@ function prepend_to_path() {
 }
 
 # Include the path to Ruby gems.
-if command -v ruby &> /dev/null; then
-	prepend_to_path "$(ruby -e 'puts Gem.user_dir')/bin"
+# (Use a custom implementation because `ruby -e 'puts Gem.user_dir'` is low.
+# Indeed, it takes around 60ms to execute.)
+if [ -d "$HOME/.gem/ruby" ]; then
+	prepend_to_path "$HOME/.gem/ruby/$(ls -t "$HOME/.gem/ruby" | head -n1)/bin"
+elif [ -d "$HOME/.local/share/gem/ruby" ]; then
+	prepend_to_path "$HOME/.local/share/gem/ruby/$(ls -t "$HOME/.local/share/gem/ruby/" | head -n1)/bin"
 fi
 
 # Include the path to Go programs.
-if command -v go &> /dev/null; then
-	prepend_to_path "$(go env GOPATH)/bin"
-fi
+prepend_to_path "$HOME/go/bin"
 
 # Include the path to programs from Cargo crates (Rust).
 prepend_to_path "$HOME/.cargo/bin"
@@ -215,19 +217,34 @@ complete -f -X '!*.@(gif|GIF|jpg|JPG|jpeg|JPEG|png|PNG|xcf|bmp|BMP|pcx|PCX)' gim
 complete -f -X '!*.@(mp?(e)g|MP?(E)G|wma|avi|AVI|asf|vob|VOB|bin|dat|vcd|ps|pes|fli|viv|rm|ram|yuv|mov|MOV|qt|QT|wmv|WMV|mp3|MP3|ogg|OGG|ogm|OGM|ogv|OGV|mp4|MP4|wav|WAV|asx|ASX|mng|MNG|m4v|mkv)' mplayer mpv vlc
 
 # git
-if [[ -f ~/.git-completion.bash ]]; then
+# https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+if [[ $- == *i* ]] && [[ -f ~/.git-completion.bash ]]; then
 	source ~/.git-completion.bash
+	__git_complete g __git_main
 fi
-complete -o default -o nospace -F _git g
 
-# kubectl
-if command -v kubectl &> /dev/null; then
-	source <(kubectl completion bash | sed s/kubectl/k/g)
+# kubectl / kc
+# https://github.com/kubernetes/kubectl
+if [[ $- == *i* ]] && [[ -f ~/.kubectl-completion.bash ]]; then
+	source ~/.kubectl-completion.bash
+	complete -F __start_kubectl kc
 fi
 
 # tmuxinator
-if [[ -f ~/.tmuxinator-completion.bash ]]; then
+# https://github.com/tmuxinator/tmuxinator/blob/master/completion/tmuxinator.bash
+if [[ $- == *i* ]] && [[ -f ~/.tmuxinator-completion.bash ]]; then
 	source ~/.tmuxinator-completion.bash
+fi
+
+# fzf
+# https://github.com/junegunn/fzf/tree/master/shell
+if [[ $- == *i* ]] && [[ -d ~/.fzf ]]; then
+	source ~/.fzf/key-bindings.bash
+	source ~/.fzf/completion.bash
+
+	# Custom commands for which completion via **<tab> should be enabled.
+	# usage: _fzf_setup_completion path|dir|var|alias|host COMMANDS...
+	_fzf_setup_completion 'path' vim v nv gv nvim-qt
 fi
 
 # Other aliases.
@@ -278,7 +295,7 @@ ulimit -Sc 0
 
 # Allow less to view *.gz etc. files.
 if command -v lesspipe.sh &> /dev/null; then
-	eval $(lesspipe.sh)
+	export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 fi
 
 #------------------------------------------------------------------------------
@@ -541,30 +558,12 @@ export FZF_CTRL_R_OPTS="--no-sort --no-preview --exact"
 # Options for Alt+C: cd into the selected directory.
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 
-# Import completion and key bindings.
-if [[ -d ~/.fzf ]]; then
-	source ~/.fzf/key-bindings.bash
-	source ~/.fzf/completion.bash
-fi
-
-#------------------------------------------------------------------------------
-# RVM (Ruby Version Manager).
-#------------------------------------------------------------------------------
-
-if [[ -f /usr/local/rvm/scripts/rvm ]]; then
-	source /usr/local/rvm/scripts/rvm
-fi
-
-if [[ -f /usr/local/rvm/scripts/completion ]]; then
-	source /usr/local/rvm/scripts/completion
-fi
-
 #------------------------------------------------------------------------------
 # Import other scripts/settings.
 #------------------------------------------------------------------------------
 
 # https://github.com/rcaloras/bash-preexec
-if [[ -f ~/.bash_preexec ]]; then
+if [[ $- == *i* ]] && [[ -f ~/.bash_preexec ]]; then
 	source ~/.bash_preexec
 fi
 
