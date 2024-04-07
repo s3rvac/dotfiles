@@ -8,6 +8,7 @@
 
 # Maximize the window so we can measure the dimensions of the current screen.
 wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+sleep 0.1
 
 # Take window's measurements.
 WIN_GEOMETRY=$(xdotool getactivewindow getwindowgeometry)
