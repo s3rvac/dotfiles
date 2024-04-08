@@ -273,7 +273,7 @@ endif
 " Use a custom keymap for joining lines as I use J to go to the previous tab.
 " Also, when joining lines, keep the cursor as-is instead of moving it to the
 " end of the line.
-noremap <Leader>j mzJ`z
+noremap <Leader>jj mzJ`z
 
 " Join lines without producing any spaces. It works like gJ, but does not keep
 " the indentation whitespace.
@@ -289,7 +289,7 @@ function! s:JoinWithoutSpaces()
   " Go back to the stored cursor position.
   normal! `z
 endfunction
-noremap <silent> <Leader>J :call <SID>JoinWithoutSpaces()<CR>
+noremap <silent> <Leader>jJ :call <SID>JoinWithoutSpaces()<CR>
 
 " Make Y yank everything from the cursor to the end of the line.
 " This makes Y act more like C or D because by default, Y yanks the current
