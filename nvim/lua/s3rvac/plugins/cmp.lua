@@ -70,7 +70,24 @@ return {
               and kind ~= cmp.lsp.CompletionItemKind.Text
           end,
         },
-        { name = "buffer" },
+        {
+          name = "buffer",
+          option = {
+            -- Use a custom keyword pattern to make cmp-buffer complete Unicode
+            -- word characters, e.g. "ko" will include "kočička" in the completion
+            -- menu. To explain the pattern, \k matches Neovim's 'iskeyword'.
+            -- https://github.com/hrsh7th/nvim-cmp/issues/453
+            --
+            -- Note: I use a custom 'iskeyword' setting to include '-', which
+            -- makes hyphenated words part of the completion menu. This is very
+            -- useful, at least for me.
+            keyword_pattern = [[\k\+]],
+            -- Complete from all buffers, including the hidden ones.
+            get_bufnrs = function()
+              return vim.api.nvim_list_bufs()
+            end,
+          },
+        },
       }),
       window = {
         completion = {
