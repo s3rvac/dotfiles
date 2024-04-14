@@ -262,7 +262,7 @@ function theme.setup()
     ["@punctuation.special"] = { link = "Special" },
     ["@repeat"] = { link = "Repeat" },
     ["@string"] = { link = "String" },
-    ["@string.documentation"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@string.documentation"] = { link = "String" },
     ["@string.escape"] = { link = "@string.special" },
     ["@string.regexp"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@string.special"] = { link = "Special" },
