@@ -101,6 +101,16 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "FileType python: Indent style - default",
 })
 
+-- Make `gw` work properly on rst-style comments (#: xyz).
+vim.api.nvim_create_autocmd("FileType", {
+  group = "FileTypePython",
+  pattern = "python",
+  callback = function()
+    vim.bo.comments = vim.bo.comments .. ",b:#:"
+  end,
+  desc = "FileType python: Comments",
+})
+
 -- Let <Leader>man open Python documentation for the symbol under the cursor.
 fns.create_man_cmd_and_ft_autocmd_for_opening_docs(
   "FileTypePython",
