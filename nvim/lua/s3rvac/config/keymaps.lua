@@ -289,7 +289,7 @@ function! s:JoinWithoutSpaces()
   " Go back to the stored cursor position.
   normal! `z
 endfunction
-noremap <silent> <Leader>jJ :call <SID>JoinWithoutSpaces()<CR>
+noremap <silent> <Leader>JJ :call <SID>JoinWithoutSpaces()<CR>
 
 " Make Y yank everything from the cursor to the end of the line.
 " This makes Y act more like C or D because by default, Y yanks the current
