@@ -270,12 +270,12 @@ export LESS_TERMCAP_se=$(echo -e '\e[0m')
 # grep
 # Export both these variables to ensure that grep on all systems use the same
 # colors (GREP_COLOR is deprecated, but some grep versions still use it).
+export GREP_COLORS='mt=1;33'
 export GREP_COLOR='1;33'
-export GREP_COLORS=$GREP_COLOR
 # GREP_OPTIONS is deprecated, so use aliases.
 alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias egrep='grep -E --color=auto'
+alias fgrep='grep -F --color=auto'
 
 # ripgrep
 alias rg='rg --colors "match:fg:yellow" --colors "match:bg:black" --colors "match:style:bold"'
