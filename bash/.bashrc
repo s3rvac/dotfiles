@@ -472,7 +472,7 @@ function pyve() {
 # Prints memory usage of processes with the given name.
 # Usage: mem PROG
 function mem() {
-	ps -eo rss,pid,euser,args:100 --sort -%mem | grep -v grep | grep -i $@ \
+	ps -eo rss,pid,euser,args:100 --sort -%mem | grep -v grep | grep -i "$@" \
 		| awk '{printf "%.1f", $1/1024 "MB"; $1=""; print }'
 }
 
