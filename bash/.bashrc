@@ -491,7 +491,7 @@ function ver() { v $(er "$@" | files); }
 # Removes trailing whitespace from the given file or directory.
 # Usage: remove-trailing-whitespace [FILE|DIR]
 function remove-trailing-whitespace() {
-	if [ ! -z "$1" ]; then
+	if [ -n "$1" ]; then
 		find "$1" -type f -exec sed -i 's/[[:blank:]]\+$//' {} \;
 	else
 		# When no argument was given, remove trailing whitespace from all files
@@ -503,7 +503,7 @@ function remove-trailing-whitespace() {
 # Removes duplicate empty lines from the given file or directory.
 # Usage: remove-duplicate-empty-lines [FILE|DIR]
 function remove-duplicate-empty-lines() {
-	if [ ! -z "$1" ]; then
+	if [ -n "$1" ]; then
 		find "$1" -type f -exec sed -i 'N;/^\n$/D;P;D;' {} \;
 	else
 		# When no argument was given, remove duplicate empty lines from all
