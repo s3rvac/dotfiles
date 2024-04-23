@@ -90,8 +90,10 @@ return {
         },
         grep = {
           -- 1) Make ripgrep search also in hidden files/directories when grepping.
-          -- 2) Use the same colors as I have defined for grep, git grep, etc.
-          rg_opts = '--hidden --colors "match:fg:0xff,0xff,0x60" --colors "match:bg:black" --colors "match:style:bold" '
+          -- 2) Ignore the VCS directories when grepping (.git for now).
+          -- 3) Use the same colors as I have defined for grep, git grep, etc.
+          rg_opts = "--hidden --glob=!.git/ "
+            .. '--colors "match:fg:0xff,0xff,0x60" --colors "match:bg:black" --colors "match:style:bold" '
             .. fzf_defaults.grep.rg_opts,
         },
         previewers = {
