@@ -122,6 +122,7 @@ return {
     set_up_language_server({
       server_name = "bashls",
       server_bin = "bash-language-server",
+      cmd_args = { "start" },
       settings = {
         bashIde = {
           -- Disable shellcheck because it is already handled by nvim-lint.
