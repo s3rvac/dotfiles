@@ -356,7 +356,7 @@ stty -ixon 2> /dev/null
 # Useful aliases to save some typing.
 #------------------------------------------------------------------------------
 
-alias c='clear'
+alias c='clear -x'
 alias l='ls -lA --group-directories-first'
 function mdc() { mkdir -p "$@" && eval cd "\"\$$#\""; }
 alias ..='cd ..'
