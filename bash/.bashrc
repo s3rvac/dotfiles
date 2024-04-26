@@ -545,6 +545,7 @@ export FZF_DEFAULT_OPTS="--no-mouse --reverse --multi --height 40% --border --co
 if command -v fd &> /dev/null; then
 	FZF_FD_COMMAND='fd --color=never --follow --hidden --no-ignore --exclude .git'
 	export FZF_DEFAULT_COMMAND="$FZF_FD_COMMAND --type f"
+	export FZF_CTRL_T_COMMAND="$FZF_FD_COMMAND --type f"
 	export FZF_ALT_C_COMMAND="$FZF_FD_COMMAND --type d"
 fi
 
