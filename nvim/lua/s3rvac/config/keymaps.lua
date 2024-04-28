@@ -120,6 +120,21 @@ vim.keymap.set(
 )
 
 -------------------------------------------------------------------------------
+-- GUI-specific keymaps.
+-------------------------------------------------------------------------------
+
+if fns.is_running_in_gui() then
+  -- Increase/decrease font size (similarly to the keymaps that I use in the
+  -- terminal).
+  vim.keymap.set("n", "<C-S-+>", function() -- TODO: does not work in nvim-qt
+    fns.change_font_size(1)
+  end, opts({ desc = "Increase font size" }))
+  vim.keymap.set("n", "<C-->", function()
+    fns.change_font_size(-1)
+  end, opts({ desc = "Decrease font size" }))
+end
+
+-------------------------------------------------------------------------------
 -- Other.
 -------------------------------------------------------------------------------
 

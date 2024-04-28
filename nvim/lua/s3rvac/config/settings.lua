@@ -1,3 +1,5 @@
+local fns = require("s3rvac.functions")
+
 -------------------------------------------------------------------------------
 -- General settings.
 -------------------------------------------------------------------------------
@@ -286,7 +288,7 @@ vim.opt.guicursor = "a:block,a:blinkon0"
 -- Menubar, toolbar, scrollbars etc. are disabled.
 vim.opt.guioptions = "aAci"
 
-if vim.o.term == "nvim" then
+if fns.is_running_in_gui() then
   -- Running in a GUI.
 
   -- Enable mouse usage in the GUI.
