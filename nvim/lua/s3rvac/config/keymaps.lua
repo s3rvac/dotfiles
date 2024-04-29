@@ -373,8 +373,21 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Requires the vim-argwrap plugin (https://github.com/FooSoft/vim-argwrap).
 nnoremap <silent> <Leader>wa :ArgWrap<CR>
 
-" Check for changes in all buffers, automatically reload them, and redraw.
-nnoremap <silent> <Leader>rr :checktime <Bar> redraw!<CR>
+" The following keymap is used either (1) when there were changes to a buffer
+" outside of Neovim and Neovim did not detect them or (2) when something in the
+" current buffer is broken (e.g. LSP or syntax highlighting).
+"
+" What the keymap does:
+" - Check for changes in all buffers and automatically reload them.
+" - Explicitly reload the current buffer by editing it (to fix LSPs that are
+"   unable to handle changes to files outside of Vim).
+" - Restart syntax highlighting (to fix it when it is incorrect).
+" - Redraw.
+nnoremap <silent> <Leader>rr :
+  \ checktime <Bar>
+  \ edit <Bar>
+  \ syntax sync fromstart <Bar>
+  \ redraw!<CR>
 
 " Replaces the current word and all its occurrences).
 nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
