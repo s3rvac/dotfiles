@@ -286,23 +286,15 @@ if !has('gui_running')
 endif
 
 " Use a custom keymap for joining lines as I use J to go to the previous tab.
-" Also, when joining lines, keep the cursor as-is instead of moving it to the
-" end of the line.
-noremap <Leader>jj mzJ`z
+noremap <Leader>jj J
 
 " Join lines without producing any spaces. It works like gJ, but does not keep
 " the indentation whitespace.
-" Also, when joining lines, keep the cursor as-is instead of moving it to the
-" end of the line.
 function! s:JoinWithoutSpaces()
-  " Store the current cursor position and join the lines.
-  normal! mzgJ
-  " Remove any whitespace.
+  normal! gJ
   if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
     normal! dw
   endif
-  " Go back to the stored cursor position.
-  normal! `z
 endfunction
 noremap <silent> <Leader>JJ :call <SID>JoinWithoutSpaces()<CR>
 
