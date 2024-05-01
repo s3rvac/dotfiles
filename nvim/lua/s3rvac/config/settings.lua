@@ -43,7 +43,7 @@ vim.opt.smartcase = true
 -- Treat dash-separated words as a single word (e.g. "well-written"), which
 -- makes e.g. `w` jump over the whole hyphenated word and the nvim-cmp plugin
 -- to complete the whole hyphenated word (very useful, at least for me). This
--- bsically makes '-' being treated in the same way as '_'.
+-- basically makes '-' being treated in the same way as '_'.
 vim.opt.iskeyword = vim.opt.iskeyword + "-"
 
 -- Open new vertical panes in the right rather than left.
