@@ -24,6 +24,13 @@ function M.unpack(t)
   end
 end
 
+-- Removes the given key from the given table, returning its value.
+function M.table_remove_key(t, key)
+  local value = t[key]
+  t[key] = nil
+  return value
+end
+
 -- Returns a path to the given config file of a tool.
 function M.tool_config_path_for(config_file)
   return vim.fn.stdpath("config") .. "/data/configs/" .. config_file
@@ -48,6 +55,17 @@ function M.keymap_opts(t)
     noremap = t["noremap"] ~= nil and t["noremap"] or true,
     silent = t["silent"] ~= nil and t["silent"] or true,
   }
+end
+
+-- Changes the font size by the given delta. Only useful in the GUI mode.
+function M.change_font_size(delta)
+  -- I assume that the font is of the following format: "Monospace:h11".
+  for font, size in string.gmatch(vim.o.guifont, "(.*):h(.*)") do
+    local current_size = tonumber(size)
+    if current_size + delta > 0 then
+      vim.o.guifont = string.format("%s:h%s", font, current_size + delta)
+    end
+  end
 end
 
 -- Sets the selected indent style for the current buffer.
