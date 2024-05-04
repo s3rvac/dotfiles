@@ -294,6 +294,10 @@ if fns.is_running_in_gui() then
   -- Enable mouse usage in the GUI.
   vim.opt.mouse = "a"
 
+  -- Set up a default font and size. This allows me to change the font in one
+  -- nvim-qt window without affecting all the other windows.
+  vim.opt.guifont = "Monospace:h11"
+
   -- Make the GUI version check for changes in files upon gaining focus, which
   -- is what the terminal version does by default.
   vim.api.nvim_create_autocmd({ "FocusGained" }, {
