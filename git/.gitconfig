@@ -54,6 +54,7 @@
 	ma = merge --abort
 	p = push
 	pa = push --follow-tags
+	pf = push --force-with-lease
 	pb = "!git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`"
 	db = "!git branch --delete \"$1\" && git push origin --delete \"$1\" #"
 	pl = pull --rebase=merges --autostash --stat --prune
