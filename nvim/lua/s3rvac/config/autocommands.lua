@@ -157,6 +157,11 @@ au BufNewFile,BufRead .tridactylrc setl ft=vim
 au BufNewFile,BufRead *.hql set ft=hive
 " Consider all .yar/.yara files to be YARA files.
 au BufNewFile,BufRead *.yar,*.yara set filetype=yara
+" Detection of Terraform-related files.
+au BufNewFile,BufRead *.hcl,*.tfbackend set filetype=hcl
+au BufNewFile,BufRead .terraformrc,terraform.rc set filetype=hcl
+au BufNewFile,BufRead *.tf,*.tfvars,*.tftest.hcl set filetype=terraform
+au BufNewFile,BufRead *.tfstate,*.tfstate.backup set filetype=json
 augroup end
 
 augroup remove_trailing_whitespace
