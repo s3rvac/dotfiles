@@ -150,6 +150,22 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -------------------------------------------------------------------------------
+-- Terraform
+-------------------------------------------------------------------------------
+
+vim.api.nvim_create_augroup("FileTypeTerraform", {})
+
+-- Comment settings.
+vim.api.nvim_create_autocmd("FileType", {
+  group = "FileTypeTerraform",
+  pattern = "terraform",
+  callback = function()
+    vim.bo.commentstring = "# %s"
+  end,
+  desc = "FileType terraform: Comment settings",
+})
+
+-------------------------------------------------------------------------------
 -- Other (have not been rewritten to Lua yet).
 -------------------------------------------------------------------------------
 
