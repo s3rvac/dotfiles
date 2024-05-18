@@ -100,6 +100,17 @@ vim.api.nvim_create_augroup("FileTypePHP", {})
 -- Let <Leader>man open PHP documentation for the symbol under the cursor.
 fns.create_man_cmd_and_ft_autocmd_for_opening_docs("FileTypePHP", "php", "https://php.net/")
 
+-- Comment settings.
+vim.api.nvim_create_autocmd("FileType", {
+  group = "FileTypePHP",
+  pattern = "php",
+  callback = function()
+    -- Prefer // comments over /* */ comments.
+    vim.bo.commentstring = "// %s"
+  end,
+  desc = "FileType php: Comment settings",
+})
+
 -------------------------------------------------------------------------------
 -- Python
 -------------------------------------------------------------------------------
