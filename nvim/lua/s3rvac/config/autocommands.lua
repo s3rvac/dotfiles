@@ -161,6 +161,22 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -------------------------------------------------------------------------------
+-- SQL
+-------------------------------------------------------------------------------
+
+vim.api.nvim_create_augroup("FileTypeSQL", {})
+
+-- Comment settings.
+vim.api.nvim_create_autocmd("FileType", {
+  group = "FileTypeSQL",
+  pattern = "sql",
+  callback = function()
+    vim.bo.commentstring = "-- %s"
+  end,
+  desc = "FileType sql: Comment settings",
+})
+
+-------------------------------------------------------------------------------
 -- Terraform
 -------------------------------------------------------------------------------
 
