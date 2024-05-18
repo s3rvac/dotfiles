@@ -49,6 +49,9 @@ return {
               -- Disable JS for now as opening a .js file results in the following error:
               -- treesitter/query.lua:259: query: invalid node type at position 67 for language javascript
               "javascript",
+              -- Disable Haskell for now as opening a .hs file results in the following error:
+              -- treesitter/query.lua:252: Query error at 1:3. Invalid node type "apply":
+              "haskell",
             },
 
             -- Automatically jump forward to the text object, similarly to
