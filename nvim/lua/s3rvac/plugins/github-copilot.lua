@@ -2,7 +2,7 @@
 -- https://github.com/github/copilot.vim
 return {
   "github/copilot.vim",
-  tag = "v1.19.2", -- 2024-02-20
+  tag = "v1.32.0", -- 2024-05-17
   config = function()
     -- Enable the copilot lazily to work around the issue that when I start
     -- Neovim, the plugin causes a lag that prevents me to do anything for the

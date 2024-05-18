@@ -2,6 +2,6 @@
 -- https://github.com/tpope/vim-fugitive
 return {
   "tpope/vim-fugitive",
-  commit = "011cf4fcb93a9649ffc6dcdff56ef948f5d0f7cc", -- 2024-02-12
+  commit = "5a9bd42dd8dd127779f3cd8982a0419b7ca9c7f5", -- 2024-05-17
   event = "VeryLazy",
 }

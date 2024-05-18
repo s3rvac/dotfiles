@@ -2,7 +2,7 @@
 -- https://github.com/tomtom/tcomment_vim
 return {
   "tomtom/tcomment_vim",
-  tag = "4.00", -- 2022-06-22
+  commit = "48ab639a461d9b8344f7fee06cb69b4374863b13", -- 2024-03-25
   event = "VeryLazy",
   init = function()
     -- Disable leader commands as I do not use them.

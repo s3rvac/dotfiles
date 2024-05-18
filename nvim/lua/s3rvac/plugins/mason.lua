@@ -8,7 +8,7 @@ return {
     -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/
     {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      commit = "1212fb6082b7177dde17ea65e429e027835aeb40", -- 2023-02-14
+      commit = "c1fbdcb0d8d1295314f1612c4a247253e70299d9", -- 2024-05-11
     },
   },
   config = function()

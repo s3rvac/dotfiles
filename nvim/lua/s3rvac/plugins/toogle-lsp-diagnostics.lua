@@ -2,7 +2,7 @@
 -- https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim
 return {
   "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
-  commit = "4fbfb51e3902d17613be0bc03035ce26b9a8d05d", -- 2023-10-10
+  commit = "afcacba44d86df4c3c9752b869e78eb838f55765", -- 2024-04-30
   event = "VeryLazy",
   config = function()
     require("toggle_lsp_diagnostics").init(vim.diagnostic.config())

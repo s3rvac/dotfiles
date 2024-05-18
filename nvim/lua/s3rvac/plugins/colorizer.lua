@@ -2,7 +2,7 @@
 -- https://github.com/norcalli/nvim-colorizer.lua
 return {
   "norcalli/nvim-colorizer.lua",
-  commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6", -- 2020-06-11
+  commit = "a065833f35a3a7cc3ef137ac88b5381da2ba302e", -- 2024-05-10
   ft = { "css", "html", "lua", "vim" },
   config = function()
     -- Disable colorizer by default and only enable it via :ColorizerToggle.

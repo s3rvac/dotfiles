@@ -2,7 +2,7 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  tag = "3.17", -- 2024-02-14
+  tag = "3.25", -- 2024-04-14
   dependencies = {
     -- https://github.com/MunifTanjim/nui.nvim
     {
@@ -12,7 +12,7 @@ return {
     -- https://github.com/nvim-lua/plenary.nvim
     {
       "nvim-lua/plenary.nvim",
-      commit = "4f71c0c4a196ceb656c824a70792f3df3ce6bb6d", -- 2024-01-29
+      commit = "08e301982b9a057110ede7a735dd1b5285eb341f", -- 2024-04-26
     },
     "nvim-tree/nvim-web-devicons",
   },

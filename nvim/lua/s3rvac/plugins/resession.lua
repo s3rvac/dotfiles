@@ -2,7 +2,7 @@
 -- https://github.com/stevearc/resession.nvim
 return {
   "stevearc/resession.nvim",
-  tag = "v1.2.0", -- 2023-12-10
+  tag = "v1.2.1", -- 2024-05-16
   event = "VeryLazy",
   config = function()
     local resession = require("resession")

@@ -3,7 +3,7 @@
 -- https://github.com/laytan/cloak.nvim
 return {
   "laytan/cloak.nvim",
-  commit = "9abe4e986e924fc54a972c1b0ff52b65a0622624", -- 2024-02-02
+  commit = "6e5bcd50bebc5cdb7cd3a00eb3d97ab7c4cc3b94", -- 2024-03-23
   config = function()
     local fns = require("s3rvac.functions")
 

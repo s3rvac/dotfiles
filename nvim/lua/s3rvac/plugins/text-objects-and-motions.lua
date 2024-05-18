@@ -35,7 +35,7 @@ return {
   -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    commit = "7f00d94543f1fd37cab2afa2e9a6cd54e1c6b9ef", -- 2024-02-16
+    commit = "5f9bf4b1ead7707e4e74e5319ee56bdc81fb73db", -- 2024-05-18
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -74,7 +74,7 @@ return {
   -- https://github.com/chrisgrieser/nvim-various-textobjs
   {
     "chrisgrieser/nvim-various-textobjs",
-    commit = "035243ea3c4bf005b24d8068666c7d571c708503", -- 2024-02-03
+    commit = "ae64795ff81017c8e572051fd728051176d6ecc5", -- 2024-05-18
     event = "VeryLazy",
     -- Use custom keymaps.
     opts = { useDefaultKeymaps = false },

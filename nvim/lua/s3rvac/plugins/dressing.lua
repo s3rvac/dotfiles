@@ -2,7 +2,7 @@
 -- https://github.com/stevearc/dressing.nvim
 return {
   "stevearc/dressing.nvim",
-  tag = "v2.2.0", -- 2024-01-21
+  tag = "v2.2.1", -- 2024-05-16
   event = "VeryLazy",
   config = function()
     require("dressing").setup({
