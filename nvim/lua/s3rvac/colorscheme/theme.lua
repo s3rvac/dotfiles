@@ -284,7 +284,7 @@ function theme.setup()
     ["@text.environment.name"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@text.literal"] = { link = "String" },
     ["@text.literal.block"] = { link = "String" },
-    ["@text.math"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@text.math"] = { link = "Special" },
     ["@text.note"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@text.reference"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@text.strike"] = { strikethrough = true },
