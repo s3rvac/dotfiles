@@ -47,7 +47,7 @@ return {
             enable = true,
             disable = {
               -- Disable JS for now as opening a .js file results in the following error:
-              -- "treesitter/query.lua:259: query: invalid node type at position 67 for language javascript"
+              -- treesitter/query.lua:259: query: invalid node type at position 67 for language javascript
               "javascript",
             },
 
