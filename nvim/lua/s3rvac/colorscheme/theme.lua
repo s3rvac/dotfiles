@@ -187,6 +187,7 @@ function theme.setup()
     -- https://github.com/nvim-treesitter/nvim-treesitter
     -- https://neovim.io/doc/user/treesitter.html#treesitter-highlight-groups
     ["@attribute"] = { link = "PreProc" },
+    ["@attribute.builtin"] = { link = "@attribute" },
     ["@boolean"] = { link = "Boolean" },
     ["@character"] = { link = "Character" },
     ["@character.special"] = { link = "Special" },
@@ -204,9 +205,9 @@ function theme.setup()
     ["@constructor"] = { link = "Identifier" },
     ["@constructor.call"] = { link = "Identifier" },
     ["@define"] = { link = "Define" },
-    ["@diff.plus"] = { fg = "#18b218", bg = p.none },
-    ["@diff.minus"] = { fg = "#b21818", bg = p.none },
     ["@diff.delta"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@diff.minus"] = { fg = "#b21818", bg = p.none },
+    ["@diff.plus"] = { fg = "#18b218", bg = p.none },
     ["@error"] = { link = "Error" },
     ["@exception"] = { link = "Exception" },
     ["@field"] = { link = "Identifier" },
@@ -215,6 +216,7 @@ function theme.setup()
     ["@function.call"] = { link = "Identifier" },
     ["@function.macro"] = { link = "PreProc" },
     ["@function.method"] = { link = "Function" },
+    ["@function.method.call"] = { link = "Identifier" },
     ["@include"] = { link = "Include" },
     ["@keyword"] = { link = "Keyword" },
     ["@keyword.conditional"] = { link = "Keyword" },
@@ -230,6 +232,7 @@ function theme.setup()
     ["@keyword.repeat"] = { link = "Keyword" },
     ["@keyword.return"] = { link = "Keyword" },
     ["@keyword.storage"] = { link = "Keyword" },
+    ["@keyword.type"] = { link = "Keyword" },
     ["@label"] = { link = "Label" },
     ["@markup.environment"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@markup.heading"] = { link = "Title" },
@@ -272,6 +275,7 @@ function theme.setup()
     ["@symbol"] = { link = "Constant" },
     ["@tag"] = { link = "Tag" },
     ["@tag.attribute"] = { link = "Type" },
+    ["@tag.builtin"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@tag.delimiter"] = { link = "Function" },
     ["@text"] = { link = "Normal" },
     ["@text.danger"] = { fg = "red", bg = p.none }, -- TODO when encountered
@@ -300,6 +304,7 @@ function theme.setup()
     ["@variable.builtin"] = { link = "Identifier" },
     ["@variable.member"] = { link = "Identifier" },
     ["@variable.parameter"] = { link = "Identifier" },
+    ["@variable.parameter.builtin"] = { link = "Identifier" },
 
     -- Language-specific highlights.
     --
