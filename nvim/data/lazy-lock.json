@@ -33,7 +33,6 @@
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
   "resession.nvim": { "branch": "master", "commit": "cc819b0489938d03e4f3532a583354f0287c015b" },
   "targets.vim": { "branch": "master", "commit": "642d3a4ce306264b05ea3219920b13ea80931767" },
-  "tcomment_vim": { "branch": "master", "commit": "48ab639a461d9b8344f7fee06cb69b4374863b13" },
   "toggle-lsp-diagnostics.nvim": { "branch": "main", "commit": "afcacba44d86df4c3c9752b869e78eb838f55765" },
   "translate-shell.vim": { "branch": "master", "commit": "d72a2eabd2a5466369df794777e662ecc2d732e9" },
   "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
