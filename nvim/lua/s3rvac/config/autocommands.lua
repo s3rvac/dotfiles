@@ -247,6 +247,8 @@ au!
 au FileType c,cpp nnoremap <buffer> <silent> <Leader>man :execute ':vertical Man 3 ' . expand('<cword>')<CR>
 " Make "gw" on comments work properly.
 au FileType c,cpp setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://
+" Prefer // comments over /* */ comments.
+au FileType c,cpp setl commentstring=//\ %s
 " Search also in /usr/include.
 au FileType c,cpp setl path+=/usr/include
 " Switch between the header and the source file (requires https://clangd.llvm.org/).
