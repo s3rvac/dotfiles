@@ -8,9 +8,7 @@ end
 -- Returns true if Neovim is running inside a GUI (e.g. nvim-qt), false
 -- otherwise.
 function M.is_running_in_gui()
-  -- This condition works for nvim-qt (which is what I use), but I do not know
-  -- whether it works for other GUIs as well.
-  return vim.o.term == "nvim"
+  return vim.fn.has("gui_running") == 1
 end
 
 -- Unpacks the given table.

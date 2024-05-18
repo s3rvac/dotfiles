@@ -62,8 +62,7 @@ local function enabled_formatters()
 end
 
 local function is_lsp_progressing()
-  local messages = vim.lsp.util.get_progress_messages()
-  return #messages > 0
+  return vim.lsp.status() ~= ""
 end
 
 local function lsp_linter_formatter_status()

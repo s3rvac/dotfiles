@@ -1,6 +1,6 @@
 # Neovim
 
-My configuration files for the [Neovim](https://neovim.io/) editor.
+My configuration files for the [Neovim](https://neovim.io/) editor. Compatible with Neovim 0.10.
 
 ## Installation
 

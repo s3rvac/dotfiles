@@ -220,9 +220,6 @@ vim.opt.fencs = "ucs-bom,utf-8,cp1250,latin2,latin1"
 -- Internal encoding used by Vim buffers, help and commands.
 vim.opt.enc = "utf-8"
 
--- Terminal encoding used for input and terminal display.
-vim.opt.tenc = "utf-8"
-
 -- End of line. Unix EOL is preferred over the dos one and before the mac one.
 vim.opt.ffs = "unix,dos,mac"
 
@@ -280,13 +277,6 @@ vim.opt.ttimeoutlen = 0
 -- Keep the cursor fat in all modes (including insert mode) and disable
 -- cursor blinking. Works both in GUI as well as in the terminal.
 vim.opt.guicursor = "a:block,a:blinkon0"
-
--- GUI options:
--- - aA: Enable autoselection.
--- - c: Use console dialogs.
--- - i: Use a Vim icon.
--- Menubar, toolbar, scrollbars etc. are disabled.
-vim.opt.guioptions = "aAci"
 
 if fns.is_running_in_gui() then
   -- Running in a GUI.
