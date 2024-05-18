@@ -1,6 +1,22 @@
 local fns = require("s3rvac.functions")
 
 -------------------------------------------------------------------------------
+-- HCL
+-------------------------------------------------------------------------------
+
+vim.api.nvim_create_augroup("FileTypeHCL", {})
+
+-- Comment settings.
+vim.api.nvim_create_autocmd("FileType", {
+  group = "FileTypeHCL",
+  pattern = "hcl",
+  callback = function()
+    vim.bo.commentstring = "# %s"
+  end,
+  desc = "FileType hcl: Comment settings",
+})
+
+-------------------------------------------------------------------------------
 -- Lua
 -------------------------------------------------------------------------------
 
