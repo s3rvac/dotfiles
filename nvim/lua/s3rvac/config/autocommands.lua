@@ -348,20 +348,6 @@ au FileType markdown setl softtabstop=4
 au FileType markdown setl shiftwidth=4
 augroup end
 
-" MySQL
-augroup mysql
-au!
-" Make "gw" on comments work properly.
-au FileType mysql setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:--
-augroup end
-
-" PHP
-augroup php
-au!
-" Make "gw" on comments work properly.
-au FileType php setl comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,bO:///,O://,:#
-augroup end
-
 " reStructured Text
 augroup rst
 au!
