@@ -63,6 +63,12 @@ return {
       opts.desc = "LSP: Show documentation for the symbol under cursor"
       vim.keymap.set("n", "<Leader>ll", vim.lsp.buf.hover, opts)
 
+      opts.desc = "LSP: Toggle inlay hints"
+      vim.keymap.set("n", "<Leader>li", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        print("LSP inlay hints: " .. (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"))
+      end, opts)
+
       opts.desc = "LSP: Show signature for the current function call"
       vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
 
@@ -191,6 +197,14 @@ return {
         -- We also need to call the original on_init() function.
         return on_init(client)
       end,
+      settings = {
+        Lua = {
+          -- Enable inlay hints.
+          hint = {
+            enable = true,
+          },
+        },
+      },
     })
 
     -- Python

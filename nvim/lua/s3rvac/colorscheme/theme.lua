@@ -128,6 +128,7 @@ function theme.setup()
     LspInfoTip = { link = "Comment" },
     LspInfoBorder = { link = "FloatBorder" },
     LspSignatureActiveParameter = { link = "Visual" },
+    LspInlayHint = { fg = "#808080" },
 
     -- Diagnostics
     DiagnosticError = { fg = "#ff0000" },
