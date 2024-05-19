@@ -112,7 +112,7 @@ end
 
 -- Open the given link in a browser.
 function M.open_link(link)
-  vim.fn.jobstart({ "xdg-open", link })
+  vim.ui.open(link)
 end
 
 -- Creates a (1) Man command and (2) filetype <Leader>man autocommand for
