@@ -51,6 +51,6 @@ return {
     })
 
     -- Keymaps.
-    vim.keymap.set("n", "<Leader>gcp", ":Copilot panel")
+    vim.keymap.set("n", "<Leader>gcp", ":Copilot panel<CR>")
   end,
 }
