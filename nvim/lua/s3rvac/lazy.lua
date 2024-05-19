@@ -1,18 +1,21 @@
 -- Plugin management via the lazy.nvim plugin manager.
 -- https://github.com/folke/lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazy_path) then
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
+    "--branch=stable",
+    lazy_path,
   })
 end
-vim.opt.rtp:prepend(lazypath)
 
+-- Add lazy.nvim to the runtime path, which allows me to `require` it.
+vim.opt.rtp:prepend(lazy_path)
+
+-- Set up lazy.nvim and import+load all my plugins.
 require("lazy").setup({
   { import = "s3rvac.plugins" },
 }, {
