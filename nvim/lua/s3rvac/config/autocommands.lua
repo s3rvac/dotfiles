@@ -16,6 +16,19 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -------------------------------------------------------------------------------
+-- JSON
+-------------------------------------------------------------------------------
+
+vim.api.nvim_create_augroup("FileTypeJSON", {})
+
+-- Indent style.
+vim.api.nvim_create_autocmd("FileType", {
+  group = "FileTypeJSON",
+  pattern = "json",
+  callback = fns.set_indent_style_to_4_spaces,
+})
+
+-------------------------------------------------------------------------------
 -- Lua
 -------------------------------------------------------------------------------
 
