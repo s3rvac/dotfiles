@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.bo.commentstring = "# %s"
   end,
-  desc = "FileType hcl: Comment settings",
 })
 
 -------------------------------------------------------------------------------
@@ -34,13 +33,11 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "FileTypeLua",
   pattern = "lua",
   callback = fns.set_indent_style_to_tabs,
-  desc = "FileType lua: Indent style - default",
 })
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   group = "FileTypeLua",
   pattern = vim.fn.stdpath("config") .. "/*.lua",
   callback = fns.set_indent_style_to_2_spaces,
-  desc = "FileType lua: Indent style - Neovim's config",
 })
 
 -- Let <Leader>man open Lua documentation for the symbol under the cursor.
@@ -62,7 +59,6 @@ vim.api.nvim_create_autocmd("FileType", {
       fns.keymap_opts({ buffer = true, desc = "Run the currently opened script" })
     )
   end,
-  desc = "FileType lua: F10: Run the currently opened script",
 })
 
 -------------------------------------------------------------------------------
@@ -88,7 +84,6 @@ vim.api.nvim_create_autocmd("FileType", {
       fns.keymap_opts({ buffer = true, desc = "Text object: markdown link (outer)" })
     )
   end,
-  desc = "nvim-various-textobjs: Markdown links",
 })
 
 -------------------------------------------------------------------------------
@@ -108,7 +103,6 @@ vim.api.nvim_create_autocmd("FileType", {
     -- Prefer // comments over /* */ comments.
     vim.bo.commentstring = "// %s"
   end,
-  desc = "FileType php: Comment settings",
 })
 
 -------------------------------------------------------------------------------
@@ -125,7 +119,6 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "FileTypePython",
   pattern = "python",
   callback = fns.set_indent_style_to_4_spaces,
-  desc = "FileType python: Indent style - default",
 })
 
 -- Make `gw` work properly on rst-style comments (#: xyz).
@@ -135,7 +128,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.bo.comments = vim.bo.comments .. ",b:#:"
   end,
-  desc = "FileType python: Comments",
 })
 
 -- Let <Leader>man open Python documentation for the symbol under the cursor.
@@ -157,7 +149,6 @@ vim.api.nvim_create_autocmd("FileType", {
       fns.keymap_opts({ buffer = true, desc = "Run the currently opened script" })
     )
   end,
-  desc = "FileType python: F10: Run the currently opened script",
 })
 
 -------------------------------------------------------------------------------
@@ -173,7 +164,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.bo.commentstring = "-- %s"
   end,
-  desc = "FileType sql: Comment settings",
 })
 
 -------------------------------------------------------------------------------
@@ -189,7 +179,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.bo.commentstring = "# %s"
   end,
-  desc = "FileType terraform: Comment settings",
 })
 
 -------------------------------------------------------------------------------
