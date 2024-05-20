@@ -168,6 +168,16 @@ return {
     set_up_language_server({
       server_name = "kotlin_language_server",
       server_bin = "kotlin-language-server",
+      settings = {
+        kotlin = {
+          -- Enable inlay hints.
+          inlayHints = {
+            typeHints = true,
+            parameterHints = true,
+            chaineHints = true,
+          },
+        },
+      },
     })
 
     -- Lua
