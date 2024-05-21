@@ -12,10 +12,6 @@ dim = { black = "#000000", red = "#980000", green = "#006500", yellow = "#655e00
 
 [font]
 size = 10.5
-bold = { family = "monospace", style = "Bold" }
-bold_italic = { family = "monospace", style = "Bold Italic" }
-italic = { family = "monospace", style = "Italic" }
-normal = { family = "monospace", style = "Regular" }
 # Use a negative y offset to match the offset used by Qt apps (e.g. Konsole,
 # Yakuake, Neovim Qt) as I want both Alacritty and other Qt apps to look as
 # similar as possible.
