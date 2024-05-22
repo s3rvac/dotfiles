@@ -8,6 +8,7 @@ vim.g.s3rvac_disable_treesitter_highlight_for_filetypes = {
   "css",
   "csv",
   "diff",
+  "dockerfile",
   "gitcommit",
   "kotlin",
   "latex",
