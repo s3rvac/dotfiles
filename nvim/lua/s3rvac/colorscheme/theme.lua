@@ -224,22 +224,23 @@ function theme.setup()
     ["@keyword.conditional.ternary"] = { link = "Keyword" },
     ["@keyword.coroutine"] = { link = "Keyword" },
     ["@keyword.debug"] = { link = "Keyword" },
-    ["@keyword.directive"] = { link = "Keyword" },
-    ["@keyword.directive.define"] = { link = "Keyword" },
+    ["@keyword.directive"] = { link = "PreProc" },
+    ["@keyword.directive.define"] = { link = "PreProc" },
     ["@keyword.exception"] = { link = "Keyword" },
     ["@keyword.function"] = { link = "Keyword" },
-    ["@keyword.import"] = { link = "Keyword" },
+    ["@keyword.import"] = { link = "PreProc" },
+    ["@keyword.modifier"] = { link = "Type" },
     ["@keyword.operator"] = { link = "Keyword" },
     ["@keyword.repeat"] = { link = "Keyword" },
     ["@keyword.return"] = { link = "Keyword" },
-    ["@keyword.storage"] = { link = "Keyword" },
-    ["@keyword.type"] = { link = "Keyword" },
+    ["@keyword.storage"] = { link = "Type" },
+    ["@keyword.type"] = { link = "Type" },
     ["@label"] = { link = "Label" },
     ["@markup.environment"] = { fg = "red", bg = p.none }, -- TODO when encountered
     ["@markup.heading"] = { link = "Title" },
     ["@markup.italic"] = { italic = true },
-    ["@markup.link"] = { link = "Underlined" },
-    ["@markup.link.label"] = { link = "Underlined" },
+    ["@markup.link"] = { link = "Special" },
+    ["@markup.link.label"] = { link = "Constant" },
     ["@markup.link.url"] = { link = "Underlined" },
     ["@markup.list"] = { link = "Special" },
     ["@markup.list.checked"] = { link = "Special" },
@@ -268,11 +269,11 @@ function theme.setup()
     ["@string"] = { link = "String" },
     ["@string.documentation"] = { link = "String" },
     ["@string.escape"] = { link = "@string.special" },
-    ["@string.regexp"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@string.regexp"] = { link = "Special" }, -- E.g. regexes in Go
     ["@string.special"] = { link = "Special" },
     ["@string.special.path"] = { fg = "red", bg = p.none }, -- TODO when encountered
-    ["@string.special.symbol"] = { fg = "red", bg = p.none }, -- TODO when encountered
-    ["@string.special.url"] = { fg = "red", bg = p.none }, -- TODO when encountered
+    ["@string.special.symbol"] = { link = "Special" }, -- E.g. BibTeX entries
+    ["@string.special.url"] = { link = "Underlined" }, -- E.g. HTML <a>
     ["@symbol"] = { link = "Constant" },
     ["@tag"] = { link = "Tag" },
     ["@tag.attribute"] = { link = "Type" },
@@ -328,6 +329,12 @@ function theme.setup()
     -- CSS
     cssBraces = { link = "Normal" },
     cssAttrComma = { link = "Normal" },
+    -- Doxygen (I do not like any fancy syntax highlight; I prefer just comments)
+    ["@keyword.doxygen"] = { link = "Comment" },
+    ["@keyword.modifier.doxygen"] = { link = "Comment" },
+    ["@punctuation.bracket.doxygen"] = { link = "Comment" },
+    ["@variable.doxygen"] = { link = "Comment" },
+    ["@variable.parameter.doxygen"] = { link = "Comment" },
     -- Gitconfig
     gitconfigVariable = { link = "Function" },
     -- Gitattributes
@@ -369,7 +376,7 @@ function theme.setup()
     dosiniLabel = { link = "Identifier" },
     dosiniValue = { link = "String" },
     -- JSON
-    ["@label.json"] = { link = "Statement" },
+    ["@property.json"] = { link = "Statement" },
     -- Kotlin
     ktAnnotation = { link = "PreProc" },
     -- Lua
@@ -381,19 +388,11 @@ function theme.setup()
     makeIdent = { link = "Function" },
     makeCommands = { link = "Normal" },
     -- Markdown
-    -- Note: The `mkdX` and `markdownX` highlights are used by LSP hover.
-    mkdEscape = { link = "Normal" },
-    markdownCode = { link = "String" },
-    markdownCodeDelimiter = { link = "String" },
-    markdownEscape = { link = "Normal" },
-    markdownListMarker = { link = "Normal" },
-    markdownError = { link = "Normal" },
     ["@label.markdown"] = { link = "Constant" },
+    -- Markdown (inline)
     ["@punctuation.bracket.markdown_inline"] = { link = "Special" },
-    ["@text.quote.markdown"] = { link = "Comment" },
-    ["@text.reference.markdown_inline"] = { link = "Underlined" },
-    ["@text.uri.markdown_inline"] = { link = "Constant" },
     -- Proto
+    ["@keyword.type.proto"] = { link = "Keyword" },
     ["@type.proto"] = { link = "Type" },
     -- Python
     pythonBuiltin = { link = "Identifier" },
