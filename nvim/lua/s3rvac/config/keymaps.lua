@@ -381,7 +381,7 @@ nnoremap <silent> <Leader>rr :
   \ syntax sync fromstart <Bar>
   \ redraw!<CR>
 
-" Replaces the current word and all its occurrences).
+" Replaces the current word and all its occurrences.
 nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
 vnoremap <Leader>rc y:%s/<C-r>"/
 " A fallback if a LSP server is not available (see lspconfig.lua).
