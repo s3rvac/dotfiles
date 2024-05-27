@@ -20,6 +20,14 @@ return {
       -- not seek to the curly brackets on the current line).
       vim.g.targets_seekRanges =
         "cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA"
+
+      -- Switch `b` back to the Neovim default, i.e. it will always select parentheses
+      -- and never any other pair, such as curly or square braces.
+      vim.cmd([[
+        autocmd User targets#mappings#user call targets#mappings#extend({
+          \ 'b': {'pair': [{'o':'(', 'c':')'}]}
+          \ })
+      ]])
     end,
   },
   -- https://github.com/christoomey/vim-sort-motion
