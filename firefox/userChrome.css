@@ -1,0 +1,38 @@
+/*
+* ------------------------------------------------------------------------------
+* File:   $HOME/.mozilla/firefox/<profile>/chrome/userChrome.css
+* Author: Petr Zemek <s3rvac@petrzemek.net>
+* ------------------------------------------------------------------------------
+*/
+
+/* Show tab numbers (switching via Alt-[1-8]). */
+tabs {
+	counter-reset: tab-counter;
+}
+tab:nth-child(1) .tab-content::before,
+tab:nth-child(2) .tab-content::before,
+tab:nth-child(3) .tab-content::before,
+tab:nth-child(4) .tab-content::before,
+tab:nth-child(5) .tab-content::before,
+tab:nth-child(6) .tab-content::before,
+tab:nth-child(7) .tab-content::before,
+tab:nth-child(8) .tab-content::before {
+	counter-increment: tab-counter;
+	content: counter(tab-counter) "";
+
+	position: absolute;
+	left: 24px;
+	top: 7px;
+	padding: 0px 4px;
+	border-radius: 7px;
+
+	opacity: .7;
+
+	font-weight: bold;
+	font-size: 80%;
+}
+
+/* Show vertical lines between tabs to improve their visibility. */
+tab:not(:first-child) {
+	border-left: 1px solid #0004 !important;
+}
