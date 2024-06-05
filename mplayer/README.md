@@ -2,8 +2,8 @@
 
 My configuration file for the [mplayer](http://www.mplayerhq.hu) movie player.
 
-**Note**: I no longer use mplayer. Instead, I use
-[mpv](https://github.com/s3rvac/dotfiles/tree/master/mpv).
+> [!WARNING]
+> I no longer use mplayer as I have switched to [mpv](https://mpv.io/). My configuration files for mpv are available [here](../mpv/).
 
 ## Installation
 
