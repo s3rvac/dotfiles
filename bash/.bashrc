@@ -110,6 +110,12 @@ function prompt_command() {
 	# printed characters so that the prompt does not do strange things when
 	# editing the entered text.
 
+	# Append the history of the current shell into the history file. In this
+	# way, I do not have to wait until the shell exits to have the history
+	# saved. This is useful e.g. during a system crash when a shell is forcibly
+	# closed.
+	history -a
+
 	# Create the left-hand side prompt.
 	PS1_lhs=''
 	PS1_lhs+='$(prompt_show_mark_if_inside_screen)'
