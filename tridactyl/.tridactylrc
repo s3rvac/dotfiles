@@ -61,6 +61,15 @@ set searchurls.yt https://www.youtube.com/results?search_query=%s
 
 " Note: Not supported by Tridactyl at the moment.
 
+" Make the UI more compact
+" set browser.uidensity=1
+
+" Enable userChrome.css and userContent.css.
+" set toolkit.legacyUserProfileCustomizations.stylesheets=true
+
+" Disable "switch to tab" in the URL bar.
+" set browser.urlbar.switchtabs.adoptintoactivewindow
+
 " Do not close the window when the last tab is closed.
 " set browser.tabs.closeWindowWithLastTab=false
 
