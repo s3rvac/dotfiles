@@ -4,7 +4,7 @@ My configuration files for the [bash](http://www.gnu.org/software/bash/) shell.
 
 ## Installation
 
-* Copy all the files to `$HOME/`.
+* Copy all the files and directories to `$HOME/`.
 * Install [Git completion](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash) by downloading the shell script into `$HOME/.git-completion.bash`.
 * Install [Tmuxinator completion](https://github.com/tmuxinator/tmuxinator/blob/master/completion/tmuxinator.bash) by downloading the shell script into `$HOME/.tmuxinator-completion.bash`.
 * Install [kubectl](https://github.com/kubernetes/kubectl) completion by running `kubectl completion bash > $HOME/.kubectl-completion.bash`.
