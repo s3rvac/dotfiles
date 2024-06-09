@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#
+# Author: Petr Zemek <s3rvac@petrzemek.net>
+#
+# Fast branch/tag switching with fzf.
+#
+# Notes:
+# - Requires https://github.com/junegunn/fzf.
+# - Based on https://github.com/junegunn/fzf/wiki/examples#git.
+# - Orders branches/tags by committer date.
+# - Includes a preview window showing the commits between the target branch/tag
+#   and HEAD.
+# - Checkouts the selected branch/tag locally.
+#
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Get the available branches.
+branches=$(
+	git --no-pager branch --all --sort=-committerdate \
+		--format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" |
+		grep -Ev "origin/(main|master)" |
+		sed '/^$/d'
+) || exit 1
+
+# Get the available tags.
+tags=$(
+	git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}'
+) || exit 1
+
+# Let the user select a target while showing a preview of the commits between
+# the target branch/tag and HEAD.
+target=$(
+	(
+		echo "$branches"
+		echo "$tags"
+	) |
+		fzf --no-hscroll --no-multi --ansi -n 2 --prompt="$current_branch > " \
+			--preview="git --no-pager log -150 --pretty='format:%ar | %an | %s' '..{2}'"
+) || exit 1
+
+# Since we are going to checkout the target, we need to remove the "origin/"
+# prefix so that we switch to "xyz" instead of "origin/xyz".
+target=$(awk '{print $2}' <<<"$target" | sed 's/origin\///g')
+
+# Finally, checkout the selected branch/tag.
+git checkout "$target"
