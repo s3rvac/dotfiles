@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Author: Petr Zemek <s3rvac@petrzemek.net>
+#
+# Sends a notification to the user with the given text at the given time.
+#
+# Examples:
+#
+#     notify 14:30 my nofication
+#     notify 'now + 2 minutes' my notification
+#
+# The second example can be shortened to
+#
+#     notify '+2m' my notification
+#
+
+if [ "$#" -lt 2 ]; then
+	echo "usage: $(basename $0) TIMESPEC TEXT" >&2
+	exit 1
+fi
+
+TIMESPEC="$1"
+shift
+
+# Allow timespecs of the form '+Xm'.
+if [[ "$TIMESPEC" =~ \+([0-9]+)m ]]; then
+	TIMESPEC="now + ${BASH_REMATCH[1]} minutes"
+fi
+
+TEXT="$@"
+
+# Suppress the warning that is always produced by at ("warning: commands will
+# be executed using /bin/sh").
+echo "DISPLAY=:0.0 notify-send --icon ~/.fluxbox/icons/notification.png \
+	--expire-time 0 '$TEXT'" | at $TIMESPEC 2>&1 | grep -v 'warning: commands'
