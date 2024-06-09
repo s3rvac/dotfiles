@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+#
+# Author: Petr Zemek <s3rvac@petrzemek.net>
+#
+# Resizes the given images to the given resolution.
+#
+# Requirements:
+# - imagemagick (for `convert`)
+#
+
+print_help() {
+	echo "usage: $(basename $0) [-r WxH] [IMG...]" >&2
+}
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+	print_help
+	exit 0
+fi
+
+RESOLUTION="1920x1080"
+if [ "$1" = "-r" ]; then
+	shift
+	RESOLUTION="$1"
+	if [ -z "$RESOLUTION" ]; then
+		print_help
+		exit 1
+	fi
+	shift
+fi
+
+# Use either command-line arguments, or get all images in the current working
+# directory.
+if [ ! -z "$1" ]; then
+	IMAGES=("$@")
+else
+	shopt -s nullglob
+	IMAGES=($(ls *.{jpg,JPG,png,PNG,bmp,BMP}))
+fi
+
+for image in "${IMAGES[@]}"; do
+	echo "Resizing $image to $RESOLUTION..."
+	# Note: convert determines whether the image is landscape or
+	# portrait and adjusts the resolution automatically.
+	convert "$image" -resize "$RESOLUTION" "$image"
+	shift
+done
