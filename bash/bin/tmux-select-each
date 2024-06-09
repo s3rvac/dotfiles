@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# usage: tmux-select-each [session [...]]
+#
+# Select every window in specified session(s). If no sessions are
+# specified, process all windows in all sessions.
+#
+# This can be handy for clearing the activity flags of windows in
+# freshly spawned sessions.
+#
+# From http://stackoverflow.com/a/12670429/2580955.
+#
+
+if [ $# -gt 0 ]; then
+	for session; do
+		tmux display-message -p -t "$session:" '#S'
+	done
+else
+	tmux list-sessions -F '#{session_name}'
+fi |
+while read -r session; do
+	active_window=$(tmux display-message -p -t "$session:" '#S:#I')
+	last_window=$(tmux display-message -p -t "$session:"\! '#S:#I' 2>/dev/null)
+	tmux list-windows -t "$session" -F '#{session_name}:#{window_index}' |
+	while read -r window; do
+		if test "$window" = "$active_window" || test "$window" = "$last_window"; then
+			continue
+		fi
+		tmux select-window -t "$window"
+	done
+	if [ -n "$last_window" ]; then
+		tmux select-window -t "$last_window"
+	fi
+	tmux select-window -t "$active_window"
+done
