@@ -419,6 +419,9 @@ au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo test<CR>
 
 " Let F10 compile and run the current project.
 au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo run<CR>
+
+" Comment settings.
+au FileType rust setl commentstring=//\ %s
 augroup end
 
 " Shell
