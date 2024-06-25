@@ -54,6 +54,11 @@ return {
           c = cmp.mapping.close(),
         }),
       }),
+      -- Prevent language servers from preselecting items in the completion
+      -- menu as I want to have full control over the selection. For example,
+      -- without this, rust-analyzer pre-selects the first item in the
+      -- completion menu, which I dislike.
+      preselect = cmp.PreselectMode.None,
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body)
