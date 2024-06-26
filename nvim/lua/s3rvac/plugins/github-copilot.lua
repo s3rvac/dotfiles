@@ -4,14 +4,19 @@ return {
   "github/copilot.vim",
   tag = "v1.36.0", -- 2024-06-14
   config = function()
+    -- Add an option to enable or disable copilot, e.g. via exrc.
+    -- Note: This is my own variable, not the one provided by the plugin.
+    vim.g.copilot_enable = true
+
     -- Enable the copilot lazily to work around the issue that when I start
     -- Neovim, the plugin causes a lag that prevents me to do anything for the
     -- few hundred milliseconds. I have also tried loading the plugin with
     -- `event = "VeryLazy"`, but it did not have any effect.
     vim.g.copilot_enabled = false
-    vim.cmd(
-      "au BufNewFile,BufRead * call timer_start(1000, { tid -> execute('lua vim.g.copilot_enabled = true')})"
-    )
+    vim.cmd([[
+      au BufNewFile,BufRead * call timer_start(1000,
+        \ { tid -> execute('lua if vim.g.enable_copilot then vim.g.copilot_enabled = true end')})
+    ]])
 
     -- Enable the plugin only for certain file types.
     vim.g.copilot_filetypes = {
