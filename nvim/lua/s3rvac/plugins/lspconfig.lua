@@ -110,11 +110,20 @@ return {
 
     local function set_up_language_server(t)
       local server_name = fns.table_remove_key(t, "server_name")
+      local cmd_args = fns.table_remove_key(t, "cmd_args") or {}
+
       -- I need to specify full paths to servers; otherwise, they fail to start
       -- (for no apparent reason). I am able to run them manually from Neovim
       -- without any issues.
-      local server_bin = fns.mason_bin_path_to(fns.table_remove_key(t, "server_bin"))
-      local cmd_args = fns.table_remove_key(t, "cmd_args") or {}
+      --
+      -- Prefer the tools installed via Mason, but fall back to the system-wide
+      -- ones (used e.g. by rust-analyzer).
+      local orig_server_bin = fns.table_remove_key(t, "server_bin");
+      local server_bin = fns.mason_bin_path_to(orig_server_bin)
+      if not fns.is_executable(server_bin) and fns.is_executable(orig_server_bin) then
+        server_bin = vim.fn.exepath(orig_server_bin)
+      end
+
       lspconfig[server_name].setup(vim.tbl_extend("error", t, {
         capabilities = fns.table_remove_key(t, "capabilities") or capabilities,
         on_attach = fns.table_remove_key(t, "on_attach") or on_attach,
@@ -225,6 +234,12 @@ return {
     })
 
     -- Rust
+    --
+    -- Use a rust-analyzer installation corresponding to the used Rust version
+    -- instead of using the Mason-provided one (I had some issues with the
+    -- Mason-provided one):
+    --
+    --     $ rustup component add rust-analyzer
     set_up_language_server({
       server_name = "rust_analyzer",
       server_bin = "rust-analyzer",

@@ -35,7 +35,6 @@ return {
         "kotlin-language-server",
         "lua-language-server",
         "pyright",
-        "rust-analyzer",
         "terraform-ls",
         "vim-language-server",
         "yaml-language-server",
