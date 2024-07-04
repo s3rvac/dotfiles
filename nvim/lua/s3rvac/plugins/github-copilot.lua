@@ -15,7 +15,7 @@ return {
     vim.g.copilot_enabled = false
     vim.cmd([[
       au BufNewFile,BufRead * call timer_start(1000,
-        \ { tid -> execute('lua if vim.g.enable_copilot then vim.g.copilot_enabled = true end')})
+        \ { tid -> execute('lua if vim.g.copilot_enable then vim.g.copilot_enabled = true end')})
     ]])
 
     -- Enable the plugin only for certain file types.
