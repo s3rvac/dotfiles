@@ -118,7 +118,7 @@ return {
       --
       -- Prefer the tools installed via Mason, but fall back to the system-wide
       -- ones (used e.g. by rust-analyzer).
-      local orig_server_bin = fns.table_remove_key(t, "server_bin");
+      local orig_server_bin = fns.table_remove_key(t, "server_bin")
       local server_bin = fns.mason_bin_path_to(orig_server_bin)
       if not fns.is_executable(server_bin) and fns.is_executable(orig_server_bin) then
         server_bin = vim.fn.exepath(orig_server_bin)
