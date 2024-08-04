@@ -75,6 +75,37 @@ return {
       opts.desc = "LSP: Show references for the symbol under cursor"
       vim.keymap.set("n", "<Leader>lr", "<cmd>FzfLua lsp_references<CR>", opts)
 
+      -- The following keymap is useful when a file changes outside of Neovim,
+      -- e.g. a new file is added, or a new module is installed that the
+      -- language server does not know about yet.
+      opts.desc = "LSP: Restart all the language servers"
+      vim.keymap.set("n", "<Leader>lR", function()
+        local language_servers = {}
+
+        -- GitHub Copilot does not react to :LspStart, so we have to first
+        -- check if it is running, then stop all language servers, and then
+        -- start GitHub Copilot (provided that it was previously running).
+        local copilot_enabled = false
+        for _, client in pairs(vim.lsp.get_clients({buffer=bufnr})) do
+          language_servers[client.name] = true
+          if client.name ~= "GitHub Copilot" then
+            copilot_enabled = true
+          end
+        end
+
+        -- Use LspStop followed by LspStart as LspRestart does not work
+        -- properly (language servers are not attached).
+        vim.cmd("LspStop")
+        vim.cmd("LspStart")
+
+        if copilot_enabled then
+          vim.cmd("Copilot enable")
+        end
+
+        language_servers = table.concat(vim.tbl_keys(language_servers), ", ")
+        print("Language servers restarted: " .. language_servers)
+      end, opts)
+
       opts.desc = "LSP: Show available code actions for the symbol under cursor"
       vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, opts)
 
