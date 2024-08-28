@@ -80,7 +80,7 @@
 	tags = tag --list -n1
 	showtag = show --quiet
 	today = "!git ll --since=midnight"
-	; https://github.com/aanand/git-up
+	; https://github.com/msiemens/PyGitUp
 	u = up
 	undo = "!git reset --soft HEAD^ && git reset"
 	wip = "!git add --all && git commit -m 'WIP'"
@@ -159,7 +159,7 @@
 	onEmptyBuffer = act
 
 ; Settings for the `git-up` script.
-; https://github.com/aanand/git-up
+; https://github.com/msiemens/PyGitUp
 [git-up "rebase"]
 	arguments = --rebase-merges
 	log-hook = "echo \"* changes on $1:\"; git log --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s' $1..$2"
