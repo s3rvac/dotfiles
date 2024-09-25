@@ -258,10 +258,10 @@ au FileType c,cpp nnoremap <buffer> <silent> <Leader>hs :ClangdSwitchSourceHeade
 
 " Let F10 compile and run the currently edited code
 " (F10 -> use GCC, S-F10 -> use Clang).
-au FileType c nnoremap <buffer> <F10> :w<CR>:!clear; gcc -std=c2x -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
-au FileType c nnoremap <buffer> <S-F10> :w<CR>:!clear; clang -std=c2x -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
-au FileType cpp nnoremap <buffer> <F10> :w<CR>:!clear; g++ -std=c++23 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
-au FileType cpp nnoremap <buffer> <S-F10> :w<CR>:!clear; clang++ -std=c++23 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
+au FileType c nnoremap <buffer> <F10> :w<CR>:!gcc -std=c2x -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
+au FileType c nnoremap <buffer> <S-F10> :w<CR>:!clang -std=c2x -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
+au FileType cpp nnoremap <buffer> <F10> :w<CR>:!g++ -std=c++23 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
+au FileType cpp nnoremap <buffer> <S-F10> :w<CR>:!clang++ -std=c++23 -pedantic -Wall -Wextra -o /tmp/a.out % && /tmp/a.out; rm -f /tmp/a.out<CR>
 augroup end
 
 " Dokuwiki
@@ -297,7 +297,7 @@ au!
 " The default indentation settings are OK as Go uses tabs.
 
 " Let F10 compile and run the current file.
-au FileType go nnoremap <buffer> <F10> :w<CR>:!clear; go run %<CR>
+au FileType go nnoremap <buffer> <F10> :w<CR>:!go run %<CR>
 augroup end
 
 " Haskell
@@ -402,7 +402,7 @@ au FileType ruby setl softtabstop=2
 au FileType ruby setl shiftwidth=2
 
 " Let F10 run the currently opened script.
-au FileType ruby nnoremap <buffer> <F10> :w<CR>:!clear; ruby %<CR>
+au FileType ruby nnoremap <buffer> <F10> :w<CR>:!ruby %<CR>
 augroup end
 
 " Rust
@@ -415,10 +415,10 @@ au FileType rust setl softtabstop=4
 au FileType rust setl shiftwidth=4
 
 " Let F9 compile and run tests for the current project.
-au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo test<CR>
+au FileType rust nnoremap <buffer> <F10> :w<CR>:!cargo test<CR>
 
 " Let F10 compile and run the current project.
-au FileType rust nnoremap <buffer> <F10> :w<CR>:!clear; cargo run<CR>
+au FileType rust nnoremap <buffer> <F10> :w<CR>:!cargo run<CR>
 
 " Comment settings.
 au FileType rust setl commentstring=//\ %s
@@ -428,7 +428,7 @@ augroup end
 augroup sh
 au!
 " Let F10 run the currently opened script.
-au FileType sh nnoremap <buffer> <F10> :w<CR>:!clear; sh %<CR>
+au FileType sh nnoremap <buffer> <F10> :w<CR>:!sh %<CR>
 augroup end
 
 " Terraform
