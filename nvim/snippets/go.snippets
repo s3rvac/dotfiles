@@ -3,10 +3,6 @@
 snippet main "main"
 	package main
 
-	import (
-		"fmt"
-	)
-
 	func main() {
 		${1}
 	}
@@ -78,6 +74,11 @@ snippet todo "todo"
 	// TODO
 
 # Other
+
+snippet { "{}"
+	{
+		${1}
+	}
 
 snippet dt "dt"
 	fmt.Println(${1}.dummy_attr)
