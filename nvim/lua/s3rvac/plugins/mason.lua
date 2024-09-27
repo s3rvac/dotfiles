@@ -31,6 +31,7 @@ return {
         "clangd",
         "css-lsp",
         "dockerfile-language-server",
+        "gopls",
         "html-lsp",
         "kotlin-language-server",
         "lua-language-server",

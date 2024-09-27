@@ -197,6 +197,12 @@ return {
       cmd_args = { "--stdio" },
     })
 
+    -- Go
+    set_up_language_server({
+      server_name = "gopls",
+      server_bin = "gopls",
+    })
+
     -- HTML
     set_up_language_server({
       server_name = "html",
