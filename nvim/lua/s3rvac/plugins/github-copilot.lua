@@ -6,7 +6,9 @@ return {
   config = function()
     -- Add an option to enable or disable copilot, e.g. via exrc.
     -- Note: This is my own variable, not the one provided by the plugin.
-    vim.g.copilot_enable = true
+    if vim.fn.exists("g:copilot_enable") == 0 then
+      vim.g.copilot_enable = true
+    end
 
     -- Enable the copilot lazily to work around the issue that when I start
     -- Neovim, the plugin causes a lag that prevents me to do anything for the
