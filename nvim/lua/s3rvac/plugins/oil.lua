@@ -29,8 +29,6 @@ return {
       },
     })
 
-    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory of the opened file" })
-
     -- I need to use a custom definition of the <C-s> keymap for saving the
     -- changes so that I skip the removal of trailing whitespace that I use,
     -- which is incompatible with oil.nvim.
