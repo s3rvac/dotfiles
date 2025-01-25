@@ -3,6 +3,6 @@
 -- https://github.com/inkarkat/vim-ReplaceWithRegister
 return {
   "inkarkat/vim-ReplaceWithRegister",
-  commit = "aad1e8fa31cb4722f20fe40679caa56e25120032", -- 2021-06-05
+  commit = "b82bf59e5387b57d0125afb94fd7984061031136", -- 2024-11-2
   event = "VeryLazy",
 }

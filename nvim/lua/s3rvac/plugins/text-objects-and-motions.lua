@@ -10,7 +10,7 @@ return {
   -- https://github.com/wellle/targets.vim
   {
     "wellle/targets.vim",
-    commit = "642d3a4ce306264b05ea3219920b13ea80931767", -- 2023-02-22
+    commit = "6325416da8f89992b005db3e4517aaef0242602e", -- 2024-06-10
     event = "VeryLazy",
     init = function()
       -- When seeking, prefer multiline targets around the cursor over distant
@@ -43,7 +43,7 @@ return {
   -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    commit = "5f9bf4b1ead7707e4e74e5319ee56bdc81fb73db", -- 2024-05-18
+    commit = "ad8f0a472148c3e0ae9851e26a722ee4e29b1595", -- 2024-11-22
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -85,7 +85,7 @@ return {
   -- https://github.com/chrisgrieser/nvim-various-textobjs
   {
     "chrisgrieser/nvim-various-textobjs",
-    commit = "ae64795ff81017c8e572051fd728051176d6ecc5", -- 2024-05-18
+    commit = "18a2092173a6773f32adea42d4095d41d5eca09d", -- 2025-01-21
     event = "VeryLazy",
     -- Use custom keymaps.
     opts = { useDefaultKeymaps = false },

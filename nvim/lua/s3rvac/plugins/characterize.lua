@@ -2,6 +2,6 @@
 -- https://github.com/tpope/vim-characterize
 return {
   "tpope/vim-characterize",
-  commit = "7fc5b75e7a9e46676cf736b56d99dd32004ff3d6", -- 2023-11-01
+  commit = "a8bffac6cead6b2869d939ecad06312b187a4c79", -- 2024-11-14
   event = "VeryLazy",
 }

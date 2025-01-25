@@ -8,7 +8,7 @@ return {
     -- https://github.com/romgrk/fzy-lua-native
     {
       "romgrk/fzy-lua-native",
-      commit = "820f745b7c442176bcc243e8f38ef4b985febfaf", -- 2023-06-08
+      commit = "9d720745d5c2fb563c0d86c17d77612a3519c506", -- 2024-10-26
     },
   },
   config = function()

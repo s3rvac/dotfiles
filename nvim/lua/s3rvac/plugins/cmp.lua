@@ -2,7 +2,7 @@
 -- https://github.com/hrsh7th/nvim-cmp
 return {
   "hrsh7th/nvim-cmp",
-  commit = "5260e5e8ecadaf13e6b82cf867a909f54e15fd07", -- 2024-03-17
+  commit = "12509903a5723a876abd65953109f926f4634c30", -- 2025-01-23
   event = "InsertEnter",
   dependencies = {
     -- For completion of text in a buffer.
@@ -15,7 +15,7 @@ return {
     -- https://github.com/hrsh7th/cmp-nvim-lsp
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "39e2eda76828d88b773cc27a3f61d2ad782c922d", -- 2024-03-17
+      commit = "99290b3ec1322070bcfb9e846450a46f6efa50f0", -- 2024-12-10
     },
   },
   config = function()

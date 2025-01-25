@@ -13,7 +13,7 @@ return {
   -- https://github.com/lervag/vimtex
   {
     "lervag/vimtex",
-    tag = "v2.15", -- 2024-04-21
+    tag = "v2.16", -- 2025-01-18
     ft = "tex",
     init = function()
       -- Disable built-in keymaps.

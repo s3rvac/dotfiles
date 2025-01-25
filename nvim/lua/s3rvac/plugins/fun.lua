@@ -11,7 +11,7 @@ return {
     -- Cellular automaton simulation in Vim.
     -- https://github.com/Eandrju/cellular-automaton.nvim
     "Eandrju/cellular-automaton.nvim",
-    commit = "b7d056dab963b5d3f2c560d92937cb51db61cb5b", -- 2023-09-01
+    commit = "11aea08aa084f9d523b0142c2cd9441b8ede09ed", -- 2024-06-30
     cmd = { "CellularAutomaton", "CA1", "CA2", "CA3" },
     config = function()
       vim.api.nvim_create_user_command("CA1", "silent! CellularAutomaton game_of_life", {})

@@ -3,6 +3,6 @@
 -- https://github.com/tpope/vim-eunuch
 return {
   "tpope/vim-eunuch",
-  commit = "8fb3904be27b6b60d086f87c2570085902414069", -- 2024-02-04
+  commit = "e86bb794a1c10a2edac130feb0ea590a00d03f1e", -- 2024-12-29
   event = "VeryLazy",
 }

@@ -2,7 +2,7 @@
 -- https://github.com/mfussenegger/nvim-lint
 return {
   "mfussenegger/nvim-lint",
-  commit = "1f98d6c863f91706369d74aeb2eb3f02b2e96861", -- 2024-05-16
+  commit = "789b7ada1b4f00e08d026dffde410dcfa6a0ba87", -- 2025-01-21
   event = "VeryLazy",
   config = function()
     local lint = require("lint")
