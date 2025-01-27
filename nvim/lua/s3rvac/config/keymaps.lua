@@ -118,6 +118,9 @@ vim.keymap.set(
   ":FzfLua diagnostics_document<CR>",
   opts({ desc = "List all diagnostics from the current buffer" })
 )
+vim.keymap.set("n", "<leader>dt", function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, opts({ desc = "Toggle diagnostics" }))
 
 -------------------------------------------------------------------------------
 -- GUI-specific keymaps.
