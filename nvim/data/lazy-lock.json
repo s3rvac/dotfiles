@@ -31,7 +31,6 @@
   "oil.nvim": { "branch": "master", "commit": "ba858b662599eab8ef1cba9ab745afded99cb180" },
   "resession.nvim": { "branch": "master", "commit": "cc819b0489938d03e4f3532a583354f0287c015b" },
   "targets.vim": { "branch": "master", "commit": "6325416da8f89992b005db3e4517aaef0242602e" },
-  "toggle-lsp-diagnostics.nvim": { "branch": "main", "commit": "afcacba44d86df4c3c9752b869e78eb838f55765" },
   "translate-shell.vim": { "branch": "master", "commit": "d72a2eabd2a5466369df794777e662ecc2d732e9" },
   "undotree": { "branch": "master", "commit": "2556c6800b210b2096b55b66e74b4cc1d9ebbe4f" },
   "unicode.vim": { "branch": "master", "commit": "9da92ffe08b90200dcb499fdfecb234326f5514c" },
