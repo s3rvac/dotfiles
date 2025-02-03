@@ -99,11 +99,11 @@ return {
         previewers = {
           builtin = {
             treesitter = {
-              enable = true,
+              enabled = true,
               -- Ensure that we use the same syntax-highlighters in the preview
               -- window as in regular buffers (the list of filetypes needs to
               -- be synced between fzf-lua and nvim-treesitter).
-              disable = vim.g.s3rvac_disable_treesitter_highlight_for_filetypes,
+              disabled = vim.g.s3rvac_disable_treesitter_highlight_for_filetypes,
             },
           },
         },
