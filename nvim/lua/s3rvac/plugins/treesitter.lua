@@ -18,6 +18,7 @@ return {
           "diff",
           "dockerfile",
           "doxygen",
+          "elixir",
           "gitattributes",
           "gitcommit",
           "gitignore",
