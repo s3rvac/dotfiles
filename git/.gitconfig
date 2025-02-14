@@ -100,6 +100,8 @@
 	pager = less -iFRXS -x4
 	; Used editor.
 	editor = nvim
+	; Path to a global exclude file.
+	excludesFile = ~/.gitignore
 
 [diff]
 	; Allow `git diff` to do basic rename and copy detection.
