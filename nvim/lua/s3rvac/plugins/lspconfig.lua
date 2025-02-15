@@ -86,7 +86,7 @@ return {
         -- check if it is running, then stop all language servers, and then
         -- start GitHub Copilot (provided that it was previously running).
         local copilot_enabled = false
-        for _, client in pairs(vim.lsp.get_clients({buffer=bufnr})) do
+        for _, client in pairs(vim.lsp.get_clients({ buffer = bufnr })) do
           language_servers[client.name] = true
           if client.name ~= "GitHub Copilot" then
             copilot_enabled = true
