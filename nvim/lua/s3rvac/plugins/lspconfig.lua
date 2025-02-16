@@ -203,6 +203,19 @@ return {
       server_bin = "gopls",
     })
 
+    -- Haskell
+    set_up_language_server({
+      server_name = "hls",
+      server_bin = "haskell-language-server",
+      filetypes = { "haskell", "lhaskell", "cabal" },
+      cmd_args = { "--lsp" },
+      settings = {
+        haskell = {
+          formattingProvider = "fourmolu",
+        },
+      },
+    })
+
     -- HTML
     set_up_language_server({
       server_name = "html",

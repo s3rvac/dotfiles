@@ -39,6 +39,8 @@ return {
         "terraform-ls",
         "vim-language-server",
         "yaml-language-server",
+        -- Via system-wide installations:
+        -- * haskell-language-server
 
         -- Formatters.
         "clang-format",
@@ -48,8 +50,11 @@ return {
         "stylua",
         "usort",
         "yq",
+        -- Via system-wide installations:
+        -- * fourmolu (haskell)
 
         -- Linters.
+        "hlint",
         "luacheck",
         "ruff",
         "shellcheck",
