@@ -423,10 +423,6 @@ alias py2='python2'
 alias reset='reset && stty -ixon'
 alias t='tmux'
 alias Time='/usr/bin/time -v'
-alias unzipa='for f in *.zip; do unzip "$f" && rm -f "$f"; done'
-alias untara='for f in $(ls | grep "\.\(tar\|gz\|tgz\|bz2\)"); do tar xf "$f" && rm -f "$f"; done'
-alias unrara='for f in *.rar; do unrar x "$f" && rm -f "$f"; done'
-function zipd() { zip -rq "$1".zip "$1"; echo "$1".zip; }
 alias valgrind-leak='valgrind --leak-check=full --show-leak-kinds=all'
 alias valgrind-uninit='valgrind --track-origins=yes'
 alias yt='yt-dlp'
@@ -446,6 +442,59 @@ alias gu='g u'
 alias trs='trans'
 alias toen='trs cs:en'
 alias tocs='trs en:cs'
+
+# Unarchive the given file(s).
+function unar() {
+	# Based on https://wiki.archlinux.org/title/Bash/Functions.
+    local c e i
+
+    (($#)) || return
+
+    for i; do
+        c=''
+        e=1
+
+        if [[ ! -r $i ]]; then
+            echo "$0: file is unreadable: \`$i'" >&2
+            continue
+        fi
+
+        case $i in
+            *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz|zst)))))
+                   c=(bsdtar xvf);;
+            *.7z)  c=(7z x);;
+            *.Z)   c=(uncompress);;
+            *.bz2) c=(bunzip2);;
+            *.gz)  c=(gunzip);;
+            *.rar) c=(unrar x);;
+            *.xz)  c=(unxz);;
+            *.zip) c=(unzip);;
+            *.zst) c=(unzstd);;
+            *)     echo "$0: unrecognized file extension: \`$i'" >&2
+                   continue;;
+        esac
+
+        command "${c[@]}" "$i"
+        ((e = e || $?))
+    done
+    return "$e"
+}
+
+# Unarchive all archives in the current directory.
+function unara() {
+	for f in $(ls | grep "\.\(gz\|lz\|xz\|bz2\|lzma\|7z\|Z\|rar\|zip\|zst\)"); do
+		unar "$f"
+		rm -f "$f"
+	done
+}
+
+# Legacy aliases: Unarchive all zip/tar/rar archives in the current directory.
+alias unzipa='for f in *.zip; do unzip "$f" && rm -f "$f"; done'
+alias untara='for f in $(ls | grep "\.\(tar\|gz\|tgz\|bz2\)"); do tar xf "$f" && rm -f "$f"; done'
+alias unrara='for f in *.rar; do unrar x "$f" && rm -f "$f"; done'
+
+# Zip the whole directory.
+function zipd() { zip -rq "$1".zip "$1"; echo "$1".zip; }
 
 # Use Neovim to view manual pages.
 #
