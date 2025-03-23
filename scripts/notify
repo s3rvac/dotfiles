@@ -2,16 +2,16 @@
 #
 # Author: Petr Zemek <s3rvac@petrzemek.net>
 #
-# Sends a notification to the user with the given text at the given time.
+# Pops up a user notification with the given text at the given time.
 #
 # Examples:
 #
-#     notify 14:30 my nofication
-#     notify 'now + 2 minutes' my notification
+#     notify 14:30 notification text
+#     notify 'now + 2 minutes' notification text
 #
 # The second example can be shortened to
 #
-#     notify '+2m' my notification
+#     notify '+2m' notification text
 #
 
 if [ "$#" -lt 2 ]; then
