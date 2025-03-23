@@ -32,4 +32,4 @@ TEXT="$@"
 # The final `grep` is there to suppress the warning that is always produced by
 # at ("warning: commands will be executed using /bin/sh").
 echo "DISPLAY=:0.0 notify-send --icon ~/.fluxbox/icons/notification.png \
-	--expire-time 0 '$TEXT'" | at $TIMESPEC 2>&1 | grep -v 'warning: commands'
+	--expire-time 0 '$TEXT'" | at "$TIMESPEC" 2>&1 | grep -v 'warning: commands'
