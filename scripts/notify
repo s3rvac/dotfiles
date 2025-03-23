@@ -28,7 +28,7 @@ if [[ "$TIMESPEC" =~ \+([0-9]+)[mh] ]]; then
 	TIMESPEC="now + ${BASH_REMATCH[1]} $UNIT"
 fi
 
-TEXT="$@"
+TEXT="$*"
 
 # The final `grep` is there to suppress the warning that is always produced by
 # at ("warning: commands will be executed using /bin/sh").
