@@ -402,8 +402,8 @@ function GV() { v -c ":GV $*" -c ":+tabclose"; }
 alias m='make'
 function M() { make "$@" && make install; }
 alias news='newsboat -q'
-alias notes='v ~/notes/ -c "cd %:p:h"'
-alias todo='v ~/todo/todo.txt -c "cd %:p:h"'
+alias notes='v ~/notes/ -c "cd ~/notes"'
+alias todo='v ~/todo/todo.txt -c "cd ~/todo"'
 alias tf='terraform'
 alias tfmt='terraform fmt --recursive .'
 if [ "$(id -u)" -eq 0 ]; then
