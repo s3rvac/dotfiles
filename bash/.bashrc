@@ -598,7 +598,13 @@ export FZF_DEFAULT_OPTS="--no-mouse --reverse --multi --height 40% --border --co
 # If available, use fd (https://github.com/sharkdp/fd) for listing files and
 # directories.
 if command -v fd &> /dev/null; then
-	FZF_FD_COMMAND='fd --color=never --follow --hidden --no-ignore --exclude .git'
+	FZF_EXCLUDES=(
+		'--exclude .cache'
+		'--exclude .git'
+		'--exclude venv'
+		'--exclude virtualenv'
+	)
+	FZF_FD_COMMAND="fd --color=never --follow --hidden --no-ignore ${FZF_EXCLUDES[@]}"
 	export FZF_DEFAULT_COMMAND="$FZF_FD_COMMAND --type f"
 	export FZF_CTRL_T_COMMAND="$FZF_FD_COMMAND --type f"
 	export FZF_ALT_C_COMMAND="$FZF_FD_COMMAND --type d"
