@@ -21,6 +21,9 @@ Control Alt Mod4 s :Exec ~/.fluxbox/scripts/suspend-to-ram.sh
 # Reload the configuration.
 Control Mod4 r :Reconfigure
 
+# Clear all notifications sent by notify-send.
+Mod4 space :Exec ~/.fluxbox/scripts/clear-notifications.sh
+
 # Volume control. The shortcuts are defined in volumeicon.
 # Win+PgDown: Volume down.
 # Win+PgUp: Volume up.
