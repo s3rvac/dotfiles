@@ -43,7 +43,7 @@ return {
   -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    commit = "ad8f0a472148c3e0ae9851e26a722ee4e29b1595", -- 2024-11-22
+    commit = "0e3be38005e9673d044e994b1e4b123adb040179", -- 2025-05-07
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },

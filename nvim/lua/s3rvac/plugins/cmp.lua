@@ -2,20 +2,20 @@
 -- https://github.com/hrsh7th/nvim-cmp
 return {
   "hrsh7th/nvim-cmp",
-  commit = "12509903a5723a876abd65953109f926f4634c30", -- 2025-01-23
+  commit = "b5311ab3ed9c846b585c0c15b7559be131ec4be9", -- 2025-04-13
   event = "InsertEnter",
   dependencies = {
     -- For completion of text in a buffer.
     -- https://github.com/hrsh7th/cmp-buffer
     {
       "hrsh7th/cmp-buffer",
-      commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa", -- 2022-08-10
+      commit = "b74fab3656eea9de20a9b8116afa3cfc4ec09657", -- 2025-04-01
     },
     -- For LSP completion.
     -- https://github.com/hrsh7th/cmp-nvim-lsp
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "99290b3ec1322070bcfb9e846450a46f6efa50f0", -- 2024-12-10
+      commit = "a8912b88ce488f411177fc8aed358b04dc246d7b", -- 2025-04-01
     },
   },
   config = function()

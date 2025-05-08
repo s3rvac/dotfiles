@@ -2,7 +2,7 @@
 -- https://github.com/stevearc/oil.nvim
 return {
   "stevearc/oil.nvim",
-  tag = "v2.14.0", -- 2024-12-21
+  tag = "v2.15.0", -- 2025-02-15
   config = function()
     require("oil").setup({
       -- Show just file names, without icons (I find them distracting).

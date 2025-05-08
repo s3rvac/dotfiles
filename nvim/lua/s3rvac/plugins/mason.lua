@@ -2,7 +2,7 @@
 -- https://github.com/williamboman/mason.nvim
 return {
   "williamboman/mason.nvim",
-  tag = "v1.10.0", -- 2024-01-29
+  tag = "v2.0.0", -- 2025-05-06
   event = "VeryLazy",
   dependencies = {
     -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/
