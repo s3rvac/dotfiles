@@ -181,6 +181,3 @@ Control Alt g :Exec nvim-qt
 Control Alt n :Exec alacritty
 Control Alt o :Exec ~/.fluxbox/scripts/chromium.sh
 Control Alt p :Exec firefox --private-window
-Control Alt s :Exec signal-desktop
-Control Alt t :Exec thunderbird
-Control Alt u :Exec krusader
