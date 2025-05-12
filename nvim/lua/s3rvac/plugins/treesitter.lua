@@ -76,6 +76,16 @@ return {
 
       -- Custom mapping of filetypes to parsers.
       vim.treesitter.language.register("html", { "xhtml" })
+
+      -- Disable asynchronous parsing for now as it causes glitches on Neovim
+      -- 0.11.1. For example, when opening ~/.bashrc, there is a noticable lag
+      -- before the highlighting is applied. Similarly when doing `:w`.
+      --
+      -- Potentially related issues/PRs:
+      -- - https://github.com/neovim/neovim/issues/32660
+      -- - https://github.com/neovim/neovim/issues/33139
+      -- - https://github.com/neovim/neovim/pull/33145
+      vim.g._ts_force_sync_parsing = true
     end,
   },
 }
