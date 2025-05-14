@@ -78,7 +78,7 @@ return {
       vim.treesitter.language.register("html", { "xhtml" })
 
       -- Disable asynchronous parsing for now as it causes glitches on Neovim
-      -- 0.11.1. For example, when opening ~/.bashrc, there is a noticable lag
+      -- 0.11.1. For example, when opening ~/.bashrc, there is a noticeable lag
       -- before the highlighting is applied. Similarly when doing `:w`.
       --
       -- Potentially related issues/PRs:
