@@ -17,7 +17,7 @@ end
 
 local function attached_lsp_clients()
   local attached_clients = {}
-  for _, client in ipairs(vim.lsp.get_active_clients()) do
+  for _, client in ipairs(vim.lsp.get_clients()) do
     local filetypes = client.config.filetypes
     if filetypes and vim.fn.index(filetypes, vim.bo.filetype) ~= -1 then
       table.insert(attached_clients, client.name)
