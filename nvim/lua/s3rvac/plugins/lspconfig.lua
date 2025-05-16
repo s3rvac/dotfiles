@@ -36,18 +36,13 @@ return {
 
     -- Add border around windows.
     require("lspconfig.ui.windows").default_options.border = "single"
+    local open_floating_preview = vim.lsp.util.open_floating_preview
+    vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+      opts = opts or {}
+      opts.border = opts.border or "single"
+      return open_floating_preview(contents, syntax, opts, ...)
+    end
 
-    -- Add border to the documentation hover window (shown via lua
-    -- vim.lsp.buf.hover()).
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "single",
-    })
-
-    -- Add border to the signature-help hover window (shown via lua
-    -- vim.lsp.buf.signature_help()).
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "single",
-    })
 
     local on_attach = function(_, bufnr)
       -- Buffer-local keymaps and settings that only work if there is an active
