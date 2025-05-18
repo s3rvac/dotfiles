@@ -43,6 +43,13 @@ return {
       return open_floating_preview(contents, syntax, opts, ...)
     end
 
+    -- Unmap some of the built-in keymaps in Neovim 0.11+ as they clash with
+    -- keymaps that I use (e.g. `grX` conflict with the ReplaceWithRegister
+    -- plugin).
+    vim.keymap.del("n", "grn")
+    vim.keymap.del("n", "gra")
+    vim.keymap.del("n", "grr")
+    vim.keymap.del("n", "gri")
 
     local on_attach = function(_, bufnr)
       -- Buffer-local keymaps and settings that only work if there is an active
