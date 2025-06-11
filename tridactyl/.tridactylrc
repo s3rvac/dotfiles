@@ -56,6 +56,13 @@ set searchurls.w http://en.wikipedia.org/w/index.php?title=Special%3ASearch&sear
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 
 "------------------------------------------------------------------------------
+" Disable Trydactyl on certain sites.
+"------------------------------------------------------------------------------
+
+blacklistadd outlook.office.com
+blacklistadd app.slack.com
+
+"------------------------------------------------------------------------------
 " Firefox settings.
 "------------------------------------------------------------------------------
 
