@@ -376,6 +376,10 @@ if s:opened_file_path =~ 'textern-'
   elseif s:opened_file_path =~ 'github.com'
     au BufRead,BufNewFile *.txt setl ft=markdown
     au BufRead,BufNewFile *.txt setl spelllang=en
+  " slack.com
+  elseif s:opened_file_path =~ 'slack.com'
+    au BufRead,BufNewFile *.txt setl ft=markdown
+    au BufRead,BufNewFile *.txt setl spelllang=en
   " cs-blog.petrzemek.net
   elseif s:opened_file_path =~ 'cs-blog.petrzemek.net'
     au BufRead,BufNewFile *.txt setl ft=html
