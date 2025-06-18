@@ -35,7 +35,6 @@ return {
       javascript = true,
       kotlin = true,
       lua = true,
-      markdown = true,
       php = true,
       python = true,
       ruby = true,
