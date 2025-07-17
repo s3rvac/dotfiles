@@ -62,6 +62,15 @@ vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', opts({ desc = "Copy into the cl
 -- Clipboard cut.
 vim.keymap.set({ "n", "v" }, "<Leader>d", '"+d', opts({ desc = "Cut into the clipboard" }))
 
+-- Unmap some of the built-in keymaps in Neovim 0.11+ as they clash with
+-- keymaps that I use (e.g. `grX` conflicts with the ReplaceWithRegister
+-- plugin).
+vim.keymap.del({"n", "x"}, "gra")
+vim.keymap.del("n", "gri")
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "grr")
+-- vim.keymap.del("n", "grt") -- Not in Neovim 0.11.2
+
 -------------------------------------------------------------------------------
 -- Visual mode improvements.
 -------------------------------------------------------------------------------
