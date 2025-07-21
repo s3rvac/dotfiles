@@ -108,6 +108,9 @@ return {
           },
         },
       })
+
+      -- Register the plugin as the UI interface for `vim.ui.select`.
+      fzf.register_ui_select()
     end,
   },
 }
