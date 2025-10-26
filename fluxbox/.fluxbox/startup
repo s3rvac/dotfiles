@@ -20,7 +20,6 @@ sleep 1
 
 	# A list of applications to be started automatically.
 	cmst &
-	volumeicon &
 	qstardict &
 	clementine &
 	copyq &

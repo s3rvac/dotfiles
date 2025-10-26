@@ -21,7 +21,6 @@
 		[exec] (EasyTag) {easytag} <~/.fluxbox/icons/easytag.png>
 		[exec] (K3b) {k3b} <~/.fluxbox/icons/k3b.png>
 		[exec] (VLC) {vlc} <~/.fluxbox/icons/vlc.png>
-		[exec] (Volumeicon) {volumeicon} <~/.fluxbox/icons/volumeicon.png>
 		[exec] (mpv) {mpv} <~/.fluxbox/icons/mpv.png>
 	[end]
 	[submenu] (Network)

@@ -21,10 +21,10 @@ Control Alt Mod4 s :Exec ~/.fluxbox/scripts/suspend-to-ram.sh
 # Reload the configuration.
 Control Mod4 r :Reconfigure
 
-# Volume control. The shortcuts are defined in volumeicon.
-# Win+PgDown: Volume down.
-# Win+PgUp: Volume up.
-# Win+End: Mute/unmute.
+# Volume control (Prior = PgUp, Next = PgDown).
+Mod4 Prior :Exec ~/.fluxbox/scripts/volume-control.sh up
+Mod4 Next :Exec ~/.fluxbox/scripts/volume-control.sh down
+Mod4 End :Exec ~/.fluxbox/scripts/volume-control.sh toggle
 
 # Audio player control. The shortcuts are defined in Clementine.
 # Win+Pause: Play/Pause.
