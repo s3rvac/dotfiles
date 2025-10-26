@@ -97,3 +97,6 @@
 [app] (class=vlc) (role=vlc-main)
   [Position] (CENTER) {0 0}
 [end]
+[app] (class=copyq)
+  [Deco] {BORDER}
+[end]

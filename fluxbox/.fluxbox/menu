@@ -60,10 +60,10 @@
 	[end]
 	[submenu] (Utilities)
 		[exec] (Alacritty) {alacritty} <~/.fluxbox/icons/alacritty.png>
+		[exec] (CopyQ) {copyq} <~/.fluxbox/icons/copyq.png>
 		[exec] (KRename) {krename} <~/.fluxbox/icons/krename.png>
 		[exec] (Konsole) {konsole} <~/.fluxbox/icons/konsole.png>
 		[exec] (Krusader) {krusader} <~/.fluxbox/icons/krusader.png>
-		[exec] (Parcellite) {parcellite} <~/.fluxbox/icons/parcellite.png>
 		[exec] (QXKB) {qxkb} <~/.fluxbox/icons/qxkb.png>
 	[end]
 	[separator]
