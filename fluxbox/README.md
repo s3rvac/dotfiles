@@ -17,6 +17,7 @@ My configuration files for the [Fluxbox](http://fluxbox.org/) window manager.
     * `protonmail-bridge` (access to Proton Mail from Thunderbird)
     * `python-dbus` (setting keyboard backlight)
     * `qxkb` (switching between keyboard layouts)
+    * `signal-desktop` (instant messaging)
     * `spectacle` (screenshots)
     * `volumeicon` (volume manager)
     * `xautolock` (automatic locking of screen on inactivity)

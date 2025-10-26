@@ -25,6 +25,7 @@ sleep 1
 	clementine &
 	copyq &
 	protonmail-bridge &
+	signal-desktop &
 } &
 
 wait $fbpid
