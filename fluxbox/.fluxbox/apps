@@ -100,3 +100,6 @@
 [app] (class=copyq)
   [Deco] {BORDER}
 [end]
+[app] (class=GoldenDict-ng)
+  [Position] (CENTER) {0 0}
+[end]

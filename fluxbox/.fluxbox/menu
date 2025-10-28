@@ -36,13 +36,13 @@
 	[submenu] (Office)
 		[exec] (Calibre) {calibre} <~/.fluxbox/icons/calibre.png>
 		[exec] (E-book Viewer) {ebook-viewer} <~/.fluxbox/icons/ebook-viewer.png>
+		[exec] (GoldenDict-NG) {goldendict} <~/.fluxbox/icons/goldendict.png>
 		[exec] (KchmViewer) {kchmviewer} <~/.fluxbox/icons/kchmviewer.png>
 		[exec] (LibreOffice Calc) {localc} <~/.fluxbox/icons/libreoffice-calc.png>
 		[exec] (LibreOffice Draw) {lodraw} <~/.fluxbox/icons/libreoffice-draw.png>
 		[exec] (LibreOffice Impress) {loimpress} <~/.fluxbox/icons/libreoffice-impress.png>
 		[exec] (LibreOffice Writer) {lowriter} <~/.fluxbox/icons/libreoffice-writer.png>
 		[exec] (Okular) {okular} <~/.fluxbox/icons/okular.png>
-		[exec] (QStarDict) {qstardict} <~/.fluxbox/icons/qstardict.png>
 	[end]
 	[submenu] (System)
 		[submenu] (Settings)

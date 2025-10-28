@@ -20,9 +20,9 @@ sleep 1
 
 	# A list of applications to be started automatically.
 	cmst &
-	qstardict &
 	clementine &
 	copyq &
+	goldendict &
 	protonmail-bridge &
 	signal-desktop &
 } &
