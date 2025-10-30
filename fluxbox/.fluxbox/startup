@@ -18,6 +18,11 @@ sleep 1
 	~/.fluxbox/scripts/setup-automatic-screen-locking.sh &
 	~/.fluxbox/scripts/enable-notifications.sh &
 
+	# Fix black screen in Zoom when (1) sharing a screen on which someones
+	# starts drawing or (2) sharing a screen from a webinar.
+	# https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060527
+	xcompmgr -c -l0 -t0 -r0 -o.00 &
+
 	# A list of applications to be started automatically.
 	cmst &
 	clementine &

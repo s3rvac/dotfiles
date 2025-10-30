@@ -12,6 +12,9 @@ Control Mod4 space :RootMenu
 # Lock the screen.
 Control Mod4 l :Exec ~/.fluxbox/scripts/lock-screen.sh
 
+# Toogle a laser pointer (useful in presentations)
+Control Mod4 p :Exec ~/.fluxbox/scripts/laser-pointer.sh
+
 # Setup the keyboard and mouse.
 Control Mod4 q :Exec ~/.fluxbox/scripts/setup-keyboard-and-mouse.sh
 
