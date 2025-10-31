@@ -23,7 +23,7 @@ show_volume_status() {
 
 	# Kill any existing osd_cat instances to avoid overlapping messages.
 	pkill osd_cat
-	echo "${status}" | osd_cat --delay=1 --age=0 --align=right --pos=bottom --offset=-100 --color=white --font=lucidasans-24 &
+	echo "${status}" | osd_cat --delay=1 --age=0 --align=right --pos=bottom --offset=-80 --color=green --font=-*-helvetica-bold-*-*-*-34-*-*-*-*-*-*-* &
 }
 
 if [ "$1" = "up" ]; then
