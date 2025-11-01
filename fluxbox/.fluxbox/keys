@@ -176,7 +176,7 @@ OnToolbar Mouse5 :NextWorkspace
 
 # Application shortcuts.
 # 'Control Alt a' shows/hide Clementine (the shortcut is set in Clementine).
-# 'Control Alt x' shows CopyQ (the shortcut is set in CopyQ).
+# 'Control Alt x' shows/hide CopyQ (the shortcut is set in CopyQ).
 # 'Control Alt d' shows/hide GoldenDict-NG (the shortcut is set in GoldenDict-NG).
 Control Alt c :Exec gsimplecal
 Control Alt d :Exec ~/.fluxbox/scripts/activate-window.sh firefox
