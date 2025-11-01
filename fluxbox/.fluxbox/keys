@@ -179,7 +179,6 @@ OnToolbar Mouse5 :NextWorkspace
 # 'Control Alt x' shows/hide CopyQ (the shortcut is set in CopyQ).
 # 'Control Alt d' shows/hide GoldenDict-NG (the shortcut is set in GoldenDict-NG).
 Control Alt c :Exec gsimplecal
-Control Alt d :Exec ~/.fluxbox/scripts/activate-window.sh firefox
 Control Alt f :Exec firefox
 Control Alt g :Exec nvim-qt
 Control Alt n :Exec alacritty
