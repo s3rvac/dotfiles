@@ -8,7 +8,6 @@ My configuration files for the [Fluxbox](http://fluxbox.org/) window manager.
 * Add a wallpaper to `$HOME/.fluxbox/backgrounds`. The default name is `wallpaper.jpg`. You can change it in `$HOME/.fluxbox/scripts/set-background.sh`.
 * External programs that are used by the scripts and keys:
     * `alacrity` (terminal emulator)
-    * `tdrop` (terminal emulator in a drop-down menu)
     * `connman` and `cmst` (connection manager)
     * `copyq` (clipboard manager)
     * `feh` (setting of background)
@@ -19,6 +18,7 @@ My configuration files for the [Fluxbox](http://fluxbox.org/) window manager.
     * `qxkb` (switching between keyboard layouts)
     * `signal-desktop` (instant messaging)
     * `spectacle` (screenshots)
+    * `tdrop` (terminal emulator in a drop-down menu)
     * `xautolock` (automatic locking of screen on inactivity)
     * `xdotool` and `wmctrl` (manipulation with windows)
     * `xfce4-notifyd` (notifications)

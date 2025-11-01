@@ -24,8 +24,8 @@ sleep 1
 	xcompmgr -c -l0 -t0 -r0 -o.00 &
 
 	# A list of applications to be started automatically.
-	cmst &
 	clementine &
+	cmst &
 	copyq &
 	goldendict &
 	protonmail-bridge &
