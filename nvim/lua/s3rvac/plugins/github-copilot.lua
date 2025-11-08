@@ -57,7 +57,6 @@ return {
     })
 
     -- Keymaps.
-    vim.keymap.set("n", "<Leader>gcp", ":Copilot panel<CR>")
     vim.keymap.set("n", "<Leader>gce", ":Copilot enable<CR>:echo 'Copilot enabled'<CR>")
     vim.keymap.set("n", "<Leader>gcd", ":Copilot disable<CR>:echo 'Copilot disabled'<CR>")
   end,
