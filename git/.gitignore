@@ -7,3 +7,6 @@ kls_database.db
 
 # Directory-local Neovim configuration.
 .nvim.lua
+
+# Local Claude Code settings.
+**/.claude/settings.local.json
