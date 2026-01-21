@@ -35,6 +35,9 @@ bindings = [
 	# binding does not work.
 	# https://github.com/alacritty/alacritty/issues/6496
 	{ key = "+", mods = "Control|Shift", action = "IncreaseFontSize" },
+	# Make Shift+Enter emit a new line instead of submitting the input, e.g. in
+	# Claude Code.
+	{ key = "Return", mods = "Shift", chars = "\u001b\r" },
 ]
 
 [mouse]
