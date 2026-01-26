@@ -258,6 +258,26 @@ vim.g.netrw_winsize = 25
 vim.g.netrw_sort_sequence = "[/]$"
 
 -------------------------------------------------------------------------------
+-- Clipboard.
+-------------------------------------------------------------------------------
+
+-- Go through xclip for clipboard operations to fix interoperability issues
+-- with the CopyQ clipboard manager.
+-- https://github.com/hluk/CopyQ/issues/2138
+vim.g.clipboard = {
+  name = "xclip",
+  copy = {
+    ["+"] = { "xclip", "-selection", "clipboard" },
+    ["*"] = { "xclip", "-selection", "clipboard" },
+  },
+  paste = {
+    ["+"] = { "xclip", "-selection", "clipboard", "-o" },
+    ["*"] = { "xclip", "-selection", "clipboard", "-o" },
+  },
+  cache_enabled = true,
+}
+
+-------------------------------------------------------------------------------
 -- Terminal/graphical Neovim + UI.
 -------------------------------------------------------------------------------
 
