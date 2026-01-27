@@ -26,10 +26,13 @@ sleep 1
 	# A list of applications to be started automatically.
 	clementine &
 	cmst &
-	copyq &
 	goldendict &
 	protonmail-bridge &
 	signal-desktop &
+
+	# A workaround for no systray icon.
+	# https://github.com/hluk/CopyQ/issues/3344
+	DBUS_SESSION_BUS_ADDRESS="" XDG_RUNTIME_DIR="" copyq &
 } &
 
 wait $fbpid
