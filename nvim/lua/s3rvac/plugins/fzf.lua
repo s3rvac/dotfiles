@@ -3,7 +3,7 @@
 return {
   {
     "ibhagwan/fzf-lua",
-    commit = "02def6b972d7687866738d6f6a5f4839ce5b5a7a", -- 2025-05-07
+    commit = "b4b1f05957a77f7662de834328827890c1a8c02b", -- 2026-01-31
     event = "VeryLazy",
     dependencies = {
       "nvim-tree/nvim-web-devicons",

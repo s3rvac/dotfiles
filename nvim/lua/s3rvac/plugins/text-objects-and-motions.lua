@@ -43,13 +43,13 @@ return {
   -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    commit = "0e3be38005e9673d044e994b1e4b123adb040179", -- 2025-05-07
+    commit = "a0e182ae21fda68c59d1f36c9ed45600aef50311", -- 2026-01-28
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
     event = "VeryLazy",
     config = function()
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter").setup({
         textobjects = {
           select = {
             enable = true,
@@ -85,7 +85,7 @@ return {
   -- https://github.com/chrisgrieser/nvim-various-textobjs
   {
     "chrisgrieser/nvim-various-textobjs",
-    commit = "18a2092173a6773f32adea42d4095d41d5eca09d", -- 2025-01-21
+    commit = "222869e08cb7224fc1f09e071b70f2e1b20f2d28", -- 2026-01-29
     event = "VeryLazy",
     -- Use custom keymaps.
     opts = { useDefaultKeymaps = false },

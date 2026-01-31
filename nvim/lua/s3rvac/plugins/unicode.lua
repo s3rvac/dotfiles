@@ -2,7 +2,7 @@
 -- https://github.com/chrisbra/unicode.vim
 return {
   "chrisbra/unicode.vim",
-  commit = "9da92ffe08b90200dcb499fdfecb234326f5514c", -- 2024-06-23
+  commit = "902cd2b0a41a38528d080f8dd7a16ec5a865ebdd", -- 2025-09-22
   event = "VeryLazy",
   init = function()
     -- Use custom keymaps.

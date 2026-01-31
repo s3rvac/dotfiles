@@ -2,6 +2,6 @@
 -- https://github.com/mbbill/undotree
 return {
   "mbbill/undotree",
-  commit = "b951b87b46c34356d44aa71886aecf9dd7f5788a", -- 2025-03-13
+  commit = "fc28931fbfba66ab75d9af23fe46ffbbb9de6e8c", -- 2026-01-30
   event = "InsertEnter",
 }

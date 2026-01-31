@@ -2,7 +2,7 @@
 -- https://github.com/stevearc/conform.nvim
 return {
   "stevearc/conform.nvim",
-  tag = "v9.0.0", -- 2025-02-15
+  tag = "v9.1.0", -- 2025-08-22
   event = "VeryLazy",
   config = function()
     local conform = require("conform")

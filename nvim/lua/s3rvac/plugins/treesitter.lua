@@ -3,10 +3,10 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    commit = "28d480e0624b259095e56f353ec911f9f2a0f404", -- 2025-05-06
+    commit = "d3218d988f72ed34414959c9ccd802d393432d6e", -- 2025-12-13
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter").setup({
         ensure_installed = {
           "bash",
           "bibtex",

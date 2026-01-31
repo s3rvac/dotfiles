@@ -7,7 +7,7 @@ return {
     -- For regular Copilot usage.
     { "github/copilot.vim" },
     -- For curl, log, and async functions.
-    { "nvim-lua/plenary.nvim", commit = "857c5ac632080dba10aae49dba902ce3abf91b35" },
+    { "nvim-lua/plenary.nvim", commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
   },
   build = "make tiktoken",
   event = "VeryLazy",

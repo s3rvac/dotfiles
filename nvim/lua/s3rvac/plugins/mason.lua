@@ -2,13 +2,13 @@
 -- https://github.com/williamboman/mason.nvim
 return {
   "williamboman/mason.nvim",
-  tag = "v2.0.0", -- 2025-05-06
+  tag = "v2.2.1", -- 2026-01-07
   event = "VeryLazy",
   dependencies = {
     -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/
     {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      commit = "c1fbdcb0d8d1295314f1612c4a247253e70299d9", -- 2024-05-11
+      commit = "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc", -- 2026-01-22
     },
   },
   config = function()

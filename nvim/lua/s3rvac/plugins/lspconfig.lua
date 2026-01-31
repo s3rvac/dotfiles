@@ -2,7 +2,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 return {
   "neovim/nvim-lspconfig",
-  tag = "v2.1.0", -- 2025-04-26
+  tag = "v2.5.0", -- 2025-09-18
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     -- LSP completion for nvim-cmp.
@@ -17,7 +17,7 @@ return {
     -- https://github.com/smjonas/inc-rename.nvim
     {
       "smjonas/inc-rename.nvim",
-      commit = "2eaff20526ff6101337b84f4b0d238c11f47d7f4", -- 2025-05-06
+      commit = "2597bccb57d1b570fbdbd4adf88b955f7ade715b", -- 2025-11-05
     },
   },
   config = function()
