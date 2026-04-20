@@ -36,4 +36,4 @@ fi
 # cursor, and activate the window.
 xdotool mousemove "$MOUSE_X" "$MOUSE_Y"
 WIN="$(xdotool getmouselocation --shell 2> /dev/null | grep 'WINDOW' | sed 's".*=\(.*\)"\1"')"
-xdotool windowactivate "$WIN"
+wmctrl -i -a "$WIN"
