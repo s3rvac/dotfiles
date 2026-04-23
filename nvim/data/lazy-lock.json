@@ -1,5 +1,5 @@
 {
-  "AutoFenc": { "branch": "master", "commit": "c4136380ac91a0a8c0d58d9ece1d01959aa3ff59" },
+  "AutoFenc": { "branch": "master", "commit": "40576e1f132c21a5351602f029a7d5fa63bf70a9" },
   "CopilotChat.nvim": { "branch": "main", "commit": "1e06be97df058fa0bb4af54659c39918a4999c86" },
   "LuaSnip": { "branch": "master", "commit": "5a1e39223db9a0498024a77b8441169d260c8c25" },
   "cellular-automaton.nvim": { "branch": "main", "commit": "1606e9d5d04ff254023c3f3c62842d065708d6d3" },
@@ -41,13 +41,13 @@
   "vim-characterize": { "branch": "master", "commit": "a8bffac6cead6b2869d939ecad06312b187a4c79" },
   "vim-eunuch": { "branch": "master", "commit": "e86bb794a1c10a2edac130feb0ea590a00d03f1e" },
   "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },
-  "vim-nightfly-colors": { "branch": "master", "commit": "3b48dc0c5921f899aeb1e6e61b77b9345888a2f7" },
+  "vim-nightfly-colors": { "branch": "master", "commit": "caaba387a4a50cf08791395acc4a5b7363367cff" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
   "vim-sort-motion": { "branch": "master", "commit": "c8782be8f7da414c6442b3ba4b6abb0345d392d9" },
   "vim-speeddating": { "branch": "master", "commit": "c17eb01ebf5aaf766c53bab1f6592710e5ffb796" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
-  "vim-syntax-jira": { "branch": "master", "commit": "13f14dc7692193049e47d62d917a1efc91ce37ed" },
-  "vim-syntax-yara": { "branch": "master", "commit": "1ffd7dd279387f3437c2cf878cded368cf8fe0e0" },
+  "vim-syntax-jira": { "branch": "master", "commit": "d439d6c12d43b4ab507777b8f84a4f616d6c659d" },
+  "vim-syntax-yara": { "branch": "master", "commit": "5f512720676b6cdb0bdaebc6a2a1682e03fb815f" },
   "vim-tag-closer": { "branch": "insert-instead-of-append", "commit": "8fd737d736575c9b7c411ec7e3d7ed5f58e9ddf1" },
   "vimtex": { "branch": "master", "commit": "2e1bbabeb2c34bb17d7bc8cfdf8f95b16dd0db0c" },
   "wilder.nvim": { "branch": "master", "commit": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf" }
