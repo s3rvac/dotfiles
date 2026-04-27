@@ -26,6 +26,7 @@
 	bra = branch -vv --all
 	c = commit --verbose
 	ca = commit --verbose --all
+	cu = "!git add --all; git commit -m 'Update'"
 	clear = reset --hard
 	cl = clone
 	conflicts = diff --name-only --diff-filter=U --relative
