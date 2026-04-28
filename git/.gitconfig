@@ -53,6 +53,7 @@
 	lga = log --graph --branches --remotes --tags --pretty='format:%C(yellow)%h %C(green)%ai %C(bold blue)%an %C(red)%d%C(reset) %s'
 	m = merge --no-ff
 	ma = merge --abort
+	n = "!git -C ~/ add ~/notes ~/todo; git -C ~/ commit -m 'notes' ~/notes ~/todo; git -C ~/ push"
 	p = push
 	pa = push --follow-tags
 	pf = push --force-with-lease
