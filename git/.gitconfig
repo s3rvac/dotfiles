@@ -64,6 +64,7 @@
 	rba = rebase --abort
 	rbc = rebase --continue
 	rbi = rebase --interactive
+	rbm = "!git show-ref --verify --quiet refs/heads/master && git rebase master || git rebase main"
 	s = status --short --branch
 	sm = submodule
 	sma = submodule add
