@@ -568,6 +568,18 @@ function remove-duplicate-empty-lines() {
 	fi
 }
 
+# Adds missing end of line character to all files.
+# Usage: add-missing-end-of-lines [FILE|DIR]
+function add-missing-end-of-lines() {
+	if [ -n "$1" ]; then
+		find "$1" -type f ! -empty -exec sh -c 'for f; do [ "$(tail -c 1 "$f" | wc -l)" -eq 0 ] && printf "\n" >> "$f"; done' _ {} +
+	else
+		# When no argument was given, remove duplicate empty lines from all
+		# files under version control.
+		git ls-files | xargs -I{} sh -c '[ -s "{}" ] && [ "$(tail -c 1 "{}" | wc -l)" -eq 0 ] && printf "\n" >> "{}"'
+	fi
+}
+
 # Conversions.
 function tohex() { printf "0x%x\n" "$1"; }
 function todec() { printf "%d\n" "$1"; }
