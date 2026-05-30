@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Author: Petr Zemek <s3rvac@petrzemek.net>
+#
+# Cleans up subtitle files in the current working directory.
+#
+
+set -euo pipefail
+
+find . -type f \( -iname "*.srt" -o -iname "*.sub" \) | while IFS= read -r file; do
+    echo "  (cleaning)  '$file'"
+    sed -i \
+        -e 's/<[^>]*>//g' \
+        -e 's/{[^}]*}//g' \
+        "$file"
+done
