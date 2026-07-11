@@ -52,10 +52,10 @@ Alt F3 :CommandDialog
 Alt F4 :Close
 
 # Move the current window to the left monitor.
-Alt F5 :MacroCmd {SendToPrevHead}
+Alt F5 :MacroCmd {SendToNextHead}
 
 # Move the current window to the right monitor.
-Alt F6 :MacroCmd {SendToNextHead}
+Alt F6 :MacroCmd {SendToPrevHead}
 
 # Resize and move the window to the left half of the screen.
 Alt F7 :Exec ~/.fluxbox/scripts/move-current-window-to-half-screen.sh left
