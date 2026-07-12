@@ -16,7 +16,7 @@
 	[end]
 	[submenu] (Multimedia)
 		[exec] (Audacity) {audacity} <~/.fluxbox/icons/audacity.png>
-		[exec] (Clementine) {clementine} <~/.fluxbox/icons/clementine.png>
+		[exec] (Strawberry) {strawberry} <~/.fluxbox/icons/strawberry.png>
 		[exec] (DeVeDe) {devede} <~/.fluxbox/icons/devede.png>
 		[exec] (EasyTag) {easytag} <~/.fluxbox/icons/easytag.png>
 		[exec] (K3b) {k3b} <~/.fluxbox/icons/k3b.png>

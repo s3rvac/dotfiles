@@ -6,6 +6,10 @@
   [Deco] {BORDER}
   [Maximized] {yes}
 [end]
+[app] (name=strawberry) (class=Strawberry)
+  [Deco] {BORDER}
+  [Maximized] {yes}
+[end]
 [app] (name=evince) (class=Evince)
   [Deco] {BORDER}
   [Maximized] {yes}
