@@ -13,9 +13,9 @@ fbpid=$!
 sleep 1
 {
 	~/.fluxbox/scripts/setup-background.sh &
-	~/.fluxbox/scripts/setup-keyboard.sh &
-	~/.fluxbox/scripts/setup-mouse.sh &
 	~/.fluxbox/scripts/setup-automatic-screen-locking.sh &
+	~/.fluxbox/scripts/setup-mouse.sh &
+	~/.fluxbox/scripts/setup-keyboard.sh &
 	~/.fluxbox/scripts/enable-notifications.sh &
 
 	# Fix black screen in Zoom when (1) sharing a screen on which someones
