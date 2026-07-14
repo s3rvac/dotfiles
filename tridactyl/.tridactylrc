@@ -59,8 +59,15 @@ set searchurls.yt https://www.youtube.com/results?search_query=%s
 " Disable Trydactyl on certain sites.
 "------------------------------------------------------------------------------
 
-blacklistadd outlook.office.com
+" General
 blacklistadd app.slack.com
+blacklistadd outlook.office.com
+blacklistadd lucid.app
+blacklistadd app.glean.com
+blacklistadd www.figma.com
+blacklistadd ssh.cloud.google.com
+" The above does not suffice for some reason.
+seturl https://www.figma.com/ superignore true
 
 "------------------------------------------------------------------------------
 " Firefox settings.
