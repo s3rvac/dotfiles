@@ -29,10 +29,7 @@ sleep 1
 	goldendict &
 	protonmail-bridge &
 	signal-desktop &
-
-	# A workaround for no systray icon.
-	# https://github.com/hluk/CopyQ/issues/3344
-	DBUS_SESSION_BUS_ADDRESS="" XDG_RUNTIME_DIR="" copyq &
+	copyq &
 } &
 
 wait $fbpid
