@@ -2,12 +2,12 @@
 -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
-  tag = "v4.7.4", -- 2025-10-01
+  commit = "2025f92022bef434de0511c5157a19974a9377a4", -- 2026-06-02
   dependencies = {
     -- For regular Copilot usage.
     { "github/copilot.vim" },
     -- For curl, log, and async functions.
-    { "nvim-lua/plenary.nvim", commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
+    { "nvim-lua/plenary.nvim", commit = "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   },
   build = "make tiktoken",
   event = "VeryLazy",
