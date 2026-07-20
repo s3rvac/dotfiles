@@ -7,7 +7,7 @@
 
 set -euo pipefail
 
-find . -type f \( -iname "*.srt" -o -iname "*.sub" \) | while IFS= read -r file; do
+find . -type f -maxdepth 1 \( -iname "*.srt" -o -iname "*.sub" \) | while IFS= read -r file; do
     echo "  (cleaning)  '$file'"
     sed -i \
         -e 's/<[^>]*>//g' \
