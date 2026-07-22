@@ -10,7 +10,9 @@
 fluxbox &
 fbpid=$!
 
-sleep 1
+# Wait a bit to give Fluxbox a chance to fully start so that when the programs
+# below start, their system tray icons are visible.
+sleep 5
 {
 	~/.fluxbox/scripts/setup-background.sh &
 	~/.fluxbox/scripts/setup-automatic-screen-locking.sh &
