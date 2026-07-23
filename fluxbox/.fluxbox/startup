@@ -21,7 +21,6 @@ sleep 5
 	~/.fluxbox/scripts/enable-notifications.sh &
 
 	# A list of applications to be started automatically.
-	QT_SCALE_FACTOR=1.05 strawberry &
 	cmst &
 	goldendict &
 	protonmail-bridge &
