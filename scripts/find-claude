@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+#
+# Author: Petr Zemek <s3rvac@petrzemek.net> + Claude Code
+#
+# Show the Fluxbox workspace and tmux session for each running Claude Code instance.
+# Fluxbox workspace numbers are 1-based (matching what Fluxbox shows in its toolbar).
+#
+# Note: Tailored to how Petr Zemek runs Claude Code on his Linux desktop with
+#       Fluxbox and tmux.
+
+# Return the parent PID of a given PID via /proc.
+get_ppid() {
+    awk '{print $4}' "/proc/$1/stat" 2>/dev/null
+}
+
+#
+# tmux data
+#
+
+declare -A pane_session  # pane_pid -> session_name
+declare -A session_tty   # session_name -> first-attached client TTY
+
+while read -r pid sname; do
+    pane_session["$pid"]="$sname"
+done < <(tmux list-panes -a -F '#{pane_pid} #{session_name}' 2>/dev/null)
+
+while read -r ctty sname; do
+    # Keep only the first client when a session has multiple clients attached.
+    [[ -z "${session_tty[$sname]+_}" ]] && session_tty["$sname"]="$ctty"
+done < <(tmux list-clients -F '#{client_tty} #{session_name}' 2>/dev/null)
+
+#
+# Helpers
+#
+
+# Walk the process tree upward from PID $1 looking for a tmux pane leader.
+# Prints the session name and returns 0, or returns 1 if not found.
+find_session() {
+    local cur=$1 depth=0
+    while [[ "$cur" =~ ^[0-9]+$ ]] && (( cur > 1 )) && (( depth++ < 30 )); do
+        local s="${pane_session[$cur]:-}"
+        [[ -n "$s" ]] && { printf '%s' "$s"; return 0; }
+        cur=$(get_ppid "$cur")
+    done
+    return 1
+}
+
+# Given a TTY path (/dev/pts/N), return the PID of the terminal emulator.
+# Strategy: the first (lowest-PID) process on that TTY was spawned directly by
+# the terminal emulator, so its parent is the terminal emulator.
+find_terminal_pid() {
+    local pts="${1#/dev/}"    # /dev/pts/5  ->  pts/5
+    local first_pid
+    first_pid=$(ps -t "$pts" -o pid= 2>/dev/null | grep -oE '[0-9]+' | sort -n | head -1)
+    [[ -n "$first_pid" ]] && get_ppid "$first_pid"
+}
+
+# Print the 1-based Fluxbox workspace number for a terminal emulator PID,
+# or return 1 if it cannot be determined.
+workspace_for_pid() {
+    local pid=$1 win desktop
+
+    if command -v xdotool &>/dev/null; then
+        win=$(xdotool search --pid "$pid" 2>/dev/null | head -1)
+        [[ -z "$win" ]] && return 1
+        desktop=$(xdotool get_desktop_for_window "$win" 2>/dev/null) || return 1
+        # Desktop -1 means the window is sticky (on all workspaces).
+        (( desktop < 0 )) && { printf 'all'; return 0; }
+        printf '%d' $(( desktop + 1 ))
+    elif command -v wmctrl &>/dev/null; then
+        # wmctrl -l -p columns: win-id  desktop  pid  host  title
+        local result
+        result=$(wmctrl -l -p 2>/dev/null | awk -v p="$pid" '$3 == p { print $2 + 1; exit }')
+        [[ -n "$result" ]] && printf '%s' "$result" || return 1
+    else
+        return 1
+    fi
+}
+
+# Map a numeric workspace to its display label (1-12 as-is, 13-24 as +1..+12).
+format_workspace() {
+    local ws=$1
+    if [[ "$ws" =~ ^[0-9]+$ ]] && (( ws >= 13 )); then
+        printf '+%d' $(( ws - 12 ))
+    else
+        printf '%s' "$ws"
+    fi
+}
+
+#
+# Main
+#
+
+mapfile -t pids < <(pgrep -x claude 2>/dev/null)
+
+if (( ${#pids[@]} == 0 )); then
+    # No Claude Code instances were found
+    exit 0
+fi
+
+printf "%3s | %-20s | %s\n"  "#" "Fluxbox workspace" "tmux session"
+printf "%3s-+-%-20s-+-%s\n" "---" "--------------------" "--------------------"
+
+# Collect rows as "sort_key TAB workspace TAB session", then sort.
+# Numerical workspaces get a "0" prefix + zero-padded value so they sort first;
+# non-numerical (e.g. "?" or "all") get a "1" prefix so they sort last.
+rows=()
+for pid in "${pids[@]}"; do
+    session=$(find_session "$pid") || session="?"
+    workspace="?"
+
+    if [[ "$session" != "?" ]]; then
+        tty="${session_tty[$session]:-}"
+        if [[ -n "$tty" ]]; then
+            term_pid=$(find_terminal_pid "$tty") || true
+            if [[ -n "$term_pid" ]]; then
+                ws=$(workspace_for_pid "$term_pid") && workspace="$ws"
+            fi
+        fi
+    fi
+
+    if [[ "$workspace" =~ ^[0-9]+$ ]]; then
+        sort_key="0$(printf '%020d' "$workspace")"
+    else
+        sort_key="1$workspace"
+    fi
+    rows+=("${sort_key}"$'\t'"${workspace}"$'\t'"${session}")
+done
+
+mapfile -t sorted < <(printf '%s\n' "${rows[@]}" | sort)
+
+row=0
+for entry in "${sorted[@]}"; do
+    (( row++ ))
+    workspace=$(cut -f2 <<< "$entry")
+    session=$(cut -f3 <<< "$entry")
+    printf "%3d | %-20s | %s\n" "$row" "$(format_workspace "$workspace")" "$session"
+done
