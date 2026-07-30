@@ -3,7 +3,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    commit = "d3218d988f72ed34414959c9ccd802d393432d6e", -- 2025-12-13
+    commit = "4916d6592ede8c07973490d9322f187e07dfefac", -- 2026-04-03
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter").setup({
