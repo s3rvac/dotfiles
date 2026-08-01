@@ -11,6 +11,7 @@ return {
   },
   build = "make tiktoken",
   event = "VeryLazy",
+  enabled = vim.g.copilot_enable,
   config = function()
     local copilot_chat = require("CopilotChat")
     copilot_chat.setup({

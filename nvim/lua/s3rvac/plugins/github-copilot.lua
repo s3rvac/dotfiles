@@ -3,6 +3,7 @@
 return {
   "github/copilot.vim",
   tag = "v1.59.0", -- 2026-01-09
+  enabled = vim.g.copilot_enable,
   config = function()
     -- Add an option to enable or disable copilot, e.g. via exrc.
     -- Note: This is my own variable, not the one provided by the plugin.
