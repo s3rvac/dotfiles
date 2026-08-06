@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+#
+# Author: Petr Zemek <s3rvac@petrzemek.net> + Claude Code
+#
+# Renames subtitle files (.srt/.sub) to match video files (.mp4/.mkv/.webm)
+# in the current working directory.
+#
+# Usage: subs-rename [--dry-run]
+#
+
+set -euo pipefail
+
+DRY_RUN=false
+
+for arg in "$@"; do
+	case "$arg" in
+		--dry-run) DRY_RUN=true ;;
+		*) echo "Unknown argument: $arg" >&2; exit 1 ;;
+	esac
+done
+
+#
+# Collect files
+#
+
+mapfile -t VIDEO_FILES < <(find . -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.webm" \) | sort)
+mapfile -t SUB_FILES   < <(find . -maxdepth 1 -type f \( -iname "*.srt" -o -iname "*.sub" \) | sort)
+
+VIDEO_COUNT=${#VIDEO_FILES[@]}
+SUB_COUNT=${#SUB_FILES[@]}
+
+if [[ $VIDEO_COUNT -eq 0 ]]; then
+	echo "error: no video files found in the current directory" >&2
+	exit 1
+fi
+
+if [[ $SUB_COUNT -eq 0 ]]; then
+	echo "error: no subtitle files found in the current directory" >&2
+	exit 1
+fi
+
+# Perform or preview a rename
+do_rename() {
+	local src="$1"
+	local dst="$2"
+
+	if [[ "$src" == "$dst" ]]; then
+		echo "  (unchanged)  '$src'"
+		return
+	fi
+
+	if [[ "$DRY_RUN" == true ]]; then
+		echo "  [dry-run]  '$src'  ->  '$dst'"
+	else
+		mv -- "$src" "$dst"
+		echo "  (renamed)  '$src'  ->  '$dst'"
+	fi
+}
+
+#
+# Case 1: Single video + single subtitle
+#
+if [[ $VIDEO_COUNT -eq 1 && $SUB_COUNT -eq 1 ]]; then
+	video="${VIDEO_FILES[0]}"
+	sub="${SUB_FILES[0]}"
+
+	video_base="${video%.*}" # ./The.Show.S01E01.mkv  ->  ./The.Show.S01E01
+	sub_ext="${sub##*.}"     # srt | sub
+
+	new_sub="${video_base}.${sub_ext}"
+
+	echo "Mode: single file"
+	do_rename "$sub" "$new_sub"
+	exit 0
+fi
+
+#
+# Case 2: Series: match on "SxxExx"
+#
+
+# Extract SxxExx (case-insensitive) from a filename
+extract_episode() {
+	local filename
+	filename=$(basename "$1")
+	# Returns e.g. "S03E01" (uppercased)
+	grep -oiE 'S[0-9]+E[0-9]+' <<< "$filename" | head -1 | tr '[:lower:]' '[:upper:]'
+}
+
+echo "Mode: series"
+
+# Build an associative array: episode_key -> video_path
+declare -A VIDEO_MAP
+for v in "${VIDEO_FILES[@]}"; do
+	key=$(extract_episode "$v")
+	if [[ -z "$key" ]]; then
+		echo "error: could not extract SxxExx from video file: '$v'" >&2
+		exit 1
+	fi
+	VIDEO_MAP["$key"]="$v"
+done
+
+# Build an associative array: episode_key -> subtitle_path(s), detecting duplicates
+declare -A SUB_MAP
+for s in "${SUB_FILES[@]}"; do
+	key=$(extract_episode "$s")
+	if [[ -z "$key" ]]; then
+		echo "error: could not extract SxxExx from subtitle file: '$s'" >&2
+		exit 1
+	fi
+	if [[ -n "${SUB_MAP[$key]+_}" ]]; then
+		echo "error: multiple subtitle files found for episode $key:" >&2
+		echo "  '${SUB_MAP[$key]}'" >&2
+		echo "  '$s'" >&2
+		exit 1
+	fi
+	SUB_MAP["$key"]="$s"
+done
+
+# Match and rename
+ERRORS=0
+for key in "${!SUB_MAP[@]}"; do
+	sub="${SUB_MAP[$key]}"
+	sub_ext="${sub##*.}"
+
+	if [[ -z "${VIDEO_MAP[$key]+_}" ]]; then
+		echo "error: no video file found for subtitle episode $key ('$sub')" >&2
+		(( ERRORS++ )) || true
+		continue
+	fi
+
+	video="${VIDEO_MAP[$key]}"
+	video_base="${video%.*}"
+	new_sub="${video_base}.${sub_ext}"
+
+	do_rename "$sub" "$new_sub"
+done
+
+# Warn about videos that have no matching subtitle
+for key in "${!VIDEO_MAP[@]}"; do
+	if [[ -z "${SUB_MAP[$key]+_}" ]]; then
+		echo "warning: no subtitle found for episode $key ('${VIDEO_MAP[$key]}')"
+	fi
+done
+
+if [[ $ERRORS -gt 0 ]]; then
+	echo "Finished with $ERRORS error(s)" >&2
+	exit 1
+fi
+
+exit 0
