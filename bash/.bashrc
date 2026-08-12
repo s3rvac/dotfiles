@@ -552,7 +552,10 @@ function remove-trailing-whitespace() {
 	else
 		# When no argument was given, remove trailing whitespace from all files
 		# under version control.
-		git ls-files | xargs sed -i 's/[[:blank:]]\+$//'
+		#
+		# Note: Use `git grep -Ilz ''` instead of `git ls-files` to avoid
+		# modifying binary files (e.g. images).
+		git grep -Ilz '' | tr '\0' '\n' | xargs sed -i 's/[[:blank:]]\+$//'
 	fi
 }
 
@@ -564,7 +567,10 @@ function remove-duplicate-empty-lines() {
 	else
 		# When no argument was given, remove duplicate empty lines from all
 		# files under version control.
-		git ls-files | xargs sed -i 'N;/^\n$/D;P;D;'
+		#
+		# Note: Use `git grep -Ilz ''` instead of `git ls-files` to avoid
+		# modifying binary files (e.g. images).
+		git grep -Ilz '' | tr '\0' '\n' | xargs sed -i 'N;/^\n$/D;P;D;'
 	fi
 }
 
@@ -576,7 +582,10 @@ function add-missing-end-of-lines() {
 	else
 		# When no argument was given, remove duplicate empty lines from all
 		# files under version control.
-		git ls-files | xargs -I{} sh -c '[ -s "{}" ] && [ "$(tail -c 1 "{}" | wc -l)" -eq 0 ] && printf "\n" >> "{}"'
+		#
+		# Note: Use `git grep -Ilz ''` instead of `git ls-files` to avoid
+		# modifying binary files (e.g. images).
+		git grep -Ilz '' | tr '\0' '\n' | xargs -I{} sh -c '[ -s "{}" ] && [ "$(tail -c 1 "{}" | wc -l)" -eq 0 ] && printf "\n" >> "{}"'
 	fi
 }
 
