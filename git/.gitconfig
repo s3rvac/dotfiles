@@ -81,7 +81,7 @@
 	shs = stash show -p
 	sw = show --format=fuller --show-signature
 	sf = show --pretty="format:" --name-status
-	sync-fork = "!gh repo sync `git remote get-url --push origin` && git up"
+	sync-fork = "!gh repo sync `git remote get-url --push origin` && git pull"
 	tags = tag --list -n1
 	showtag = show --quiet
 	today = "!git ll --since=midnight"
