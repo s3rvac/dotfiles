@@ -89,6 +89,7 @@
 	u = up
 	undo = "!git reset --soft HEAD^ && git reset"
 	wip = "!git add --all && git commit -m 'WIP'"
+	wt = worktree
 
 [advice]
 	; Make git a little less verbose.
