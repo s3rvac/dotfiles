@@ -98,10 +98,10 @@ if (( ${#pids[@]} == 0 )); then
     exit 0
 fi
 
-printf "%3s | %-20s | %s\n"  "#" "Fluxbox workspace" "tmux session"
-printf "%3s-+-%-20s-+-%s\n" "---" "--------------------" "--------------------"
+printf "%3s | %-8s | %-20s | %s\n"  "#" "PID" "Fluxbox workspace" "tmux session"
+printf "%3s-+-%-8s-+-%-20s-+-%s\n" "---" "--------" "--------------------" "--------------------"
 
-# Collect rows as "sort_key TAB workspace TAB session", then sort.
+# Collect rows as "sort_key TAB pid TAB workspace TAB session", then sort.
 # Numerical workspaces get a "0" prefix + zero-padded value so they sort first;
 # non-numerical (e.g. "?" or "all") get a "1" prefix so they sort last.
 rows=()
@@ -124,7 +124,7 @@ for pid in "${pids[@]}"; do
     else
         sort_key="1$workspace"
     fi
-    rows+=("${sort_key}"$'\t'"${workspace}"$'\t'"${session}")
+    rows+=("${sort_key}"$'\t'"${pid}"$'\t'"${workspace}"$'\t'"${session}")
 done
 
 mapfile -t sorted < <(printf '%s\n' "${rows[@]}" | sort)
@@ -132,7 +132,8 @@ mapfile -t sorted < <(printf '%s\n' "${rows[@]}" | sort)
 row=0
 for entry in "${sorted[@]}"; do
     (( row++ ))
-    workspace=$(cut -f2 <<< "$entry")
-    session=$(cut -f3 <<< "$entry")
-    printf "%3d | %-20s | %s\n" "$row" "$(format_workspace "$workspace")" "$session"
+    pid=$(cut -f2 <<< "$entry")
+    workspace=$(cut -f3 <<< "$entry")
+    session=$(cut -f4 <<< "$entry")
+    printf "%3d | %-8s | %-20s | %s\n" "$row" "$pid" "$(format_workspace "$workspace")" "$session"
 done
