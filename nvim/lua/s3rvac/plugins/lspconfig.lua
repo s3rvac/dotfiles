@@ -2,7 +2,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 return {
   "neovim/nvim-lspconfig",
-  tag = "v2.5.0", -- 2025-09-18
+  tag = "v2.12.0", -- 2026-09-23
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     -- LSP completion for nvim-cmp.
@@ -25,7 +25,6 @@ return {
     require("neodev").setup()
     require("inc_rename").setup()
 
-    local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local fns = require("s3rvac.functions")
 
@@ -149,13 +148,22 @@ return {
         server_bin = vim.fn.exepath(orig_server_bin)
       end
 
-      lspconfig[server_name].setup(vim.tbl_extend("error", t, {
+      -- lspconfig[server_name].setup(vim.tbl_extend("error", t, {
+      --   capabilities = fns.table_remove_key(t, "capabilities") or capabilities,
+      --   on_attach = fns.table_remove_key(t, "on_attach") or on_attach,
+      --   on_init = fns.table_remove_key(t, "on_init") or on_init,
+      --   autostart = fns.is_executable(server_bin),
+      --   cmd = { server_bin, fns.unpack(cmd_args) },
+      -- }))
+
+      vim.lsp.config(server_name, vim.tbl_extend("error", t, {
         capabilities = fns.table_remove_key(t, "capabilities") or capabilities,
         on_attach = fns.table_remove_key(t, "on_attach") or on_attach,
         on_init = fns.table_remove_key(t, "on_init") or on_init,
         autostart = fns.is_executable(server_bin),
         cmd = { server_bin, fns.unpack(cmd_args) },
       }))
+      vim.lsp.enable(server_name)
     end
 
     -- Bash
@@ -255,7 +263,7 @@ return {
               },
             },
           })
-          client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+          client:notify("workspace/didChangeConfiguration", { settings = client.config.settings })
         end
         -- We also need to call the original on_init() function.
         return on_init(client)
