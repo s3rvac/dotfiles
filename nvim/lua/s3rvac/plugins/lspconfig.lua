@@ -75,25 +75,10 @@ return {
       vim.keymap.set("n", "<Leader>lR", function()
         local language_servers = {}
 
-        -- GitHub Copilot does not react to :LspStart, so we have to first
-        -- check if it is running, then stop all language servers, and then
-        -- start GitHub Copilot (provided that it was previously running).
-        local copilot_enabled = false
-        for _, client in pairs(vim.lsp.get_clients({ buffer = bufnr })) do
-          language_servers[client.name] = true
-          if client.name ~= "GitHub Copilot" then
-            copilot_enabled = true
-          end
-        end
-
         -- Use LspStop followed by LspStart as LspRestart does not work
         -- properly (language servers are not attached).
         vim.cmd("LspStop")
         vim.cmd("LspStart")
-
-        if copilot_enabled then
-          vim.cmd("Copilot enable")
-        end
 
         language_servers = table.concat(vim.tbl_keys(language_servers), ", ")
         print("Language servers restarted: " .. language_servers)

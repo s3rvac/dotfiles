@@ -27,7 +27,6 @@
   "nvim-web-devicons": { "branch": "master", "commit": "803353450c374192393f5387b6a0176d0972b848" },
   "nyancat-vim": { "branch": "master", "commit": "6454a2765e31db8099f6ba665eb2d2aa23ea357d" },
   "oil.nvim": { "branch": "master", "commit": "975a77cce3c8cb742bc1b3629f4328f5ca977dad" },
-  "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "resession.nvim": { "branch": "master", "commit": "05adc14db5c2d0eae064765101dd5e9c594c7851" },
   "targets.vim": { "branch": "master", "commit": "6325416da8f89992b005db3e4517aaef0242602e" },
   "translate-shell.vim": { "branch": "master", "commit": "d72a2eabd2a5466369df794777e662ecc2d732e9" },

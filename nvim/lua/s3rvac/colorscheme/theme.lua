@@ -159,10 +159,6 @@ function theme.setup()
     DiagnosticDeprecated = { sp = "#ff0000", strikethrough = true },
     DiagnosticUnnecessary = { sp = "#c3ccdc", undercurl = true },
 
-    -- GitHub Copilot
-    -- https://github.com/github/copilot.vim
-    CopilotSuggestion = { fg = "#808080" },
-
     -- nvim-cmp
     -- https://github.com/hrsh7th/nvim-cmp
     CmpItemAbbrDeprecated = { fg = "#808080", bg = p.none, strikethrough = true },
