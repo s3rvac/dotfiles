@@ -1,16 +1,39 @@
 #!/usr/bin/env bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net>
+# Author: Petr Zemek <s3rvac@petrzemek.net> + Claude Code
 #
-# Cleans up subtitle files in the current working directory.
+# Cleans up subtitle files.
+#
+# Usage: subs-clean [FILE...]
+#
+# If no files are given, all *.srt and *.sub files in the current working
+# directory are cleaned.
 #
 
 set -euo pipefail
 
-find . -maxdepth 1 -type f \( -iname "*.srt" -o -iname "*.sub" \) | while IFS= read -r file; do
+clean_file() {
+	local file="$1"
 	echo "  (cleaning)  '$file'"
 	sed -i \
 		-e 's/<[^>]*>//g' \
 		-e 's/{[^}]*}//g' \
-		"$file"
-done
+		-- "$file"
+}
+
+if [[ $# -gt 0 ]]; then
+	status=0
+	for file in "$@"; do
+		if [[ ! -f "$file" ]]; then
+			echo "  (skipping)  '$file': not a regular file" >&2
+			status=1
+			continue
+		fi
+		clean_file "$file"
+	done
+	exit "$status"
+else
+	find . -maxdepth 1 -type f \( -iname "*.srt" -o -iname "*.sub" \) | while IFS= read -r file; do
+		clean_file "$file"
+	done
+fi
