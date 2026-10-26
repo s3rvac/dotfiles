@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+#
+# Author: Petr Zemek <s3rvac@petrzemek.net> + Claude Code
+#
+# subs-extract - extract Czech (or, failing that, English) subtitles from
+# video files into .srt files named after the video (test.mp4 -> test.srt).
+#
+# Usage:
+#   subs-extract [video-file ...]
+#
+# With no arguments, processes every video file in the current directory (no
+# recursion).
+#
+# Requirements:
+# - ffmpeg
+# - ffprobe
+#
+# Behavior:
+#   * Czech (cs, cz, ces, cze, czech) is preferred; English (en, eng, english)
+#     is used only if the video has no Czech subtitle track at all.
+#   * If several tracks match, a "plain" track (not forced, not SDH/hearing
+#     impaired, not commentary) is preferred; otherwise the first one is used.
+#   * Image-based tracks (PGS, VobSub, ...) cannot be converted to SRT without
+#     OCR: they are skipped with a warning. If the chosen language only has
+#     image-based tracks, the file is skipped (no fallback to the other
+#     language).
+#   * An existing .srt with the same name is overwritten.
+
+VIDEO_EXTENSIONS=(mp4 mkv avi mov webm m4v)
+
+prog=${0##*/}
+
+warn() { printf '%s: warning: %s\n' "$prog" "$*" >&2; }
+err()  { printf '%s: error: %s\n' "$prog" "$*" >&2; }
+
+usage() {
+	cat <<EOF
+Usage: $prog [video-file ...]
+
+Extracts Czech subtitles (or English, if no Czech are present) from each given
+video file as SRT, named after the video (test.mp4 -> test.srt).
+With no arguments, processes all video files in the current directory
+(${VIDEO_EXTENSIONS[*]}).
+EOF
+}
+
+lc() { printf '%s' "$1" | tr '[:upper:]' '[:lower:]'; }
+
+# Map a language tag to "cs" / "en" (empty output for anything else).
+lang_group() {
+	local l
+	l=$(lc "$1")
+	l=${l%%-*}
+	l=${l%%_*}
+	case $l in
+		cs|cz|ces|cze|czech) echo cs ;;
+		en|eng|english)      echo en ;;
+	esac
+}
+
+is_bitmap_codec() {
+	case $1 in
+		hdmv_pgs_subtitle|dvd_subtitle|dvb_subtitle|dvb_teletext|xsub) return 0 ;;
+	esac
+	return 1
+}
+
+# Per-file stream table (parallel arrays, indexed 0..n-1).
+S_IDX=(); S_CODEC=(); S_LANG=(); S_FORCED=(); S_HI=(); S_TITLE=()
+
+add_stream() {
+	S_IDX+=("$1"); S_CODEC+=("$2"); S_LANG+=("$3")
+	S_FORCED+=("$4"); S_HI+=("$5"); S_TITLE+=("$6")
+}
+
+probe_streams() {
+	local file=$1 key value
+	local cur_idx="" cur_codec="" cur_lang="" cur_forced=0 cur_hi=0 cur_title=""
+	S_IDX=(); S_CODEC=(); S_LANG=(); S_FORCED=(); S_HI=(); S_TITLE=()
+
+	while IFS='=' read -r key value; do
+		case $key in
+			index)
+				[[ -n $cur_idx ]] && add_stream "$cur_idx" "$cur_codec" "$cur_lang" "$cur_forced" "$cur_hi" "$cur_title"
+				cur_idx=$value; cur_codec=""; cur_lang=""; cur_forced=0; cur_hi=0; cur_title=""
+				;;
+			codec_name)              cur_codec=$value ;;
+			DISPOSITION:forced)      cur_forced=$value ;;
+			DISPOSITION:hearing_impaired) cur_hi=$value ;;
+			TAG:language|TAG:LANGUAGE) cur_lang=$value ;;
+			TAG:title|TAG:TITLE)     cur_title=$value ;;
+		esac
+	done < <(ffprobe -v error -select_streams s \
+				-show_entries 'stream=index,codec_name:stream_tags=language,title:stream_disposition=forced,hearing_impaired' \
+				-of default=noprint_wrappers=1 -i "$file")
+	[[ -n $cur_idx ]] && add_stream "$cur_idx" "$cur_codec" "$cur_lang" "$cur_forced" "$cur_hi" "$cur_title"
+	return 0
+}
+
+# True if stream number $1 is a regular full-dialogue track.
+is_plain() {
+	local i=$1 title
+	[[ ${S_FORCED[i]} == 1 || ${S_HI[i]} == 1 ]] && return 1
+	title=$(lc "${S_TITLE[i]}")
+	[[ $title =~ (forced|nucen|sdh|hearing|commentary|caption) ]] && return 1
+	return 0
+}
+
+process_file() {
+	local f=$1 out lang i pick="" n
+	local cands=()
+
+	if [[ ! -f $f ]]; then
+		err "$f: no such file"
+		return 1
+	fi
+	[[ $f == -* ]] && f=./$f
+
+	if ! probe_streams "$f"; then
+		err "$f: ffprobe failed"
+		return 1
+	fi
+	n=${#S_IDX[@]}
+	if (( n == 0 )); then
+		warn "$f: no subtitle streams"
+		return 0
+	fi
+
+	# Czech first; English only if there is no Czech track at all.
+	for lang in cs en; do
+		cands=()
+		for ((i = 0; i < n; i++)); do
+			[[ $(lang_group "${S_LANG[i]}") == "$lang" ]] && cands+=("$i")
+		done
+		(( ${#cands[@]} > 0 )) && break
+	done
+	if (( ${#cands[@]} == 0 )); then
+		warn "$f: no Czech or English subtitles found"
+		return 0
+	fi
+
+	# Among text-based candidates, prefer a plain track, else the first one.
+	for i in "${cands[@]}"; do
+		if is_bitmap_codec "${S_CODEC[i]}"; then
+			warn "$f: skipping image-based $lang subtitle track #${S_IDX[i]} (${S_CODEC[i]}), cannot convert to SRT without OCR"
+			continue
+		fi
+		if [[ -z $pick ]]; then
+			pick=$i
+		fi
+		if is_plain "$i"; then
+			pick=$i
+			break
+		fi
+	done
+	if [[ -z $pick ]]; then
+		warn "$f: no text-based $lang subtitle track available, skipping"
+		return 0
+	fi
+
+	out=${f%.*}.srt
+	if ffmpeg -nostdin -v error -y -i "$f" -map "0:${S_IDX[pick]}" -c:s srt "$out"; then
+		printf '%s: %s -> %s (%s, track #%s)\n' "$prog" "$f" "$out" "$lang" "${S_IDX[pick]}"
+	else
+		err "$f: ffmpeg failed to extract track #${S_IDX[pick]}"
+		rm -f -- "$out"
+		return 1
+	fi
+}
+
+main() {
+	local f ext status=0
+	local files=()
+
+	case ${1-} in
+		-h|--help) usage; exit 0 ;;
+	esac
+
+	for cmd in ffmpeg ffprobe; do
+		command -v "$cmd" >/dev/null 2>&1 || { err "$cmd not found in PATH"; exit 127; }
+	done
+
+	if (( $# > 0 )); then
+		files=("$@")
+	else
+		shopt -s nullglob nocaseglob
+		for ext in "${VIDEO_EXTENSIONS[@]}"; do
+			files+=(*."$ext")
+		done
+		shopt -u nullglob nocaseglob
+		if (( ${#files[@]} == 0 )); then
+			err "no video files found in the current directory"
+			exit 1
+		fi
+	fi
+
+	for f in "${files[@]}"; do
+		process_file "$f" || status=1
+	done
+	exit "$status"
+}
+
+main "$@"
