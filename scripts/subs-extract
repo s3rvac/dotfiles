@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net> + Claude Code
-#
 # subs-extract - extract Czech (or, failing that, English) subtitles from
 # video files into .srt files named after the video (test.mp4 -> test.srt).
 #

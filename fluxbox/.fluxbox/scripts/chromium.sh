@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net>
-#
 # Starts Chromium.
 #
 

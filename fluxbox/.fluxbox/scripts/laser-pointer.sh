@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net>
-#
 # Toggles a laser pointer effect on the mouse cursor (useful for
 # presentations).
 #

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net> + Claude Code
-#
 # Show the Fluxbox workspace and tmux session for each running Claude Code instance.
 # Fluxbox workspace numbers are 1-based (matching what Fluxbox shows in its toolbar).
 #

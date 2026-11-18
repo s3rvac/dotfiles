@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net>
-#
 # Sets up keyboard and mouse.
 #
 

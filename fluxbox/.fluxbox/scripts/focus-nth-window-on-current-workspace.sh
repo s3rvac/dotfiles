@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net>
-#
 # Focuses (activates) the Nth window (where N is the first argument) on the
 # current workspace.
 

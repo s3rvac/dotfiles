@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net> + Claude Code
-#
 # Renames subtitle files (.srt/.sub) to match video files (.mp4/.mkv/.webm)
 # in the current working directory.
 #

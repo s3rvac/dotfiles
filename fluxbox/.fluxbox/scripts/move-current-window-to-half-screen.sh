@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net>
-#
 # Moves the currently active window to the "left" or "right" ($1) part of the
 # screen.
 #

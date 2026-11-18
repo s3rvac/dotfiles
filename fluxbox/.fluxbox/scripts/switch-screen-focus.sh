@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net>
-#
 # Switches focus between screens ("left" or "right", depending on $1).
 #
 # We do this by moving mouse cursor to the new screen, getting a window that's

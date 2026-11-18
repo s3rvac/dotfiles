@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net> + Claude Code
-#
 # Cleans up subtitle files.
 #
 # Usage: subs-clean [FILE...]

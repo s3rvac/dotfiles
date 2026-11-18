@@ -1,7 +1,5 @@
 #!/bin/bash
 #
-# Author: Petr Zemek <s3rvac@petrzemek.net>
-#
 # Pops up a user notification with the given text at the given time.
 #
 # Examples:
