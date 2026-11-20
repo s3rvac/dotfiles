@@ -1,6 +1,6 @@
 # Petr Zemek's dot files
 
-This repository contains some of the configuration files that I use.
+This repository contains configuration files for some of the tools I use.
 
 ## Installation
 
