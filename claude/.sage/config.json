@@ -1,0 +1,18 @@
+{
+    "url_check": {
+        "enabled": true
+    },
+    "file_check": {
+        "enabled": false
+    },
+    "package_check": {
+        "enabled": false
+    },
+    "skill_check": {
+        "enabled": false,
+        "upload_enabled": true
+    },
+    "announce_clean_scans": true,
+    "community_iq": false,
+    "manage_status_line": false
+}
