@@ -43,6 +43,7 @@
 	d = diff
 	da = diff HEAD
 	ds = diff --staged
+	disable-signing = config commit.gpgsign false
 	; https://github.com/s3rvac/git-edit-index
 	ei = edit-index
 	f = fetch --all --prune
