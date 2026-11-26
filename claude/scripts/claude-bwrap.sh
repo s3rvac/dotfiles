@@ -228,4 +228,4 @@ mount_ro "$cwd/.git/config"
 export_var CLAUDE_IN_BWRAP 1
 
 echo "--> Starting claude via bwrap..." >&2
-exec bwrap "${params[@]}" -- "$claude_bin" "$@"
+exec -a claude bwrap "${params[@]}" -- "$claude_bin" "$@"
